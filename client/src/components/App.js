@@ -1,13 +1,11 @@
 import logo from '../assets/logo.svg';
 import '../styles/App.css';
-import Header from './Header';
-import Carte from './Carte';
-import Footer from './Footer';
+import Login from '../pages/Login';
+import Home from '../pages/Home';
+import Carte from '../components/Carte';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Adduction3d from './Adduction3d';
-// import { Axios } from 'axios';
 import Axios, * as others from 'axios';
-import '../styles/Carte.css';
 
 function App() {
 	const getJoke = () => {
@@ -21,13 +19,16 @@ function App() {
 			{/* <button onClick={getJoke}>Give</button> */}
 			<BrowserRouter>
 				<Routes>
-					<Route path="/header" element={<Header />} />
-					<Route path="/adduction3d" element={<Adduction3d />} />
+					<Route path="/login" element={<Login />}>
+						{' '}
+					</Route>
+					<Route path="/" element={<Home />}>
+						<Route path="" element={<Carte />} />
+						<Route path="carte" element={<Carte />} />
+						<Route path="3d" element={<Adduction3d />} />
+					</Route>
 				</Routes>
 			</BrowserRouter>
-			<Header />
-			<Carte />
-			<Footer />
 		</div>
 	);
 }

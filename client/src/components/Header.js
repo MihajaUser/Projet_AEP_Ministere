@@ -7,17 +7,19 @@ import CameraIcon from '@mui/icons-material/Camera';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PaidIcon from '@mui/icons-material/Paid';
-import LayersIcon from '@mui/icons-material/Layers';
+import ViewInArIcon from '@mui/icons-material/ViewInAr';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-
+function go(){
+	console.log('Enter go mihaja');
+}
 function Header() {
 	return (
 		<>
 			<div>
-				<img src={drapeauMad} alt="drapeauMad.jpg" width="10%" height="20%" />
+				<img src={drapeauMad} alt="drapeauMad.jpg" width="10%" height="20%" onClick={()=>go()} />
 			</div>
 			<Navbar bg="light" variant="light">
 				<Container>
@@ -33,25 +35,25 @@ function Header() {
 							),
 						}}
 					/>
-					<Navbar.Brand href="/adduction3d">
-						{' '}
-						<CameraIcon />
-					</Navbar.Brand>
-					<Navbar.Brand href="#home">
+					<Navbar.Brand href="/">
 						{' '}
 						<FmdGoodIcon />
 					</Navbar.Brand>
-					<Navbar.Brand href="#home">
+					<Navbar.Brand href="/3d">
+						{' '}
+						<ViewInArIcon />
+					</Navbar.Brand>
+					<Navbar.Brand href="#screen">
+						{' '}
+						<CameraIcon />
+					</Navbar.Brand>
+					<Navbar.Brand href="#calendar">
 						{' '}
 						<CalendarMonthIcon />
 					</Navbar.Brand>
-					<Navbar.Brand href="#home">
+					<Navbar.Brand href="#money">
 						{' '}
 						<PaidIcon />
-					</Navbar.Brand>
-					<Navbar.Brand href="#home">
-						{' '}
-						<LayersIcon />
 					</Navbar.Brand>
 				</Container>
 			</Navbar>

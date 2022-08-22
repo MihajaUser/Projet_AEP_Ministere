@@ -1,7 +1,11 @@
-function Adduction3d() {
-  return (
-    <h1> Adduction3d</h1>
-  )
-}
+import React from 'react';
 
-export default Adduction3d
+const Adduction3d = () => {
+	return (
+		<div>
+			<h1>page adduction3d</h1>
+		</div>
+	);
+};
+
+export default Adduction3d;
