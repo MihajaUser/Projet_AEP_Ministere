@@ -20,12 +20,12 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/login" element={<Login />}>
-						{' '}
 					</Route>
 					<Route path="/" element={<Home />}>
 						<Route path="" element={<Carte />} />
 						<Route path="carte" element={<Carte />} />
 						<Route path="3d" element={<Adduction3d />} />
+						
 					</Route>
 				</Routes>
 			</BrowserRouter>
