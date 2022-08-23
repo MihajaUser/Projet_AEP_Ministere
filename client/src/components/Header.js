@@ -12,6 +12,8 @@ import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
+import ListIcon from '@mui/icons-material/List';
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 function go(){
 	console.log('Enter go mihaja');
 }
@@ -51,9 +53,13 @@ function Header() {
 						{' '}
 						<CalendarMonthIcon />
 					</Navbar.Brand>
-					<Navbar.Brand href="#money">
+					<Navbar.Brand href="/liste">
 						{' '}
-						<PaidIcon />
+						<ListIcon />
+					</Navbar.Brand>
+					<Navbar.Brand href="/ajout">
+						{' '}
+						<AddLocationAltIcon  />
 					</Navbar.Brand>
 				</Container>
 			</Navbar>
