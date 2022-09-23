@@ -11,7 +11,8 @@ const Home = () => {
   const [myStation, setMystation] = useState();
   useEffect(() => {
     const hamdleGetData = async () => {
-      const x = await getStation(); setMystation(x.data);
+      const x = await getStation();
+      setMystation(x.data);
     }
     if (!myStation)
       hamdleGetData()
