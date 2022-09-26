@@ -8,6 +8,7 @@ import Home from './guest/pages/home/Home'
 import CiternePage from './guest/components/citerne/CiternePage';
 import Login from './guest/pages/login/Login';
 import Admin from './admin/pages/Main.jsx';
+import Citerne2d from './guest/components/citerne2d/Citerne2d';
 const App = () => {
   return (
     <Provider store={store}>
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="carte" element={<MapPage />} />
             <Route path="adduction3d" element={<CiternePage />} />
             <Route path="login2" element={<Login />} />
+            <Route path="citerne2d" element={<Citerne2d />} />
           </Route>
           <Route path="/admin" element={<Admin />} >
             <Route path="" element={<  MapRouting />} />

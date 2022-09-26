@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 import drapeauMad from "../../assets/imagesClient/drapeauMad.jpg";
 import "./Header.css";
 import Container from "react-bootstrap/Container";
@@ -43,7 +43,7 @@ function Header() {
             {" "}
             <MuiIcons.ViewInAr />
           </Navbar.Brand>
-          <Navbar.Brand href="#screen">
+          <Navbar.Brand href="citerne2d">
             {" "}
             <MuiIcons.Camera />
           </Navbar.Brand>
