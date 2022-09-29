@@ -30,7 +30,7 @@ const SidebarComponent = ({ map }) => {
         panMapOnChange
         rehomeControls
       >
-        <Tab id="home" header="ACCEUILLE" icon={<FiHome />} active>
+        <Tab id="home" header="ACCUEIL" icon={<FiHome />} active>
           <div className="titreTab1"> Elaboration de Directives Nationales pour la Construction des Infrastructures AEP à l’échelle communautaire résistante aux effets des aléas climatiques</div>
           <div className="imgTitreTab1">
             <img src={ministere} width="100%" height="15%" />
