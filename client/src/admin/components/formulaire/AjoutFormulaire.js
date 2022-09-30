@@ -70,22 +70,26 @@ export const AjoutFormulaire = () => {
           <ModalWrapper >
           <ModalContent>
           <Row>
-          <Col xs={6} md={4}>
-         <Card border="primary" style={{ width: '18rem' }}>
+          <Col xs={6} >
+         <Card border="primary" style={{ width: '25rem' }}>
          <Card.Header>Formulaire d'ajout</Card.Header>
          <Card.Body>
          <Card.Title></Card.Title>
-            <Form.Group className="mb-3">
-            <Form.Label>Option</Form.Label>
-             <Form.Select aria-label="Default select example" size="md-6">
+          <Row> 
+          <Col>
+            <Form.Group>
+            <Form.Label>Option{"\n"}</Form.Label>
+            <Form.Select aria-label="Default select example" size="md-6">
              <option>Veuillez choisir</option>
              <option value="1">Réservoir d'eau</option>
              <option value="2">Canalisation</option>
              <option value="3">Pompe</option>
              </Form.Select>
              </Form.Group>
+          </Col>
+          <Col>
             <Form.Group className="mb-3">
-            <Form.Label>Infrastructure de l'eau</Form.Label>
+            <Form.Label>Infrastru d'eau</Form.Label>
              <Form.Select aria-label="Default select example" size="md-6">
              <option value="1">AEPG</option>
              <option value="2">AEPP</option>
@@ -94,6 +98,8 @@ export const AjoutFormulaire = () => {
              <option value="2">PPMH</option>
              </Form.Select>
              </Form.Group>
+          </Col>
+          <Col>
              <Form.Group className="mb-3">
             <Form.Label>Point d'eau</Form.Label>
              <Form.Select aria-label="Default select example" size="md-6">
@@ -105,26 +111,42 @@ export const AjoutFormulaire = () => {
              <option value="2">PPMH</option>
              </Form.Select>
              </Form.Group>
+          </Col>
+          </Row>
+          <Row>
+           <Col>
              <Form.Group className="mb-3">
               <Form.Label>Région</Form.Label>
                  <Form.Control type="text" placeholder="ex : Alaotra Mangoro" />
              </Form.Group>
+            </Col>
+            <Col>
               <Form.Group className="mb-3">
               <Form.Label>District</Form.Label>
                  <Form.Control type="text" placeholder="ex : Ambatondrazaka" />
              </Form.Group>
+            </Col>
+            <Col>
              <Form.Group className="mb-3">
              <Form.Label>Commune</Form.Label>
                  <Form.Control type="text" placeholder="ex : Ambandrika" />
              </Form.Group>
+             </Col>
+             </Row>
+             <Row>
+             <Col>
              <Form.Group className="mb-3">
              <Form.Label>Fokontany</Form.Label>
                  <Form.Control type="text" placeholder="ex : Ambandrika" />
              </Form.Group>
+             </Col>
+             <Col>
              <Form.Group className="mb-3">
              <Form.Label>Localité</Form.Label>
                  <Form.Control type="text" placeholder="ex : Ambandrika" />
              </Form.Group>
+             </Col>
+             </Row>
              <Form.Group className="mb-3">
              <Form.Label>Nombre de construction</Form.Label>
                  <Form.Control type="number" placeholder="Entrez le nombre" />
