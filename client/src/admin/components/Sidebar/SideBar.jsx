@@ -8,6 +8,7 @@ import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
+import AddLocationRoundedIcon from '@mui/icons-material/AddLocationRounded';
 import '../../App.css'
 const routes = [
   {
@@ -21,13 +22,13 @@ const routes = [
     icon: <FaUser />,
   },
   {
-    path: "/messages",
-    name: "Messages",
-    icon: <MdMessage />,
+    path: "formulaire",
+    name: "Ajout formulaire",
+    icon: < AddLocationRoundedIcon />,
   },
   {
-    path: "/analytics",
-    name: "Analytics",
+    path: "liste",
+    name: "CRUD des projets",
     icon: <BiAnalyse />,
   },
   {
