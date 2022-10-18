@@ -1,3 +1,7 @@
 module.exports = {
-    secret: "Ministere-de-l-eau-etu0936"
+    secret: "Ministere-de-l-eau-token"
 };
+
+
+
+

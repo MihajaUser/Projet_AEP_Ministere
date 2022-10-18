@@ -1,10 +1,56 @@
-import React from "react"
+import React, { useState } from 'react'
 import './Login.css';
 import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router';
+import { AuthService } from './Auth.service.js';
+
 function Inscription(){
-  return(
+
+   const [incorrecte, setincorrecte] = useState(false);
+    //formulaire
+    const [email, setmail] = useState('');
+    const [username, setusername] = useState('');
+    const [password, setpassword] = useState('');
+
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
+    
+    function submiSignup() {
+        let data = { email, username, password };
+        // console.log(data);
+        if (email == '' || username == '' || password == '') {
+            setError('remplire tout les champs!')
+        }
+        else {
+            AuthService.signup(data)
+                .then(rep => {
+                    console.log('======>>>', rep.data);
+                    let storage = {
+                        id: rep.data.id,
+                        email: rep.data.email,
+                        // roles: rep.data.roles,
+                        accessToken: rep.data.accessToken,
+                    }
+                    // localStorage.setItem('users', JSON.stringify(storage));
+                    navigate('/login');
+                })
+                .catch(err => {
+                    //connnection reussie mais user non reconnue
+                    if (err.response.data.message) {
+                       setError(err.response.data.message);
+                    }
+                    // connection perdu
+                    else{
+                        console.log('XXXXXXXXXXXXXXXX', err);
+                    }
+                })
+        }
+    }
+
+
+ return(
     <div className="Auth-form-container">
-      <form className="Auth-form">
+      <div className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Inscription</h3>
           <div className="text-center">
@@ -19,9 +65,10 @@ function Inscription(){
               type="text"
               className="form-control mt-1"
               placeholder="Entrez votre nom"
+              onChange={(value) => setusername(value.target.value)}
             />
           </div>
-          <div className="form-group mt-3">
+         {/* <div className="form-group mt-3">
             <label>Prénom</label>
             <input
               type="email"
@@ -36,13 +83,14 @@ function Inscription(){
               className="form-control mt-1"
               placeholder="Date de naissance"
             />
-          </div>
+          </div>*/}
           <div className="form-group mt-3">
             <label>Adresse email</label>
             <input
-              type="email"
+              type="text"
               className="form-control mt-1"
               placeholder="Email Address"
+              onChange={(value) => setmail(value.target.value)}
             />
           </div>
           <div className="form-group mt-3">
@@ -51,10 +99,11 @@ function Inscription(){
               type="password"
               className="form-control mt-1"
               placeholder="Mot de passe"
+              onChange={(value) => setpassword(value.target.value)}
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" onClick={submiSignup} className="btn btn-primary">
               Inscription
             </button>
           </div>
@@ -62,7 +111,7 @@ function Inscription(){
             Forgot <a href="#">password?</a>
           </p>*/}
         </div>
-      </form>
+      </div>
     </div>
 
   )

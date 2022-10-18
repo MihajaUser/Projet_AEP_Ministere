@@ -10,16 +10,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import AddLocationRoundedIcon from '@mui/icons-material/AddLocationRounded';
 import '../../App.css'
+
+
 const routes = [
   {
     path: "/",
-    name: "Dashboard",
+    name: "Accueil",
     icon: <FaHome />,
-  },
-  {
-    path: "/users",
-    name: "Users",
-    icon: <FaUser />,
   },
   {
     path: "formulaire",
@@ -33,58 +30,15 @@ const routes = [
   },
   {
     path: "/file-manager",
-    name: "File Manager",
-    icon: <AiTwotoneFileExclamation />,
+    name: "Utilisateur",
+    icon: <FaUser />,
     subRoutes: [
       {
         path: "/settings/profile",
-        name: "Profile ",
+        name: "Déconnexion ",
         icon: <FaUser />,
       },
-      {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
-      },
-      {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
-      },
     ],
-  },
-  {
-    path: "/order",
-    name: "Order",
-    icon: <BsCartCheck />,
-  },
-  {
-    path: "/settings",
-    name: "Settings",
-    icon: <BiCog />,
-    exact: true,
-    subRoutes: [
-      {
-        path: "/settings/profile",
-        name: "Profile ",
-        icon: <FaUser />,
-      },
-      {
-        path: "/settings/2fa",
-        name: "2FA",
-        icon: <FaLock />,
-      },
-      {
-        path: "/settings/billing",
-        name: "Billing",
-        icon: <FaMoneyBill />,
-      },
-    ],
-  },
-  {
-    path: "/saved",
-    name: "Saved",
-    icon: <AiFillHeart />,
   },
 ];
 
@@ -124,7 +78,10 @@ const SideBar = ({ children }) => {
       },
     },
   };
-
+  
+// function header(){
+//    
+// }
   return (
     <>
       <div className="main-container">
