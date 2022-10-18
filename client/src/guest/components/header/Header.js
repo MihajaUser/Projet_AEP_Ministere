@@ -54,7 +54,7 @@ function Header() {
             {" "}
             <ListAltRoundedIcon />
           </Navbar.Brand>
-           <Navbar.Brand href="login">
+           <Navbar.Brand href="/login">
             {" "}
             <AccountCircleRoundedIcon />
           </Navbar.Brand>
