@@ -12,25 +12,26 @@ import ListeProjet from './guest/components/listeProjet/ListeProjet'
 import Login from './guest/pages/login/Login';
 import Inscription from './guest/pages/login/Inscription';
 import Admin from './admin/pages/Main.jsx';
+import Citerne2d from './guest/components/citerne2d/Citerne2d';
 const App = () => {
   return (
     <Provider store={store}>
       <Router>
         <Routes>
-            <Route path="/" element={<Home />}>
-              <Route path="" element={<MapPage />} />
-              <Route path="carte" element={<MapPage />} />
-              <Route path="adduction3d" element={<CiternePage />} />
-              <Route path="listeProjet" element={<ListeProjet />} />
-              <Route path="login" element={<Login />} />
-              <Route path="inscription" element={<Inscription />} />
-            </Route>
-            <Route path="admin/" element={<Admin />}>
-              <Route path="" element={<  MapRouting />} />
-              <Route path="formulaire" element={<AjoutFormulaire />} />
-           {/* <Route path="login" element={<Login />} />*/}
-              <Route path="liste" element={<CrudProjet />} />
-            </Route>
+          <Route path="/" element={<Home />}>
+            <Route path="" element={<MapPage />} />
+            <Route path="carte" element={<MapPage />} />
+            <Route path="adduction3d" element={<CiternePage />} />
+            <Route path="listeProjet" element={<ListeProjet />} />
+            <Route path="login" element={<Login />} />
+            <Route path="inscription" element={<Inscription />} />
+          </Route>
+          <Route path="admin/" element={<Admin />}>
+            <Route path="" element={<  MapRouting />} />
+            <Route path="formulaire" element={<AjoutFormulaire />} />
+            {/* <Route path="login" element={<Login />} />*/}
+            <Route path="liste" element={<CrudProjet />} />
+          </Route>
         </Routes>
       </Router>
     </Provider>
