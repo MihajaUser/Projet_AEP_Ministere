@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Projets.init({
-    id: { type: DataTypes.BIGINT(20), primaryKey: true, autoIncrement: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     id_utilisateur: DataTypes.INTEGER,
     region: DataTypes.STRING,
     district: DataTypes.STRING,
@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     etat_ouvrage: DataTypes.STRING,
     utilisation: DataTypes.STRING
   }, {
-    initialAutoIncrement: 1000,
     createdAt: false,
     updatedAt: false,
     sequelize,
