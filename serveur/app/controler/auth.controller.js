@@ -11,7 +11,7 @@ exports.signup = (req, res) => {
     console.log("================================");
     console.log(req.body.email);
     console.log(req.body.username);
-    // console.log(req.body.password);
+    console.log(req.body.password);
     console.log("================================");
     UserModel.create({
         username: req.body.username,
@@ -19,29 +19,33 @@ exports.signup = (req, res) => {
         password: bcrypt.hashSync(req.body.password, 8)
     })
         .then(user => {
-            // RoleUser.create({
-            //     UserId:user.id,
-            //     RoleId:1
-            // })
-            // .then(RoleUser => {
-            //     res.send(RoleUser,user)
-            // })
-            // .catch(err => { // console.log('EEEEEEEEEEERRRRRRRRRRRRRRRRR');
-            // res.status(500).send({ message: err.message })
-             // var authorities = 'client';
-            // model
-            // role (id, lqbele)
-            // roleUser (id,UserId,RoleId)
-            res.send(user);
-            
+            if (req.body.roles) {
+                RoleModel.findAll({
+                    where: {
+                        name: {
+                            [Op.or]: req.body.roles
+                        }
+                    }
+                }).then(roles => {
+                    user.setRoles(roles).then(() => {
+                        res.send({ message: "User was registered successfully!" });
+                    });
+                });
+            } else {
+                // user role = 1
+                user.setRoles([1]).then(() => {
+                    res.send({ message: "User was registered successfully!" });
+                });
+            }
         })
+
         .catch(err => { // console.log('EEEEEEEEEEERRRRRRRRRRRRRRRRR');
             res.status(500).send({ message: err.message });
         });
 };
 
 exports.signin = (req, res) => {
-    // console.log(req.body.username, req.body.password, req.body.email);
+    console.log(req.body.username, req.body.password, req.body.email);
     UserModel.findOne({
         where: {
             username: req.body.username
@@ -65,13 +69,12 @@ exports.signin = (req, res) => {
                 expiresIn: 86400 // 24 hours
             });
 
-//mila mi find anle role alony
-
+            var authorities = [];
             res.send({
                 id: user.id,
                 username: user.username,
                 email: user.email,
-                // roles: authorities,
+                roles: authorities,
                 accessToken: token
             });
 
