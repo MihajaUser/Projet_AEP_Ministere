@@ -15,15 +15,7 @@ function Citerne2d() {
   // initialize the canvas context
   useEffect(() => {
     //prendre altitude 
-
-
     getAltitude(latitude, longitude).then(rep => {
-      console.log(rep.data.results[0].elevation); setAltitude(rep.data.results[0].elevation);
-
-      console.log("mandalo hamdleGetAltitude ")
-
-
-
       // dynamically assign the width and height to canvas
       const canvasEle = canvas.current;
       canvasEle.width = canvasEle.clientWidth;
@@ -52,11 +44,14 @@ function Citerne2d() {
       reservoir.onload = () => {
         context.drawImage(reservoir, 600, 190, 60, 130);
       };
-      //text altitude 
+
+      //text altitude
+      console.log(rep.data.results[0].elevation);
+      setAltitude(rep.data.results[0].elevation);
       const unite = 50
-      //let pied = altitude.data.results[0].elevation
       let pied = rep.data.results[0].elevation;
       ctx.font = '30px serif';
+      context.fillStyle = "rgb(11, 15, 88)";
       ctx.fillText(`Région : ${region}`, 10, 50);
       ctx.fillText(`Altitude : ${pied} m  ou ${pied * 0, 3048} ft `, 10, 90);
       ctx.fillText(`Point eau  : ${point_eau}`, 10, 130);
