@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Projets.init({
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    id_utilisateur: DataTypes.INTEGER,
     region: DataTypes.STRING,
     district: DataTypes.STRING,
     commune: DataTypes.STRING,
@@ -18,11 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     latitude: DataTypes.FLOAT,
     longitude: DataTypes.FLOAT,
     nb_beneficiaire: DataTypes.FLOAT,
-    etat_ouvrage: DataTypes.BOOLEAN,
-    id_utilisateur: DataTypes.INTEGER,
-    id_point_eau: DataTypes.INTEGER,
-    id_infra_eau: DataTypes.INTEGER,
-    id_role: DataTypes.INTEGER
+    point_eau: DataTypes.STRING,
+    infra_eau: DataTypes.STRING,
+    etat_ouvrage: DataTypes.STRING,
+    utilisation: DataTypes.STRING
   }, {
     createdAt: false,
     updatedAt: false,
