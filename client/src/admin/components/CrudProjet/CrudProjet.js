@@ -3,7 +3,7 @@ import UpdateIcon from '@mui/icons-material/Update';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import styled from 'styled-components';
 
-const ModalContent = styled.div`
+const ModalContent = styled.div`     
   display: flex;
   flex-direction: column;
   justify-content: center;
