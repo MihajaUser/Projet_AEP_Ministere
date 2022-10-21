@@ -11,7 +11,6 @@ function Citerne2d() {
   const canvas = useRef();
   let ctx = null;
 
-
   // initialize the canvas context
   useEffect(() => {
     //prendre altitude 
@@ -44,7 +43,6 @@ function Citerne2d() {
       reservoir.onload = () => {
         context.drawImage(reservoir, 600, 190, 60, 130);
       };
-
       //text altitude
       console.log(rep.data.results[0].elevation);
       setAltitude(rep.data.results[0].elevation);
@@ -56,7 +54,6 @@ function Citerne2d() {
       ctx.fillText(`Altitude : ${pied} m  ou ${pied * 0, 3048} ft `, 10, 90);
       ctx.fillText(`Point eau  : ${point_eau}`, 10, 130);
       ctx.fillText(`Infrastructure : ${infra_eau}`, 10, 170);
-
       //triangle
       ctx.beginPath();
       ctx.moveTo(485, 180);
@@ -81,8 +78,6 @@ function Citerne2d() {
     });
 
   }, []);
-
-
   // draw rectangle with background
   const drawFillRect = (info, style = {}) => {
     const { x, y, w, h } = info;
