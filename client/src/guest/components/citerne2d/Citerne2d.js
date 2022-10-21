@@ -20,6 +20,7 @@ function Citerne2d() {
       const x = await getAltitude(latitude, longitude);
       setAltitude(x.data)
     }
+    hamdleGetData();
     // dynamically assign the width and height to canvas
     const canvasEle = canvas.current;
     canvasEle.width = canvasEle.clientWidth;
@@ -58,7 +59,7 @@ function Citerne2d() {
     //let pied = altitude.data.results[0].elevation
     let pied = 50
     console.log("pied")
-    console.log(pied);
+    // console.log(altitude);
     ctx.font = '40px serif';
     ctx.fillText(`Altitude : ${pied} ft ou ${pied * 0, 3048} m`, 10, 50);
 
