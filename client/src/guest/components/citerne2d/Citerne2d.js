@@ -57,7 +57,7 @@ function Citerne2d() {
       //let pied = altitude.data.results[0].elevation
       let pied = rep.data.results[0].elevation;
       ctx.font = '40px serif';
-      ctx.fillText(`Altitude : ${pied} ft ou ${pied * 0, 3048} m`, 10, 50);
+      ctx.fillText(`Altitude : ${pied} m  ou ${pied * 0, 3048} ft `, 10, 50);
       //triangle
       ctx.beginPath();
       ctx.moveTo(485, 180);
