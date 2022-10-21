@@ -28,18 +28,6 @@ const routes = [
     name: "CRUD des projets",
     icon: <BiAnalyse />,
   },
-  {
-    path: "/file-manager",
-    name: "Utilisateur",
-    icon: <FaUser />,
-    subRoutes: [
-      {
-        path: "/settings/profile",
-        name: "Déconnexion ",
-        icon: <FaUser />,
-      },
-    ],
-  },
 ];
 
 const SideBar = ({ children }) => {
