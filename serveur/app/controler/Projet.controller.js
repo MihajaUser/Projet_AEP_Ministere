@@ -16,6 +16,7 @@ exports.getAllProjet = (req, res) => {
 
 exports.AjoutProjet = (req, res) => {
   model.Projets.create({
+    id_utilisateur: req.body.id_utilisateur,
     region: req.body.region,
     district: req.body.district,
     commune: req.body.commune,
@@ -24,11 +25,10 @@ exports.AjoutProjet = (req, res) => {
     latitude: req.body.latitude,
     longitude: req.body.longitude,
     nb_beneficiaire: req.body.nb_beneficiaire,
+    point_eau: req.body.point_eau,
+    infra_eau: req.body.infra_eau,
     etat_ouvrage: req.body.etat_ouvrage,
-    id_utilisateur: req.body.id_utilisateur,
-    id_point_eau: req.body.id_point_eau,
-    id_infra_eau: req.body.id_infra_eau,
-    id_role: req.body.id_role
+    utilisation: req.body.utilisation
   })
     .then(rep => {
       res.send('Projet was registered successfully!')
