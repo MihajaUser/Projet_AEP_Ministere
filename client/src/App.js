@@ -25,7 +25,7 @@ const App = () => {
             <Route path="listeProjet" element={<ListeProjet />} />
             <Route path="login" element={<Login />} />
             <Route path="inscription" element={<Inscription />} />
-            <Route path="citerne2d/:latitude/:longitude" element={<Citerne2d />} />
+            <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
           </Route>
           <Route path="admin/" element={<Admin />}>
             <Route path="" element={<  MapRouting />} />

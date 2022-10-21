@@ -6,7 +6,7 @@ import { useState } from "react";
 import './style.css'
 
 function Citerne2d() {
-  const { latitude, longitude } = useParams();
+  const { latitude, longitude, region, point_eau, infra_eau } = useParams();
   const [altitude, setAltitude] = useState(0);
   const canvas = useRef();
   let ctx = null;
@@ -56,8 +56,12 @@ function Citerne2d() {
       const unite = 50
       //let pied = altitude.data.results[0].elevation
       let pied = rep.data.results[0].elevation;
-      ctx.font = '40px serif';
-      ctx.fillText(`Altitude : ${pied} m  ou ${pied * 0, 3048} ft `, 10, 50);
+      ctx.font = '30px serif';
+      ctx.fillText(`Région : ${region}`, 10, 50);
+      ctx.fillText(`Altitude : ${pied} m  ou ${pied * 0, 3048} ft `, 10, 90);
+      ctx.fillText(`Point eau  : ${point_eau}`, 10, 130);
+      ctx.fillText(`Infrastructure : ${infra_eau}`, 10, 170);
+
       //triangle
       ctx.beginPath();
       ctx.moveTo(485, 180);
