@@ -29,20 +29,6 @@ exports.AjoutProjet = (req, res) => {
     infra_eau: req.body.infra_eau,
     etat_ouvrage: req.body.etat_ouvrage,
     utilisation: req.body.utilisation
-
-    //  id_utilisateur: DataTypes.INTEGER,
-    // region: DataTypes.STRING,
-    // district: DataTypes.STRING,
-    // commune: DataTypes.STRING,
-    // fokontany: DataTypes.STRING,
-    // localite: DataTypes.STRING,
-    // latitude: DataTypes.FLOAT,
-    // longitude: DataTypes.FLOAT,
-    // nb_beneficiaire: DataTypes.FLOAT,
-    // point_eau: DataTypes.STRING,
-    // infra_eau: DataTypes.STRING,
-    // etat_ouvrage: DataTypes.STRING,
-    // utilisation: DataTypes.STRING
   })
     .then(rep => {
       res.send('Projet was registered successfully!')
