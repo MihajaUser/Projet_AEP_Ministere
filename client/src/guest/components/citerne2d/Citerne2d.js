@@ -1,35 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import { Stage } from 'react-konva';
-import { getAltitude } from "./../../../service/StationS"
-import { useParams } from 'react-router-dom';
-import { useState } from "react";
 import './style.css'
 
 function Citerne2d() {
-  const { latitude, longitude } = useParams();
-  const [altitude, setAltitude] = useState(0);
+
   const canvas = useRef();
   let ctx = null;
 
-
   // initialize the canvas context
   useEffect(() => {
-    //prendre altitude 
-
-    console.log(latitude, longitude)
-    const hamdleGetAltitude = () => {
-      getAltitude(latitude, longitude).then(rep => {
-        console.log(rep.data.results[0].elevation); setAltitude(rep.data.results[0].elevation);
-      }).catch((err) => {
-        console.log("mon error " + err);
-      });
-      console.log("mandalo hamdleGetAltitude ")
-
-    }
-    hamdleGetAltitude();
-
-    console.log("altitude")
-    console.log(altitude);
     // dynamically assign the width and height to canvas
     const canvasEle = canvas.current;
     canvasEle.width = canvasEle.clientWidth;
@@ -65,8 +44,7 @@ function Citerne2d() {
     };
     //text altitude 
     const unite = 50
-    //let pied = altitude.data.results[0].elevation
-    let pied = altitude;
+    const pied = 290
     ctx.font = '40px serif';
     ctx.fillText(`Altitude : ${pied} ft ou ${pied * 0, 3048} m`, 10, 50);
 
@@ -85,7 +63,6 @@ function Citerne2d() {
   }, []);
 
   useEffect(() => {
-
     //altitude
     const r3Info = { x: 480, y: 250, w: 10, h: 300 };
     drawFillRect(r3Info, { backgroundColor: 'rgb(232, 73, 73)' });
