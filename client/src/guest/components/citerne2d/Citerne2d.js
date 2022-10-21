@@ -63,6 +63,12 @@ function Citerne2d() {
     reservoir.onload = () => {
       context.drawImage(reservoir, 600, 190, 60, 130);
     };
+    //text altitude 
+    const unite = 50
+    //let pied = altitude.data.results[0].elevation
+    let pied = altitude;
+    ctx.font = '40px serif';
+    ctx.fillText(`Altitude : ${pied} ft ou ${pied * 0, 3048} m`, 10, 50);
 
     //triangle
     ctx.beginPath();
