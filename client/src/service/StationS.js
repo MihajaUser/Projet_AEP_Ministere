@@ -1,6 +1,6 @@
 import Axios, * as others from 'axios';
-export const getStation = async () => {
-  const data = await Axios.get('http://localhost:8080/api/projet/projets')
+export const getStation = () => {
+  const data = Axios.get('http://localhost:8080/api/projet/projets')
   return data;
 }
 export const getAltitude = async (latitude, longitude) => {

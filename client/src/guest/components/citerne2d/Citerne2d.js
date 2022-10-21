@@ -7,7 +7,7 @@ import './style.css'
 
 function Citerne2d() {
   const { latitude, longitude } = useParams();
-  const [altitude, setAltitude] = useState();
+  const [altitude, setAltitude] = useState(0);
   const canvas = useRef();
   let ctx = null;
 
@@ -16,11 +16,20 @@ function Citerne2d() {
   useEffect(() => {
     //prendre altitude 
 
-    const hamdleGetData = async () => {
-      const x = await getAltitude(latitude, longitude);
-      setAltitude(x.data)
+    console.log(latitude, longitude)
+    const hamdleGetAltitude = () => {
+      getAltitude(latitude, longitude).then(rep => {
+        console.log(rep.data.results[0].elevation); setAltitude(rep.data.results[0].elevation);
+      }).catch((err) => {
+        console.log("mon error " + err);
+      });
+      console.log("mandalo hamdleGetAltitude ")
+
     }
-    hamdleGetData();
+    hamdleGetAltitude();
+
+    console.log("altitude")
+    console.log(altitude);
     // dynamically assign the width and height to canvas
     const canvasEle = canvas.current;
     canvasEle.width = canvasEle.clientWidth;
@@ -54,14 +63,6 @@ function Citerne2d() {
     reservoir.onload = () => {
       context.drawImage(reservoir, 600, 190, 60, 130);
     };
-    //text altitude 
-    const unite = 50
-    //let pied = altitude.data.results[0].elevation
-    let pied = 50
-    console.log("pied")
-    // console.log(altitude);
-    ctx.font = '40px serif';
-    ctx.fillText(`Altitude : ${pied} ft ou ${pied * 0, 3048} m`, 10, 50);
 
     //triangle
     ctx.beginPath();

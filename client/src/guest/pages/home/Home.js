@@ -9,6 +9,14 @@ import { useState } from "react";
 const Home = () => {
   const dispatch = useDispatch();
   const [myStation, setMystation] = useState();
+  const test = async () => {
+    await getStation();
+    console.log("test");
+
+    getStation().then(console => console.log("test")).catch();
+
+
+  }
   useEffect(() => {
     const hamdleGetData = async () => {
       const x = await getStation();
