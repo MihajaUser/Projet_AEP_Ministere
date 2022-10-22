@@ -9,5 +9,3 @@ export const getAltitude = async (latitude, longitude) => {
 }
 
 
-
-
