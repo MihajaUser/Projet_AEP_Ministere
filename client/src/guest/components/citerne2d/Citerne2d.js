@@ -1,19 +1,22 @@
 import React, { useRef, useEffect } from 'react';
-import { Stage } from 'react-konva';
 import { getAltitude } from "./../../../service/StationS"
 import { useParams } from 'react-router-dom';
 import { useState } from "react";
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import './style.css'
+import * as MuiIcons from '@mui/icons-material';
 
 function Citerne2d() {
   const { latitude, longitude, region, point_eau, infra_eau } = useParams();
+
   const [altitude, setAltitude] = useState(0);
   const canvas = useRef();
   let ctx = null;
-
-
   useEffect(() => {
-    // initialize the canvas context
+    drawPicture();
+  }, []);
+  const drawPicture = () => {  // initialize the canvas context
     // dynamically assign the width and height to canvas
     const canvasEle = canvas.current;
     canvasEle.width = canvasEle.clientWidth;
@@ -61,8 +64,6 @@ function Citerne2d() {
     const lamer = { x: 450, y: 500, w: 600, h: 50 };
     drawFillRect(lamer, { backgroundColor: 'rgb(99, 128, 191)' });
     getAltitude(latitude, longitude).then(rep => {
-
-
       //text altitude
       console.log(rep.data.results[0].elevation);
       setAltitude(rep.data.results[0].elevation);
@@ -78,9 +79,7 @@ function Citerne2d() {
     }).catch((err) => {
       console.log("mon error " + err);
     });
-
-  }, []);
-  // draw rectangle with background
+  }
   const drawFillRect = (info, style = {}) => {
     const { x, y, w, h } = info;
     const { backgroundColor = 'black' } = style;
@@ -92,6 +91,16 @@ function Citerne2d() {
   return (
     <div className="App">
       <canvas ref={canvas}></canvas>
+      <div className='CardContainer'>
+        <Card className='MyCard'>
+          <br></br>
+          <Button className='MyButton' ><MuiIcons.ViewInAr />    3D Vue</Button>
+          <br></br>
+          <Button className='MyButton'  ><MuiIcons.SelectAllTwoTone />   2D Vue</Button>
+          <br></br>
+          <Button className='MyButton'  ><MuiIcons.FmdGood />   CARTE</Button>
+        </Card>
+      </div>
     </div>
   );
 }
