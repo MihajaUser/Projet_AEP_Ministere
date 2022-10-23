@@ -17,8 +17,8 @@ function Header() {
   return (
     <div>
       <div className='img'>
-        <div ><img src={drapeauMad} alt="drapeauMad.jpg" className='drapeau'/></div>
-        <div ><img src={logoMinistere} alt="logoMinistere.png" className='logoMin'  /></div>
+        <div ><img src={drapeauMad} alt="drapeauMad.jpg" className='drapeau' /></div>
+        <div ><img src={logoMinistere} alt="logoMinistere.png" className='logoMin' /></div>
       </div>
       <Navbar bg="light" variant="light">
         <Container>
@@ -38,6 +38,10 @@ function Header() {
             {" "}
             <MuiIcons.FmdGood />
           </Navbar.Brand>
+          <Navbar.Brand href="canalisation">
+            {" "}
+            <MuiIcons.Route />
+          </Navbar.Brand>
           <Navbar.Brand href="/adduction3d">
             {" "}
             <MuiIcons.ViewInAr />
@@ -54,7 +58,7 @@ function Header() {
             {" "}
             <ListAltRoundedIcon />
           </Navbar.Brand>
-           <Navbar.Brand href="/login">
+          <Navbar.Brand href="/login">
             {" "}
             <AccountCircleRoundedIcon />
           </Navbar.Brand>
