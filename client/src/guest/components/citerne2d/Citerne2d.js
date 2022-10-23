@@ -3,6 +3,7 @@ import { getAltitude } from "./../../../service/StationS"
 import { useParams } from 'react-router-dom';
 import { useState } from "react";
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import './style.css'
 import * as MuiIcons from '@mui/icons-material';
@@ -94,11 +95,15 @@ function Citerne2d() {
       <div className='CardContainer'>
         <Card className='MyCard'>
           <br></br>
-          <Button className='MyButton' ><MuiIcons.ViewInAr />    3D Vue</Button>
+          <Link to="/adduction3d">
+            <Button className='MyButton' ><MuiIcons.ViewInAr />    3D Vue</Button>
+          </Link>
           <br></br>
           <Button className='MyButton'  ><MuiIcons.SelectAllTwoTone />   2D Vue</Button>
           <br></br>
-          <Button className='MyButton'  ><MuiIcons.FmdGood />   CARTE</Button>
+          <Link to="/">
+            <Button className='MyButton'  ><MuiIcons.FmdGood />   CARTE</Button>
+          </Link>
         </Card>
       </div>
     </div>
