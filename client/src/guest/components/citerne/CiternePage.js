@@ -3,7 +3,7 @@ import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import Citerne from "./Citerne";
 import "./CiternePage.css";
-
+/*modif*/
 
 function CiternePage() {
   const frustumSize = 430;
