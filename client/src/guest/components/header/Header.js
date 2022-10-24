@@ -38,7 +38,7 @@ function Header() {
             {" "}
             <MuiIcons.FmdGood />
           </Navbar.Brand>
-          <Navbar.Brand href="canalisation">
+          <Navbar.Brand href="/canalisation">
             {" "}
             <MuiIcons.Route />
           </Navbar.Brand>
@@ -46,7 +46,7 @@ function Header() {
             {" "}
             <MuiIcons.ViewInAr />
           </Navbar.Brand>
-          <Navbar.Brand href="citerne2d">
+          <Navbar.Brand href="/citerne2d">
             {" "}
             <MuiIcons.Camera />
           </Navbar.Brand>
@@ -54,7 +54,7 @@ function Header() {
             {" "}
             <MuiIcons.Handyman />
           </Navbar.Brand>
-          <Navbar.Brand href="listeProjet">
+          <Navbar.Brand href="/listeProjet">
             {" "}
             <ListAltRoundedIcon />
           </Navbar.Brand>

@@ -17,7 +17,7 @@ const canalisation = [
 
 class Map extends React.Component {
   componentDidMount() {
-    //construction de la carte canalisation
+    //construction de la carte
     this.map = L.map("map", {
       center: [-18.865447, 47.519533],
       zoom: 5.5,
