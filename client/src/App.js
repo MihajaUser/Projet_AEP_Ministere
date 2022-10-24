@@ -13,7 +13,7 @@ import Login from './guest/pages/login/Login';
 import Inscription from './guest/pages/login/Inscription';
 import Admin from './admin/pages/Main.jsx';
 import Citerne2d from './guest/components/citerne2d/Citerne2d';
-import MapCanal from './guest/components/map/MapCanal';
+import MapCanal from './guest/components/mapCanal/MapCanal';
 const App = () => {
   return (
     <Provider store={store}>
