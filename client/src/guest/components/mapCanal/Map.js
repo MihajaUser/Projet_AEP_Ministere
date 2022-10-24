@@ -41,8 +41,8 @@ class Map extends React.Component {
       console.log("debut"),
       el.route.addTo(this.map).getPlan(),
       el.route.setWaypoints([new L.LatLng(el.debutLat, el.debutLong, "taskA"), new L.LatLng(el.finLat, el.finLong, "taskB")])
-    )
-    )
+    ))
+
   }
   render() {
     return <div id="map" style={style} />;
