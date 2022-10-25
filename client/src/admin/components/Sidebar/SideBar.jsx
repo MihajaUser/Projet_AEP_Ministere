@@ -1,3 +1,4 @@
+//update
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
@@ -30,7 +31,7 @@ const routes = [
   },
 ];
 
-const SideBar = ({ children }) => {  
+const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const inputAnimation = {
@@ -66,10 +67,10 @@ const SideBar = ({ children }) => {
       },
     },
   };
-  
-// function header(){
-//    
-// }
+
+  // function header(){
+  //    
+  // }
   return (
     <>
       <div className="main-container">

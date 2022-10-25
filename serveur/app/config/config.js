@@ -1,4 +1,6 @@
-require('dotenv').config(); // this is important!
+//update
+require('dotenv').config();
+// this is important!
 module.exports = {
     "development": { //test
         "username": "postgres",

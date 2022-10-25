@@ -1,54 +1,55 @@
+//update
 import React, { useState } from 'react'
 import './Login.css';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router';
 import { AuthService } from './Auth.service.js';
 
-function Inscription(){
+function Inscription() {
 
-   const [incorrecte, setincorrecte] = useState(false);
-    //formulaire
-    const [email, setmail] = useState('');
-    const [username, setusername] = useState('');
-    const [password, setpassword] = useState('');
+  const [incorrecte, setincorrecte] = useState(false);
+  //formulaire
+  const [email, setmail] = useState('');
+  const [username, setusername] = useState('');
+  const [password, setpassword] = useState('');
 
-    const [error, setError] = useState(null);
-    const navigate = useNavigate();
-    
-    function submiSignup() {
-        let data = { email, username, password };
-        // console.log(data);
-        if (email == '' || username == '' || password == '') {
-            setError('remplire tout les champs!')
-        }
-        else {
-            AuthService.signup(data)
-                .then(rep => {
-                    console.log('======>>>', rep.data);
-                    let storage = {
-                        id: rep.data.id,
-                        email: rep.data.email,
-                        // roles: rep.data.roles,
-                        accessToken: rep.data.accessToken,
-                    }
-                    // localStorage.setItem('users', JSON.stringify(storage));
-                    navigate('/login');
-                })
-                .catch(err => {
-                    //connnection reussie mais user non reconnue
-                    if (err.response.data.message) {
-                       setError(err.response.data.message);
-                    }
-                    // connection perdu
-                    else{
-                        console.log('XXXXXXXXXXXXXXXX', err);
-                    }
-                })
-        }
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  function submiSignup() {
+    let data = { email, username, password };
+    // console.log(data);
+    if (email == '' || username == '' || password == '') {
+      setError('remplire tout les champs!')
     }
+    else {
+      AuthService.signup(data)
+        .then(rep => {
+          console.log('======>>>', rep.data);
+          let storage = {
+            id: rep.data.id,
+            email: rep.data.email,
+            // roles: rep.data.roles,
+            accessToken: rep.data.accessToken,
+          }
+          // localStorage.setItem('users', JSON.stringify(storage));
+          navigate('/login');
+        })
+        .catch(err => {
+          //connnection reussie mais user non reconnue
+          if (err.response.data.message) {
+            setError(err.response.data.message);
+          }
+          // connection perdu
+          else {
+            console.log('XXXXXXXXXXXXXXXX', err);
+          }
+        })
+    }
+  }
 
 
- return(
+  return (
     <div className="Auth-form-container">
       <div className="Auth-form">
         <div className="Auth-form-content">
@@ -68,7 +69,7 @@ function Inscription(){
               onChange={(value) => setusername(value.target.value)}
             />
           </div>
-         {/* <div className="form-group mt-3">
+          {/* <div className="form-group mt-3">
             <label>Prénom</label>
             <input
               type="email"
@@ -107,7 +108,7 @@ function Inscription(){
               Inscription
             </button>
           </div>
-         {/* <p className="text-center mt-2">
+          {/* <p className="text-center mt-2">
             Forgot <a href="#">password?</a>
           </p>*/}
         </div>

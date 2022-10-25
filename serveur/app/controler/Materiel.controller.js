@@ -11,20 +11,18 @@ exports.message = (req, res, next) => {
   res.status(200).json({ messages: "mihaja antonio" });
 }
 
-exports.getAllCanalisation = (req, res) => {
-  model.Canalisation.findAll().then((rep) => { res.status(200).json(rep); });
+exports.getAllMateriel = (req, res) => {
+  model.Materiel.findAll().then((rep) => { res.status(200).json(rep); });
 };
 
-exports.AjoutCanalisation = (req, res) => {
-  model.Canalisation.create({
-    id_utilisateur: req.body.id_utilisateur,
-    debutLatitude: req.body.debutLatitude,
-    debutLongitude: req.body.debutLongitude,
-    finLatitude: req.body.finLatitude,
-    finLongitude: req.body.finLongitude,
+exports.AjoutMateriel = (req, res) => {
+  model.Materiel.create({
+    nom: req.body.nom,
+    nombre: req.body.nombre,
+    type: req.body.type
   })
     .then(rep => {
-      res.send('Canalisation was registered successfully!')
+      res.send('Materiel was registered successfully!')
     }
     )
     .catch(err => {
@@ -34,7 +32,7 @@ exports.AjoutCanalisation = (req, res) => {
 };
 
 exports.supprimer = (req, res) => {
-  model.Canalisation.destroy({
+  model.Materiel.destroy({
     where: {
       id: req.body.id
     }

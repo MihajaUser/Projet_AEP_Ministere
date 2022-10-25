@@ -1,3 +1,4 @@
+//update
 const models = require("../models");
 const config = require("../config/auth.config");
 const UserModel = models.User;
@@ -19,26 +20,22 @@ exports.signup = (req, res) => {
         password: bcrypt.hashSync(req.body.password, 8)
     })
         .then(user => {
-            if (req.body.roles) {
-                RoleModel.findAll({
-                    where: {
-                        name: {
-                            [Op.or]: req.body.roles
-                        }
-                    }
-                }).then(roles => {
-                    user.setRoles(roles).then(() => {
-                        res.send({ message: "User was registered successfully!" });
-                    });
-                });
-            } else {
-                // user role = 1
-                user.setRoles([1]).then(() => {
-                    res.send({ message: "User was registered successfully!" });
-                });
-            }
-        })
+            // RoleUser.create({
+            //     UserId:user.id,
+            //     RoleId:1
+            // })
+            // .then(RoleUser => {
+            //     res.send(RoleUser,user)
+            // })
+            // .catch(err => { // console.log('EEEEEEEEEEERRRRRRRRRRRRRRRRR');
+            // res.status(500).send({ message: err.message })
+            // var authorities = 'client';
+            // model
+            // role (id, lqbele)
+            // roleUser (id,UserId,RoleId)
+            res.send(user);
 
+        })
         .catch(err => { // console.log('EEEEEEEEEEERRRRRRRRRRRRRRRRR');
             res.status(500).send({ message: err.message });
         });
@@ -69,7 +66,8 @@ exports.signin = (req, res) => {
                 expiresIn: 86400 // 24 hours
             });
 
-            var authorities = [];
+            //mila mi find anle role alony
+
             res.send({
                 id: user.id,
                 username: user.username,
