@@ -15,7 +15,7 @@ import '../../App.css'
 
 const routes = [
   {
-    path: "/",
+    path: "/admin",
     name: "Accueil",
     icon: <FaHome />,
   },
@@ -96,7 +96,7 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                  DoSomeCoding
+                  Admin
                 </motion.h1>
               )}
             </AnimatePresence>
@@ -117,7 +117,7 @@ const SideBar = ({ children }) => {
                   exit="hidden"
                   variants={inputAnimation}
                   type="text"
-                  placeholder="Search"
+                  placeholder="Recherche"
                 />
               )}
             </AnimatePresence>
