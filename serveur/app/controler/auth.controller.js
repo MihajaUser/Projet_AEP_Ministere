@@ -1,3 +1,4 @@
+//update
 const models = require("../models");
 const config = require("../config/auth.config");
 const UserModel = models.User;
@@ -28,12 +29,12 @@ exports.signup = (req, res) => {
             // })
             // .catch(err => { // console.log('EEEEEEEEEEERRRRRRRRRRRRRRRRR');
             // res.status(500).send({ message: err.message })
-             // var authorities = 'client';
+            // var authorities = 'client';
             // model
             // role (id, lqbele)
             // roleUser (id,UserId,RoleId)
             res.send(user);
-            
+
         })
         .catch(err => { // console.log('EEEEEEEEEEERRRRRRRRRRRRRRRRR');
             res.status(500).send({ message: err.message });
@@ -65,7 +66,7 @@ exports.signin = (req, res) => {
                 expiresIn: 86400 // 24 hours
             });
 
-//mila mi find anle role alony
+            //mila mi find anle role alony
 
             res.send({
                 id: user.id,

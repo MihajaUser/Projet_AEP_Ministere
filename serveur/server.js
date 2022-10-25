@@ -1,3 +1,4 @@
+//update
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -9,7 +10,7 @@ const db = require("./app/models");
 //     console.log("Synced db.");
 //   })
 //   .catch((err) => {
-//     console.log("Failed to sync db: " + err.message);
+//     console.log("Failed to sync db: " + err.message); 
 //   });
 var corsOptions = {
   origin: "http://localhost:8080",
