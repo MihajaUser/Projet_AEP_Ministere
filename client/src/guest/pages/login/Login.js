@@ -28,6 +28,7 @@ function Login(props) {
           console.log('======>>>', rep.data);
           let storage = {
             id: rep.data.id,
+            username: rep.data.username,
             email: rep.data.email,
             roles: rep.data.roles,
             accessToken: rep.data.accessToken,
