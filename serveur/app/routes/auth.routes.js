@@ -1,3 +1,4 @@
+//update
 const { verifySignUp } = require("../middleware");
 const controlerAuth = require("../controler/auth.controller");
 module.exports = function (app) {

@@ -1,4 +1,10 @@
 .page {
+<<<<<<< HEAD
 	background-color: rgb(232, 73, 73);
 	height: 700px;
+=======
+	background-color: rgb(65, 86, 130);
+	height: 700px;
+	/*modif*/
+>>>>>>> origin/pageOlyvia
 }
