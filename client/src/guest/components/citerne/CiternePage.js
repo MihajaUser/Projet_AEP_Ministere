@@ -2,6 +2,7 @@ import React, { Suspense, Box } from "react";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import Citerne from "./Citerne";
+import Pump from "./Pump";
 import "./CiternePage.css";
 
 
@@ -17,7 +18,7 @@ function CiternePage() {
         <pointLight position={[10, 10, 10]} />
         <Suspense fallback={null}>
           <mesh position={[2, -2, -15]}>
-            <Citerne />
+            <Pump />
           </mesh>
         </Suspense>
       </Canvas>
