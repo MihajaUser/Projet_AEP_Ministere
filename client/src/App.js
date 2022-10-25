@@ -14,6 +14,8 @@ import Inscription from './guest/pages/login/Inscription';
 import Admin from './admin/pages/Main.jsx';
 import Citerne2d from './guest/components/citerne2d/Citerne2d';
 import MapCanal from './guest/components/mapCanal/Map';
+import MapSelection from './guest/components/mapSelection/Map';
+
 const App = () => {
   return (
     <Provider store={store}>
@@ -26,6 +28,7 @@ const App = () => {
             <Route path="listeProjet" element={<ListeProjet />} />
             <Route path="login" element={<Login />} />
             <Route path="canalisation" element={<MapCanal />} />
+            <Route path="mapSelection" element={<MapSelection />} />
             <Route path="inscription" element={<Inscription />} />
             <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
           </Route>
