@@ -12,7 +12,7 @@ const db = require("./app/models");
 //     console.log("Failed to sync db: " + err.message);
 //   });
 var corsOptions = {
-  origin: "http://localhost:8081",
+  origin: "http://localhost:8080",
   credentials: true
 };
 app.use(cors());
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./app/routes/user.routes")(app);
 require("./app/routes/Projet.routes")(app);
-
+require("./app/routes/auth.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
