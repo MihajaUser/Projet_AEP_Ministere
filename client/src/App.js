@@ -14,7 +14,7 @@ import Inscription from './guest/pages/login/Inscription';
 import Admin from './admin/pages/Main.jsx';
 import Citerne2d from './guest/components/citerne2d/Citerne2d';
 import MapCanal from './guest/components/mapCanal/Map';
-import MapSelection from './guest/components/mapSelection/Map';
+import MapSelection from './admin/components/mapSelection/Map';
 
 const App = () => {
   return (
