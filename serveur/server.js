@@ -1,12 +1,11 @@
-//update 
-
+//update
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const db = require("./app/models");
 
-// db.sequelize.sync({ force: true })
+// db.sequelize.sync({force:true})
 //   .then(() => {
 //     console.log("Synced db.");
 //   })
@@ -22,10 +21,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/Projet.routes")(app);
-require("./app/routes/Canalisation.routes")(app);
-
+require("./app/routes/Materiel.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
