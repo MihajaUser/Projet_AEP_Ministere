@@ -28,12 +28,12 @@ const App = () => {
             <Route path="listeProjet" element={<ListeProjet />} />
             <Route path="login" element={<Login />} />
             <Route path="canalisation" element={<MapCanal />} />
-            <Route path="mapSelection" element={<MapSelection />} />
             <Route path="inscription" element={<Inscription />} />
             <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
           </Route>
           <Route path="admin/" element={<Admin />}>
             <Route path="" element={<  MapRouting />} />
+            <Route path="mapSelection" element={<MapSelection />} />
             <Route path="formulaire" element={<AjoutFormulaire />} />
             {/* <Route path="login" element={<Login />} />*/}
             <Route path="liste" element={<CrudProjet />} />
