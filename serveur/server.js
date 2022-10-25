@@ -14,7 +14,7 @@ const db = require("./app/models");
 //     console.log("Failed to sync db: " + err.message); 
 //   });
 var corsOptions = {
-  origin: "http://localhost:8081",
+  origin: "http://localhost:8080",
   credentials: true
 };
 app.use(cors());
