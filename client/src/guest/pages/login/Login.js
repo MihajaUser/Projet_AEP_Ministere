@@ -55,7 +55,7 @@ function Login(props) {
             </span>
           </div>
           <div className="form-group mt-3">
-            <label>Email address</label>
+            <label>nom </label>
             <input
               type="email"
               className="form-control mt-1"
