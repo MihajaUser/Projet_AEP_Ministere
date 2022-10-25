@@ -39,7 +39,7 @@ function Header() {
           <Navbar.Brand href="login">
             <AccountCircleRoundedIcon />
           </Navbar.Brand>
-          <NavDropdown title={user && user.email} id="nav-dropdown" >
+          <NavDropdown title={user.username} id="nav-dropdown" >
             <NavDropdown.Item eventKey="4.1" onClick={logout}>Déconnexion</NavDropdown.Item>
           </NavDropdown>
         </Container>
