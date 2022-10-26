@@ -52,7 +52,7 @@ class MapEtape2 extends Component {
             <br></br>
 
             <br></br>
-            <Link to={"!"}>
+            <Link to={"/ajoutCanalisation3"}>
               <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
             </Link>
           </Card>
