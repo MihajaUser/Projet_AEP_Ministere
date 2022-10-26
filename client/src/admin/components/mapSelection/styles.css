@@ -1,12 +1,11 @@
-.MyMap {
-	width: 10%;
-	height: 95%;
+.App {
+	font-family: sans-serif;
+	text-align: center;
 }
 .CardContainer {
 	width: 20%;
 	float: right;
 	margin-right: 7%;
-	margin-bottom: 20%;
 }
 .MyCard {
 	padding: 4%;
