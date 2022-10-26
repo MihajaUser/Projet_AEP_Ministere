@@ -42,14 +42,15 @@ function Header() {
             {" "}
             <MuiIcons.Route />
           </Navbar.Brand>
+          <Navbar.Brand href="/ajoutCanalisation1">
+            {" "}
+            <MuiIcons.AddCircle />
+          </Navbar.Brand>
           <Navbar.Brand href="/adduction3d">
             {" "}
             <MuiIcons.ViewInAr />
           </Navbar.Brand>
-          <Navbar.Brand href="/ajoutCanalisation">
-            {" "}
-            <MuiIcons.Camera />
-          </Navbar.Brand>
+
           <Navbar.Brand href="/admin">
             {" "}
             <MuiIcons.Handyman />

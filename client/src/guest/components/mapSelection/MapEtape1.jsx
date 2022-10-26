@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import * as MuiIcons from '@mui/icons-material';
 import './styles.css'
-class Map extends Component {
+class MapEtape1 extends Component {
   constructor(props) {
     super(props);
     this.state = { debutLat: null, debutLong: null, finLat: null, finLong: null };
@@ -33,7 +33,7 @@ class Map extends Component {
           center={{ lat: -18.865447, lng: 47.519533 }}
           zoom={5.5}
           scrollWheelZoom={true}
-          style={{ height: "100vh", width: "80vh" }}
+          style={{ height: "55vh" }}
           whenCreated={(map) => this.setState({ map })}
         >
           <TileLayer
@@ -49,15 +49,12 @@ class Map extends Component {
 
         <div className='CardContainer'>
           <Card className='MyCard'>
+            Etape 1 dsadsadsadsadsadsdsdJHKSADKasdhsADH
             <br></br>
-            <Link to="/adduction3d">
-              <Button className='MyButton' ><MuiIcons.ViewInAr />    3D Vue</Button>
-            </Link>
+
             <br></br>
-            <Button className='MyButton'  ><MuiIcons.SelectAllTwoTone />   2D Vue</Button>
-            <br></br>
-            <Link to="/">
-              <Button className='MyButton'  ><MuiIcons.FmdGood />   CARTE</Button>
+            <Link to="/ajoutCanalisation2">
+              <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
             </Link>
           </Card>
         </div>
@@ -67,4 +64,4 @@ class Map extends Component {
   }
 }
 
-export default Map;
+export default MapEtape1;

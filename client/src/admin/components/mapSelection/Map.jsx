@@ -15,14 +15,8 @@ class Map extends Component {
     const { map } = this.state;
     if (prevState.map !== map && map) {
       map.on("click", function (e) {
-        // <Alert key={1} variant={"primary"}>
-        //   This is a {"primary"} alert with{' '}
-        //   <Alert.Link href="#">an example link</Alert.Link>. Give it a click if
-        //   you like.
-        // </Alert>
-        //this.history.push('/dasda')
-        this.props.history.push("url")
-        // history.push(url)
+
+
         alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng + " ");
 
       });
@@ -30,19 +24,12 @@ class Map extends Component {
 
   }
   render() {
-    const DEFAULT_LATITUDE = -18.865447;
-    const DEFAULT_LONGITUDE = 47.519533;
-    const latitude = this.props.coords
-      ? this.props.coords.latitude
-      : DEFAULT_LATITUDE;
-    const longitude = this.props.coords
-      ? this.props.coords.latitude
-      : DEFAULT_LONGITUDE;
+
 
     return (
       <MapContainer
         className="leaflet-map"
-        center={[latitude, longitude]}
+        center={{ lat: -18.865447, lng: 47.519533 }}
         zoom={5.5}
         scrollWheelZoom={true}
         style={{ height: "100vh" }}
@@ -52,9 +39,9 @@ class Map extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[latitude, longitude]} icon={icon}>
+        <Marker position={{ lat: -18.865447, lng: 47.519533 }} icon={icon}>
           <Popup>Here you are ^_^{
-            // console.log("ito " + this.state.comment)
+            console.log("ito " + this.state.comment)
           }</Popup>
         </Marker>
       </MapContainer>
