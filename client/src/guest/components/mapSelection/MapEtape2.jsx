@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import * as MuiIcons from '@mui/icons-material';
 import './styles.css'
+import withRouter from './withRouter';
 class MapEtape2 extends Component {
   constructor(props) {
     super(props);
@@ -59,7 +60,6 @@ class MapEtape2 extends Component {
           </Card>
         </div>
       </div>
-
     );
   }
 }

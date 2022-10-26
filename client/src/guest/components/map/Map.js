@@ -9,7 +9,8 @@ import {
   LayersControl,
   FeatureGroup,
   Marker,
-  Tooltip, Popup
+  Tooltip, Popup,
+  useMapEvents
 } from "react-leaflet";
 
 const markerIcon = new L.Icon({
@@ -21,6 +22,8 @@ const Map = (props) => {
   const myStation = useSelector((state) => state.station)
   useEffect(() => {
   }, [myStation])
+
+
   return <MapContainer
     doubleClickZoom={false}
     id="mapId"
