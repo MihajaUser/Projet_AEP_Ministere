@@ -2,15 +2,15 @@ import React from "react";
 import L from "leaflet";
 require("leaflet-routing-machine");
 const style = {
-  width: "90%",
-  height: "500px"
+  width: "100%",
+  height: "95%"
 };
 class MapEtape3 extends React.Component {
   componentDidMount() {
     // create map
     this.map = L.map("map", {
-      center: [65.012357, 25.483549],
-      zoom: 7,
+      center: [-18.865447, 47.519533],
+      zoom: 5.5,
       layers: [
         L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
           attribution:
@@ -18,7 +18,6 @@ class MapEtape3 extends React.Component {
         })
       ]
     });
-
     var routeControl = L.Routing.control({
       show: true,
       fitSelectedRoutes: true,
@@ -36,9 +35,9 @@ class MapEtape3 extends React.Component {
       .addTo(this.map)
       .getPlan();
 
-    var newLatLngA = new L.LatLng(65.012357, 25.483549, "taskA");
-    var newLatLngB = new L.LatLng(65.01615, 25.471847, "taskB");
-    var newLatLngC = new L.LatLng(65.05098, 25.474349, "taskc");
+    var newLatLngA = new L.LatLng(-18.874121734092128, 47.506414002608906, "taskA");
+    var newLatLngB = new L.LatLng(-18.873522767197834, 47.51183206482083, "taskB");
+
 
     routeControl.setWaypoints([newLatLngA, newLatLngB]);
   }
