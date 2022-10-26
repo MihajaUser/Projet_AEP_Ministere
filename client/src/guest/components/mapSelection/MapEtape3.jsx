@@ -44,10 +44,10 @@ class MapEtape3 extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div id="map" style={style}>
-        </div>
-        <div className='CardContainerEtape3'>
+      // <div>
+      <div id="map" style={style}>
+        {/* </div> */}
+        {/* <div className='CardContainerEtape3'>
           <Card className='MyCard'>
             Etape 3
             <br></br>
@@ -57,7 +57,7 @@ class MapEtape3 extends React.Component {
               <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Validation</Button>
             </Link>
           </Card>
-        </div>
+        </div> */}
       </div>
     );
   }
