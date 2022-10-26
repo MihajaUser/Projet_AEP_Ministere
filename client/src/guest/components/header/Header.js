@@ -46,7 +46,7 @@ function Header() {
             {" "}
             <MuiIcons.ViewInAr />
           </Navbar.Brand>
-          <Navbar.Brand href="/citerne2d">
+          <Navbar.Brand href="/ajoutCanalisation">
             {" "}
             <MuiIcons.Camera />
           </Navbar.Brand>
