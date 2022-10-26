@@ -13,14 +13,14 @@ import './styles.css'
 class MapEtape2 extends Component {
   constructor(props) {
     super(props);
-    this.state = { debutLat: null, debutLong: null, finLat: null, finLong: null };
+    this.state = { debutLat: null, debutLong: null, finLat: null, finLng: null };
   }
   state = { map: null };
   componentDidUpdate(prevProps, prevState) {
     const { map } = this.state;
     if (prevState.map !== map && map) {
       map.on("click", function (e) {
-        this.setState({ debutLat: e.latlng.lat, debutLong: e.latlng.lng });
+        this.setState({ debutLat: e.latlng.lat, debutLng: e.latlng.lng });
       }.bind(this));
     }
   }
@@ -41,7 +41,7 @@ class MapEtape2 extends Component {
           />
           <Marker position={{ lat: -18.865447, lng: 47.519533 }} icon={icon}>
             <Popup>Here you are ^_^{
-              console.log("ito " + this.state.debutLat)
+              console.log("Etape 2 " + this.state.debutLat + " " + this.state.debutLng + " fin " + this.state.finLat + " " + this.state.finLng)
             }</Popup>
           </Marker>
         </MapContainer>
@@ -52,7 +52,7 @@ class MapEtape2 extends Component {
             <br></br>
 
             <br></br>
-            <Link to="!">
+            <Link to={"!"}>
               <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
             </Link>
           </Card>
