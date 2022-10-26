@@ -23,6 +23,18 @@ const routes = [
     path: "formulaire",
     name: "Ajout formulaire",
     icon: < AddLocationRoundedIcon />,
+    subRoutes: [
+      {
+        path: "formulaire",
+        name: "Adduction",
+        icon: <FaUser />,
+      },
+      {
+        path: "formulaire",
+        name: "Canalisation",
+        icon: <FaUser />,
+      },
+    ],
   },
   {
     path: "liste",

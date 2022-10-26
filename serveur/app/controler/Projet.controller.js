@@ -6,14 +6,29 @@
 //misy erreur ilay res.send message, milla jerena ilay izy
 
 const model = require("../models");
-
+const controller = {}
 exports.message = (req, res, next) => {
   res.status(200).json({ messages: "mihaja antonio" });
 }
 
+// exports.getAllProjet = (req, res) => {
+//   model.Projets.findAll().then((rep) => { res.status(200).json(rep); });
+// };
+
 exports.getAllProjet = (req, res) => {
-  model.Projets.findAll().then((rep) => { res.status(200).json(rep); });
+  console.log('test');
+  model.Projets.findAll()
+  .then((rep) => { 
+    res.send(rep); 
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Misy erreur"
+    });
+  });
 };
+
 
 exports.AjoutProjet = (req, res) => {
   model.Projets.create({
@@ -42,12 +57,11 @@ exports.AjoutProjet = (req, res) => {
 };
 
 exports.supprimer = (req, res) => {
-  model.Projets.destroy({
-    where: {
-      id: req.body.id
-    }
-  }).then(rep => {
-    res.send('delete successfully!')
+  model.Projets.destroy(
+    {where: {id: req.params.id} }
+  )
+  .then(rep => {
+    res.send({ rep })
   }
   )
     .catch(err => {
