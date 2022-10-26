@@ -21,7 +21,6 @@ class MapEtape2 extends Component {
     if (prevState.map !== map && map) {
       map.on("click", function (e) {
         this.setState({ debutLat: e.latlng.lat, debutLong: e.latlng.lng });
-        // alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng + " ");
       }.bind(this));
     }
   }

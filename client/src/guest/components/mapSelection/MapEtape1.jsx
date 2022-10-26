@@ -21,7 +21,6 @@ class MapEtape1 extends Component {
     if (prevState.map !== map && map) {
       map.on("click", function (e) {
         this.setState({ debutLat: e.latlng.lat, debutLong: e.latlng.lng });
-        // alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng + " ");
       }.bind(this));
     }
   }
@@ -42,7 +41,7 @@ class MapEtape1 extends Component {
           />
           <Marker position={{ lat: -18.865447, lng: 47.519533 }} icon={icon}>
             <Popup>Here you are ^_^{
-              console.log("ito " + this.state.debutLat)
+              console.log("ito " + this.state.debutLat + " " + this.state.finLat)
             }</Popup>
           </Marker>
         </MapContainer>
@@ -53,7 +52,7 @@ class MapEtape1 extends Component {
             <br></br>
 
             <br></br>
-            <Link to="/ajoutCanalisation2">
+            <Link to="/ajoutCanalisation2/">
               <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
             </Link>
           </Card>
