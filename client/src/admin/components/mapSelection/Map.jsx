@@ -13,8 +13,7 @@ class Map extends Component {
     const { map } = this.state;
     if (prevState.map !== map && map) {
       map.on("click", function (e) {
-        this.setState({ debutLat: e.latlng.lat });
-        this.setState({ debutLong: e.latlng.lng });
+
         alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng + " ");
       });
     }
@@ -44,7 +43,7 @@ class Map extends Component {
         />
         <Marker position={[latitude, longitude]} icon={icon}>
           <Popup>Here you are ^_^{
-            console.log("ito " + this.state.comment)
+            // console.log("ito " + this.state.comment)
           }</Popup>
         </Marker>
       </MapContainer>
