@@ -11,9 +11,11 @@ module.exports = function (app) {
 
   app.get("/api/message", controlerProjet.message)
   //get All projet
-  app.get("/api/projet/projets", controlerProjet.getAllProjet);
+  // app.get("/api/projet/projets", controlerProjet.getAllProjet);
   //post projet
   app.post("/api/projet/AjoutProjet", controlerProjet.AjoutProjet);
-
-  app.post("/api/projet/supprimer", controlerProjet.supprimer)
+  //delete projet
+  app.delete("/api/projet/supprimer/:id", controlerProjet.supprimer);
+ //get All projet
+  app.get("/api/projet/projets", controlerProjet.getAllProjet);
 }
