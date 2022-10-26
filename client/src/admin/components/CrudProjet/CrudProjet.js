@@ -46,10 +46,14 @@ function CrudProjet() {
       <thead>
         <tr>
           {/* <th>Numéro</th> */}
-          <th>Nom de projet</th>
+          <th>Numero  de projet</th>
+          <th>Nom  de projet</th>
           <th>Région</th>
-          {/* <th>Lieu</th>
-          <th colSpan="2">Action</th> */}
+          <th>District</th>
+          <th>Commune</th>
+          <th>Fokontany</th>
+          <th>Localité</th>
+          <th colSpan="2">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -58,12 +62,15 @@ function CrudProjet() {
             listeProjet.map((item) =>{
               return(
                 <tr>
+                <td>{item.id}</td>
+                <td>{item.utilisation}</td>
                 <td>{item.region}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{item.district}</td>
+                <td>{item.commune}</td>
+                <td>{item.fokontany}</td>
+                <td>{item.localite}</td>
+                <td><UpdateIcon /></td>
+                <td><DeleteOutlineIcon /></td>
                 </tr>
               )
             })
