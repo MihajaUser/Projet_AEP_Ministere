@@ -53,7 +53,7 @@ class MapEtape1 extends Component {
             <br></br>
 
             <br></br>
-            <Link to={`/ajoutCanalisation2/${this.state.debutLat}/${this.state.debutLong}`}>
+            <Link to={`/ajoutCanalisation2/${this.state.debutLat}/${this.state.debutLng}`}>
               <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
             </Link>
           </Card>
