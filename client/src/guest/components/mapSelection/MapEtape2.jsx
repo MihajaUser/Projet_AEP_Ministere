@@ -13,14 +13,14 @@ import './styles.css'
 class MapEtape2 extends Component {
   constructor(props) {
     super(props);
-    this.state = { debutLat: null, debutLong: null, finLat: null, finLng: null };
+    this.state = { debutLat: null, debutLng: null, finLat: null, finLng: null };
   }
   state = { map: null };
   componentDidUpdate(prevProps, prevState) {
     const { map } = this.state;
     if (prevState.map !== map && map) {
       map.on("click", function (e) {
-        this.setState({ debutLat: e.latlng.lat, debutLng: e.latlng.lng });
+        this.setState({ finLat: e.latlng.lat, finLng: e.latlng.lng });
       }.bind(this));
     }
   }
@@ -41,7 +41,7 @@ class MapEtape2 extends Component {
           />
           <Marker position={{ lat: -18.865447, lng: 47.519533 }} icon={icon}>
             <Popup>Here you are ^_^{
-              console.log("Etape 2 " + this.state.debutLat + " " + this.state.debutLng + " fin " + this.state.finLat + " " + this.state.finLng)
+              console.log("Etape 2 debut " + this.state.debutLat + " " + this.state.debutLng + " fin " + this.state.finLat + " " + this.state.finLng)
             }</Popup>
           </Marker>
         </MapContainer>

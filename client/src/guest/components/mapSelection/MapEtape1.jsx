@@ -41,7 +41,7 @@ class MapEtape1 extends Component {
           />
           <Marker position={{ lat: -18.865447, lng: 47.519533 }} icon={icon}>
             <Popup>Here you are ^_^{
-              console.log("Etape 1 " + this.state.debutLat + " " + this.state.debutLng + " fin " + this.state.finLat + " " + this.state.finLng)
+              console.log("Etape 1  debut " + this.state.debutLat + " " + this.state.debutLng + " fin " + this.state.finLat + " " + this.state.finLng)
             }</Popup>
           </Marker>
         </MapContainer>
