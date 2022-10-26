@@ -48,7 +48,8 @@ class MapEtape2 extends Component {
 
         <div className='CardContainer'>
           <Card className='MyCard'>
-            Etape 2 dsadsadsadsadsadsdsdJHKSADKasdhsADH
+            Emmplacement 2  : ville Antananrivo Commune Ambohijatovo
+            {`Latitude ${this.state.finLat} longitude ${this.state.finLng}`}
             <br></br>
 
             <br></br>
