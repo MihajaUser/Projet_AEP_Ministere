@@ -17,7 +17,6 @@ const markerIcon = new L.Icon({
   iconUrl: require('../../assets/imagesClient/localisation.png'),
   iconSize: [20, 20],
 });
-
 const Map = (props) => {
   const myStation = useSelector((state) => state.station)
   useEffect(() => {
