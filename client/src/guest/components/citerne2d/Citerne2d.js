@@ -92,17 +92,17 @@ function Citerne2d() {
   return (
     <div className="App">
       <canvas ref={canvas}></canvas>
-      <div className='CardContainer'>
-        <Card className='MyCard'>
+      <div className='CardContainer2d '>
+        <Card className='MyCard2d '>
           <br></br>
           <Link to="/adduction3d">
-            <Button className='MyButton' ><MuiIcons.ViewInAr />    3D Vue</Button>
+            <Button className='MyButton2d ' ><MuiIcons.ViewInAr />    3D Vue</Button>
           </Link>
           <br></br>
-          <Button className='MyButton'  ><MuiIcons.SelectAllTwoTone />   2D Vue</Button>
+          <Button className='MyButton2d '  ><MuiIcons.SelectAllTwoTone />   2D Vue</Button>
           <br></br>
           <Link to="/">
-            <Button className='MyButton'  ><MuiIcons.FmdGood />   CARTE</Button>
+            <Button className='MyButton2d '  ><MuiIcons.FmdGood />   CARTE</Button>
           </Link>
         </Card>
       </div>
