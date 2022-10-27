@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import icon from "./constants";
-import { useState } from "react";
-import { useHistory } from 'react-router-dom';
-import Alert from 'react-bootstrap/Alert';
+// import { useState } from "react";
+// import { useHistory } from 'react-router-dom';
+// import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
@@ -59,7 +59,6 @@ class MapEtape1 extends Component {
           </Card>
         </div>
       </div>
-
     );
   }
 }

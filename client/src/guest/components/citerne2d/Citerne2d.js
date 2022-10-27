@@ -5,7 +5,7 @@ import { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import './style.css'
+import './Citerne2d.css'
 import * as MuiIcons from '@mui/icons-material';
 
 function Citerne2d() {
