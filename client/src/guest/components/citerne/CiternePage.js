@@ -11,7 +11,7 @@ function CiternePage() {
   const aspect = window.innerWidth / window.innerHeight;
 
   return (
-    <div className="page">
+    <div className="maPage">
       <Canvas>
         <OrbitControls />
         <ambientLight intensity={0.6} />
