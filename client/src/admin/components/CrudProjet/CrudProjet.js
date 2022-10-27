@@ -36,12 +36,20 @@ function CrudProjet() {
     }
   };
    useEffect(() => {listeProjets()},[]);
- 
+   
+  const onClikDelete = async (id) => {
+   const response = await CrudService.supprimer(id);
+    if(response){
+      alert("Projet supprimer");
+      listeProjets();
+    }
+  }
   return (
 
     <ModalContent>  
     <Row>
      <Col xs={6} > 
+     <h4>Liste des projets</h4>
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
@@ -70,7 +78,7 @@ function CrudProjet() {
                 <td>{item.fokontany}</td>
                 <td>{item.localite}</td>
                 <td><UpdateIcon /></td>
-                <td><DeleteOutlineIcon /></td>
+                <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                 </tr>
               )
             })
