@@ -5,7 +5,7 @@ import Header from '../components/header/Header.js'
 const Main = () => {
   return (
     <div>
-      <Header/>
+      <Header />
       <SideBar />
       <Outlet />
     </div>

@@ -10,6 +10,7 @@ import { BsCartCheck } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import AddLocationRoundedIcon from '@mui/icons-material/AddLocationRounded';
+import IconRoute from '@mui/icons-material/Route';
 import '../../App.css'
 
 
@@ -41,6 +42,12 @@ const routes = [
     name: "CRUD des projets",
     icon: <BiAnalyse />,
   },
+  {
+
+    path: "mapSelection",
+    name: "Canalisation",
+    icon: <IconRoute />,
+  }
 ];
 
 const SideBar = ({ children }) => {

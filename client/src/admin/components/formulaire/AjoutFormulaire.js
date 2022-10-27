@@ -1,9 +1,9 @@
-import {Row,Col,Form,Button} from 'react-bootstrap';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
-import  {MdClose}  from 'react-icons/md';
-import React, {useRef,useEffect,useCallback} from 'react';
-import {useSpring,animated} from 'react-spring';
+import { MdClose } from 'react-icons/md';
+import React, { useRef, useEffect, useCallback } from 'react';
+import { useSpring, animated } from 'react-spring';
 // import '../styles/AjoutFormulaire.css'
 // import styled from 'styled-components';
 
@@ -63,105 +63,105 @@ const CloseModalButton = styled(MdClose)`
 `;
 
 export const AjoutFormulaire = () => {
-      return(
-        <>
-        {(
-          <Background>
+  return (
+    <>
+      {(
+        <Background>
           <ModalWrapper >
-          <ModalContent>
-          <Row>
-          <Col xs={6} >
-         <Card border="primary" style={{ width: '25rem' }}>
-         <Card.Header>Formulaire d'ajout</Card.Header>
-         <Card.Body>
-         <Card.Title></Card.Title>
-          <Row> 
-          <Col>
-            <Form.Group>
-            <Form.Label>Option{"\n"}</Form.Label>
-            <Form.Select aria-label="Default select example" size="md-6">
-             <option>Veuillez choisir</option>
-             <option value="1">Réservoir d'eau</option>
-             <option value="2">Canalisation</option>
-             <option value="3">Pompe</option>
-             </Form.Select>
-             </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group className="mb-3">
-            <Form.Label>Infrastru d'eau</Form.Label>
-             <Form.Select aria-label="Default select example" size="md-6">
-             <option value="1">AEPG</option>
-             <option value="2">AEPP</option>
-             <option value="3">AEPPp</option>
-             <option value="2">FPMH</option>
-             <option value="2">PPMH</option>
-             </Form.Select>
-             </Form.Group>
-          </Col>
-          <Col>
-             <Form.Group className="mb-3">
-            <Form.Label>Point d'eau</Form.Label>
-             <Form.Select aria-label="Default select example" size="md-6">
-             <option value="1">BF</option>
-             <option value="2">BP</option>
-             <option value="3">BS</option>
-             <option value="2">FPMH</option>
-             <option value="2">MONO</option>
-             <option value="2">PPMH</option>
-             </Form.Select>
-             </Form.Group>
-          </Col>
-          </Row>
-          <Row>
-           <Col>
-             <Form.Group className="mb-3">
-              <Form.Label>Région</Form.Label>
-                 <Form.Control type="text" placeholder="ex : Alaotra Mangoro" />
-             </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-              <Form.Label>District</Form.Label>
-                 <Form.Control type="text" placeholder="ex : Ambatondrazaka" />
-             </Form.Group>
-            </Col>
-            <Col>
-             <Form.Group className="mb-3">
-             <Form.Label>Commune</Form.Label>
-                 <Form.Control type="text" placeholder="ex : Ambandrika" />
-             </Form.Group>
-             </Col>
-             </Row>
-             <Row>
-             <Col>
-             <Form.Group className="mb-3">
-             <Form.Label>Fokontany</Form.Label>
-                 <Form.Control type="text" placeholder="ex : Ambandrika" />
-             </Form.Group>
-             </Col>
-             <Col>
-             <Form.Group className="mb-3">
-             <Form.Label>Localité</Form.Label>
-                 <Form.Control type="text" placeholder="ex : Ambandrika" />
-             </Form.Group>
-             </Col>
-             </Row>
-             <Form.Group className="mb-3">
-             <Form.Label>Nombre de construction</Form.Label>
-                 <Form.Control type="number" placeholder="Entrez le nombre" />
-             </Form.Group>
-             <Button type="submit" className="btn">Ajoutez</Button>
-             </Card.Body>
-             </Card>
-         </Col>
-         </Row>
-         </ModalContent>
-         </ModalWrapper>
-         </Background>
-       ) }
-     </>
-   );
- };
-  
-   export default AjoutFormulaire;
+            <ModalContent>
+              <Row>
+                <Col xs={6} >
+                  <Card border="primary" style={{ width: '25rem' }}>
+                    <Card.Header>Formulaire d'ajout</Card.Header>
+                    <Card.Body>
+                      <Card.Title></Card.Title>
+                      <Row>
+                        <Col>
+                          <Form.Group>
+                            <Form.Label>Option{"\n"}</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6">
+                              <option>Veuillez choisir</option>
+                              <option value="1">Réservoir d'eau</option>
+                              <option value="2">Canalisation</option>
+                              <option value="3">Pompe</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Infrastru d'eau</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6">
+                              <option value="1">AEPG</option>
+                              <option value="2">AEPP</option>
+                              <option value="3">AEPPp</option>
+                              <option value="2">FPMH</option>
+                              <option value="2">PPMH</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Point d'eau</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6">
+                              <option value="1">BF</option>
+                              <option value="2">BP</option>
+                              <option value="3">BS</option>
+                              <option value="2">FPMH</option>
+                              <option value="2">MONO</option>
+                              <option value="2">PPMH</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Région</Form.Label>
+                            <Form.Control type="text" placeholder="ex : Alaotra Mangoro" />
+                          </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>District</Form.Label>
+                            <Form.Control type="text" placeholder="ex : Ambatondrazaka" />
+                          </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Commune</Form.Label>
+                            <Form.Control type="text" placeholder="ex : Ambandrika" />
+                          </Form.Group>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Fokontany</Form.Label>
+                            <Form.Control type="text" placeholder="ex : Ambandrika" />
+                          </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Localité</Form.Label>
+                            <Form.Control type="text" placeholder="ex : Ambandrika" />
+                          </Form.Group>
+                        </Col>
+                      </Row>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Nombre de construction</Form.Label>
+                        <Form.Control type="number" placeholder="Entrez le nombre" />
+                      </Form.Group>
+                      <Button type="submit" className="btn">Ajoutez</Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
+            </ModalContent>
+          </ModalWrapper>
+        </Background>
+      )}
+    </>
+  );
+};
+
+export default AjoutFormulaire;

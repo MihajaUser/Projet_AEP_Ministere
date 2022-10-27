@@ -18,7 +18,7 @@ function CiternePage() {
         <pointLight position={[10, 10, 10]} />
         <Suspense fallback={null}>
           <mesh position={[2, -2, -15]}>
-            <Pump />
+            <Citerne />
           </mesh>
         </Suspense>
       </Canvas>
