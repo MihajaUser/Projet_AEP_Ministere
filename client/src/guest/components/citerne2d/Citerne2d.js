@@ -91,7 +91,7 @@ function Citerne2d() {
 
   return (
     <div className="App">
-      <canvas ref={canvas}></canvas>
+      <canvas className="MyCanvas" ref={canvas}></canvas>
       <div className='CardContainer2d '>
         <Card className='MyCard2d '>
           <br></br>
