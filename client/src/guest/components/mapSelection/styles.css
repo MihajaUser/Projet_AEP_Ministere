@@ -3,7 +3,8 @@
 	height: 95%;
 }
 .CardContainer {
-	width: 30%;
+	width: 100%;
+	text-align: center;
 	margin-right: 35%;
 	margin-top: 2%;
 }
@@ -20,6 +21,6 @@
 }
 .MyButton {
 	background-color: rgb(83, 110, 185);
-	width: 100%;
+	width: 40%;
 	height: 60px;
 }
