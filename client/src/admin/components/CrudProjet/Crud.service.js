@@ -11,8 +11,8 @@ export const CrudService = {
         // console.log(backUrl + /api/auth/signin);
         return axios.post(backUrl + "/api/projet/AjoutProjet", data);
     },
-    supprimer: (data) => {
-        return axios.post(backUrl + "/api/projet/supprimer", data);
+    supprimer: (id) => {
+        return axios.delete(backUrl + "/api/projet/supprimer/"+id);
     }
 
 }
