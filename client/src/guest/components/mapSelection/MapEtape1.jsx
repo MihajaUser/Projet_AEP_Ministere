@@ -14,24 +14,16 @@ const MapEtape1 = (props) => {
   const mapRef = useRef(null);
   const tileRef = useRef(null);
   const markerRef = useRef(null);
-
   tileRef.current = L.tileLayer(`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`,
     {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }
   );
   const mapStyles = {
-    overflow: 'hidden',
-    width: '100%',
-    height: '60vh',
+    overflow: 'hidden', width: '100%', height: '60vh'
   };
-
   const mapParams = {
-    center: [-18.865447, 47.519533],
-    zoom: 6,
-    zoomControl: false,
-    zoomSnap: 0.75,
-    layers: [tileRef.current],
+    center: [-18.865447, 47.519533], zoom: 6, zoomControl: false, zoomSnap: 0.75, layers: [tileRef.current]
   };
 
   // Map creation:
