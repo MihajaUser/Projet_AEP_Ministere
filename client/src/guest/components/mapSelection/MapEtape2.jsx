@@ -2,15 +2,11 @@ import React, { Component } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import icon from "./constants";
-import { useState } from "react";
-import { useHistory } from 'react-router-dom';
-import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import * as MuiIcons from '@mui/icons-material';
 import './styles.css'
-import withRouter from './withRouter';
 class MapEtape2 extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +47,6 @@ class MapEtape2 extends Component {
             Emmplacement 2  : ville Antananrivo Commune Ambohijatovo
             {`Latitude ${this.state.finLat} longitude ${this.state.finLng}`}
             <br></br>
-
             <br></br>
             <Link to={"/ajoutCanalisation3"}>
               <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>

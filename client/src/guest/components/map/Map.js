@@ -1,17 +1,14 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-
 import {
   MapContainer,
   TileLayer,
   ScaleControl,
-  LayersControl,
   FeatureGroup,
   Marker,
-  Tooltip, Popup,
-  useMapEvents
+  Popup,
 } from "react-leaflet";
 
 const markerIcon = new L.Icon({
@@ -20,11 +17,9 @@ const markerIcon = new L.Icon({
 });
 
 const Map = (props) => {
-
   const myStation = useSelector((state) => state.station)
   useEffect(() => {
   }, [myStation])
-
 
   return <MapContainer
     doubleClickZoom={false}

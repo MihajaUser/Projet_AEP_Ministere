@@ -1,56 +1,49 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
+import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import * as MuiIcons from '@mui/icons-material';
+import './styles.css'
 
-const MapComponent = (props) => {
-  // Map state:
+const MapEtape1 = (props) => {
+  const [myLat, setMyLat] = useState(null);
+  const [myLong, setMyLong] = useState(null);
   const [mapInstance, setMapInstance] = useState(null);
   const [marker, setMarker] = useState(null);
-
-  // Map refs:
   const mapRef = useRef(null);
   const tileRef = useRef(null);
   const markerRef = useRef(null);
-
-  // Base tile for the map:
-  tileRef.current = L.tileLayer(
-    `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`,
+  tileRef.current = L.tileLayer(`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`,
     {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }
   );
 
   const mapStyles = {
     overflow: 'hidden',
     width: '100%',
-    height: '100vh',
+    height: '60vh',
   };
 
-  // Options for our map instance:
   const mapParams = {
-    center: [37.0902, -95.7129], // USA
-    zoom: 3,
+    center: [-18.865447, 47.519533],
+    zoom: 6,
     zoomControl: false,
     zoomSnap: 0.75,
-    layers: [tileRef.current], // Start with just the base layer
+    layers: [tileRef.current],
   };
 
   // Map creation:
   useEffect(() => {
     mapRef.current = L.map('map', mapParams);
-    // Add an event listener:
     mapRef.current.on('click', (e) => {
       alert('map clicked ' + e.latlng.lat);
     });
-    // Set map instance to state:
     setMapInstance(mapRef.current);
-  }, []); // <- Empty dependency array, so it only runs once on the first render.
+  }, []);
 
-  // If you want to use the mapInstance in a useEffect hook,
-  // you first have to make sure the map exists. Then, you can add your logic.
   useEffect(() => {
-    // Check for the map instance before adding something (ie: another event listener).
-    // If no map, return:
     if (!mapInstance) return;
     if (mapInstance) {
       mapInstance.on('zoomstart', () => {
@@ -76,8 +69,20 @@ const MapComponent = (props) => {
         {`Click to ${marker ? 'remove' : 'add'} marker`}
       </button>
       <div id="map" style={mapStyles} />
+      <div className='CardContainer'>
+        <Card className='MyCard'>
+          Emmplacement 2  : ville Antananrivo Commune Ambohijatovo
+
+          <br></br>
+
+          <br></br>
+          <Link to={"/ajoutCanalisation2"}>
+            <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
+          </Link>
+        </Card>
+      </div>
     </>
   );
 };
 
-export default MapComponent;
+export default MapEtape1;
