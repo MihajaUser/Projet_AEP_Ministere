@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 import Routing from "./Routing";
 
 const MapEtape3 = (props) => {
-  const position = [51.505, -0.09];
+  const position = [-18.865447, 47.519533];
 
   return (
     <MapContainer center={position} zoom={13} style={{ height: "100vh" }}>

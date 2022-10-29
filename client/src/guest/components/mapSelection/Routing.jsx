@@ -15,8 +15,9 @@ export default function Routing() {
     if (!map) return;
 
     const routingControl = L.Routing.control({
-      waypoints: [L.latLng(57.74, 11.94), L.latLng(57.6792, 11.949)],
-      routeWhileDragging: true
+      waypoints: [L.latLng(-18.917878596902497, 47.528027490672216), L.latLng(- 18.914333061129806, 47.523922047810416)],
+      routeWhileDragging: true,
+      lineOptions: { styles: [{ color: "blue", opacity: "0.7", weight: 6 }] }
     }).addTo(map);
 
     return () => map.removeControl(routingControl);
