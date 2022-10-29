@@ -7,8 +7,8 @@ import * as MuiIcons from '@mui/icons-material';
 import './styles.css'
 
 const MapEtape1 = (props) => {
-  const [myLat, setMyLat] = useState(null);
-  const [myLong, setMyLong] = useState(null);
+  const [debutLat, setDebutLat] = useState(null);
+  const [debutLng, setDebutLng] = useState(null);
   const [mapInstance, setMapInstance] = useState(null);
   const [marker, setMarker] = useState(null);
   const mapRef = useRef(null);
@@ -38,7 +38,8 @@ const MapEtape1 = (props) => {
   useEffect(() => {
     mapRef.current = L.map('map', mapParams);
     mapRef.current.on('click', (e) => {
-      alert('map clicked ' + e.latlng.lat);
+      setDebutLat(e.latlng.lat);
+      setDebutLng(e.latlng.lng);
     });
     setMapInstance(mapRef.current);
   }, []);
@@ -72,7 +73,7 @@ const MapEtape1 = (props) => {
       <div className='CardContainer'>
         <Card className='MyCard'>
           Emmplacement 2  : ville Antananrivo Commune Ambohijatovo
-
+          {`Latitude ${debutLat} longitude ${debutLng}`}
           <br></br>
 
           <br></br>
