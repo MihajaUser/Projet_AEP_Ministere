@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import React, { useState } from "react";
 import { Provider } from "react-redux";
 import { store } from "./redux/redux";
 import MapPage from './guest/components/map/MapPage';
