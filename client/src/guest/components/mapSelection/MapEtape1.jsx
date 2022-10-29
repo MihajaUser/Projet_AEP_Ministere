@@ -1,66 +1,83 @@
-import React, { Component } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import icon from "./constants";
-// import { useState } from "react";
-// import { useHistory } from 'react-router-dom';
-// import Alert from 'react-bootstrap/Alert';
-import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import * as MuiIcons from '@mui/icons-material';
-import './styles.css'
-class MapEtape1 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { debutLat: null, debutLng: null, finLat: null, finLng: null };
-  }
-  state = { map: null };
-  componentDidUpdate(prevProps, prevState) {
-    const { map } = this.state;
-    if (prevState.map !== map && map) {
-      map.on("click", function (e) {
-        this.setState({ debutLat: e.latlng.lat, debutLng: e.latlng.lng });
-      }.bind(this));
+import React, { useEffect, useRef, useState } from 'react';
+import L from 'leaflet';
+
+const MapComponent = (props) => {
+  // Map state:
+  const [mapInstance, setMapInstance] = useState(null);
+  const [marker, setMarker] = useState(null);
+
+  // Map refs:
+  const mapRef = useRef(null);
+  const tileRef = useRef(null);
+  const markerRef = useRef(null);
+
+  // Base tile for the map:
+  tileRef.current = L.tileLayer(
+    `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`,
+    {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }
-  }
-  render() {
-    return (
-      <div>
-        <MapContainer
-          className="leaflet-map"
-          center={{ lat: -18.865447, lng: 47.519533 }}
-          zoom={5.5}
-          scrollWheelZoom={true}
-          style={{ height: "55vh" }}
-          whenCreated={(map) => this.setState({ map })}
-        >
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={{ lat: -18.865447, lng: 47.519533 }} icon={icon}>
-            <Popup>Here you are ^_^{
-              console.log("Etape 1  debut " + this.state.debutLat + " " + this.state.debutLng + " fin " + this.state.finLat + " " + this.state.finLng)
-            }</Popup>
-          </Marker>
-        </MapContainer>
+  );
 
-        <div className='CardContainer'>
-          <Card className='MyCard'>
-            Emmplacement 1 : ville Antananrivo Commune Ambanidia
-            {`Latitude ${this.state.debutLat} longitude ${this.state.debutLng}`}
-            <br></br>
+  const mapStyles = {
+    overflow: 'hidden',
+    width: '100%',
+    height: '100vh',
+  };
 
-            <br></br>
-            <Link to={`/ajoutCanalisation2/${this.state.debutLat}/${this.state.debutLng}`}>
-              <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
-            </Link>
-          </Card>
-        </div>
-      </div>
-    );
-  }
-}
+  // Options for our map instance:
+  const mapParams = {
+    center: [37.0902, -95.7129], // USA
+    zoom: 3,
+    zoomControl: false,
+    zoomSnap: 0.75,
+    layers: [tileRef.current], // Start with just the base layer
+  };
 
-export default MapEtape1;
+  // Map creation:
+  useEffect(() => {
+    mapRef.current = L.map('map', mapParams);
+    // Add an event listener:
+    mapRef.current.on('click', (e) => {
+      alert('map clicked ' + e.latlng.lat);
+    });
+    // Set map instance to state:
+    setMapInstance(mapRef.current);
+  }, []); // <- Empty dependency array, so it only runs once on the first render.
+
+  // If you want to use the mapInstance in a useEffect hook,
+  // you first have to make sure the map exists. Then, you can add your logic.
+  useEffect(() => {
+    // Check for the map instance before adding something (ie: another event listener).
+    // If no map, return:
+    if (!mapInstance) return;
+    if (mapInstance) {
+      mapInstance.on('zoomstart', () => {
+        console.log('Zooming!!!');
+      });
+    }
+  }, [mapInstance]);
+
+  // Toggle marker on button click:
+  const handleClick = () => {
+    if (marker) {
+      marker.removeFrom(mapInstance);
+      markerRef.current = null;
+    } else {
+      markerRef.current = L.marker([40.7128, -74.006]).addTo(mapInstance);
+    }
+    setMarker(markerRef.current);
+  };
+
+  return (
+    <>
+      <button onClick={handleClick}>
+        {`Click to ${marker ? 'remove' : 'add'} marker`}
+      </button>
+      <div id="map" style={mapStyles} />
+    </>
+  );
+};
+
+export default MapComponent;

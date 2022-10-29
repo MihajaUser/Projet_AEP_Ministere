@@ -46,7 +46,6 @@ class MapEtape2 extends Component {
             }</Popup>
           </Marker>
         </MapContainer>
-
         <div className='CardContainer'>
           <Card className='MyCard'>
             Emmplacement 2  : ville Antananrivo Commune Ambohijatovo
