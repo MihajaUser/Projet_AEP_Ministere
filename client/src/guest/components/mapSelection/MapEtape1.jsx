@@ -14,12 +14,12 @@ const MapEtape1 = (props) => {
   const mapRef = useRef(null);
   const tileRef = useRef(null);
   const markerRef = useRef(null);
+
   tileRef.current = L.tileLayer(`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`,
     {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }
   );
-
   const mapStyles = {
     overflow: 'hidden',
     width: '100%',
@@ -59,7 +59,7 @@ const MapEtape1 = (props) => {
       marker.removeFrom(mapInstance);
       markerRef.current = null;
     } else {
-      markerRef.current = L.marker([40.7128, -74.006]).addTo(mapInstance);
+      markerRef.current = L.marker([-18.865447, 47.519533]).addTo(mapInstance);
     }
     setMarker(markerRef.current);
   };
@@ -72,12 +72,13 @@ const MapEtape1 = (props) => {
       <div id="map" style={mapStyles} />
       <div className='CardContainer'>
         <Card className='MyCard'>
-          Emmplacement 2  : ville Antananrivo Commune Ambohijatovo
-          {`Latitude ${debutLat} longitude ${debutLng}`}
+          ETAPE 1
           <br></br>
-
+          Emmplacement 1  : ville Antananrivo Commune Ambohijatovo
+          {` Latitude ${debutLat} longitude ${debutLng}`}
           <br></br>
-          <Link to={"/ajoutCanalisation2"}>
+          <br></br>
+          <Link to={`/ajoutCanalisation2/${debutLat}/${debutLng}`}>
             <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
           </Link>
         </Card>

@@ -28,7 +28,7 @@ const App = () => {
             <Route path="listeProjet" element={<ListeProjet />} />
             <Route path="login" element={<Login />} />
             <Route path="ajoutCanalisation1" element={<MapEtape1 />} />
-            <Route path="ajoutCanalisation2/:debutLat/:debutLong" element={<MapEtape2 />} />
+            <Route path="ajoutCanalisation2/:urlDebutLat/:urlDebutLng" element={<MapEtape2 />} />
             <Route path="ajoutCanalisation3" element={<MapEtape3 />} />
             <Route path="canalisation" element={<MapCanal />} />
             <Route path="inscription" element={<Inscription />} />
