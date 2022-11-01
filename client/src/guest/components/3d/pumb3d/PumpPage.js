@@ -12,7 +12,7 @@ function PumpPage() {
         <ambientLight intensity={0.6} />
         <pointLight position={[10, 10, 10]} />
         <Suspense fallback={null}>
-          <mesh position={[2, -2, -15]}>
+          <mesh position={[2, 2, 11]}>
             <Pump />
           </mesh>
         </Suspense>
