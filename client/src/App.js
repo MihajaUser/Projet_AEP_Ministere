@@ -29,7 +29,7 @@ const App = () => {
             <Route path="login" element={<Login />} />
             <Route path="ajoutCanalisation1" element={<MapEtape1 />} />
             <Route path="ajoutCanalisation2/:urlDebutLat/:urlDebutLng" element={<MapEtape2 />} />
-            <Route path="ajoutCanalisation3" element={<MapEtape3 />} />
+            <Route path="ajoutCanalisation3/:urlDebutLat/:urlDebutLng/:urlFinLat/:urlFinLng" element={<MapEtape3 />} />
             <Route path="canalisation" element={<MapCanal />} />
             <Route path="inscription" element={<Inscription />} />
             <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
