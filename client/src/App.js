@@ -11,7 +11,7 @@ import ListeProjet from './guest/components/listeProjet/ListeProjet'
 import Login from './guest/pages/login/Login';
 import Inscription from './guest/pages/login/Inscription';
 import Admin from './admin/pages/Main.jsx';
-import Citerne2d from './guest/components/citerne2d/Citerne2d';
+import Citerne2d from './guest/components/2d/citerne2d/Citerne2d';
 import MapCanal from './guest/components/mapCanal/Map';
 import MapEtape1 from './guest/components/mapSelection/MapEtape1';
 import MapEtape2 from './guest/components/mapSelection/MapEtape2';

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { getAltitude } from "./../../../service/StationS"
+import { getAltitude } from "../../../../service/StationS"
 import { useParams } from 'react-router-dom';
 import { useState } from "react";
 import Card from 'react-bootstrap/Card';
