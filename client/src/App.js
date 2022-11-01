@@ -4,7 +4,7 @@ import { store } from "./redux/redux";
 import MapPage from './guest/components/map/MapPage';
 import MapRouting from './admin/components/mapRouting/Map'
 import Home from './guest/pages/home/Home'
-import CiternePage from './guest/components/citerne3d/CiternePage';
+import CiternePage from './guest/components/3d/citerne3d/CiternePage';
 import AjoutFormulaire from './admin/components/formulaire/AjoutFormulaire'
 import CrudProjet from './admin/components/CrudProjet/CrudProjet'
 import ListeProjet from './guest/components/listeProjet/ListeProjet'
