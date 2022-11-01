@@ -15,8 +15,8 @@ const Routing = ({ debutLat, debutLng, finLat, finLng }) => {
     if (!map) return;
     const routingControl = L.Routing.control({
       // test
-      //[L.latLng(-18.917878596902497, 47.528027490672216), L.latLng(- 18.914333061129806, 47.523922047810416)],
-      waypoints: [L.latLng(debutLat, debutLng), L.latLng(finLat, finLng)],
+      waypoints: [L.latLng(-18.917878596902497, 47.528027490672216), L.latLng(- 18.914333061129806, 47.523922047810416)],
+      //waypoints: [L.latLng(debutLat, debutLng), L.latLng(finLat, finLng)],
       routeWhileDragging: true,
       lineOptions: { styles: [{ color: "blue", opacity: "0.7", weight: 6 }] }
     }).addTo(map);
