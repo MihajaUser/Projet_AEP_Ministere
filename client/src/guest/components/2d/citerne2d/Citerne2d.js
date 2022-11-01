@@ -28,21 +28,21 @@ function Citerne2d() {
     //plateau
     const plateau = new Image();
     plateau.src =
-      require("../../assets/imagesClient/plateau.png");
+      require("../../../assets/imagesClient/plateau.png");
     plateau.onload = () => {
       context.drawImage(plateau, 500, 50, 500, 500);
     };
     //localisation
     const image2 = new Image();
     image2.src =
-      require("../../assets/imagesClient/localisation.png");
+      require("../../../assets/imagesClient/localisation.png");
     image2.onload = () => {
       context.drawImage(image2, 580, 100, 100, 100);
     };
     //reservoir.png
     const reservoir = new Image();
     reservoir.src =
-      require("../../assets/imagesClient/reservoir.png");
+      require("../../../assets/imagesClient/reservoir.png");
     reservoir.onload = () => {
       context.drawImage(reservoir, 600, 190, 60, 130);
     };
