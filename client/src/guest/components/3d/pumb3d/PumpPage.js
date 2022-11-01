@@ -1,10 +1,10 @@
 import React, { Suspense, Box } from "react";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
-import Citerne from "./Citerne";
+import Pump from "./Pump";
 import "../Page3d.css";
 
-function CiternePage() {
+function PumpPage() {
   return (
     <div className="maPage">
       <Canvas>
@@ -13,11 +13,11 @@ function CiternePage() {
         <pointLight position={[10, 10, 10]} />
         <Suspense fallback={null}>
           <mesh position={[2, -2, -15]}>
-            <Citerne />
+            <Pump />
           </mesh>
         </Suspense>
       </Canvas>
     </div>
   );
 }
-export default CiternePage;
+export default PumpPage;
