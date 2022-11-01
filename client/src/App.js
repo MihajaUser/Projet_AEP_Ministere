@@ -4,7 +4,6 @@ import { store } from "./redux/redux";
 import MapPage from './guest/components/map/MapPage';
 import MapRouting from './admin/components/mapRouting/Map'
 import Home from './guest/pages/home/Home'
-import CiternePage from './guest/components/3d/citerne3d/CiternePage';
 import AjoutFormulaire from './admin/components/formulaire/AjoutFormulaire'
 import CrudProjet from './admin/components/CrudProjet/CrudProjet'
 import ListeProjet from './guest/components/listeProjet/ListeProjet'
@@ -16,6 +15,9 @@ import MapCanal from './guest/components/mapCanal/Map';
 import MapEtape1 from './guest/components/mapSelection/MapEtape1';
 import MapEtape2 from './guest/components/mapSelection/MapEtape2';
 import MapEtape3 from './guest/components/mapSelection/MapEtape3';
+import Citerne3d from './guest/components/3d/citerne3d/CiternePage';
+import Tuyaux3d from './guest/components/3d/tuyaux3d/TuyauxPage';
+import Pump3d from './guest/components/3d/pumb3d/PumpPage';
 const App = () => {
   return (
     <Provider store={store}>
@@ -24,7 +26,9 @@ const App = () => {
           <Route path="/" element={<Home />}>
             <Route path="" element={<MapPage />} />
             <Route path="carte" element={<MapPage />} />
-            <Route path="citerne3d" element={<CiternePage />} />
+            <Route path="citerne3d" element={<Tuyaux3d />} />
+            <Route path="tuyaux3d" element={<Tuyaux3d />} />
+            <Route path="pump3d" element={<Pump3d />} />
             <Route path="listeProjet" element={<ListeProjet />} />
             <Route path="login" element={<Login />} />
             <Route path="ajoutCanalisation1" element={<MapEtape1 />} />
