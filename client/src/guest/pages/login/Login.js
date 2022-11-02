@@ -34,7 +34,7 @@ function Login(props) {
             accessToken: rep.data.accessToken,
           }
           localStorage.setItem('users', JSON.stringify(storage));
-          navigate('/');
+          navigate('/admin');
         })
         .catch(err => {//pas encore de controle du server perdue
 

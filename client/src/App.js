@@ -38,7 +38,7 @@ const App = () => {
             <Route path="inscription" element={<Inscription />} />
             <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
           </Route>
-          <Route path="admin/" element={<Admin />}>
+          <Route path="/admin" element={<Admin />}>
             <Route path="" element={<  MapRouting />} />
             <Route path="formulaire" element={<AjoutFormulaire />} />
             <Route path="liste" element={<CrudProjet />} />

@@ -30,6 +30,7 @@ const MapEtape1 = (props) => {
   useEffect(() => {
     mapRef.current = L.map('map', mapParams);
     mapRef.current.on('click', (e) => {
+      // handleClick();
       setDebutLat(e.latlng.lat);
       setDebutLng(e.latlng.lng);
     });
@@ -47,6 +48,7 @@ const MapEtape1 = (props) => {
 
   // Toggle marker on button click:
   const handleClick = () => {
+    console.log('manao handleClick')
     if (marker) {
       marker.removeFrom(mapInstance);
       markerRef.current = null;
@@ -54,12 +56,13 @@ const MapEtape1 = (props) => {
       markerRef.current = L.marker([-18.865447, 47.519533]).addTo(mapInstance);
     }
     setMarker(markerRef.current);
+
   };
 
   return (
     <>
       <button onClick={handleClick}>
-        {`Click to ${marker ? 'remove' : 'add'} marker`}
+        dsaadsad
       </button>
       <div id="map" style={mapStyles} />
       <div className='CardContainer'>
