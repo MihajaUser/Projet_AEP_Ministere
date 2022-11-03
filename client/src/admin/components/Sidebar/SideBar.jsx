@@ -35,6 +35,11 @@ const routes = [
         name: "Canalisation",
         icon: <FaUser />,
       },
+      {
+        path: "adduction",
+        name: "Carte d'adduction",
+        icon: <FaUser />,
+      },
     ],
   },
   {

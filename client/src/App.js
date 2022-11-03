@@ -18,6 +18,7 @@ import MapEtape3 from './guest/components/mapSelection/MapEtape3';
 import Citerne3d from './guest/components/3d/citerne3d/CiternePage';
 import Tuyaux3d from './guest/components/3d/tuyaux3d/TuyauxPage';
 import Pump3d from './guest/components/3d/pumb3d/PumpPage';
+import Adduction from './admin/components/formulaire/Adduction'
 const App = () => {
   return (
     <Provider store={store}>
@@ -40,8 +41,9 @@ const App = () => {
           </Route>
           <Route path="/admin" element={<Admin />}>
             <Route path="" element={<  MapRouting />} />
-            <Route path="formulaire" element={<AjoutFormulaire />} />
+            <Route path="formulaire/:urlDebutLat/:urlDebutLng" element={<AjoutFormulaire />} />
             <Route path="liste" element={<CrudProjet />} />
+            <Route path="adduction" element={<Adduction />} />
           </Route>
         </Routes>
       </Router>

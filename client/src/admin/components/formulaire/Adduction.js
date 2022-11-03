@@ -69,11 +69,11 @@ const MapEtape1 = (props) => {
         <Card className='MyCard'>
           ETAPE 1
           <br></br>
-          Emplacement 1  : ville Antananrivo Commune Ambohijatovo
+          Emmplacement 1  : ville Antananrivo Commune Ambohijatovo
           {` Latitude ${debutLat} longitude ${debutLng}`}
           <br></br>
           <br></br>
-          <Link to={`/ajoutCanalisation2/${debutLat}/${debutLng}`}>
+          <Link to={`/admin/formulaire/${debutLat}/${debutLng}`}>
             <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
           </Link>
         </Card>
