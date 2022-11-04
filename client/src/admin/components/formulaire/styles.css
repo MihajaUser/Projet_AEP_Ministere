@@ -1,0 +1,26 @@
+.MyMap {
+	width: 10%;
+	height: 95%;
+}
+.CardContainer {
+	width: 100%;
+	text-align: center;
+	margin-right: 35%;
+	margin-top: 2%;
+}
+
+.CardContainerEtape3 {
+	width: 30%;
+	margin-left: 35%;
+	margin-top: 40%;
+}
+
+.MyCard {
+	padding: 4%;
+	background-color: rgba(255, 255, 255, 0.928);
+}
+.MyButton {
+	background-color: rgb(83, 110, 185);
+	width: 40%;
+	height: 60px;
+}

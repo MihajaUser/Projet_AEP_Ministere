@@ -63,6 +63,10 @@ function Header() {
             {" "}
             <ListAltRoundedIcon />
           </Navbar.Brand>
+          <Navbar.Brand href="/tableauStat">
+            {" "}
+            <MuiIcons.Handyman />
+          </Navbar.Brand>
           <Navbar.Brand href="/login">
             {" "}
             <AccountCircleRoundedIcon />

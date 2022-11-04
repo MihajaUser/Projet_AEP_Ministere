@@ -19,6 +19,8 @@ import Citerne3d from './guest/components/3d/citerne3d/CiternePage';
 import Tuyaux3d from './guest/components/3d/tuyaux3d/TuyauxPage';
 import Pump3d from './guest/components/3d/pumb3d/PumpPage';
 import TodList from './guest/components/todoList/TodoList';
+import Adduction from './admin/components/formulaire/Adduction'
+import TableauStat from './guest/components/tableauStat/TableauStat';
 const App = () => {
   return (
     <Provider store={store}>
@@ -38,13 +40,12 @@ const App = () => {
             <Route path="canalisation" element={<MapCanal />} />
             <Route path="inscription" element={<Inscription />} />
             <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
-            <Route path="todoList" element={<TodList />} />
-
           </Route>
           <Route path="/admin" element={<Admin />}>
             <Route path="" element={<  MapRouting />} />
-            <Route path="formulaire" element={<AjoutFormulaire />} />
+            <Route path="formulaire/:urlDebutLat/:urlDebutLng" element={<AjoutFormulaire />} />
             <Route path="liste" element={<CrudProjet />} />
+            <Route path="adduction" element={<Adduction />} />
           </Route>
         </Routes>
       </Router>
