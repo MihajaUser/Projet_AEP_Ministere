@@ -6,6 +6,7 @@ import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import CrudService from '../CrudProjet/Crud.service';
 import { useParams } from 'react-router-dom';
+
 // import '../styles/AjoutFormulaire.css'
 // import styled from 'styled-components';
 
@@ -66,7 +67,7 @@ const CloseModalButton = styled(MdClose)`
 
  export default function  AjoutFormulaireconst (){
   const { urlDebutLat, urlDebutLng } = useParams();
-  const [id_utilisateur,setUtilisateur] = useState('');
+  const [id_utilisateur,setUtilisateur] = useState(0);
   const [utilisation,setUtilisation] = useState('');
   const [infra_eau,setInfra] = useState('');
   const [point_eau,setPointEau] = useState('');
@@ -75,15 +76,17 @@ const CloseModalButton = styled(MdClose)`
   const [commune,setCommune] = useState('');
   const [fokontany,setFokontany] = useState('');
   const [localite,setLocalite] = useState('');
-  const [latitude,setLatitude] = useState('');
-  const [longitude,setLongitude] = useState('');
   const [nb_beneficiaire,setNombre] = useState('');
   const[etat_ouvrage,setOuvrage] = useState('');
   //maka anle donnee rehetra
   const ajout = () =>{
     let user = JSON.parse(localStorage.getItem('users'));
     //voalohany variable iantsona an'azy any @ back le hoe req.body
-    CrudService. AjoutProjet({utilisation: utilisation, infra_eau: infra_eau, point_eau: point_eau, region: region, district: district, commune: commune, fokontany: fokontany, localite: localite, latitude: latitude, longitude: longitude, nb_beneficiaire: nb_beneficiaire, etat_ouvrage: etat_ouvrage, utilisation:utilisation, id_utilisateur: id_utilisateur});
+    let data = {
+      utilisation,
+      infra_eau, point_eau, region, district, commune, fokontany, localite: localite, latitude: parseFloat(urlDebutLat) , longitude: parseFloat(urlDebutLng) , nb_beneficiaire: nb_beneficiaire, etat_ouvrage: etat_ouvrage, utilisation:utilisation, id_utilisateur: id_utilisateur}
+    console.log("cscsdc",data);
+    CrudService. AjoutProjet(data);
   }
   return (
     <>
@@ -100,41 +103,39 @@ const CloseModalButton = styled(MdClose)`
                       <Row>
                         <Col>
                           <Form.Group>
-                            <Form.Label>Utilisation{"\n"}</Form.Label>
-                            <Form.Control type="text" placeholder=""   onChange ={(e)=>{ setUtilisation(e.target.value) }}/>
-                            {/* <Form.Select aria-label="Default select example" size="md-6">
+                            <Form.Label>Utilisationd{"\n"}</Form.Label>
+                            
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setUtilisation(e.target.value) }}>
                               <option>Veuillez choisir</option>
                               <option value="1">Réservoir d'eau</option>
                               <option value="2">Canalisation</option>
                               <option value="3">Pompe</option>
-                            </Form.Select> */}
+                            </Form.Select>
                           </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Infrastru d'eau</Form.Label>
-                            <Form.Control type="text" placeholder=""  onChange ={(e)=>{ setInfra (e.target.value) }}/>
-                            {/* <Form.Select aria-label="Default select example" size="md-6">
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setInfra (e.target.value) }}>
                               <option value="1">AEPG</option>
                               <option value="2">AEPP</option>
                               <option value="3">AEPPp</option>
                               <option value="2">FPMH</option>
                               <option value="2">PPMH</option>
-                            </Form.Select> */}
+                            </Form.Select>
                           </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Point d'eau</Form.Label>
-                            <Form.Control type="text" placeholder="" onChange ={(e)=>{ setPointEau (e.target.value) }}/>
-                            {/* <Form.Select aria-label="Default select example" size="md-6">
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setPointEau (e.target.value) }}>
                               <option value="1">BF</option>
                               <option value="2">BP</option>
                               <option value="3">BS</option>
                               <option value="2">FPMH</option>
                               <option value="2">MONO</option>
                               <option value="2">PPMH</option>
-                            </Form.Select> */}
+                            </Form.Select>
                           </Form.Group>
                         </Col>
                       </Row>
@@ -196,7 +197,7 @@ const CloseModalButton = styled(MdClose)`
                       </Form.Group>
                       <Form.Group className="mb-3">
                         <Form.Label>Utilisateur</Form.Label>
-                        <Form.Control type="nombre" placeholder="Administrateur" value={0}/>
+                        <Form.Control type="nombre" placeholder="Administrateur" />
                       </Form.Group>
                       <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
                     </Card.Body>
