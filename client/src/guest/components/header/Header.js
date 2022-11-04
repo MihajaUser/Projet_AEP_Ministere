@@ -50,6 +50,10 @@ function Header() {
             {" "}
             <MuiIcons.ViewInAr />
           </Navbar.Brand>
+          <Navbar.Brand href="/todoList">
+            {" "}
+            <MuiIcons.Leaderboard />
+          </Navbar.Brand>
 
           <Navbar.Brand href="/admin">
             {" "}
