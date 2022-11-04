@@ -28,6 +28,7 @@
     "framer-motion": "^4.1.17",
     "g": "^2.0.1",
     "highcharts": "^10.3.1",
+    "highcharts-react-official": "^3.1.0",
     "leaflet": "latest",
     "leaflet-routing-machine": "^3.2.12",
     "lrm-google": "^1.0.1",
