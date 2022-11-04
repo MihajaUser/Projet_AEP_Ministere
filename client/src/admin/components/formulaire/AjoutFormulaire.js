@@ -79,14 +79,21 @@ const CloseModalButton = styled(MdClose)`
   const [nb_beneficiaire,setNombre] = useState('');
   const[etat_ouvrage,setOuvrage] = useState('');
   //maka anle donnee rehetra
-  const ajout = () =>{
+  const ajout = async () =>{
     let user = JSON.parse(localStorage.getItem('users'));
     //voalohany variable iantsona an'azy any @ back le hoe req.body
     let data = {
       utilisation,
       infra_eau, point_eau, region, district, commune, fokontany, localite: localite, latitude: parseFloat(urlDebutLat) , longitude: parseFloat(urlDebutLng) , nb_beneficiaire: nb_beneficiaire, etat_ouvrage: etat_ouvrage, utilisation:utilisation, id_utilisateur: id_utilisateur}
     console.log("cscsdc",data);
-    CrudService. AjoutProjet(data);
+    const response = await CrudService. AjoutProjet(data);
+    if(response.status === 200) {
+     alert("Projet ajouté avec succès");
+    }
+    else{
+      throw new Error("Veuillez taper tous les champs");
+    }
+    
   }
   return (
     <>
