@@ -1,5 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-import Axios, * as others from 'axios';
+import { createSlice } from "@reduxjs/toolkit";
 const stationSlice = createSlice(
   {
     name: "station",
@@ -16,8 +15,4 @@ const stationSlice = createSlice(
   }
 )
 export const { setStation, getStationById } = stationSlice.actions;
-export const store = configureStore({
-  reducer: {
-    station: stationSlice.reducer
-  }
-})
+export default stationSlice.reducer

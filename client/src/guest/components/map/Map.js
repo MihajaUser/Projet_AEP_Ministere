@@ -19,6 +19,7 @@ const markerIcon = new L.Icon({
 const Map = (props) => {
   const myStation = useSelector((state) => state.station)
   useEffect(() => {
+    console.log(myStation)
   }, [myStation])
 
   return <MapContainer
@@ -38,7 +39,7 @@ const Map = (props) => {
         <Marker position={{ lat: s.latitude, lng: s.longitude }} icon={markerIcon}>
           <Popup>
             Usine de madagascar
-            {console.log(s)}
+
             <a href={`citerne2d/${s.latitude} /${s.longitude}/${s.region}/${s.point_eau}/${s.infra_eau}`}> En savoir plus</a>
           </Popup>
         </Marker>))

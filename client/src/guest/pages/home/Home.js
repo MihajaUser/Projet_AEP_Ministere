@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 import { Outlet } from "react-router";
 import { useDispatch } from "react-redux";
 import { getStation } from "./../../../service/StationS"
-import { setStation } from "./../../../redux/redux"
+import { setStation } from "../../../redux/StationSlice"
 import { useState } from "react";
 const Home = () => {
   const dispatch = useDispatch();

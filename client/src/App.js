@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from "react-redux";
-import { store } from "./redux/redux";
+import { store } from "./redux/ReduxStore";
 import MapPage from './guest/components/map/MapPage';
 import MapRouting from './admin/components/mapRouting/Map'
 import Home from './guest/pages/home/Home'
