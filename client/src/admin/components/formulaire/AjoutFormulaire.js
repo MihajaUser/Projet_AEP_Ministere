@@ -104,18 +104,17 @@ const CloseModalButton = styled(MdClose)`
               <Row>
                 <Col xs={6} >
                   <Card border="primary" style={{ width: '25rem' }}>
-                    <Card.Header>Formulaire d'ajout</Card.Header>
+                    <Card.Header>Formulaire d'ajout d'adduction</Card.Header>
                     <Card.Body>
                       <Card.Title></Card.Title>
                       <Row>
                         <Col>
                           <Form.Group>
-                            <Form.Label>Utilisationd{"\n"}</Form.Label>
+                            <Form.Label>Utilisation</Form.Label>
                             
                             <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setUtilisation(e.target.value) }}>
                               <option>Veuillez choisir</option>
                               <option value="1">Réservoir d'eau</option>
-                              <option value="2">Canalisation</option>
                               <option value="3">Pompe</option>
                             </Form.Select>
                           </Form.Group>

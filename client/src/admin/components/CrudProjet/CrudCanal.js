@@ -2,7 +2,7 @@ import {Row,Col,Table} from 'react-bootstrap';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import styled from 'styled-components';
-import { CrudService } from './Crud.service.js';
+import { CrudCanalService } from './../../../service/CrudCanal.service.js';
 import { useState, useEffect} from 'react';
 const ModalContent = styled.div`     
   display: flex;
@@ -24,10 +24,10 @@ const ModalContent = styled.div`
   }
 `;
 
-function CrudProjet() {
+function CrudCanal() {
   const [listeProjet , setListeProjet] = useState([]);
   const listeProjets = async () => {
-    const response = await CrudService. getAllProjet();
+    const response = await CrudCanalService. getAllCanalisation();
     if(response.status === 200) {
       setListeProjet(response.data);
     }
@@ -38,7 +38,7 @@ function CrudProjet() {
    useEffect(() => {listeProjets()},[]);
    
   const onClikDelete = async (id) => {
-   const response = await CrudService.supprimer(id);
+   const response = await CrudCanalService.supprimer(id);
     if(response){
       alert("Projet supprimer");
       listeProjets();
@@ -48,19 +48,15 @@ function CrudProjet() {
 
     <ModalContent>  
     <Row>
-     <Col xs={6} > 
-     <h4>Liste des projets d'adduction</h4>
+     <Col xs={16} > 
+     <h4>Liste des projets de Canalisation</h4>
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
           {/* <th>Numéro</th> */}
           <th>Numero  de projet</th>
-          <th>Nom  de projet</th>
-          <th>Région</th>
-          <th>District</th>
-          <th>Commune</th>
-          <th>Fokontany</th>
-          <th>Localité</th>
+          <th>Début de localité</th>
+          <th>Fin de localité</th>
           <th colSpan="2">Action</th>
         </tr>
       </thead>
@@ -71,12 +67,8 @@ function CrudProjet() {
               return(
                 <tr>
                 <td>{item.id}</td>
-                <td>{item.utilisation}</td>
-                <td>{item.region}</td>
-                <td>{item.district}</td>
-                <td>{item.commune}</td>
-                <td>{item.fokontany}</td>
-                <td>{item.localite}</td>
+                <td>{item.debutLocalite}</td>
+                <td>{item.finLocalite}</td>
                 <td><UpdateIcon /></td>
                 <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                 </tr>
@@ -93,4 +85,4 @@ function CrudProjet() {
   );
 }
 
-export default CrudProjet
+export default CrudCanal;
