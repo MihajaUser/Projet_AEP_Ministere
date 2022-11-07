@@ -11,10 +11,12 @@ module.exports = (sequelize, DataTypes) => {
   Canalisation.init({
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     id_utilisateur: DataTypes.INTEGER,
-    debutLatitude: DataTypes.FLOAT,
-    debutLongitude: DataTypes.INTEGER,
-    finLatitude: DataTypes.FLOAT,
-    finLongitude: DataTypes.FLOAT,
+    debutLocalite: DataTypes.STRING,
+    finLocalite: DataTypes.STRING,
+    debutLatitude: DataTypes.DOUBLE,
+    debutLongitude: DataTypes.DOUBLE,
+    finLatitude: DataTypes.DOUBLE,
+    finLongitude: DataTypes.DOUBLE,
   }, {
     createdAt: false,
     updatedAt: false,
