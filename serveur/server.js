@@ -13,16 +13,15 @@ const db = require("./app/models");
 //   .catch((err) => {
 //     console.log("Failed to sync db: " + err.message);
 //   });
-
 /////////////////////////////////////////////////////
 //tsy mamafa table
-db.sequelize.sync()
-  .then(() => {
-    console.log("Synced db.");
-  })
-  .catch((err) => {
-    console.log("Failed to sync db: " + err.message);
-  });
+// db.sequelize.sync()
+//   .then(() => {
+//     console.log("Synced db.");
+//   })
+//   .catch((err) => {
+//     console.log("Failed to sync db: " + err.message);
+//   });
 
 var corsOptions = {
   origin: "http://localhost:8080",
