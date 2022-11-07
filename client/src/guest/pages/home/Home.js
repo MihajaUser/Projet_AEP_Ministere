@@ -11,13 +11,14 @@ import { setCanalisation } from "../../../redux/CanalisationSlice";
 const Home = () => {
   const dispatch = useDispatch();
   const [myStation, setMystation] = useState();
+
   useEffect(() => {
-    const hamdleGetData = async () => {
+    const handleStation = async () => {
       const x = await getStation();
       setMystation(x.data);
     }
     if (!myStation)
-      hamdleGetData()
+      handleStation()
     if (myStation) {
       dispatch(setStation(myStation))
     }
@@ -26,15 +27,15 @@ const Home = () => {
   // mamorona variable en local alony a vide izy eto
   const [myCanalisation, setMyCanalisation] = useState();
   useEffect(() => {
-    const getDataCanalisation = async  () => {
+    const getDataCanalisation = async () => {
       const y = await getCanalisation();
       setMyCanalisation(y.data);
     }
     if (!myCanalisation)
-    getDataCanalisation()
-  if (myCanalisation) {
-    dispatch(setCanalisation(myCanalisation))
-  }
+      getDataCanalisation()
+    if (myCanalisation) {
+      dispatch(setCanalisation(myCanalisation))
+    }
   }, [myCanalisation, dispatch])
 
   return (
