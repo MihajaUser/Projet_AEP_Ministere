@@ -5,12 +5,9 @@ import { addTask } from "../../../redux/TodoSlice";
 const TaskForm = (props) => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
     dispatch(addTask(text));
-
     setText("");
   };
 
