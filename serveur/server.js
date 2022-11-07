@@ -5,12 +5,23 @@ const cors = require("cors");
 const app = express();
 const db = require("./app/models");
 
-db.sequelize.sync({force:true})
+//mamafa table
+// db.sequelize.sync({force:true})
+//   .then(() => {
+//     console.log("Synced db.");
+//   })
+//   .catch((err) => {
+//     console.log("Failed to sync db: " + err.message);
+//   });
+
+/////////////////////////////////////////////////////
+//tsy mamafa table
+db.sequelize.sync()
   .then(() => {
     console.log("Synced db.");
   })
   .catch((err) => {
-    console.log("Failed to sync db: " + err.message); 
+    console.log("Failed to sync db: " + err.message);
   });
 
 var corsOptions = {
