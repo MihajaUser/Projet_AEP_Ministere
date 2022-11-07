@@ -18,4 +18,6 @@ module.exports = function (app) {
   app.delete("/api/projet/supprimer/:id", controlerProjet.supprimer);
  //get All projet
   app.get("/api/projet/projets", controlerProjet.getAllProjet);
+  //modifier un projet
+  app.put("/api/projet/modifier/:id", controlerProjet.ModifierProjet)
 }

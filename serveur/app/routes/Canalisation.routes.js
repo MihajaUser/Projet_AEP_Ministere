@@ -14,5 +14,5 @@ module.exports = function (app) {
   //post Canalisation
   app.post("/api/canalisation/AjoutCanalisation", controlerCanalisation.AjoutCanalisation);
 
-  app.post("/api/canalisation/supprimer", controlerCanalisation.supprimer)
+  app.post("/api/canalisation/supprimer/:id", controlerCanalisation.supprimer)
 }

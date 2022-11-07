@@ -12,7 +12,17 @@ exports.message = (req, res, next) => {
 }
 
 exports.getAllCanalisation = (req, res) => {
-  model.Canalisation.findAll().then((rep) => { res.status(200).json(rep); });
+  console.log('test');
+  model.Canalisation.findAll()
+  .then((rep) => { 
+    res.send(rep); 
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Misy erreur"
+    });
+  });
 };
 
 exports.AjoutCanalisation = (req, res) => {
