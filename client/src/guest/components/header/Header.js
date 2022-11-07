@@ -50,11 +50,10 @@ function Header() {
             {" "}
             <MuiIcons.ViewInAr />
           </Navbar.Brand>
-          <Navbar.Brand href="/todoList">
+          <Navbar.Brand href="/tableauStat">
             {" "}
             <MuiIcons.Leaderboard />
           </Navbar.Brand>
-
           <Navbar.Brand href="/admin">
             {" "}
             <MuiIcons.Handyman />
@@ -62,10 +61,6 @@ function Header() {
           <Navbar.Brand href="/listeProjet">
             {" "}
             <ListAltRoundedIcon />
-          </Navbar.Brand>
-          <Navbar.Brand href="/tableauStat">
-            {" "}
-            <MuiIcons.Handyman />
           </Navbar.Brand>
           <Navbar.Brand href="/login">
             {" "}
