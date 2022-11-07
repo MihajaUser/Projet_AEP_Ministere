@@ -1,7 +1,15 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Row, Col } from 'react-bootstrap';
-export default function TableauStat(){
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+const TableauStat = (props) => {
+
+    const myCanalisation = useSelector((state) => state.canalisation)
+    useEffect(() => {
+        console.log(myCanalisation)
+    }, [myCanalisation])
+
     const batton = {
         chart: {
             type: 'column'
@@ -87,3 +95,4 @@ export default function TableauStat(){
     </Row>
    )
 } 
+export default TableauStat;

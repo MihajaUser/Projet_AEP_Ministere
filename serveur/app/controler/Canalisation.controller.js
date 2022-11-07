@@ -28,6 +28,8 @@ exports.getAllCanalisation = (req, res) => {
 exports.AjoutCanalisation = (req, res) => {
   model.Canalisation.create({
     id_utilisateur: req.body.id_utilisateur,
+    debutLocalite: req.body.debutLocalite,
+    finLocalite: req.body.finLocalite,
     debutLatitude: req.body.debutLatitude,
     debutLongitude: req.body.debutLongitude,
     finLatitude: req.body.finLatitude,
@@ -44,12 +46,11 @@ exports.AjoutCanalisation = (req, res) => {
 };
 
 exports.supprimer = (req, res) => {
-  model.Canalisation.destroy({
-    where: {
-      id: req.body.id
-    }
-  }).then(rep => {
-    res.send('delete successfully!')
+  model.Canalisation.destroy(
+    {where: {id: req.params.id} }
+  )
+  .then(rep => {
+    res.send({ rep })
   }
   )
     .catch(err => {

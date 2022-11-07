@@ -13,6 +13,6 @@ module.exports = function (app) {
   app.get("/api/canalisation/Canalisations", controlerCanalisation.getAllCanalisation);
   //post Canalisation
   app.post("/api/canalisation/AjoutCanalisation", controlerCanalisation.AjoutCanalisation);
-
+//supprimer une canalisation
   app.post("/api/canalisation/supprimer/:id", controlerCanalisation.supprimer)
 }
