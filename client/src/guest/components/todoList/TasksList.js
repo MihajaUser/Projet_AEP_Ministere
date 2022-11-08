@@ -26,7 +26,7 @@ const TasksList = (props) => {
   }, [myTacheAdduction, dispatch])
   return (
     <>
-      {baseTasks.tacheAdduction.map((t) => (
+      {tacheTemporaire.map((t) => (
         <TaskItem
           task={t}
           key={t.id}

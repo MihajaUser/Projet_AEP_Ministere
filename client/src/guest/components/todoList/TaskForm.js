@@ -1,18 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addBaseTacheAdduction } from "../../../redux/BaseTodoSlice";
+import { addTask } from "../../../redux/TemporaireTacheSlice";
 
 const TaskForm = (props) => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
-    const tache = {
-      "id_utilisateur": 0,
-      "nom": text,
-      "etat": false
-    }
-    dispatch(addBaseTacheAdduction(tache));
+    dispatch(addTask(text));
     setText("");
   };
 
