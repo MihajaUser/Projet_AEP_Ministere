@@ -4,9 +4,8 @@ export const getTacheAdduction = () => {
   return data;
 }
 
-export const addTacheAdduction = () => {
-  const data = Axios.post('http://localhost:8080/api/tacheAdduction/AjoutTacheAdduction')
-  return data;
+export const addTacheAdduction = (tache) => {
+  const data = Axios.post('http://localhost:8080/api/tacheAdduction/AjoutTacheAdduction', tache)
 }
 
 

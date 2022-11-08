@@ -12,7 +12,7 @@ const TaskItem = (props) => {
           checked={task.done}
           onChange={() => dispatch(toggleTask(task.id))}
         />
-        {task.text}
+        {task.nom}
 
         <span
           onClick={() => dispatch(deleteTask(task.id))}
