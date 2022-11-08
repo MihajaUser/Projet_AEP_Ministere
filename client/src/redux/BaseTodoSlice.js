@@ -1,6 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addTacheAdduction, deleteTacheAdduction, updateTacheAdduction } from "../service/TacheAdductionS.js";
 
+function getDifference(array1, array2) {
+  return array1.filter(object1 => {
+    return !array2.some(object2 => {
+      return object1.id === object2.id;
+    });
+  });
+}
 const baseTodoSlice = createSlice(
   {
     name: "baseTodo",
@@ -9,9 +16,12 @@ const baseTodoSlice = createSlice(
     },
     reducers: {
       saveChange: (state, action) => {
-        console.log("saveChange ++++++++++++++++++++++++++")
-        console.log(action.payload)
-        state = state.filter(t => t.id !== action.payload)
+        const nouveau = action.payload.nouveau;
+        const ancien = action.payload.ancien.tacheAdduction;
+        const difference = getDifference(nouveau, ancien)
+        difference.map((element) => (
+          addTacheAdduction(element)
+        ))
       },
       setBaseTacheAdduction: (state, action) => {
         state.tacheAdduction = (action.payload)

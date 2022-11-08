@@ -2,6 +2,7 @@ import TaskItem from "./TaskItem";
 import React, { useEffect, useState } from "react";
 import { getTacheAdduction } from "./../../../service/TacheAdductionS";
 import { setTemporaryTask } from "../../../redux/TemporaireTacheSlice"
+import { setBaseTacheAdduction } from "../../../redux/BaseTodoSlice"
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
@@ -26,12 +27,9 @@ const TasksList = (props) => {
       handleTacheAdduction()
     if (tacheLocal) {
       dispatch(setTemporaryTask(tacheLocal))
+      dispatch(setBaseTacheAdduction(tacheLocal))
     }
   }, [tacheLocal, dispatch])
-  // console.log("temporaire ====================================")
-  // console.log(tacheTemporaire)
-  // console.log("base =========================================")
-  // console.log(baseTasks)
   return (
     <>
       {tacheTemporaire.map((t) => (

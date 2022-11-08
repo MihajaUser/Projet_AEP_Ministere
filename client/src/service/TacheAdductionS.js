@@ -5,7 +5,12 @@ export const getTacheAdduction = () => {
 }
 
 export const addTacheAdduction = (tache) => {
-  const data = Axios.post('http://localhost:8080/api/tacheAdduction/AjoutTacheAdduction', tache)
+  const add = {
+    "id_utilisateur": tache.id_utilisateur,
+    "nom": tache.nom,
+    "etat": tache.etat
+  }
+  const data = Axios.post('http://localhost:8080/api/tacheAdduction/AjoutTacheAdduction', add)
 }
 
 export const deleteTacheAdduction = (id) => {
