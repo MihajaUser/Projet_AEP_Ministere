@@ -11,7 +11,19 @@ import { setCanalisation } from "../../../redux/CanalisationSlice";
 const Home = () => {
   const dispatch = useDispatch();
   const [myStation, setMystation] = useState();
+  const [myTacheAdduction, setMyTacheAdduction] = useState();
 
+  useEffect(() => {
+    const handleTacheAdduction = async () => {
+      const x = await getStation();
+      setMystation(x.data);
+    }
+    if (!myStation)
+      handleTacheAdduction()
+    if (myStation) {
+      dispatch(setStation(myStation))
+    }
+  }, [myTacheAdduction, dispatch])
   useEffect(() => {
     const handleStation = async () => {
       const x = await getStation();

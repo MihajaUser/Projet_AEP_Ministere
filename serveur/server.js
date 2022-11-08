@@ -15,13 +15,13 @@ const db = require("./app/models");
 //   });
 /////////////////////////////////////////////////////
 //tsy mamafa table
-// db.sequelize.sync()
-//   .then(() => {
-//     console.log("Synced db.");
-//   })
-//   .catch((err) => {
-//     console.log("Failed to sync db: " + err.message);
-//   });
+db.sequelize.sync()
+  .then(() => {
+    console.log("Synced db.");
+  })
+  .catch((err) => {
+    console.log("Failed to sync db: " + err.message);
+  });
 
 var corsOptions = {
   origin: "http://localhost:8080",
@@ -36,6 +36,7 @@ require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/Projet.routes")(app);
 require("./app/routes/Canalisation.routes")(app);
+require("./app/routes/TacheAdduction.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

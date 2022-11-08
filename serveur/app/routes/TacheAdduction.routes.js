@@ -13,11 +13,11 @@ module.exports = function (app) {
   //get All TacheAdduction
   // app.get("/api/TacheAdduction/TacheAdductions", controlerTacheAdduction.getAllTacheAdduction);
   //post TacheAdduction
-  app.post("/api/TacheAdduction/AjoutTacheAdduction", controlerTacheAdduction.AjoutTacheAdduction);
+  app.post("/api/tacheAdduction/AjoutTacheAdduction", controlerTacheAdduction.AjoutTacheAdduction);
   //delete TacheAdduction
-  app.delete("/api/TacheAdduction/supprimer/:id", controlerTacheAdduction.supprimer);
+  app.delete("/api/tacheAdduction/supprimer/:id", controlerTacheAdduction.supprimer);
   //get All TacheAdduction
-  app.get("/api/TacheAdduction/TacheAdductions", controlerTacheAdduction.getAllTacheAdduction);
+  app.get("/api/tacheAdduction/TacheAdductions", controlerTacheAdduction.getAllTacheAdduction);
   //modifier un TacheAdduction
-  app.put("/api/TacheAdduction/modifier/:id", controlerTacheAdduction.ModifierTacheAdduction)
+  app.put("/api/tacheAdduction/modifier/:id", controlerTacheAdduction.ModifierTacheAdduction)
 }
