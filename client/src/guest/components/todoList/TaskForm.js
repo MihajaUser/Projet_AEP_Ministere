@@ -3,14 +3,13 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../../../redux/TemporaireTacheSlice";
 
 const TaskForm = (props) => {
-  const [text, setText] = useState("");
   const dispatch = useDispatch();
+  const [text, setText] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addTask(text));
     setText("");
   };
-
   return (
     <form onSubmit={handleSubmit} >
       <input

@@ -3,14 +3,18 @@ const temporaireTacheSlice = createSlice(
   {
     name: "temporaireTache",
     initialState: [
-      { id: 1, nom: "faire les course", etat: false },
-      { id: 2, nom: "menage", etat: false }],
+    ],
     reducers: {
+      setTemporaryTask: (state, action) => {
+        state = (action.payload)
+        return state
+      },
       addTask: (state, action) => {
         const newTask = {
           id: Date.now(),
-          etat: false,
-          nom: action.payload
+          id_utilisateur: 0,
+          nom: action.payload,
+          etat: false
         }
         state.push(newTask);
       },
@@ -25,5 +29,5 @@ const temporaireTacheSlice = createSlice(
     }
   }
 )
-export const { addTask, toggleTask, deleteTask } = temporaireTacheSlice.actions;
+export const { addTask, toggleTask, deleteTask, setTemporaryTask } = temporaireTacheSlice.actions;
 export default temporaireTacheSlice.reducer

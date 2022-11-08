@@ -8,10 +8,8 @@ export default function App() {
     <div className="container">
       <article>
         <TasksHeader />
+        <TaskForm />
         <TasksList />
-        <footer>
-          <TaskForm />
-        </footer>
       </article>
     </div>
   );

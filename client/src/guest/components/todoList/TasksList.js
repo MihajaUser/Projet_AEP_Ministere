@@ -1,29 +1,37 @@
 import TaskItem from "./TaskItem";
 import React, { useEffect, useState } from "react";
 import { getTacheAdduction } from "./../../../service/TacheAdductionS";
-import { setBaseTacheAdduction } from "../../../redux/BaseTodoSlice"
+import { setTemporaryTask } from "../../../redux/TemporaireTacheSlice"
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import Button from 'react-bootstrap/Button';
+import { saveChange } from "../../../redux/BaseTodoSlice";
+
 const TasksList = (props) => {
-  const [myTacheAdduction, setMyTacheAdduction] = useState();
   const dispatch = useDispatch();
-  const tacheTemporaire = useSelector((state, key) => state.temporaireTache)
+  const [tacheLocal, setTacheLocal] = useState();
   const baseTasks = useSelector((state) => state.baseTodo);
+  const tacheTemporaire = useSelector((state, key) => state.temporaireTache)
+
+  const goSave = (event) => {
+    event.preventDefault();
+    dispatch(saveChange({ "ancien": baseTasks, "nouveau": tacheTemporaire }))
+  }
   useEffect(() => {
     const handleTacheAdduction = async () => {
       const tA = await getTacheAdduction();
-      setMyTacheAdduction(tA.data);
+      setTacheLocal(tA.data);
     }
-    if (!myTacheAdduction)
+    if (!tacheLocal)
       handleTacheAdduction()
-    if (myTacheAdduction) {
-      dispatch(setBaseTacheAdduction(myTacheAdduction))
+    if (tacheLocal) {
+      dispatch(setTemporaryTask(tacheLocal))
     }
-    console.log("temporaire ====================================")
-    console.log(tacheTemporaire)
-    console.log("base =========================================")
-    console.log(baseTasks)
-  }, [myTacheAdduction, dispatch])
+  }, [tacheLocal, dispatch])
+  // console.log("temporaire ====================================")
+  // console.log(tacheTemporaire)
+  // console.log("base =========================================")
+  // console.log(baseTasks)
   return (
     <>
       {tacheTemporaire.map((t) => (
@@ -32,6 +40,11 @@ const TasksList = (props) => {
           key={t.id}
         />
       ))}
+      <br></br>
+      <br></br>
+      <form action="/todoList" onSubmit={goSave} >
+        <Button type="submit" variant="success"> Valider modification </Button>{' '}
+      </form>
     </>
   );
 };
