@@ -17,7 +17,7 @@ const TaskForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       <input
         type="text"
         placeholder="Ajouter une tâche"

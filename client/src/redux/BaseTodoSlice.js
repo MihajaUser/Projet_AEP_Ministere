@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addTacheAdduction } from "../service/TacheAdductionS.js";
+import { addTacheAdduction, deleteTacheAdduction, updateTacheAdduction } from "../service/TacheAdductionS.js";
 const baseTodoSlice = createSlice(
   {
     name: "baseTodo",
@@ -12,9 +12,17 @@ const baseTodoSlice = createSlice(
       },
       addBaseTacheAdduction: (state, action) => {
         addTacheAdduction(action.payload);
+      },
+      deleteBaseTacheAdduction: (state, action) => {
+        deleteTacheAdduction(action.payload);
+        return state.tacheAdduction;
+      },
+      toggleBaseTacheAdduction: (state, action) => {
+        updateTacheAdduction(action.payload);
       }
+
     }
   }
 )
-export const { setBaseTacheAdduction, addBaseTacheAdduction } = baseTodoSlice.actions;
+export const { setBaseTacheAdduction, addBaseTacheAdduction, deleteBaseTacheAdduction, toggleBaseTacheAdduction } = baseTodoSlice.actions;
 export default baseTodoSlice.reducer

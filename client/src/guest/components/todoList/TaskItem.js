@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { toggleTask, deleteTask } from "../../../redux/TodoSlice";
+import { toggleBaseTacheAdduction, deleteBaseTacheAdduction } from "../../../redux/BaseTodoSlice";
 
 const TaskItem = (props) => {
   const { task } = props;
@@ -9,13 +9,13 @@ const TaskItem = (props) => {
       <label>
         <input
           type="checkbox"
-          checked={task.done}
-          onChange={() => dispatch(toggleTask(task.id))}
+          checked={task.etat}
+          onChange={() => dispatch(toggleBaseTacheAdduction(task))}
         />
         {task.nom}
 
         <span
-          onClick={() => dispatch(deleteTask(task.id))}
+          onClick={() => dispatch(deleteBaseTacheAdduction(task.id))}
           role="button"
           style={{ padding: "5px", marginLeft: "20px" }}
         >

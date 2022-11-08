@@ -1,31 +1,17 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { Outlet } from "react-router";
 import { useDispatch } from "react-redux";
 import { getStation } from "./../../../service/StationS"
-import { getTacheAdduction } from "./../../../service/TacheAdductionS";
 import { getCanalisation } from "./../../../service/Canalisation"
 import { setStation } from "../../../redux/StationSlice"
-import { setBaseTacheAdduction } from "../../../redux/BaseTodoSlice"
 import { setCanalisation } from "../../../redux/CanalisationSlice";
 const Home = () => {
   const dispatch = useDispatch();
   const [myStation, setMystation] = useState();
-  const [myTacheAdduction, setMyTacheAdduction] = useState();
 
-  useEffect(() => {
-    const handleTacheAdduction = async () => {
-      const tA = await getTacheAdduction();
-      setMyTacheAdduction(tA.data);
-    }
-    if (!myTacheAdduction)
-      handleTacheAdduction()
-    if (myTacheAdduction) {
-      dispatch(setBaseTacheAdduction(myTacheAdduction))
-    }
-  }, [myTacheAdduction, dispatch])
   useEffect(() => {
     const handleStation = async () => {
       const x = await getStation();
@@ -36,7 +22,7 @@ const Home = () => {
     if (myStation) {
       dispatch(setStation(myStation))
     }
-  }, [myTacheAdduction, dispatch])
+  }, [myStation, dispatch])
   //ho an'ilay canalisation 
   // mamorona variable en local alony a vide izy eto
   const [myCanalisation, setMyCanalisation] = useState();
@@ -60,4 +46,5 @@ const Home = () => {
     </div>
   );
 };
+// export const 
 export default Home;
