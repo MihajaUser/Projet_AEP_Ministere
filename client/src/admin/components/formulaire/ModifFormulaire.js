@@ -7,9 +7,6 @@ import { useSpring, animated } from 'react-spring';
 import CrudService from '../CrudProjet/Crud.service';
 import { useParams } from 'react-router-dom';
 
-// import '../styles/AjoutFormulaire.css'
-// import styled from 'styled-components';
-
 const Background = styled.div`
   // width: 100%;
   // height: 100%;
@@ -65,7 +62,7 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
- export default function  AjoutFormulaire (){
+ export default function ModifFormulaire (){
   const { urlDebutLat, urlDebutLng } = useParams();
   const [id_utilisateur,setUtilisateur] = useState(0);
   const [utilisation,setUtilisation] = useState('');
@@ -78,10 +75,9 @@ const CloseModalButton = styled(MdClose)`
   const [localite,setLocalite] = useState('');
   const [nb_beneficiaire,setNombre] = useState('');
   const[etat_ouvrage,setOuvrage] = useState('');
+  const params = useParams();
   //maka anle donnee rehetra
-  const ajout = async () =>{
-    let user = JSON.parse(localStorage.getItem('users'));
-    //voalohany variable iantsona an'azy any @ back le hoe req.body
+  const mofidier = async () =>{
     let data = {
       utilisation,
       infra_eau, 
@@ -98,18 +94,46 @@ const CloseModalButton = styled(MdClose)`
       utilisation, 
       id_utilisateur
     }
+   console.log("cscsdc",data);
+        
+      //   const getDetailProjet = async (id) =>{
+      //     const response = await CrudService. getById(id);
+      //     console.log(response);
+      // }  
+      //   useEffect(() => {getDetailProjet()},[]) ;
+    
+   
+    //voalohany variable iantsona an'azy any @ back le hoe req.bod
+    // let data = {
+    //   utilisation,
+    //   infra_eau, 
+    //   point_eau, 
+    //   region, 
+    //   district, 
+    //   commune, 
+    //   fokontany, 
+    //   localite, 
+    //   latitude: parseFloat(urlDebutLat), 
+    //   longitude: parseFloat(urlDebutLng), 
+    //   nb_beneficiaire, 
+    //   etat_ouvrage, 
+    //   utilisation, 
+    //   id_utilisateur
+    // }
     // console.log("cscsdc",data);
-    const response = await CrudService. AjoutProjet(data);
-    if(response.status === 200) {
-     alert("Projet ajouté avec succès");
-    }
-    else{
-      throw new Error("Veuillez taper tous les champs");
-    }
+    
+    // const response = await CrudService. ModifierProjet(dataid);
+    // if(response.status === 200) {
+    //  alert("Projet ajouté avec succès");
+    // }
+    // else{
+    //   throw new Error("Veuillez taper tous les champs");
+    // }
     
   }
   return (
     <>
+      
       {(
         <Background>
           <ModalWrapper >
@@ -117,7 +141,7 @@ const CloseModalButton = styled(MdClose)`
               <Row>
                 <Col xs={6} >
                   <Card border="primary" style={{ width: '25rem' }}>
-                    <Card.Header>Formulaire d'ajout d'adduction</Card.Header>
+                    <Card.Header>Modification d'adduction</Card.Header>
                     <Card.Body>
                       <Card.Title></Card.Title>
                       <Row>
@@ -218,7 +242,7 @@ const CloseModalButton = styled(MdClose)`
                         <Form.Label>Utilisateur</Form.Label>
                         <Form.Control type="nombre" placeholder="Administrateur" />
                       </Form.Group>
-                      <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
+                      <Button type="submit" className="btn" onClick={mofidier}>Modifier</Button>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -230,5 +254,3 @@ const CloseModalButton = styled(MdClose)`
     </>
   );
 };
-
-

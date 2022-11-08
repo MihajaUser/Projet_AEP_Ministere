@@ -4,6 +4,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import styled from 'styled-components';
 import { CrudService } from './Crud.service.js';
 import { useState, useEffect} from 'react';
+import { Link } from 'react-router-dom'
 const ModalContent = styled.div`     
   display: flex;
   flex-direction: column;
@@ -61,6 +62,8 @@ function CrudProjet() {
           <th>Commune</th>
           <th>Fokontany</th>
           <th>Localité</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
           <th colSpan="2">Action</th>
         </tr>
       </thead>
@@ -77,7 +80,9 @@ function CrudProjet() {
                 <td>{item.commune}</td>
                 <td>{item.fokontany}</td>
                 <td>{item.localite}</td>
-                <td><UpdateIcon /></td>
+                <td>{item.latitude}</td>
+                <td>{item.longitude}</td>
+                <td><Link to={"modifier/"+item.id +"/"+item.latitude+"/"+item.longitude}><UpdateIcon /></ Link></td>
                 <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                 </tr>
               )

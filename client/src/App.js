@@ -22,6 +22,7 @@ import TodList from './guest/components/todoList/TodoList';
 import Adduction from './admin/components/formulaire/Adduction'
 import TableauStat from './guest/components/tableauStat/TableauStat';
 import CrudCanal from './admin/components/CrudProjet/CrudCanal';
+import ModifFormulaire from './admin/components/formulaire/ModifFormulaire';
 const App = () => {
   return (
     <Provider store={store}>
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="liste" element={<CrudProjet />} />
             <Route path="adduction" element={<Adduction />} />
             <Route path="listeCanalisation" element={<CrudCanal />} />
+            <Route path="liste/modifier/:id/:latitude/:longitude" element={<ModifFormulaire />} />
           </Route>
         </Routes>
       </Router>

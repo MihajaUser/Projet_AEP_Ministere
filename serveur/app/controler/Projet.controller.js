@@ -98,3 +98,17 @@ exports.ModifierProjet = (req,res) => {
    }) 
   
 };
+//detail d'un projet
+exports.getById = (req,res) => {
+  model.Projets.findOne(
+    { where: {id: req.params.id} }
+  )
+  .then(rep => {
+    res.send({ rep })
+  }
+  )
+    .catch(err => {
+      res.status(500).send({ message: err.message });
+    });
+}
+
