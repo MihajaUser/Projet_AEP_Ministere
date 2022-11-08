@@ -8,15 +8,18 @@ import { useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 import { saveChange } from "../../../redux/BaseTodoSlice";
 
+
 const TasksList = (props) => {
   const dispatch = useDispatch();
   const [tacheLocal, setTacheLocal] = useState();
   const baseTasks = useSelector((state) => state.baseTodo);
   const tacheTemporaire = useSelector((state, key) => state.temporaireTache)
 
+
   const goSave = (event) => {
     event.preventDefault();
     dispatch(saveChange({ "ancien": baseTasks, "nouveau": tacheTemporaire }))
+    window.location.reload();
   }
   useEffect(() => {
     const handleTacheAdduction = async () => {
@@ -40,7 +43,7 @@ const TasksList = (props) => {
       ))}
       <br></br>
       <br></br>
-      <form action="/todoList" onSubmit={goSave} >
+      <form onSubmit={goSave} >
         <Button type="submit" variant="success"> Valider modification </Button>{' '}
       </form>
     </>
