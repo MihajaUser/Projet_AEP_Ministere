@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 const TasksList = (props) => {
   const [myTacheAdduction, setMyTacheAdduction] = useState();
   const dispatch = useDispatch();
+  const tacheTemporaire = useSelector((state, key) => state.temporaireTache)
   const baseTasks = useSelector((state) => state.baseTodo);
   useEffect(() => {
     const handleTacheAdduction = async () => {
@@ -18,6 +19,10 @@ const TasksList = (props) => {
     if (myTacheAdduction) {
       dispatch(setBaseTacheAdduction(myTacheAdduction))
     }
+    console.log("temporaire ====================================")
+    console.log(tacheTemporaire)
+    console.log("base =========================================")
+    console.log(baseTasks)
   }, [myTacheAdduction, dispatch])
   return (
     <>
