@@ -30,4 +30,4 @@ const temporaireTacheSlice = createSlice(
   }
 )
 export const { addTask, toggleTask, deleteTask, setTemporaryTask } = temporaireTacheSlice.actions;
-export default temporaireTacheSlice.reducer
+export default temporaireTacheSlice.reducer 
