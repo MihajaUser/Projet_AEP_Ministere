@@ -19,6 +19,6 @@ export const deleteTacheAdduction = (id) => {
 
 
 export const updateTacheAdduction = (tache) => {
-  const data = Axios.put('http://localhost:8080/api/tacheAdduction/modifier/' + tache.id, { "etat": !tache.etat })
+  const data = Axios.put('http://localhost:8080/api/tacheAdduction/modifier/' + tache.id, { "etat": tache.etat })
 }
 

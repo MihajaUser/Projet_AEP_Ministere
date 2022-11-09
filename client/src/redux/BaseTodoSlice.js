@@ -45,8 +45,7 @@ const baseTodoSlice = createSlice(
         const aAjouter = getNouveauTache(nouveau, ancien)
         const aModifier = getTacheAModifier(nouveau, ancien)
         const aSupprimer = getTacheASupprimer(nouveau, ancien)
-        console.log("aModifier =================================")
-        console.log(aModifier)
+
         if (aModifier.length > 0) {
           console.log("modifier base")
           aModifier.map((element) => (

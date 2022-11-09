@@ -20,7 +20,7 @@ const TasksList = (props) => {
   const goSave = (event) => {
     event.preventDefault();
     dispatch(saveChange({ "ancien": baseTasks, "nouveau": tacheTemporaire }))
-    // window.location.reload();
+    window.location.reload();
   }
   useEffect(() => {
     setPourcentage(Math.trunc((doneTasks.length / tacheTemporaire.length) * 100))
