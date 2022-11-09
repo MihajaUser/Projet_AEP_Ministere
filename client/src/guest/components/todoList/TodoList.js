@@ -1,11 +1,16 @@
-import App from './App';
+import "./App.css";
+import TaskForm from "./TaskForm";
+import TasksHeader from "./TasksHeader";
+import TasksList from "./TasksList";
 
-
-function TodList() {
+export default function TodList() {
   return (
-    <div>
-      <App />
+    <div className="container">
+      <article>
+        <TasksHeader />
+        <TaskForm />
+        <TasksList />
+      </article>
     </div>
   );
 }
-export default TodList;

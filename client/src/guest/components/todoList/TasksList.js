@@ -14,11 +14,17 @@ const TasksList = (props) => {
   const [tacheLocal, setTacheLocal] = useState();
   const baseTasks = useSelector((state) => state.baseTodo);
   const tacheTemporaire = useSelector((state, key) => state.temporaireTache)
+  const doneTasks = tacheTemporaire.filter((t) => t.etat === true);
+  const [pourcentage, setPourcentage] = useState(0)
+
   const goSave = (event) => {
     event.preventDefault();
     dispatch(saveChange({ "ancien": baseTasks, "nouveau": tacheTemporaire }))
-    window.location.reload();
+    // window.location.reload();
   }
+  useEffect(() => {
+    setPourcentage(Math.trunc((doneTasks.length / tacheTemporaire.length) * 100))
+  })
 
   useEffect(() => {
     const handleTacheAdduction = async () => {
@@ -31,17 +37,20 @@ const TasksList = (props) => {
       dispatch(setTemporaryTask(tacheLocal))
       dispatch(setBaseTacheAdduction(tacheLocal))
     }
+
   }, [tacheLocal, dispatch])
 
   return (
     <>
+      <br></br>
+      <ProgressBar now={pourcentage} label={`${pourcentage}%`} />
+      <br></br>
       {tacheTemporaire.map((t) => (
         <TaskItem
           task={t}
           key={t.id}
         />
       ))}
-      <br></br>
       <br></br>
       <form onSubmit={goSave} >
         <Button type="submit" variant="success"> Valider modification </Button>{' '}
