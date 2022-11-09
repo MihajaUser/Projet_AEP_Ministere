@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { map } from "highcharts";
 import { element } from "prop-types";
 import { addTacheAdduction, deleteTacheAdduction, updateTacheAdduction } from "../service/TacheAdductionS.js";
 
@@ -16,12 +17,11 @@ function getTacheAModifier(nouveau, ancien) {
   console.log("nouveau ===========================")
   console.log(nouveau)
   const result = []
-  // for (var i = 0; i < ancien.length; i++) {
-  //   if (ancien[i].etat != nouveau[i].etat) {
-  //     result.push(ancien[i])
-  //   }
-  // }
-  return result;
+  return nouveau.filter(object1 => {
+    return ancien.some(object2 => {
+      return object1.id === object2.id && object1.etat !== object2.etat;
+    });
+  });
 }
 function getTacheASupprimer(nouveau, ancien) {
   return ancien.filter(object1 => {
@@ -48,10 +48,10 @@ const baseTodoSlice = createSlice(
         console.log("aModifier =================================")
         console.log(aModifier)
         if (aModifier.length > 0) {
-          //   console.log("modifier base")
-          // aModifier.map((element) => (
-          //   updateTacheAdduction(element)
-          // ))
+          console.log("modifier base")
+          aModifier.map((element) => (
+            updateTacheAdduction(element)
+          ))
         }
         if (aAjouter.length > 0) {
           console.log("ajouter base")
