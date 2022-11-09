@@ -43,7 +43,7 @@ const TasksList = (props) => {
   return (
     <>
       <br></br>
-      <ProgressBar now={pourcentage} label={`${pourcentage}%`} />
+      <ProgressBar variant="primary" now={pourcentage} label={`${pourcentage}%`} />
       <br></br>
       {tacheTemporaire.map((t) => (
         <TaskItem

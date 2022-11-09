@@ -8,6 +8,7 @@ function getNouveauTache(array1, array2) {
     });
   });
 }
+
 function getTacheAModifier(nouveau, ancien) {
   const result = []
   for (var i = 0; i < ancien.length; i++) {
@@ -42,7 +43,6 @@ const baseTodoSlice = createSlice(
             addTacheAdduction(element)
           ))
         }
-
       },
       setBaseTacheAdduction: (state, action) => {
         state.tacheAdduction = (action.payload)
