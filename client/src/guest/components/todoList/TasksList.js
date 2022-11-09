@@ -1,5 +1,6 @@
 import TaskItem from "./TaskItem";
 import React, { useEffect, useState } from "react";
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import { getTacheAdduction } from "./../../../service/TacheAdductionS";
 import { setTemporaryTask } from "../../../redux/TemporaireTacheSlice"
 import { setBaseTacheAdduction } from "../../../redux/BaseTodoSlice"
@@ -8,19 +9,17 @@ import { useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 import { saveChange } from "../../../redux/BaseTodoSlice";
 
-
 const TasksList = (props) => {
   const dispatch = useDispatch();
   const [tacheLocal, setTacheLocal] = useState();
   const baseTasks = useSelector((state) => state.baseTodo);
   const tacheTemporaire = useSelector((state, key) => state.temporaireTache)
-
-
   const goSave = (event) => {
     event.preventDefault();
     dispatch(saveChange({ "ancien": baseTasks, "nouveau": tacheTemporaire }))
     window.location.reload();
   }
+
   useEffect(() => {
     const handleTacheAdduction = async () => {
       const tA = await getTacheAdduction();
@@ -33,6 +32,7 @@ const TasksList = (props) => {
       dispatch(setBaseTacheAdduction(tacheLocal))
     }
   }, [tacheLocal, dispatch])
+
   return (
     <>
       {tacheTemporaire.map((t) => (
