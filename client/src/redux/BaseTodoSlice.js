@@ -1,36 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { map } from "highcharts";
-import { element } from "prop-types";
 import { addTacheAdduction, deleteTacheAdduction, updateTacheAdduction } from "../service/TacheAdductionS.js";
-
-function getNouveauTache(nouveau, ancien) {
-  return nouveau.filter(object1 => {
-    return !ancien.some(object2 => {
-      return object1.id === object2.id;
-    });
-  });
-}
-
-function getTacheAModifier(nouveau, ancien) {
-  console.log("ancien ===========================")
-  console.log(ancien)
-  console.log("nouveau ===========================")
-  console.log(nouveau)
-  const result = []
-  return nouveau.filter(object1 => {
-    return ancien.some(object2 => {
-      return object1.id === object2.id && object1.etat !== object2.etat;
-    });
-  });
-}
-function getTacheASupprimer(nouveau, ancien) {
-  return ancien.filter(object1 => {
-    return !nouveau.some(object2 => {
-      return object1.id === object2.id;
-    });
-  });
-
-}
 
 const baseTodoSlice = createSlice(
   {
@@ -76,5 +45,29 @@ const baseTodoSlice = createSlice(
     }
   }
 )
+function getNouveauTache(nouveau, ancien) {
+  return nouveau.filter(object1 => {
+    return !ancien.some(object2 => {
+      return object1.id === object2.id;
+    });
+  });
+}
+
+function getTacheAModifier(nouveau, ancien) {
+  return nouveau.filter(object1 => {
+    return ancien.some(object2 => {
+      return object1.id === object2.id && object1.etat !== object2.etat;
+    });
+  });
+}
+
+function getTacheASupprimer(nouveau, ancien) {
+  return ancien.filter(object1 => {
+    return !nouveau.some(object2 => {
+      return object1.id === object2.id;
+    });
+  });
+
+}
 export const { saveChange, setBaseTacheAdduction, autreReducer } = baseTodoSlice.actions;
 export default baseTodoSlice.reducer
