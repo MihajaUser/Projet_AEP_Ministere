@@ -2,17 +2,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
 import { BiAnalyse, BiSearch } from "react-icons/bi";
-import { BiCog } from "react-icons/bi";
-import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
-import { BsCartCheck } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import AddLocationRoundedIcon from '@mui/icons-material/AddLocationRounded';
 import IconRoute from '@mui/icons-material/Route';
 import '../../App.css'
-
+import BloodtypeIcon from '@mui/icons-material/Bloodtype';
 
 const routes = [
   {
@@ -22,30 +18,37 @@ const routes = [
   },
   {
     path: "formulaire",
-    name: "Ajout formulaire",
+    name: "Ajout de projet ",
     icon: < AddLocationRoundedIcon />,
     subRoutes: [
       {
         path: "formulaire",
-        name: "Adduction",
-        icon: <FaUser />,
-      },
-      {
-        path: "formulaire",
         name: "Canalisation",
-        icon: <FaUser />,
+        icon: <IconRoute />,
       },
       {
         path: "adduction",
-        name: "Carte d'adduction",
-        icon: <FaUser />,
+        name: "Adduction",
+        icon: <BloodtypeIcon />,
       },
     ],
   },
   {
     path: "liste",
-    name: "CRUD des projets",
+    name: "Listes des projets",
     icon: <BiAnalyse />,
+    subRoutes: [
+      {
+        path: "listeCanalisation",
+        name: "Canalisation",
+        icon: <IconRoute />,
+      },
+      {
+        path: "liste",
+        name: "Adduction",
+        icon: <BloodtypeIcon />,
+      },
+    ],
   },
   {
 

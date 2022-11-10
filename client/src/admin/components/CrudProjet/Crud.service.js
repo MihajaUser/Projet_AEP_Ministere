@@ -13,6 +13,12 @@ export const CrudService = {
     },
     supprimer: (id) => {
         return axios.delete(backUrl + "/api/projet/supprimer/"+id);
+    },
+    ModifierProjet: (id) => {
+        return axios.put(backUrl + "/api/projet/modifier/"+id);
+    },
+    getById: (id) => {
+        return axios.get(backUrl + "/api/projet/detail/"+id);
     }
 
 }

@@ -2,9 +2,8 @@ import {Row,Col,Table} from 'react-bootstrap';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import styled from 'styled-components';
-import { CrudService } from './Crud.service.js';
+import { CrudCanalService } from './../../../service/CrudCanal.service.js';
 import { useState, useEffect} from 'react';
-import { Link } from 'react-router-dom'
 const ModalContent = styled.div`     
   display: flex;
   flex-direction: column;
@@ -25,11 +24,10 @@ const ModalContent = styled.div`
   }
 `;
 
-function CrudProjet() {
+function CrudCanal() {
   const [listeProjet , setListeProjet] = useState([]);
   const listeProjets = async () => {
-    const response = await CrudService. getAllProjet();
-    console.log(response);
+    const response = await CrudCanalService. getAllCanalisation();
     if(response.status === 200) {
       setListeProjet(response.data);
     }
@@ -40,7 +38,7 @@ function CrudProjet() {
    useEffect(() => {listeProjets()},[]);
    
   const onClikDelete = async (id) => {
-   const response = await CrudService.supprimer(id);
+   const response = await CrudCanalService.supprimer(id);
     if(response){
       alert("Projet supprimer");
       listeProjets();
@@ -50,19 +48,15 @@ function CrudProjet() {
 
     <ModalContent>  
     <Row>
-     <Col xs={3} > 
-     <h4>Liste des projets d'adduction</h4>
+     <Col xs={16} > 
+     <h4>Liste des projets de Canalisation</h4>
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
           {/* <th>Numéro</th> */}
           <th>Numero  de projet</th>
-          <th>Nom  de projet</th>
-          <th>Localité</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
-          <th>Nombre bénéficiaire</th>
-          <th>Etat d'ouvrage</th>
+          <th>Début de localité</th>
+          <th>Fin de localité</th>
           <th colSpan="2">Action</th>
         </tr>
       </thead>
@@ -73,13 +67,9 @@ function CrudProjet() {
               return(
                 <tr>
                 <td>{item.id}</td>
-                <td>{item.utilisation}</td>
-                <td>{item.localite}</td>
-                <td>{item.latitude}</td>
-                <td>{item.longitude}</td>
-                <td>{item.nb_beneficiaire}</td>
-                <td>{item.etat_ouvrage}</td>
-                <td><Link to={"modifier/"+item.id +"/"+item.latitude+"/"+item.longitude+"/"+item.nb_beneficiaire+"/"+item.etat_ouvrage}><UpdateIcon /></ Link></td>
+                <td>{item.debutLocalite}</td>
+                <td>{item.finLocalite}</td>
+                <td><UpdateIcon /></td>
                 <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                 </tr>
               )
@@ -95,4 +85,4 @@ function CrudProjet() {
   );
 }
 
-export default CrudProjet
+export default CrudCanal;

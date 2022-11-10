@@ -19,5 +19,7 @@ module.exports = function (app) {
  //get All projet
   app.get("/api/projet/projets", controlerProjet.getAllProjet);
   //modifier un projet
-  app.put("/api/projet/modifier/:id", controlerProjet.ModifierProjet)
+  app.put("/api/projet/modifier/:id", controlerProjet.ModifierProjet);
+  //detail d'un projet
+  app.get("/api/projet/detail/:id" ,controlerProjet.getById)
 }
