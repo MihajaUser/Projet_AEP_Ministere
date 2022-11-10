@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Loading.css'
 const Loading = () => {
+  const [seconds, setSeconds] = useState(0);
   return (
     <div>
       <Modal className="LoadingBody" show={true}>

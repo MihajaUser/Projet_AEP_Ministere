@@ -36,7 +36,6 @@ const MapEtape1 = (props) => {
     layers: [tileRef.current],
   };
 
-  // Map creation:
   useEffect(() => {
     mapRef.current = L.map('map', mapParams);
     mapRef.current.on('click', (e) => {
@@ -61,7 +60,7 @@ const MapEtape1 = (props) => {
     }
   }, [mapInstance]);
 
-  // Toggle marker on button click:
+
   const handleClick = () => {
     if (marker) {
       marker.removeFrom(mapInstance);
