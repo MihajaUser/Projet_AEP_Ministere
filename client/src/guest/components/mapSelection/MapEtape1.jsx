@@ -26,16 +26,20 @@ const MapEtape1 = (props) => {
     center: [-18.865447, 47.519533], zoom: 6, zoomControl: false, zoomSnap: 0.75, layers: [tileRef.current]
   };
 
-  // Map creation:
   useEffect(() => {
     mapRef.current = L.map('map', mapParams);
     mapRef.current.on('click', (e) => {
-      // handleClick();
       setDebutLat(e.latlng.lat);
       setDebutLng(e.latlng.lng);
     });
     setMapInstance(mapRef.current);
   }, []);
+
+  useEffect(() => {
+    if (debutLat != null && debutLng != null) {
+      handleClick();
+    }
+  }, [debutLat, debutLng])
 
   useEffect(() => {
     if (!mapInstance) return;
@@ -46,24 +50,18 @@ const MapEtape1 = (props) => {
     }
   }, [mapInstance]);
 
-  // Toggle marker on button click:
   const handleClick = () => {
-    console.log('manao handleClick')
     if (marker) {
       marker.removeFrom(mapInstance);
       markerRef.current = null;
     } else {
-      markerRef.current = L.marker([-18.865447, 47.519533]).addTo(mapInstance);
+      markerRef.current = L.marker([debutLat, debutLng]).addTo(mapInstance);
     }
     setMarker(markerRef.current);
-
   };
 
   return (
     <>
-      <button onClick={handleClick}>
-        dsaadsad
-      </button>
       <div id="map" style={mapStyles} />
       <div className='CardContainer'>
         <Card className='MyCard'>

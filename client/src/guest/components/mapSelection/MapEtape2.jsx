@@ -47,6 +47,12 @@ const MapEtape1 = (props) => {
   }, []);
 
   useEffect(() => {
+    if (finLat != null && finLng != null) {
+      handleClick();
+    }
+  }, [finLat, finLng])
+
+  useEffect(() => {
     if (!mapInstance) return;
     if (mapInstance) {
       mapInstance.on('zoomstart', () => {
@@ -61,17 +67,13 @@ const MapEtape1 = (props) => {
       marker.removeFrom(mapInstance);
       markerRef.current = null;
     } else {
-      markerRef.current = L.marker([-18.865447, 47.519533]).addTo(mapInstance);
+      markerRef.current = L.marker([finLat, finLng]).addTo(mapInstance);
     }
     setMarker(markerRef.current);
   };
 
   return (
-
     <>
-      <button onClick={handleClick}>
-        {`Click to ${marker ? 'remove' : 'add'} marker`}
-      </button>
       <div id="map" style={mapStyles} />
       <div className='CardContainer'>
         <Card className='MyCard'>
