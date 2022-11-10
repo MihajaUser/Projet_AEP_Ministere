@@ -7,23 +7,18 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import './Citerne2d.css'
 import * as MuiIcons from '@mui/icons-material';
-import Spinner from 'react-bootstrap/Spinner';
-import Modal from 'react-bootstrap/Modal';
-import { CButton, CSpinner } from '@coreui/bootstrap-react';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Loading from '../../../../laoding/Loading';
 
 function Citerne2d() {
   const { latitude, longitude, region, point_eau, infra_eau } = useParams();
-  const [mySpinner, setMyspinner] = useState(true);
   const [altitude, setAltitude] = useState(0);
   const [show, setShow] = useState(true);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const canvas = useRef();
   let ctx = null;
   useEffect(() => {
     drawPicture();
-  }, []);
+    appearLoading();
+  }, [show]);
   const drawPicture = () => {  // initialize the canvas context
     // dynamically assign the width and height to canvas
     const canvasEle = canvas.current;
@@ -73,8 +68,7 @@ function Citerne2d() {
     drawFillRect(lamer, { backgroundColor: 'rgb(99, 128, 191)' });
     getAltitude(latitude, longitude).then(rep => {
       //text altitude
-      //  setShow(false)
-      setMyspinner(false)
+      setShow(false)
       console.log(rep.data.results[0].elevation);
       setAltitude(rep.data.results[0].elevation);
       const unite = 50
@@ -97,7 +91,11 @@ function Citerne2d() {
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(x, y, w, h);
   }
-
+  function appearLoading() {
+    if (show) {
+      return <Loading />
+    }
+  }
   return (
     <div className="App">
       <canvas className="MyCanvas" ref={canvas}></canvas>
@@ -114,13 +112,7 @@ function Citerne2d() {
             <Button className='MyButton2d '  ><MuiIcons.FmdGood />   CARTE</Button>
           </Link>
         </Card>
-        <Modal className="LoadingBody" show={show} onHide={handleClose}>
-          <Modal.Header className="LoadingHeader" >
-            <Spinner animation="border" role="status" style={{ width: "5rem", height: "5rem", color: "rgb(24, 99, 197)" }}>
-            </Spinner>
-            <h2  >Chargement...</h2>
-          </Modal.Header>
-        </Modal>
+        {appearLoading()}
       </div>
     </div>
   );
