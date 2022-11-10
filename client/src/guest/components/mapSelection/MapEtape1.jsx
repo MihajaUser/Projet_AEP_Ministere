@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from "react-redux";
 import L from 'leaflet';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
@@ -7,6 +8,7 @@ import * as MuiIcons from '@mui/icons-material';
 import './styles.css'
 
 const MapEtape1 = (props) => {
+  const myStation = useSelector((state) => state.station)
   const [debutLat, setDebutLat] = useState(null);
   const [debutLng, setDebutLng] = useState(null);
   const [mapInstance, setMapInstance] = useState(null);
@@ -34,8 +36,12 @@ const MapEtape1 = (props) => {
     });
     setMapInstance(mapRef.current);
   }, []);
-
   useEffect(() => {
+
+  }, [])
+  useEffect(() => {
+
+
     if (debutLat != null && debutLng != null) {
       handleClick();
     }
