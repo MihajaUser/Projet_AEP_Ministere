@@ -16,6 +16,9 @@ export const CrudService = {
     },
     ModifierProjet: (id) => {
         return axios.put(backUrl + "/api/projet/modifier/"+id);
+    },
+    getById: (id) => {
+        return axios.get(backUrl + "/api/projet/detail/"+id);
     }
 
 }

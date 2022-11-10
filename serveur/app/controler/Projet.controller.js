@@ -104,7 +104,7 @@ exports.getById = (req,res) => {
     { where: {id: req.params.id} }
   )
   .then(rep => {
-    res.send({ rep })
+    res.send(rep )
   }
   )
     .catch(err => {

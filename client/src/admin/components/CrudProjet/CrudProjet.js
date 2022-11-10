@@ -29,6 +29,7 @@ function CrudProjet() {
   const [listeProjet , setListeProjet] = useState([]);
   const listeProjets = async () => {
     const response = await CrudService. getAllProjet();
+    console.log(response);
     if(response.status === 200) {
       setListeProjet(response.data);
     }
@@ -49,7 +50,7 @@ function CrudProjet() {
 
     <ModalContent>  
     <Row>
-     <Col xs={6} > 
+     <Col xs={3} > 
      <h4>Liste des projets d'adduction</h4>
     <Table striped bordered hover size="sm">
       <thead>
@@ -57,13 +58,11 @@ function CrudProjet() {
           {/* <th>Numéro</th> */}
           <th>Numero  de projet</th>
           <th>Nom  de projet</th>
-          <th>Région</th>
-          <th>District</th>
-          <th>Commune</th>
-          <th>Fokontany</th>
           <th>Localité</th>
           <th>Latitude</th>
           <th>Longitude</th>
+          <th>Nombre bénéficiaire</th>
+          <th>Etat d'ouvrage</th>
           <th colSpan="2">Action</th>
         </tr>
       </thead>
@@ -75,14 +74,12 @@ function CrudProjet() {
                 <tr>
                 <td>{item.id}</td>
                 <td>{item.utilisation}</td>
-                <td>{item.region}</td>
-                <td>{item.district}</td>
-                <td>{item.commune}</td>
-                <td>{item.fokontany}</td>
                 <td>{item.localite}</td>
                 <td>{item.latitude}</td>
                 <td>{item.longitude}</td>
-                <td><Link to={"modifier/"+item.id +"/"+item.latitude+"/"+item.longitude}><UpdateIcon /></ Link></td>
+                <td>{item.nb_beneficiaire}</td>
+                <td>{item.etat_ouvrage}</td>
+                <td><Link to={"modifier/"+item.id +"/"+item.latitude+"/"+item.longitude+"/"+item.nb_beneficiaire+"/"+item.etat_ouvrage}><UpdateIcon /></ Link></td>
                 <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                 </tr>
               )

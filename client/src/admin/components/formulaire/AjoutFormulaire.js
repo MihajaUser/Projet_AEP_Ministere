@@ -124,11 +124,10 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group>
                             <Form.Label>Utilisation</Form.Label>
-                            
                             <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setUtilisation(e.target.value) }}>
-                              <option>Veuillez choisir</option>
-                              <option value="1">Réservoir d'eau</option>
-                              <option value="3">Pompe</option>
+                              <option>Choisissez</option>
+                              <option value="Réservoir d'eau">Réservoir d'eau</option>
+                              <option value="Pompe">Pompe</option>
                             </Form.Select>
                           </Form.Group>
                         </Col>
@@ -136,11 +135,12 @@ const CloseModalButton = styled(MdClose)`
                           <Form.Group className="mb-3">
                             <Form.Label>Infrastru d'eau</Form.Label>
                             <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setInfra (e.target.value) }}>
-                              <option value="1">AEPG</option>
-                              <option value="2">AEPP</option>
-                              <option value="3">AEPPp</option>
-                              <option value="2">FPMH</option>
-                              <option value="2">PPMH</option>
+                              <option>Choisissez</option>
+                              <option value="AEPG">AEPG</option>
+                              <option value="AEPP">AEPP</option>
+                              <option value="AEPPp">AEPPp</option>
+                              <option value="FPMH">FPMH</option>
+                              <option value="PPMH">PPMH</option>
                             </Form.Select>
                           </Form.Group>
                         </Col>
@@ -148,12 +148,13 @@ const CloseModalButton = styled(MdClose)`
                           <Form.Group className="mb-3">
                             <Form.Label>Point d'eau</Form.Label>
                             <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setPointEau (e.target.value) }}>
-                              <option value="1">BF</option>
-                              <option value="2">BP</option>
-                              <option value="3">BS</option>
-                              <option value="2">FPMH</option>
-                              <option value="2">MONO</option>
-                              <option value="2">PPMH</option>
+                              <option>Choisissez</option>
+                              <option value="BF">BF</option>
+                              <option value="BF">BP</option>
+                              <option value="BS">BS</option>
+                              <option value="FPMH">FPMH</option>
+                              <option value="MONO">MONO</option>
+                              <option value="PPMH">PPMH</option>
                             </Form.Select>
                           </Form.Group>
                         </Col>
@@ -162,19 +163,51 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Région</Form.Label>
-                            <Form.Control type="text" placeholder="ex : Alaotra Mangoro"   onChange ={(e)=>{ setRegion (e.target.value) }}/>
-                          </Form.Group>
+                            <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setRegion (e.target.value) }}>
+                            <option>Choisissez</option>
+                              <option value="Analamanga">Analamanga</option>
+                              <option value="Bongolava">Bongolava</option>
+                              <option value="Itasy">Itasy</option>
+                              <option value="Vakinakaratra">Vakinakaratra</option>
+                              <option value="Diana">Diana</option>
+                              <option value="Sava">Sava</option>
+                              <option value="Amoron'i Mania">Amoron'i Mania</option>
+                              <option value="Atsimo Atsinanana">Atsimo Atsinanana</option>
+                              <option value="Haute Matsiatra">Haute Matsiatra</option>
+                              <option value="Ihorombe">Ihorombe</option>
+                              <option value="Vatovavy Fitovinany">Vatovavy Fitovinany</option>
+                              <option value="Betsiboka">Betsiboka</option>
+                              <option value="Boeny">Boeny</option>
+                              <option value="Melaky">Melaky</option>
+                              <option value="Sofia">Sofia</option>
+                              <option value="Alaotra Mangoro">Alaotra Mangoro</option>
+                              <option value="Analanjirofo">Analanjirofo</option>
+                              <option value="Atsinanana">Atsinanana</option>
+                              <option value="Androy">Androy</option>
+                              <option value="Anosy">Anosy</option>
+                              <option value="Atsimo Andrefana">Atsimo Andrefana</option>
+                              <option value="Menabe">Menabe</option>
+                              </Form.Select>
+                            </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>District</Form.Label>
-                            <Form.Control type="text" placeholder="ex : Ambatondrazaka"  onChange ={(e)=>{ setDistrict (e.target.value)}}/>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setDistrict (e.target.value)}}>
+                            <option>Choisissez</option>
+                              <option value="Ambohidratrimo">Ambohidratrimo</option>
+                              <option value="Andramasina">Andramasina</option>
+                            </Form.Select>
                           </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Commune</Form.Label>
-                            <Form.Control type="text" placeholder="ex : Ambandrika"  onChange ={(e)=>{ setCommune (e.target.value) }}/>
+                            <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setCommune (e.target.value) }}>
+                            <option>Choisissez</option>
+                              <option value="Ambato">Ambato</option>
+                              <option value="Ambatolampy">Ambatolampy</option>
+                            </Form.Select>
                           </Form.Group>
                         </Col>
                       </Row>
@@ -182,7 +215,13 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Fokontany</Form.Label>
-                            <Form.Control type="text" placeholder="ex : Ambandrika"  onChange ={(e)=>{ setFokontany (e.target.value) }}/>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setFokontany (e.target.value) }}>
+                            <option>Choisissez</option>
+                              <option value="Ambanimaso">Ambanimaso</option>
+                              <option value="Ambato">Ambato</option>
+                            </Form.Select>
+                          
+                            
                           </Form.Group>
                         </Col>
                         <Col>
