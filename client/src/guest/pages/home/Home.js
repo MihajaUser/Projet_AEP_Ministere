@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { Outlet } from "react-router";
@@ -6,18 +7,18 @@ import { useDispatch } from "react-redux";
 import { getStation } from "./../../../service/StationS"
 import { getCanalisation } from "./../../../service/Canalisation"
 import { setStation } from "../../../redux/StationSlice"
-import { useState } from "react";
 import { setCanalisation } from "../../../redux/CanalisationSlice";
 const Home = () => {
   const dispatch = useDispatch();
   const [myStation, setMystation] = useState();
+
   useEffect(() => {
-    const hamdleGetData = async () => {
+    const handleStation = async () => {
       const x = await getStation();
       setMystation(x.data);
     }
     if (!myStation)
-      hamdleGetData()
+      handleStation()
     if (myStation) {
       dispatch(setStation(myStation))
     }
@@ -26,15 +27,15 @@ const Home = () => {
   // mamorona variable en local alony a vide izy eto
   const [myCanalisation, setMyCanalisation] = useState();
   useEffect(() => {
-    const getDataCanalisation = async  () => {
+    const getDataCanalisation = async () => {
       const y = await getCanalisation();
       setMyCanalisation(y.data);
     }
     if (!myCanalisation)
-    getDataCanalisation()
-  if (myCanalisation) {
-    dispatch(setCanalisation(myCanalisation))
-  }
+      getDataCanalisation()
+    if (myCanalisation) {
+      dispatch(setCanalisation(myCanalisation))
+    }
   }, [myCanalisation, dispatch])
 
   return (
@@ -45,4 +46,5 @@ const Home = () => {
     </div>
   );
 };
+// export const 
 export default Home;

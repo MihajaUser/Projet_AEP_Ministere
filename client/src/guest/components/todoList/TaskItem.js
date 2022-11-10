@@ -1,18 +1,21 @@
-const TaskItem = (props) => {
-  const { task, toggleTask, deleteTask } = props;
+import { useDispatch } from "react-redux";
+import { toggleTask, deleteTask } from "../../../redux/TemporaireTacheSlice";
 
+const TaskItem = (props) => {
+  const { task } = props;
+  const dispatch = useDispatch();
   return (
     <div>
       <label>
         <input
           type="checkbox"
-          checked={task.done}
-          onChange={() => toggleTask(task.id)}
+          checked={task.etat}
+          onChange={() => dispatch(toggleTask(task.id))}
         />
-        {task.text}
+        {task.nom}
 
         <span
-          onClick={() => deleteTask(task.id)}
+          onClick={() => dispatch(deleteTask(task.id))}
           role="button"
           style={{ padding: "5px", marginLeft: "20px" }}
         >

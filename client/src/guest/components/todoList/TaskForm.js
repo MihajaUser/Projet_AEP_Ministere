@@ -1,18 +1,17 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../../redux/TemporaireTacheSlice";
 
 const TaskForm = (props) => {
+  const dispatch = useDispatch();
   const [text, setText] = useState("");
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    props.addTask(text);
-
+    dispatch(addTask(text));
     setText("");
   };
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       <input
         type="text"
         placeholder="Ajouter une tâche"
