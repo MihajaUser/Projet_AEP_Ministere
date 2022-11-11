@@ -14,15 +14,15 @@ exports.message = (req, res, next) => {
 exports.getAllCanalisation = (req, res) => {
   console.log('test');
   model.Canalisation.findAll()
-  .then((rep) => { 
-    res.send(rep); 
-  })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message || "Misy erreur"
+    .then((rep) => {
+      res.send(rep);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Misy erreur"
+      });
     });
-  });
 };
 
 exports.AjoutCanalisation = (req, res) => {
@@ -47,12 +47,12 @@ exports.AjoutCanalisation = (req, res) => {
 
 exports.supprimer = (req, res) => {
   model.Canalisation.destroy(
-    {where: {id: req.params.id} }
+    { where: { id: req.params.id } }
   )
-  .then(rep => {
-    res.send({ rep })
-  }
-  )
+    .then(rep => {
+      res.send({ rep })
+    }
+    )
     .catch(err => {
       res.status(500).send({ message: err.message });
     });
