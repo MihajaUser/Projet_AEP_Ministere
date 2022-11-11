@@ -23,6 +23,8 @@ import Adduction from './admin/components/formulaire/Adduction'
 import TableauStat from './guest/components/tableauStat/TableauStat';
 import CrudCanal from './admin/components/CrudProjet/CrudCanal';
 import ModifFormulaire from './admin/components/formulaire/ModifFormulaire';
+import AjoutCanal from './admin/components/formulaire/AjoutCanal';
+
 const App = () => {
   return (
     <Provider store={store}>
@@ -44,6 +46,7 @@ const App = () => {
             <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
             <Route path="todoList" element={<TodList />} />
             <Route path="tableauStat" element={<TableauStat />} />
+            
           </Route>
           <Route path="/admin" element={<Admin />}>
             <Route path="" element={<  MapRouting />} />
@@ -52,6 +55,9 @@ const App = () => {
             <Route path="adduction" element={<Adduction />} />
             <Route path="listeCanalisation" element={<CrudCanal />} />
             <Route path="liste/modifier/:idProjet/:latitude/:longitude/:nb_beneficiaire/:etat_ouvrage" element={<ModifFormulaire />} />
+            <Route path="canalisation/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<AjoutCanal />} />
+            <Route path="ajoutCanalisation1" element={<MapEtape1 />} />
+            <Route path="ajoutCanalisation3/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<MapEtape3 />} />
           </Route>
         </Routes>
       </Router>
