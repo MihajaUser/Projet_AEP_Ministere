@@ -53,7 +53,6 @@ function CrudCanal() {
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
-          {/* <th>Numéro</th> */}
           <th>Numero  de projet</th>
           <th>Début de localité</th>
           <th>Fin de localité</th>

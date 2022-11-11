@@ -22,7 +22,7 @@ const routes = [
     icon: < AddLocationRoundedIcon />,
     subRoutes: [
       {
-        path: "formulaire",
+        path: "ajoutCanalisation1",
         name: "Canalisation",
         icon: <IconRoute />,
       },

@@ -2,8 +2,7 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
-import React, { useRef, useEffect, useCallback, useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+import React, { useState } from 'react';
 import CrudService from '../CrudProjet/Crud.service';
 import { useParams } from 'react-router-dom';
 
