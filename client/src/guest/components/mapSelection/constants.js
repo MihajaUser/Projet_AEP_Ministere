@@ -1,5 +1,4 @@
 import L from "leaflet";
-
 export default L.icon({
   iconSize: [25, 41],
   iconAnchor: [10, 41],
