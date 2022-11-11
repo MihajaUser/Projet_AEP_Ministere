@@ -39,7 +39,6 @@ const Map = (props) => {
         <Marker position={{ lat: s.latitude, lng: s.longitude }} icon={markerIcon}>
           <Popup>
             Usine de madagascar
-
             <a href={`citerne2d/${s.latitude} /${s.longitude}/${s.region}/${s.point_eau}/${s.infra_eau}`}> En savoir plus</a>
           </Popup>
         </Marker>))
