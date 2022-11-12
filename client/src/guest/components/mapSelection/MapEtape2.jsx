@@ -62,6 +62,11 @@ const MapEtape1 = (props) => {
       });
     }
   }, [mapInstance]);
+  useEffect(() => {
+    console.log("fin====================================")
+    console.log(finLat)
+    console.log(finLng)
+  }, [myStation, finLat, finLng])
 
 
   const handleClick = () => {
@@ -86,12 +91,6 @@ const MapEtape1 = (props) => {
     setMarker(markerRef.current);
   };
 
-  useEffect(() => {
-    console.log("fin====================================")
-    console.log(finLat)
-    console.log(finLng)
-  }, [myStation, finLat, finLng])
-
   const nearestReservoir = (onePoint, tab) => {
     var iFrom;
     var iDistance = 0
@@ -114,7 +113,6 @@ const MapEtape1 = (props) => {
   }
   return (
     <>
-
       <div id="map" style={mapStyles} />
       <div className='CardContainer'>
         <Card className='MyCard'>
