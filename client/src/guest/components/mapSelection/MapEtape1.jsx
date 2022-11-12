@@ -58,30 +58,33 @@ const MapEtape1 = (props) => {
   }, [])
   const nearestReservoir = () => {
     console.log("nearestReservoir")
-    const myMarkers = L.marker([-18.91555964362533, 47.53035641290226]).addTo(mapRef.current)
-      .bindPopup('Manjaka Miadana')
-      .openPopup();
-
-    //-18.91555964362533, 47.53035641290226 Manjaka miadana
-    //-18.797947146425496, 47.432852749253016 Ambohidratrimo
-    //-18.978555548342587, 47.54477596879404 Andoharanofotsy
-    //-18.74398681584575, 47.6244268489582 talata-volonodry
-    //-18.93114847245293, 47.520743375641054 plus pres
-    //result lat: -18.782285590581477, lng: 47.48846192206132,
-
-    // -18.91518120079414, lng: 47.52959341140053, distance: 0.40613846605345916}
     const tab = [
-      [-18.797947146425496, 47.432852749253016],
-      [-18.797947146425496, 47.432852749253016],
-      [-18.74398681584575, 47.6244268489582],
-      [-18.93114847245293, 47.520743375641054]
+      { "lat": -18.97633509237672, "lng": 47.532593368495704, "nom": "fidy Andoharanofotsy" },
+      { "lat": -18.979973950086347, "lng": 47.533121489658186, "nom": "pharmacie andoharanofotsy" },
+      { "lat": -18.93891790675198, "lng": 47.521987974044215, "nom": " gastro sonerana" },
+      { "lat": - 12.303105648724799, "lng": 49.29392259399195, "nom": " Antsiranana" },
+      { "lat": - 18.914889469284635, "lng": 47.52474209363391, "nom": " Saint michel " },
+      { "lat": -18.915728372526345, "lng": 47.531181417949941, "nom": " Andohalo " }
     ]
-    let closest_latlng = L.GeometryUtil.closest(mapRef.current, tab, [-18.91555964362533, 47.53035641290226])
-    console.log(closest_latlng)
-    //=================================================================
-    //let closest_latlng = GeometryUtil.closest(mapRef.current, myMarkers, [-18.91555964362533, 47.53035641290226]);
-
-
+    var iFrom;
+    var jFrom;
+    var iDistance = 0
+    var jDistance = 0
+    var minimum = tab[0];
+    for (let i = 0; i < tab.length; i++) {
+      for (let j = 0; j < tab.length; j++) {
+        iFrom = L.latLng([tab[i].lat, tab[i].lng])
+        jFrom = L.latLng([tab[j].lat, tab[j].lng])
+        iDistance = iFrom.distanceTo(([-18.91555964362533, 47.53035641290226]))
+        jDistance = jFrom.distanceTo(([-18.91555964362533, 47.53035641290226]))
+        if (iDistance > jDistance) {
+          minimum = tab[j]
+        }
+      }
+      console.log("le minimum")
+      console.log(minimum)
+      return minimum;
+    }
 
   }
 
