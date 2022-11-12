@@ -36,12 +36,8 @@ const MapEtape1 = (props) => {
     });
     setMapInstance(mapRef.current);
   }, []);
+
   useEffect(() => {
-
-  }, [])
-  useEffect(() => {
-
-
     if (debutLat != null && debutLng != null) {
       handleClick();
     }
@@ -55,6 +51,15 @@ const MapEtape1 = (props) => {
       });
     }
   }, [mapInstance]);
+
+  useEffect(() => {
+    nearestReservoir()
+  }, [])
+  const nearestReservoir = () => {
+    console.log("nearestReservoir")
+    // const coordinates_array = bicycle_layer.getLayers().map(l => l.feature.geometry.coordinates)
+    // let closest_latlng = L.GeometryUtil.closest(mapInstance, coordinates_array, [-40.5512, 80.9454])
+  }
 
   const handleClick = () => {
     if (marker) {
