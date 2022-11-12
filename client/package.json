@@ -31,6 +31,7 @@
     "highcharts": "^10.3.1",
     "highcharts-react-official": "^3.1.0",
     "leaflet": "latest",
+    "leaflet-geometryutil": "^0.10.1",
     "leaflet-routing-machine": "^3.2.12",
     "lrm-google": "^1.0.1",
     "prop-types": "^15.8.1",

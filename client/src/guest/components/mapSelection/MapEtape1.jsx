@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import * as MuiIcons from '@mui/icons-material';
+import * as GeometryUtil from "leaflet-geometryutil";
 import './styles.css'
 
 const MapEtape1 = (props) => {
@@ -57,8 +58,26 @@ const MapEtape1 = (props) => {
   }, [])
   const nearestReservoir = () => {
     console.log("nearestReservoir")
-    // const coordinates_array = bicycle_layer.getLayers().map(l => l.feature.geometry.coordinates)
-    // let closest_latlng = L.GeometryUtil.closest(mapInstance, coordinates_array, [-40.5512, 80.9454])
+    const myMarkers = L.marker([-18.91555964362533, 47.53035641290226]).addTo(mapRef.current)
+      .bindPopup('Manjaka Miadana')
+      .openPopup();
+
+    //-18.91555964362533, 47.53035641290226 Manjaka miadana
+    //-18.797947146425496, 47.432852749253016 Ambohidratrimo
+    //-18.978555548342587, 47.54477596879404 Andoharanofotsy
+    //-18.74398681584575, 47.6244268489582 talata-volonodry
+
+    // const tab = [
+    //   { "lat": -18.797947146425496, "lng": 47.432852749253016 },
+    //   { "lat": -18.797947146425496, "lng": 47.432852749253016 },
+    //   { "lat": -18.74398681584575, "lng": 47.6244268489582 }]
+    //  let closest_latlng = L.GeometryUtil.closest(mapInstance, tab, [-18.91555964362533, 47.53035641290226])
+
+    //=================================================================
+    //let closest_latlng = GeometryUtil.closest(mapRef.current, myMarkers, [-18.91555964362533, 47.53035641290226]);
+
+
+
   }
 
   const handleClick = () => {
