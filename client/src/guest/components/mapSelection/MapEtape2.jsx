@@ -81,24 +81,12 @@ const MapEtape1 = (props) => {
       marker.removeFrom(mapInstance);
       markerRef.current = null;
     } else {
-      markerRef.current = L.marker([proche.latitude, proche.longitude]).addTo(mapInstance).bindPopup('Suggestion localisation').openPopup();
+      markerRef.current = L.marker([proche.latitude, proche.longitude]).addTo(mapInstance).bindPopup('Reservoir Proche').openPopup();
     }
     setMarker(markerRef.current);
   };
 
   useEffect(() => {
-    // const tab = [
-    //   { "latitude": -18.97633509237672, "longitude": 47.532593368495704, "nom": "fidy Andoharanofotsy" },
-    //   { "latitude": -18.979973950086347, "longitude": 47.533121489658186, "nom": "pharmacie andoharanofotsy" },
-    //   { "latitude": -18.93891790675198, "longitude": 47.521987974044215, "nom": " gastro sonerana" },
-    //   { "latitude": - 12.303105648724799, "longitude": 49.29392259399195, "nom": " Antsiranana" },
-    //   { "latitude": - 18.914889469284635, "longitude": 47.52474209363391, "nom": " Saint michel " },
-    //   { "latitude": -18.915728372526345, "longitude": 47.531181417949941, "nom": " Andohalo " }
-    // ]
-    // var point = { "latitude": -13.90106312051247, "longitude": 48.07552129203595, "nom": " Manjakamiadana" }
-    // const minimum = nearestReservoir(point, myStation.stations)
-    // console.log("le minimum")
-    // console.log(minimum)
     console.log("fin====================================")
     console.log(finLat)
     console.log(finLng)
@@ -124,7 +112,6 @@ const MapEtape1 = (props) => {
     console.log(minimum)
     return minimum;
   }
-
   return (
     <>
 
