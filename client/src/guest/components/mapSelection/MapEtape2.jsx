@@ -39,8 +39,10 @@ const MapEtape1 = (props) => {
   };
 
   useEffect(() => {
+    //initialisation carte
     mapRef.current = L.map('map', mapParams);
     mapRef.current.on('click', (e) => {
+      //click une Deuxieme localisation
       setFinLat(e.latlng.lat);
       setFinLng(e.latlng.lng);
     });
@@ -49,12 +51,14 @@ const MapEtape1 = (props) => {
   }, []);
 
   useEffect(() => {
+    //changer  Deuxieme localisation
     if (finLat != null && finLng != null) {
       handleClick();
     }
   }, [finLat, finLng])
 
   useEffect(() => {
+    //faire zoom
     if (!mapInstance) return;
     if (mapInstance) {
       mapInstance.on('zoomstart', () => {
@@ -70,6 +74,7 @@ const MapEtape1 = (props) => {
 
 
   const handleClick = () => {
+    // placer marker avec click
     if (marker) {
       marker.removeFrom(mapInstance);
       markerRef.current = null;
@@ -79,6 +84,7 @@ const MapEtape1 = (props) => {
     setMarker(markerRef.current);
   };
   const suggestion = () => {
+    // placer marker sur reservoir proche
     const proche = nearestReservoir({ "latitude": urlDebutLat, "longitude": urlDebutLng }, myStation.stations)
     setFinLat(proche.latitude);
     setFinLng(proche.longitude);
@@ -92,6 +98,7 @@ const MapEtape1 = (props) => {
   };
 
   const nearestReservoir = (onePoint, tab) => {
+    //fonction trouver plus proche
     var iFrom;
     var iDistance = 0
     var iMinimum;
