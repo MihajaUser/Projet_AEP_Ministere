@@ -123,7 +123,7 @@ const MapEtape1 = (props) => {
       <div id="map" style={mapStyles} />
       <div className='CardContainer'>
         <Card className='MyCard'>
-          <Button onClick={suggestion}> Reservoir Proche</Button>
+          <Button className='BSuggestion' onClick={suggestion}> Marquer Reservoir Proche</Button>
           ETAPE 2
           <br></br>
           Emmplacement 1  : ville Antananrivo Commune Ambohijatovo
