@@ -5,12 +5,14 @@ import TasksList from "./TasksList";
 
 export default function TodList() {
   return (
-    <div className="container">
-      <article>
-        <TasksHeader />
-        <TaskForm />
-        <TasksList />
-      </article>
+    <div className="Container">
+      <div className="TasksList">
+        <article>
+          <TasksHeader />
+          <TaskForm />
+          <TasksList />
+        </article>
+      </div>
     </div>
   );
 }

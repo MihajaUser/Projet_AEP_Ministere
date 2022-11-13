@@ -1,5 +1,7 @@
 .App {
 	text-align: center;
+	/* background-color: rgb(165, 170, 181);
+	border-radius: 4px; */
 }
 
 .App-logo {
@@ -35,4 +37,15 @@
 	to {
 		transform: rotate(360deg);
 	}
+}
+.Container {
+	background-color: rgb(228, 232, 241);
+	padding: 1%;
+}
+.TasksList {
+	padding: 1%;
+	width: 60%;
+	margin-left: 20%;
+	background-color: rgb(250, 250, 250);
+	border-radius: 4px;
 }
