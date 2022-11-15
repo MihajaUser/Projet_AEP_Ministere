@@ -11,9 +11,15 @@ import {
   Popup,
 } from "react-leaflet";
 
-const markerIcon = new L.Icon({
-  iconUrl: require('../../assets/imagesClient/localisation.png'),
-  iconSize: [20, 20],
+const iconRobinet = new L.Icon({
+  iconUrl: require('../../assets/imagesClient/robinet_bleu.png'),
+  iconSize: [38, 60],
+  shadowSize: [50, 64]
+});
+const iconStation = new L.Icon({
+  iconUrl: require('../../assets/imagesClient/station_rouge.png'),
+  iconSize: [45, 50],
+  shadowSize: [50, 64]
 });
 
 const Map = (props) => {
@@ -22,6 +28,19 @@ const Map = (props) => {
     console.log(myStation)
   }, [myStation])
 
+  function valeurIcon(s) {
+    let myIcon
+    if (s.infra_eau === "aepg") myIcon = iconStation
+    if (s.infra_eau === "fpmh") myIcon = iconRobinet
+    return (
+      <Marker position={{ lat: s.latitude, lng: s.longitude }} icon={myIcon}>
+        <Popup>
+          Usine de madagascar
+          <a href={`citerne2d/${s.latitude} /${s.longitude}/${s.region}/${s.point_eau}/${s.infra_eau}`}> En savoir plus</a>
+        </Popup>
+      </Marker>
+    )
+  }
   return <MapContainer
     doubleClickZoom={false}
     id="mapId"
@@ -35,13 +54,7 @@ const Map = (props) => {
     />
     <ScaleControl />
     <FeatureGroup>
-      {myStation.stations.map((s) => (
-        <Marker position={{ lat: s.latitude, lng: s.longitude }} icon={markerIcon}>
-          <Popup>
-            Usine de madagascar
-            <a href={`citerne2d/${s.latitude} /${s.longitude}/${s.region}/${s.point_eau}/${s.infra_eau}`}> En savoir plus</a>
-          </Popup>
-        </Marker>))
+      {myStation.stations.map((s) => (valeurIcon(s)))
       }
     </FeatureGroup>
   </MapContainer>;
