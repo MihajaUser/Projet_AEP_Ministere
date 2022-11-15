@@ -4,7 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 import Citerne from "./House";
 import "../Page3d.css";
 
-function StationPage(props) {
+function StationPage() {
   return (
     <div className="maPage">
       <Canvas pixelRatio={window.devicePixelRatio} camera={{ position: [5, 5, 5] }}>

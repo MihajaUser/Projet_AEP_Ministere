@@ -102,7 +102,7 @@ function Citerne2d() {
       <div className='CardContainer2d '>
         <Card className='MyCard2d '>
           <br></br>
-          <Link to="/station3d">
+          <Link to="/pump3d">
             <Button className='MyButton2d ' ><MuiIcons.ViewInAr />  3D Vue</Button>
           </Link>
           <br></br>
