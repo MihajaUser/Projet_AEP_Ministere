@@ -22,7 +22,7 @@ export function iconMaison() {
   return (
     new L.Icon({
       iconUrl: require('../../assets/imagesClient/maison_rouge.png'),
-      iconSize: [50, 60],
+      iconSize: [55, 60],
       shadowSize: [50, 64]
     }))
 }
