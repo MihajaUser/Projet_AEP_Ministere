@@ -17,6 +17,7 @@ import MapEtape2 from './guest/components/mapSelection/MapEtape2';
 import MapEtape3 from './guest/components/mapSelection/MapEtape3';
 import Citerne3d from './guest/components/3d/citerne3d/CiternePage';
 import Tuyaux3d from './guest/components/3d/tuyaux3d/TuyauxPage';
+import Station3d from './guest/components/3d/station3d/StationPage';
 import Pump3d from './guest/components/3d/pumb3d/PumpPage';
 import TodList from './guest/components/todoList/TodoList';
 import Adduction from './admin/components/formulaire/Adduction'
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="carte" element={<MapPage />} />
             <Route path="citerne3d" element={<Citerne3d />} />
             <Route path="tuyaux3d" element={<Tuyaux3d />} />
+            <Route path="station3d" element={<Station3d />} />
             <Route path="pump3d" element={<Pump3d />} />
             <Route path="listeProjet" element={<ListeProjet />} />
             <Route path="login" element={<Login />} />
