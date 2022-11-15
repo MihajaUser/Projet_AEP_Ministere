@@ -16,6 +16,6 @@ export default function Legend({ map }) {
       };
       legend.addTo(map);
     }
-  }, [map]); //here add map
+  }, [map]);
   return null;
 }
