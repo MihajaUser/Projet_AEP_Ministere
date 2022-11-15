@@ -7,7 +7,7 @@ import "../Page3d.css";
 function PumpPage() {
   return (
     <div className="maPage">
-      <Canvas pixelRatio={window.devicePixelRatio} camera={{ position: [20, 40, 30] }}>
+      <Canvas pixelRatio={window.devicePixelRatio} camera={{ position: [0, 70, 30] }}>
         <gridHelper args={[10, 10, `white`, `gray`]} position={[0, -10, 0]} />
         <OrbitControls />
         <ambientLight intensity={0.6} />
