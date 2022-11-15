@@ -17,7 +17,7 @@ import MapEtape2 from './guest/components/mapSelection/MapEtape2';
 import MapEtape3 from './guest/components/mapSelection/MapEtape3';
 import Citerne3d from './guest/components/3d/citerne3d/CiternePage';
 import Tuyaux3d from './guest/components/3d/tuyaux3d/TuyauxPage';
-import Station3d from './guest/components/3d/station3d/StationPage';
+import Station3d from './guest/components/3d/station/StationPage';
 import Pump3d from './guest/components/3d/pumb3d/PumpPage';
 import TodList from './guest/components/todoList/TodoList';
 import Adduction from './admin/components/formulaire/Adduction'
