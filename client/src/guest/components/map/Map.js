@@ -20,7 +20,6 @@ const Map = (props) => {
       </Marker>
     )
   }
-
   return (
     <MapContainer doubleClickZoom={false} id="mapId" zoom={5.5} center={{ lat: -18.865447, lng: 47.519533 }} whenCreated={props.setMap} >
       <TileLayer
@@ -33,5 +32,4 @@ const Map = (props) => {
       </FeatureGroup>
     </MapContainer>)
 };
-
 export default Map;
