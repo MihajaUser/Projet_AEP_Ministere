@@ -96,7 +96,6 @@ function Citerne2d() {
     if (infra_eau === "fpmh") { return "/citerne3d" }
     if (infra_eau === "aepg") { return "/station3d" }
   }
-
   function appearLoading() {
     if (show) {
       return <Loading />
