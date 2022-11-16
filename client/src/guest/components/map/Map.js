@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { iconRobinet, iconMaison } from "../icon/Icon";
+import { iconRobinet, iconMaison } from "../icon/IconLeaflet";
 import { MapContainer, TileLayer, ScaleControl, FeatureGroup, Marker, Popup } from "react-leaflet";
 const Map = (props) => {
   const myStation = useSelector((state) => state.station)

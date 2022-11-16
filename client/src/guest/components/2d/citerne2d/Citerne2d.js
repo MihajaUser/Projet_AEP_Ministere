@@ -42,11 +42,12 @@ function Citerne2d() {
       context.drawImage(image2, 580, 100, 100, 100);
     };
     //reservoir.png
+    let monImage = imageValue();
     const reservoir = new Image();
     reservoir.src =
-      require("../../../assets/imagesClient/reservoir.png");
+      require("../../../assets/imagesClient/" + monImage.type + ".png");
     reservoir.onload = () => {
-      context.drawImage(reservoir, 600, 190, 60, 130);
+      context.drawImage(reservoir, monImage.x, monImage.y, monImage.largeur, monImage.hauteur);
     };
     //triangle
     ctx.beginPath();
@@ -96,6 +97,12 @@ function Citerne2d() {
     if (infra_eau === "fpmh") { return "/citerne3d" }
     if (infra_eau === "aepg") { return "/station3d" }
   }
+
+  function imageValue() {
+    if (infra_eau === "fpmh") { return { "type": "reservoir", "x": 600, "y": 190, "largeur": 60, "hauteur": 130 } }
+    if (infra_eau === "aepg") { return { "type": "station", "x": 500, "y": 80, "largeur": 250, "hauteur": 300 } }
+  }
+
   function appearLoading() {
     if (show) {
       return <Loading />
