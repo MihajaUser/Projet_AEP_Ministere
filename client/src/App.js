@@ -24,6 +24,7 @@ import TableauStat from './guest/components/tableauStat/TableauStat';
 import CrudCanal from './admin/components/CrudProjet/CrudCanal';
 import ModifFormulaire from './admin/components/formulaire/ModifFormulaire';
 import AjoutCanal from './admin/components/formulaire/AjoutCanal';
+// import MapAdduction from './admin/components/mapAdduction/MapAdduction';
 
 const App = () => {
   return (
@@ -57,7 +58,9 @@ const App = () => {
             <Route path="liste/modifier/:idProjet/:latitude/:longitude/:nb_beneficiaire/:etat_ouvrage" element={<ModifFormulaire />} />
             <Route path="canalisation/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<AjoutCanal />} />
             <Route path="ajoutCanalisation1" element={<MapEtape1 />} />
+            <Route path="ajoutCanalisation2/:urlDebutLat/:urlDebutLng" element={<MapEtape2 />} />
             <Route path="ajoutCanalisation3/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<MapEtape3 />} />
+            {/* <Route path="carteAdduction" element={<MapAdduction />} /> */}
           </Route>
         </Routes>
       </Router>

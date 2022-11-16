@@ -103,7 +103,7 @@ const CloseModalButton = styled(MdClose)`
       throw new Error("Veuillez taper tous les champs");
     }
     // navigate('/admin/ajoutCanalisation3/',{state : {debutLatitude,debutLongitude,finLatitude,finLongitude}});
-    navigate(`/admin/ajoutCanalisation3/${debutLatitude}/${debutLongitude}/${finLatitude}/${finLongitude}`);
+    navigate(`/admin`);
   }
   return (
     <>
