@@ -21,5 +21,7 @@ module.exports = function (app) {
   //modifier un projet
   app.put("/api/projet/modifier/:id", controlerProjet.ModifierProjet);
   //detail d'un projet
-  app.get("/api/projet/detail/:id" ,controlerProjet.getById)
+  app.get("/api/projet/detail/:id" ,controlerProjet.getById);
+  //nombre projet d'adduction
+  app.get("/api/projet/nbrProjet", controlerProjet.nbrProjet)
 }

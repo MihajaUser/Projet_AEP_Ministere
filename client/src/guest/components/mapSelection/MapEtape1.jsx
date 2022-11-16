@@ -75,7 +75,7 @@ const MapEtape1 = (props) => {
           {` Latitude ${debutLat} longitude ${debutLng}`}
           <br></br>
           <br></br>
-          <Link to={`/ajoutCanalisation2/${debutLat}/${debutLng}`}>
+          <Link to={`/admin/ajoutCanalisation2/${debutLat}/${debutLng}`}>
             <Button className='MyButton' ><MuiIcons.CheckCircleOutline />   Suivant</Button>
           </Link>
         </Card>

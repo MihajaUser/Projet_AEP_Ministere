@@ -1,4 +1,3 @@
-import React from "react";
 import L from "leaflet";
 import "./Style.css";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
@@ -6,7 +5,9 @@ import "leaflet-routing-machine";
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Row, Col } from 'react-bootstrap';
-
+import { CrudService } from './../CrudProjet/Crud.service.js';
+import React, { useEffect , useState } from "react";
+import { CrudCanalService } from './../CrudProjet/CrudCanal.service.js';
 // const style = {
 //   width: "100%",
 //   height: "800px",
@@ -15,78 +16,99 @@ import { Row, Col } from 'react-bootstrap';
 //   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png"
 // });
 const Map = (props) => {
-    const batton = {
+    const [myProjet, setMyProjet] = useState();
+    const [donutsData, setdonutsData] = useState([]);
+//     useEffect(() => {
+//     const getDataProjet = async () => {
+//       const x = await CrudService. nbrProjet();
+//       setMyProjet(x.data);
+//     }
+//     getDataProjet();
+  
+//   }, []);
+ 
+//     useEffect(() => {
+//         console.log(myProjet);
+//     }, [myProjet])  
+// ty le donut anle region
+// useEffect(() => {
+//     CrudService. nbrProjet()
+//         .then(rep => {
+//             // setprobleme(rep.data);
+//             let dataDonutsPb = [];
+//             console.log('cana', rep);
+//             for (let i = 0; i < rep.data.length; i++) dataDonutsPb.push([rep.data[i].name, parseInt(rep.data[i].y)])
+//             setdonutsData(dataDonutsPb);
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         })
+//     }, []);
+// ty le donut anle canalisation
+    useEffect(() => {
+    CrudCanalService. nbrCanalisation()
+        .then(rep => {
+            // setprobleme(rep.data);
+            let dataDonutsPb = [];
+            console.log('cana', rep);
+            for (let i = 0; i < rep.data.length; i++) dataDonutsPb.push([rep.data[i].finLocalite, parseInt(rep.data[i].nombre)])
+            setdonutsData(dataDonutsPb);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }, []);
+    
+    // const region = ["Analamanga","Bongolava","Itasy","Vakinakaratra","Diana","Sava","Amoron'i Mania","Atsimo Atsinanana","Haute Matsiatra","Ihorombe","Vatovavy Fitovinany","Betsiboka","Boeny","Melaky","Sofia","Alaotra Mangoro","Analanjirofo","Atsinanana","Androy","Anosy","Atsimo Andrefana","Menabe"];
+    const [cercleData, setCercleData]= useState([{}]);
+    // anle cercle region
+    useEffect(() => {
+        CrudService. nbrProjet()
+        .then(rep => {
+            // setprobleme(rep.data);
+            let dataCercle = [{}];
+            console.log('MM', rep);
+            for (let i = 0; i < rep.data.length; i++) dataCercle.push([rep.data[i].name,parseInt(rep.data[i].y)])
+        setCercleData(dataCercle);
+        })
+        // .catch(err => {
+        //     console.log(err);
+        // })
+    }, []);
+
+    const cercle = {
         chart: {
-            type: 'column'
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
         },
-        title: false,
-        // {
-        // text: 'Proprietés des taches par mois'
-        // },
-        // subtitle: {
-        //     text: 'Detail Planning'
-        // },
-        xAxis: {
-            categories: [
-                '2010',
-                '2011',
-                '2012',
-                '2013',
-                '2014',
-                '2015',
-                '2016',
-                '2017',
-                '2018',
-                '2019',
-                '2020',
-                '2021'
-            ],
-            crosshair: true
-        },
-        yAxis: {
-            title: {
-                useHTML: true,
-                text: 'Million tonnes CO<sub>2</sub>-equivalents'
-            }
+        title: {
+            text: 'Statistiques des adductions'
         },
         tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
         },
         plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    connectorColor: 'silver'
+                }
             }
         },
         series: [{
-            // const obj = {
-            //     name:,
-            //     data:[]
-            // }
-            name: 'Oil and gas extraction',
-            data: [13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
-                14.32, 14.13, 13.93, 13.21, 12.16]
-    
-        }, {
-            name: 'Manufacturing industries and mining',
-            data: [12.24, 12.24, 11.95, 12.02, 11.65, 11.96, 11.59,
-                11.94, 11.96, 11.59, 11.42, 11.76]
-    
-        }, {
-            name: 'Road traffic',
-            data: [10.00, 9.93, 9.97, 10.01, 10.23, 10.26, 10.00,
-                9.12, 9.36, 8.72, 8.38, 8.69]
-    
-        }, {
-            name: 'Agriculture',
-            data: [4.35, 4.32, 4.34, 4.39, 4.46, 4.52, 4.58, 4.55,
-                4.53, 4.51, 4.49, 4.57]
-    
+            name: 'Share',
+            data: cercleData,
+            showInLegend: true
         }]
     };
     const donut ={
@@ -96,7 +118,7 @@ const Map = (props) => {
             plotShadow: false
         },
         title: {
-            text: 'Browser<br>shares<br>January<br>2022',
+            text: 'Canalisation<br>des<br>Localités<br>',
             align: 'center',
             verticalAlign: 'middle',
             y: 60
@@ -129,20 +151,8 @@ const Map = (props) => {
             type: 'pie',
             name: 'Browser share',
             innerSize: '50%',
-            data: [
-                ['Chrome', 73.86],
-                ['Edge', 11.97],
-                ['Firefox', 5.52],
-                ['Safari', 2.98],
-                ['Internet Explorer', 1.90],
-                {
-                    name: 'Other',
-                    y: 3.77,
-                    dataLabels: {
-                        enabled: false
-                    }
-                }
-            ]
+            data: donutsData,
+            showInLegend: true
         }]
     }
     return (
@@ -150,13 +160,13 @@ const Map = (props) => {
     <Row>
     <Col sm={6}>
         <div className="bas-sexe1">
-            <h5>Statistiques des adductions</h5>
-                <HighchartsReact highcharts={Highcharts} options={batton} />
+            <h5></h5>
+                <HighchartsReact highcharts={Highcharts} options={cercle} />
         </div>
     </Col>
     <Col sm={6}>
         <div className="bas-sexe1">
-            <h5>Statistiques des Canalisation</h5>
+            <h5></h5>
                 <HighchartsReact highcharts={Highcharts} options={donut} />
         </div>
     </Col>

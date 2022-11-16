@@ -1,10 +1,10 @@
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form, Button ,Alert} from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import React, { useState } from 'react';
 import CrudService from '../CrudProjet/Crud.service';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 
 // import '../styles/AjoutFormulaire.css'
 // import styled from 'styled-components';
@@ -77,6 +77,8 @@ const CloseModalButton = styled(MdClose)`
   const [localite,setLocalite] = useState('');
   const [nb_beneficiaire,setNombre] = useState('');
   const[etat_ouvrage,setOuvrage] = useState('');
+  const navigate = useNavigate();
+  const [id, setId] = useState();
   //maka anle donnee rehetra
   const ajout = async () =>{
     let user = JSON.parse(localStorage.getItem('users'));
@@ -105,8 +107,9 @@ const CloseModalButton = styled(MdClose)`
     else{
       throw new Error("Veuillez taper tous les champs");
     }
-    
+    navigate(`/`);
   }
+
   return (
     <>
       {(
@@ -257,6 +260,7 @@ const CloseModalButton = styled(MdClose)`
                         <Form.Control type="nombre" placeholder="Administrateur" />
                       </Form.Group>
                       <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
+                      <Alert color="danger">Projet ajoutez avec succès</Alert>
                     </Card.Body>
                   </Card>
                 </Col>
