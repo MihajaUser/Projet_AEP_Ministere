@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from "react-redux";
 import L from 'leaflet';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
@@ -8,7 +7,6 @@ import * as MuiIcons from '@mui/icons-material';
 import './styles.css'
 
 const MapEtape1 = (props) => {
-  const myStation = useSelector((state) => state.station)
   const [debutLat, setDebutLat] = useState(null);
   const [debutLng, setDebutLng] = useState(null);
   const [mapInstance, setMapInstance] = useState(null);
@@ -29,25 +27,25 @@ const MapEtape1 = (props) => {
   };
 
   useEffect(() => {
+    //initialisation carte
     mapRef.current = L.map('map', mapParams);
     mapRef.current.on('click', (e) => {
+      //click une premiere localisation
       setDebutLat(e.latlng.lat);
       setDebutLng(e.latlng.lng);
     });
     setMapInstance(mapRef.current);
   }, []);
+
   useEffect(() => {
-
-  }, [])
-  useEffect(() => {
-
-
+    //changer  premiere localisation
     if (debutLat != null && debutLng != null) {
       handleClick();
     }
   }, [debutLat, debutLng])
 
   useEffect(() => {
+    //faire zoom
     if (!mapInstance) return;
     if (mapInstance) {
       mapInstance.on('zoomstart', () => {
@@ -55,8 +53,8 @@ const MapEtape1 = (props) => {
       });
     }
   }, [mapInstance]);
-
   const handleClick = () => {
+    // placer marker avec click
     if (marker) {
       marker.removeFrom(mapInstance);
       markerRef.current = null;

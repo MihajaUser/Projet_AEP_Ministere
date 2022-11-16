@@ -26,7 +26,7 @@ const SidebarComponent = ({ map }) => {
         selected={openTab}
         closeIcon={<FiChevronLeft />}
         onClose={onClose}
-        onOpen={onOpen }
+        onOpen={onOpen}
         panMapOnChange
         rehomeControls
       >
@@ -35,7 +35,9 @@ const SidebarComponent = ({ map }) => {
           <div className="imgTitreTab1">
             <img src={ministere} width="100%" height="15%" />
           </div>
-          <div className="logoTitreTab1">   <BloodtypeIcon />Station   <LocalDrinkIcon />Réservoir  <AddBoxIcon /> Ajouter</div>
+          {/* <div className="logoTitreTab1">   
+          <BloodtypeIcon />Station   <LocalDrinkIcon />Réservoir  <AddBoxIcon /> Ajouter
+          </div> */}
           Une atelier de validation nationale sur l’élaboration de Directives Nationales pour la Construction des Infrastructures AEP à l’échelle communautaire résistante aux effets des aléas climatiques s’est tenue à l’Hôtel Le Louvre le jeudi 07 et le vendredi 08 mai 2015 passé.
           L’atelier a été ouvert officiellement par Madame NDAHIMANANJARA Bénédicte Johanita, Ministre de l’Eau de l’Hygiène et de l’Assainissement. Avec les discours de Monsieur HAMELO Solfi Joli, Directeur Général du Ministère de l’Eau de l’Hygiène et de l’Assainissement, Monsieur le Colonel Mamy Nirina RAZAKANAIVO Secrétaire Exécutif de la CPGU et Monsieur Andry Herizaka Rakotoarisoa, Représentant du Country Director de la Banque Mondiale.
           <p>

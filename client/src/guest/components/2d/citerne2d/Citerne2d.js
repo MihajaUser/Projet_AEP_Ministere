@@ -91,6 +91,11 @@ function Citerne2d() {
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(x, y, w, h);
   }
+
+  function linkValue() {
+    if (infra_eau === "fpmh") { return "/citerne3d" }
+    if (infra_eau === "aepg") { return "/station3d" }
+  }
   function appearLoading() {
     if (show) {
       return <Loading />
@@ -102,7 +107,7 @@ function Citerne2d() {
       <div className='CardContainer2d '>
         <Card className='MyCard2d '>
           <br></br>
-          <Link to="/citerne3d">
+          <Link to={`${linkValue()}`}>
             <Button className='MyButton2d ' ><MuiIcons.ViewInAr />  3D Vue</Button>
           </Link>
           <br></br>

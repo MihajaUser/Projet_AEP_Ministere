@@ -1,24 +1,24 @@
 import React, { Suspense, Box } from "react";
-import { Canvas } from "react-three-fiber";
+import { Canvas, group } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
-import Tuyaux from "./Tuyaux";
+import Citerne from "./House";
 import "../Page3d.css";
 
-function TuyauxPage() {
+function StationPage() {
   return (
     <div className="maPage">
-      <Canvas pixelRatio={window.devicePixelRatio} camera={{ position: [1, -5, -25] }}>
-        <gridHelper args={[10, 10, `white`, `gray`]} position={[0, -10, 0]} />
+      <Canvas pixelRatio={window.devicePixelRatio} camera={{ position: [5, 5, 5] }}>
+        <gridHelper args={[10, 10, `white`, `gray`]} position={[0, -2, 0]} />
         <OrbitControls />
         <ambientLight intensity={0.6} />
         <pointLight position={[10, 10, 10]} />
         <Suspense fallback={null}>
-          <mesh position={[2, -10, 0]}>
-            <Tuyaux />
+          <mesh position={[2, -2, 0]} >
+            <Citerne />
           </mesh>
         </Suspense>
       </Canvas>
     </div>
   );
 }
-export default TuyauxPage;
+export default StationPage;
