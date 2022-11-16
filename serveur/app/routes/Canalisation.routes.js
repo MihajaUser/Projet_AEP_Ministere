@@ -14,5 +14,7 @@ module.exports = function (app) {
   //post Canalisation
   app.post("/api/canalisation/AjoutCanalisation", controlerCanalisation.AjoutCanalisation);
 //supprimer une canalisation
-  app.delete("/api/canalisation/supprimer/:id", controlerCanalisation.supprimer)
+  app.delete("/api/canalisation/supprimer/:id", controlerCanalisation.supprimer);
+  //maka nbr canaliation 
+  app.get("/api/projet/nbrCanalisation", controlerCanalisation.nbrCanalisation)
 }

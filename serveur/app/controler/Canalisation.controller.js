@@ -5,6 +5,7 @@
 
 //misy erreur ilay res.send message, milla jerena ilay izy
 
+const { QueryTypes } = require("sequelize");
 const model = require("../models");
 
 exports.message = (req, res, next) => {
@@ -57,3 +58,15 @@ exports.supprimer = (req, res) => {
       res.status(500).send({ message: err.message });
     });
 }
+exports.nbrCanalisation = (req, res) => {
+  model.sequelize.query(
+    ' SELECT count(*) as nombre,  "finLocalite" FROM public."Canalisations" group by  "finLocalite"',
+    {
+      type: QueryTypes.SELECT
+    }).then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      console.log(err)
+    });
+};

@@ -12,11 +12,11 @@ import {
 } from "react-leaflet";
 
 const markerIcon = new L.Icon({
-  iconUrl: require('../../assets/imagesClient/localisation.png'),
+  iconUrl: require('../../assets/images/reservoir.png'),
   iconSize: [20, 20],
 });
 
-const Map = (props) => {
+const MapAdduction = (props) => {
   const myStation = useSelector((state) => state.station)
   useEffect(() => {
     console.log(myStation)
@@ -47,4 +47,4 @@ const Map = (props) => {
   </MapContainer>;
 };
 
-export default Map;
+export default MapAdduction;

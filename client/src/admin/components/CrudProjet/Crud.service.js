@@ -19,6 +19,9 @@ export const CrudService = {
     },
     getById: (id) => {
         return axios.get(backUrl + "/api/projet/detail/"+id);
+    },
+    nbrProjet: (data) => {
+        return axios.get(backUrl + "/api/projet/nbrProjet", data);
     }
 
 }

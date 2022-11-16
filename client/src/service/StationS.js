@@ -7,5 +7,8 @@ export const getAltitude = async (latitude, longitude) => {
   const data = await Axios.get('https://api.open-elevation.com/api/v1/lookup?locations=' + latitude + ',' + longitude);
   return data;
 }
+export const getById = async (id) => {
+  const date = await Axios.get('http://localhost:8080//api/projet/detail/'+ id);
+}
 
 
