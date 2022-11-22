@@ -45,7 +45,7 @@ exports.signin = (req, res) => {
     console.log(req.body.username, req.body.password, req.body.email);
     UserModel.findOne({
         where: {
-            username: req.body.username
+           email: req.body.email
         }
     })
         .then(user => {

@@ -9,7 +9,8 @@ import { Alert } from 'react-bootstrap';
 function Login(props) {
   ///formulaire  setusername manova ilay user ary ambany
   const [username, setusername] = useState('');
-  // const [email,setemail] = useState('');
+
+  const [email,setemail] = useState('');
   const [password, setpassword] = useState('');
   const [error, setError] = useState(null);
 
@@ -18,8 +19,8 @@ function Login(props) {
 
   function submitSignin() {
     //tableau d'objet
-    let data = { username, password };
-    if (username == '' || password == '') {
+    let data = { username, password ,email};
+    if (email == '' || password == '') {
       setError('remplire tout les champs!');
     }
     else {
@@ -60,7 +61,7 @@ function Login(props) {
             <input
               type="email"
               className="form-control mt-1"
-              placeholder="Entrez votre email" onChange={(value) => setusername(value.target.value)}
+              placeholder="Entrez votre email" onChange={(value) => setemail(value.target.value)}
             />
           </div>
           <div className="form-group mt-3">

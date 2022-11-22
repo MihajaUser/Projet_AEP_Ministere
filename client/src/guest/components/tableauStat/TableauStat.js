@@ -1,98 +1,141 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Row, Col } from 'react-bootstrap';
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect , useState} from "react";
+import { CrudCanalService } from './../../../admin/components/CrudProjet/CrudCanal.service';
+import { CrudService } from './../../../service/Crud.service.js';
 const TableauStat = (props) => {
+   // ty le donut anle canalisation
+   const [donutsData, setdonutsData] = useState([]);
+   useEffect(() => {
+   CrudCanalService. nbrCanalisation()
+       .then(rep => {
+           // setprobleme(rep.data);
+           let dataDonutsPb = [];
+           console.log('cana', rep);
+           for (let i = 0; i < rep.data.length; i++) dataDonutsPb.push([rep.data[i].finLocalite, parseInt(rep.data[i].nombre)])
+           setdonutsData(dataDonutsPb);
+       })
+       .catch(err => {
+           console.log(err);
+       })
+   }, []);
+   
+   // const region = ["Analamanga","Bongolava","Itasy","Vakinakaratra","Diana","Sava","Amoron'i Mania","Atsimo Atsinanana","Haute Matsiatra","Ihorombe","Vatovavy Fitovinany","Betsiboka","Boeny","Melaky","Sofia","Alaotra Mangoro","Analanjirofo","Atsinanana","Androy","Anosy","Atsimo Andrefana","Menabe"];
+   const [cercleData, setCercleData]= useState([{}]);
+   // anle cercle region
+   useEffect(() => {
+       CrudService. nbrProjet()
+       .then(rep => {
+           // setprobleme(rep.data);
+           let dataCercle = [{}];
+           console.log('MM', rep);
+           for (let i = 0; i < rep.data.length; i++) dataCercle.push([rep.data[i].name,parseInt(rep.data[i].y)])
+       setCercleData(dataCercle);
+       })
+       // .catch(err => {
+       //     console.log(err);
+       // })
+   }, []);
 
-    const myCanalisation = useSelector((state) => state.canalisation)
-    useEffect(() => {
-        console.log(myCanalisation)
-    }, [myCanalisation])
-
-    const batton = {
-        chart: {
-            type: 'column'
-        },
-        title: false,
-        // {
-        // text: 'Proprietés des taches par mois'
-        // },
-        // subtitle: {
-        //     text: 'Detail Planning'
-        // },
-        xAxis: {
-            categories: [
-                '2010',
-                '2011',
-                '2012',
-                '2013',
-                '2014',
-                '2015',
-                '2016',
-                '2017',
-                '2018',
-                '2019',
-                '2020',
-                '2021'
-            ],
-            crosshair: true
-        },
-        yAxis: {
-            title: {
-                useHTML: true,
-                text: 'Million tonnes CO<sub>2</sub>-equivalents'
-            }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: [{
-            // const obj = {
-            //     name:,
-            //     data:[]
-            // }
-            name: 'Oil and gas extraction',
-            data: [13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
-                14.32, 14.13, 13.93, 13.21, 12.16]
-    
-        }, {
-            name: 'Manufacturing industries and mining',
-            data: [12.24, 12.24, 11.95, 12.02, 11.65, 11.96, 11.59,
-                11.94, 11.96, 11.59, 11.42, 11.76]
-    
-        }, {
-            name: 'Road traffic',
-            data: [10.00, 9.93, 9.97, 10.01, 10.23, 10.26, 10.00,
-                9.12, 9.36, 8.72, 8.38, 8.69]
-    
-        }, {
-            name: 'Agriculture',
-            data: [4.35, 4.32, 4.34, 4.39, 4.46, 4.52, 4.58, 4.55,
-                4.53, 4.51, 4.49, 4.57]
-    
-        }]
-    };
+   const cercle = {
+       chart: {
+           plotBackgroundColor: null,
+           plotBorderWidth: null,
+           plotShadow: false,
+           type: 'pie'
+       },
+       title: {
+           text: 'Statistiques des adductions'
+       },
+       tooltip: {
+           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+       },
+       accessibility: {
+           point: {
+               valueSuffix: '%'
+           }
+       },
+       plotOptions: {
+           pie: {
+               allowPointSelect: true,
+               cursor: 'pointer',
+               dataLabels: {
+                   enabled: true,
+                   format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                   connectorColor: 'silver'
+               }
+           }
+       },
+       series: [{
+           name: 'Share',
+           data: cercleData,
+           showInLegend: true
+       }]
+   };
+   const donut ={
+       chart: {
+           plotBackgroundColor: null,
+           plotBorderWidth: 0,
+           plotShadow: false
+       },
+       title: {
+           text: 'Canalisation<br>des<br>Localités<br>',
+           align: 'center',
+           verticalAlign: 'middle',
+           y: 60
+       },
+       tooltip: {
+           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+       },
+       accessibility: {
+           point: {
+               valueSuffix: '%'
+           }
+       },
+       plotOptions: {
+           pie: {
+               dataLabels: {
+                   enabled: true,
+                   distance: -50,
+                   style: {
+                       fontWeight: 'bold',
+                       color: 'white'
+                   }
+               },
+               startAngle: -90,
+               endAngle: 90,
+               center: ['50%', '75%'],
+               size: '110%'
+           }
+       },
+       series: [{
+           type: 'pie',
+           name: 'Browser share',
+           innerSize: '50%',
+           data: donutsData,
+           showInLegend: true
+       }]
+   }
    return (
-    <Row>
-    <Col sm={6}>
-        <div className="bas-sexe1">
-            <h5>Statistiques des problèmes</h5>
-                <HighchartsReact highcharts={Highcharts} options={batton} />
-        </div>
-    </Col>
-    </Row>
+   <div id="map"/>,
+   <Row>
+   <Col sm={6}>
+       <div className="bas-sexe1">
+           <h5></h5>
+               <HighchartsReact highcharts={Highcharts} options={cercle} />
+               <p>Total nombre de pompe </p>
+               <p>Total nombre de station </p>
+       </div>
+   </Col>
+   <Col sm={6}>
+       <div className="bas-sexe1">
+           <h5></h5>
+               <HighchartsReact highcharts={Highcharts} options={donut} />
+               <p>Total nombre de canalisation</p>
+       </div>
+   </Col>
+   </Row>
    )
-} 
+}
 export default TableauStat;

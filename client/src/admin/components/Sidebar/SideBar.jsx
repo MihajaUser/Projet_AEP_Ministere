@@ -50,12 +50,6 @@ const routes = [
       },
     ],
   },
-  {
-
-    path: "mapSelection",
-    name: "Canalisation",
-    icon: <IconRoute />,
-  }
 ];
 
 const SideBar = ({ children }) => {

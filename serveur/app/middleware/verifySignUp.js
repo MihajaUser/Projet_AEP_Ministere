@@ -11,7 +11,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
     console.log(UserModel);
     UserModel.findOne({
         where: {
-            username: req.body.username
+            email: req.body.email
         }
     }).then(user => {
         console.log('Im in chechDuplicatedUsrNameOrEmail', user);

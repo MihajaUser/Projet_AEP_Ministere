@@ -16,8 +16,7 @@ import { CrudCanalService } from './../CrudProjet/CrudCanal.service.js';
 //   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png"
 // });
 const Map = (props) => {
-    const [myProjet, setMyProjet] = useState();
-    const [donutsData, setdonutsData] = useState([]);
+   
 //     useEffect(() => {
 //     const getDataProjet = async () => {
 //       const x = await CrudService. nbrProjet();
@@ -45,6 +44,7 @@ const Map = (props) => {
 //         })
 //     }, []);
 // ty le donut anle canalisation
+    const [donutsData, setdonutsData] = useState([]);
     useEffect(() => {
     CrudCanalService. nbrCanalisation()
         .then(rep => {
