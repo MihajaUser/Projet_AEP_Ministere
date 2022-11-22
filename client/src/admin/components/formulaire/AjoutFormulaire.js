@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import React, { useState } from 'react';
-import CrudService from '../CrudProjet/Crud.service';
+import CrudService from '../CrudProjet/Crud.service.js';
 import { useParams,useNavigate } from 'react-router-dom';
 
 // import '../styles/AjoutFormulaire.css'
@@ -78,7 +78,7 @@ const CloseModalButton = styled(MdClose)`
   const [nb_beneficiaire,setNombre] = useState('');
   const[etat_ouvrage,setOuvrage] = useState('');
   const navigate = useNavigate();
-  const [id, setId] = useState();
+  // const [id, setId] = useState();
   //maka anle donnee rehetra
   const ajout = async () =>{
     let user = JSON.parse(localStorage.getItem('users'));
@@ -107,7 +107,7 @@ const CloseModalButton = styled(MdClose)`
     else{
       throw new Error("Veuillez taper tous les champs");
     }
-    navigate(`/`);
+    // navigate(`/`);
   }
 
   return (
@@ -128,7 +128,7 @@ const CloseModalButton = styled(MdClose)`
                             <Form.Label>Utilisation</Form.Label>
                             <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setUtilisation(e.target.value) }}>
                               <option>Choisissez</option>
-                              <option value="Réservoir d'eau">Réservoir d'eau</option>
+                              <option value="Station">Station</option>
                               <option value="Pompe">Pompe</option>
                             </Form.Select>
                           </Form.Group>
@@ -138,11 +138,11 @@ const CloseModalButton = styled(MdClose)`
                             <Form.Label>Infrastru d'eau</Form.Label>
                             <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setInfra (e.target.value) }}>
                               <option>Choisissez</option>
-                              <option value="AEPG">AEPG</option>
-                              <option value="AEPP">AEPP</option>
-                              <option value="AEPPp">AEPPp</option>
-                              <option value="FPMH">FPMH</option>
-                              <option value="PPMH">PPMH</option>
+                              <option value="aepg">AEPG</option>
+                              <option value="aepp">AEPP</option>
+                              <option value="aeppp">AEPPp</option>
+                              <option value="fpmh">FPMH</option>
+                              <option value="ppmh">PPMH</option>
                             </Form.Select>
                           </Form.Group>
                         </Col>
@@ -151,12 +151,12 @@ const CloseModalButton = styled(MdClose)`
                             <Form.Label>Point d'eau</Form.Label>
                             <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setPointEau (e.target.value) }}>
                               <option>Choisissez</option>
-                              <option value="BF">BF</option>
-                              <option value="BF">BP</option>
-                              <option value="BS">BS</option>
-                              <option value="FPMH">FPMH</option>
-                              <option value="MONO">MONO</option>
-                              <option value="PPMH">PPMH</option>
+                              <option value="bf">BF</option>
+                              <option value="bf">BP</option>
+                              <option value="bs">BS</option>
+                              <option value="fpmh">FPMH</option>
+                              <option value="mono">MONO</option>
+                              <option value="ppmh">PPMH</option>
                             </Form.Select>
                           </Form.Group>
                         </Col>
@@ -255,12 +255,12 @@ const CloseModalButton = styled(MdClose)`
                         <Form.Label>Etat d'ouvrage</Form.Label>
                         <Form.Control type="text" placeholder="Entrez le nombre" onChange ={(e)=>{setOuvrage(e.target.value) }}/>
                       </Form.Group>
-                      <Form.Group className="mb-3">
+                      {/* <Form.Group className="mb-3">
                         <Form.Label>Utilisateur</Form.Label>
                         <Form.Control type="nombre" placeholder="Administrateur" />
-                      </Form.Group>
+                      </Form.Group> */}
                       <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
-                      <Alert color="danger">Projet ajoutez avec succès</Alert>
+                      {/* <Alert color="danger">Projet ajoutez avec succès</Alert> */}
                     </Card.Body>
                   </Card>
                 </Col>

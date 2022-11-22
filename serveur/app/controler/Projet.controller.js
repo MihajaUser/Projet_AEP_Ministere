@@ -126,3 +126,7 @@ exports.nbrProjet = (req,res) => {
       console.log(err);
     });
 };
+
+
+//nombre projet par region en fonction de l'utilisation
+//SELECT count(*) as nbrutilisation,utilisation,region FROM public."Projets" group by utilisation,region
