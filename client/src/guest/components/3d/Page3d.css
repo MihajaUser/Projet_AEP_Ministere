@@ -1,6 +1,10 @@
 .maPage {
+	/* background-color: brown; */
+}
+.my3D {
 	background-color: rgb(65, 86, 130);
 	height: 700px;
-	/* width: 70%; */
+	width: 70%;
+	float: left;
 	/*modif*/
 }

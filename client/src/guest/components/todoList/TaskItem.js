@@ -5,7 +5,7 @@ const TaskItem = (props) => {
   const { task } = props;
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className="TaskItem">
       <label>
         <input
           type="checkbox"

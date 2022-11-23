@@ -2,11 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { getAltitude } from "../../../../service/StationS"
 import { useParams } from 'react-router-dom';
 import { useState } from "react";
-import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import './Citerne2d.css'
-import * as MuiIcons from '@mui/icons-material';
+import Navigation from './Navigation'
 import Loading from '../../../../laoding/Loading';
 
 function Citerne2d() {
@@ -51,19 +48,19 @@ function Citerne2d() {
     };
     //triangle
     ctx.beginPath();
-    ctx.moveTo(485, 180);
-    ctx.lineTo(450, 250);
-    ctx.lineTo(520, 250);
+    ctx.moveTo(485, 300);
+    ctx.lineTo(450, 350);
+    ctx.lineTo(520, 350);
     ctx.fill();
     // the fill color
     context.fillStyle = "rgb(232, 73, 73)";
     context.fill();
     //altitude
-    const r3Info = { x: 480, y: 250, w: 10, h: 300 };
+    const r3Info = { x: 480, y: 310, w: 10, h: 200 };
     drawFillRect(r3Info, { backgroundColor: 'rgb(232, 73, 73)' });
     //pointille altitude
-    const pointille = { x: 485, y: 180, w: 125, h: 5 };
-    drawFillRect(pointille, { backgroundColor: 'black' });
+    const pointille = { x: 487, y: 300, w: 135, h: 5 };
+    drawFillRect(pointille, { backgroundColor: 'rgb(11, 238, 113)' });
     //mer
     const lamer = { x: 450, y: 500, w: 600, h: 50 };
     drawFillRect(lamer, { backgroundColor: 'rgb(99, 128, 191)' });
@@ -111,23 +108,9 @@ function Citerne2d() {
   return (
     <div className="App">
       <canvas className="MyCanvas" ref={canvas}></canvas>
-      <div className='CardContainer2d '>
-        <Card className='MyCard2d '>
-          <br></br>
-          <Link to={`${linkValue()}`}>
-            <Button className='MyButton2d ' ><MuiIcons.ViewInAr />  3D Vue</Button>
-          </Link>
-          <br></br>
-          <Button className='MyButton2d '  ><MuiIcons.SelectAllTwoTone />   2D Vue</Button>
-          <br></br>
-          <Link to="/">
-            <Button className='MyButton2d '  ><MuiIcons.FmdGood />   CARTE</Button>
-          </Link>
-        </Card>
-        {appearLoading()}
-      </div>
+      <Navigation linkValue={linkValue()} />
+      {appearLoading()}
     </div>
   );
 }
-
 export default Citerne2d;
