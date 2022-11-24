@@ -47,3 +47,11 @@
 	background-color: rgb(250, 250, 250);
 	border-radius: 4px;
 }
+.TaskItem {
+	/* background-color: red; */
+	margin-bottom: 10px;
+}
+.BtnDeleteTaskItem {
+	padding: '5px';
+	margin-left: '20px';
+}
