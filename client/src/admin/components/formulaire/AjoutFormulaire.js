@@ -65,6 +65,7 @@ const CloseModalButton = styled(MdClose)`
 `;
 
  export default function  AjoutFormulaire (){
+  const [error, setError] = useState(null);
   const { urlDebutLat, urlDebutLng } = useParams();
   const [id_utilisateur,setUtilisateur] = useState(0);
   const [utilisation,setUtilisation] = useState('');
@@ -80,35 +81,42 @@ const CloseModalButton = styled(MdClose)`
   const navigate = useNavigate();
   // const [id, setId] = useState();
   //maka anle donnee rehetra
-  const ajout = async () =>{
-    let user = JSON.parse(localStorage.getItem('users'));
-    //voalohany variable iantsona an'azy any @ back le hoe req.body
-    let data = {
-      utilisation,
-      infra_eau, 
-      point_eau, 
-      region, 
-      district, 
-      commune, 
-      fokontany, 
-      localite, 
-      latitude: parseFloat(urlDebutLat), 
-      longitude: parseFloat(urlDebutLng), 
-      nb_beneficiaire, 
-      etat_ouvrage, 
-      utilisation, 
-      id_utilisateur
-    }
-    // console.log("cscsdc",data);
-    const response = await CrudService. AjoutProjet(data);
-    if(response.status === 200) {
-     alert("Projet ajouté avec succès");
-    }
-    else{
-      throw new Error("Veuillez taper tous les champs");
-    }
-    // navigate(`/`);
+ 
+    const ajout = async () =>{
+      let user = JSON.parse(localStorage.getItem('users'));
+      //voalohany variable iantsona an'azy any @ back le hoe req.body
+      let data = {
+        utilisation,
+        infra_eau, 
+        point_eau, 
+        region, 
+        district, 
+        commune, 
+        fokontany, 
+        localite, 
+        latitude: parseFloat(urlDebutLat), 
+        longitude: parseFloat(urlDebutLng), 
+        nb_beneficiaire, 
+        etat_ouvrage, 
+        utilisation, 
+        id_utilisateur
+      }
+      if ( nb_beneficiaire == '' || etat_ouvrage == '') {
+        setError('remplire tout les champs!')
+      } else {
+        const response = await CrudService. AjoutProjet(data);
+        if(response.status === 200) {
+         alert("Projet ajouté avec succès");
+        }
+        else{
+          throw new Error("Veuillez taper tous les champs");
+        }
+      }
+      // console.log("cscsdc",data);
+     
+      // navigate(`/`);
   }
+  
 
   return (
     <>

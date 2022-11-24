@@ -46,7 +46,7 @@ function Header() {
             {" "}
             <MuiIcons.AddCircle />
           </Navbar.Brand>
-          <Navbar.Brand href="/citerne3d">
+          <Navbar.Brand href="/tuyaux3d">
             {" "}
             <MuiIcons.ViewInAr />
           </Navbar.Brand>
