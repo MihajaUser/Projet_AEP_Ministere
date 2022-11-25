@@ -66,6 +66,7 @@ const CloseModalButton = styled(MdClose)`
 
  export default function  AjoutFormulaire (){
   const [error, setError] = useState(null);
+  const [succes, setSucces] = useState(null);
   const { urlDebutLat, urlDebutLng } = useParams();
   const [id_utilisateur,setUtilisateur] = useState(0);
   const [utilisation,setUtilisation] = useState('');
@@ -102,11 +103,12 @@ const CloseModalButton = styled(MdClose)`
         id_utilisateur
       }
       if ( nb_beneficiaire == '' || etat_ouvrage == '') {
-        setError('remplire tout les champs!')
+        setError('Veuillez remplire tout les champs!')
       } else {
         const response = await CrudService. AjoutProjet(data);
         if(response.status === 200) {
-         alert("Projet ajouté avec succès");
+        //  alert("Projet ajouté avec succès");
+         setSucces("Projet ajouté avec succès");
         }
         else{
           throw new Error("Veuillez taper tous les champs");
@@ -268,7 +270,16 @@ const CloseModalButton = styled(MdClose)`
                         <Form.Control type="nombre" placeholder="Administrateur" />
                       </Form.Group> */}
                       <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
-                      {/* <Alert color="danger">Projet ajoutez avec succès</Alert> */}
+                      {error &&
+                            <Alert className='my-input' key='danger' variant='danger'>
+                             {error}
+                            </Alert>
+                    }
+                     {succes &&
+                            <Alert className='my-input' key='success' variant='success'>
+                                    {succes}
+                            </Alert>
+                    }
                     </Card.Body>
                   </Card>
                 </Col>

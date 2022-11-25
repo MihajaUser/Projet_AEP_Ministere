@@ -1,4 +1,4 @@
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form, Button ,Alert} from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
@@ -65,6 +65,8 @@ const CloseModalButton = styled(MdClose)`
 `;
 
  export default function  AjoutCanal (){
+  const [error, setError] = useState(null);
+  const [succes, setSucces] = useState(null);
   const { urlDebutLat, urlDebutLng } = useParams();
   const { finLat, finLng } = useParams();
   const [id_utilisateur,setUtilisateur] = useState(0);
@@ -91,12 +93,15 @@ const CloseModalButton = styled(MdClose)`
       finLatitude, 
       finLongitude,
     }
+    if ( debutLocalite == '' || finLocalite == '') {
+      setError('Veuillez remplire tout les champs!')
+    }
     console.log("data",data);
     const response = await CrudCanalService. AjoutCanalisation(data);
     console.log(response);
     if(response.status === 200) {
       
-     alert("Projet ajouté avec succès");
+      setSucces("Projet ajouté avec succès");
     }
 
     else{
@@ -158,6 +163,16 @@ const CloseModalButton = styled(MdClose)`
                         </Col>
                       </Row>
                       <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
+                      {error &&
+                            <Alert className='my-input' key='danger' variant='danger'>
+                                    {error}
+                            </Alert>
+                    }
+                     {succes &&
+                            <Alert className='my-input' key='success' variant='success'>
+                                    {succes}
+                            </Alert>
+                    }
                     </Card.Body>
                   </Card>
                 </Col>

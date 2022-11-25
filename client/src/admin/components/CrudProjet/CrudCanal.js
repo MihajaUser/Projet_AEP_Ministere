@@ -1,4 +1,4 @@
-import {Row,Col,Table} from 'react-bootstrap';
+import {Row,Col,Table, Modal, Button} from 'react-bootstrap';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import styled from 'styled-components';
@@ -26,6 +26,11 @@ const ModalContent = styled.div`
 
 function CrudCanal() {
   const [listeProjet , setListeProjet] = useState([]);
+  const [show, setShow] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
+  const handleClose = () => {
+    setShow(false);
+  }
   const listeProjets = async () => {
     const response = await CrudCanalService. getAllCanalisation();
     if(response.status === 200) {
@@ -37,20 +42,42 @@ function CrudCanal() {
   };
    useEffect(() => {listeProjets()},[]);
    
-  const onClikDelete = async (id) => {
-   const response = await CrudCanalService.supprimer(id);
+
+  const onClikDelete = (id) => {
+    setDeleteId(id);
+    setShow(true);
+    console.log(deleteId);
+  }
+  const onClikDeleteId = async (id) => {
+    const response = await CrudCanalService.supprimer(deleteId);
     if(response){
-      alert("Projet supprimer");
+      // alert("Projet supprimer");
+    
       listeProjets();
     }
+     setShow(false)
   }
   return (
 
     <ModalContent>  
     <Row>
-     <Col xs={16} > 
+     <Col xs={25} > 
      <h4>Liste des projets de Canalisation</h4>
-    <Table striped bordered hover size="sm">
+    <Table striped bordered hover size="md">
+    <Modal show={show} onHide={handleClose}  size="sm">
+   
+      <Modal.Header closeButton>
+      </Modal.Header>
+      <Modal.Body>Voulez-vous vraiment supprimer?</Modal.Body>
+      <Modal.Footer>
+      <Button variant="primary" onClick={onClikDeleteId}>
+       Oui
+      </Button>
+      <Button variant="secondary" onClick={handleClose}>
+      Annuler
+      </Button>
+      </Modal.Footer>
+    </Modal>
       <thead>
         <tr>
           <th>Numero  de projet</th>

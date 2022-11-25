@@ -3,64 +3,49 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import { CrudService } from './../../../admin/components/CrudProjet/Crud.service';
 import { useState, useEffect} from 'react';
-import { Pagination } from 'react-bootstrap';
-// import {Routes,Route,Switch} from 'react-router-dom';
+import Posts from './Posts';
+import Pagination from './Pagination';
+
 function ListeProjet(){
-  const [listeProjet , setListeProjet] = useState([]);
+  const [posts ,setPosts] = useState([]);
+  const [loading,setLoading] = useState(false);
+ 
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage] = useState(3)
+
   const listeProjets = async () => {
+    setLoading(true);
     const response = await CrudService. getAllProjet();
     if(response.status === 200) {
-      setListeProjet(response.data);
+     setPosts(response.data);
+      setLoading(false);   
     }
     else {
       throw new Error("Failed to fetch users");
     }
   };
+  console.log(posts); 
    useEffect(() => {listeProjets()},[]);
-    return (
-      <div className="liste">
-      <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Numéro de projet</th>
-          <th>Nom de projet</th>
-          <th>Region</th>
-          <th>District</th>
-          <th>Commune</th>
-          <th>Fokontany</th>
-          <th>Localité</th>
-          <th>Etat d'ouvrage</th>
-        </tr>
-      </thead>
-      <tbody>
-      {
-            listeProjet.map((item) =>{
-              return(
-                <tr>
-                <td>{item.id}</td>
-                <td>{item.utilisation}</td>
-                <td>{item.region}</td>
-                <td>{item.district}</td>
-                <td>{item.commune}</td>
-                <td>{item.fokontany}</td>
-                <td>{item.localite}</td> 
-                <td>{item.etat_ouvrage}</td>
-                </tr>
-              )
-            })
-      }
-      </tbody>
-    </Table>
-    </div>
-    //   <div className='container p-2'>
-    //   <Pagination size='sm'>
-    // <Pagination.Item>1</Pagination.Item>
-    // <Pagination.Item active>2</Pagination.Item>
-    //   <Pagination.Item>3</Pagination.Item>
-    //   <Pagination.Item>4</Pagination.Item>
-    //   <Pagination.Item>5</Pagination.Item>
-    //   </Pagination>
-    //   </div>
+
+  if (loading && posts.length === 0) {
+    return <h2>Loading...</h2>
+  }
+  //Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
+  const howManyPages = Math.ceil(posts.length/postsPerPage)
+
+
+
+   return(
+   <>
+   <h2 className='active-link'>Liste des adductions d'eau</h2><Posts posts={currentPosts} loading={loading} />
+   <Pagination pages = {howManyPages} setCurrentPage={setCurrentPage}/>
+
+
+   </>
    );
 }
 
