@@ -42,7 +42,7 @@ const TasksList = (props) => {
   }, [tacheLocal, dispatch])
 
   return (
-    <>
+    <div>
       <br></br>
       <ProgressBar variant="primary" now={pourcentage} label={`${pourcentage}%`} />
       <br></br>
@@ -54,9 +54,9 @@ const TasksList = (props) => {
       ))}
       <br></br>
       <form onSubmit={goSave} >
-        <Button type="submit" variant="success"> Valider modification </Button>{' '}
+        <Button type="submit" className="Validation" variant="success"> Valider modification </Button>{' '}
       </form>
-    </>
+    </div>
   );
 };
 
