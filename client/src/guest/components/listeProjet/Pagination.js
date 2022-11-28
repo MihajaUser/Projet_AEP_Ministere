@@ -73,7 +73,7 @@ function Pagination({ pages = 10, setCurrentPage }) {
         className={`${currentButton === 1 ? 'disabled' : ''}`}
         onClick={() => setCurrentButton(prev => prev <= 1 ? prev : prev - 1)}
       >
-        Prev
+      Préc
       </a>
 
       {arrOfCurrButtons.map(((item, index) => {
@@ -92,7 +92,7 @@ function Pagination({ pages = 10, setCurrentPage }) {
         className={`${currentButton === numberOfPages.length ? 'disabled' : ''}`}
         onClick={() => setCurrentButton(prev => prev >= numberOfPages.length ? prev : prev + 1)}
       >
-        Next
+       Suiv
       </a>
     </div>
   );

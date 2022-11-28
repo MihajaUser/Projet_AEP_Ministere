@@ -4,6 +4,9 @@ import { Row, Col } from 'react-bootstrap';
 import React, { useEffect , useState} from "react";
 import { CrudCanalService } from './../../../admin/components/CrudProjet/CrudCanal.service';
 import { CrudService } from './../../../service/Crud.service.js';
+import './tableauStat.css';
+import Aos from 'aos';
+import "aos/dist/aos.css";
 const TableauStat = (props) => {
    // ty le donut anle canalisation
    const [donutsData, setdonutsData] = useState([]);
@@ -117,24 +120,31 @@ const TableauStat = (props) => {
            showInLegend: true
        }]
    }
+   useEffect(() => {
+    Aos.init({duration: 2000 });
+   },[])
    return (
    <div id="map"/>,
    <Row>
    <Col sm={6}>
-       <div className="bas-sexe1">
-           <h5></h5>
-               <HighchartsReact highcharts={Highcharts} options={cercle} />
-               <p>Total nombre de pompe </p>
-               <p>Total nombre de station </p>
-       </div>
-   </Col>
-   <Col sm={6}>
+        <div className=''><HighchartsReact highcharts={Highcharts} options={cercle} /></div>
+    </Col>
+   
+    <div className='grids'>
+            <div  data-aos="fade-left" className='boxes' >Nombre de pompe</div>
+            <div data-aos="fade-up" className='boxes'>Nombre de réservoire d'eau</div>
+        </div>
+  
+        
+       <a href="#">Canalisation</a>
+  
+   {/* <Col sm={6}>
        <div className="bas-sexe1">
            <h5></h5>
                <HighchartsReact highcharts={Highcharts} options={donut} />
                <p>Total nombre de canalisation</p>
        </div>
-   </Col>
+   </Col> */}
    </Row>
    )
 }
