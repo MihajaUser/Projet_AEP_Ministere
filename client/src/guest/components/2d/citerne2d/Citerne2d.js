@@ -74,9 +74,10 @@ function Citerne2d() {
       ctx.font = '30px serif';
       context.fillStyle = "rgb(11, 15, 88)";
       ctx.fillText(`Région : ${region}`, 10, 50);
-      ctx.fillText(`Altitude : ${pied} m   `, 10, 90);
+      ctx.fillText(`longitude : ${pied} m   `, 10, 90);
       ctx.fillText(`Point eau  : ${point_eau}`, 10, 130);
       ctx.fillText(`Infrastructure : ${infra_eau}`, 10, 170);
+      ctx.fillText(`Altitude : ${pied} m   `, 280, 440);
 
     }).catch((err) => {
       console.log("mon error " + err);
