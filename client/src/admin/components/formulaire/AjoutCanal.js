@@ -95,20 +95,21 @@ const CloseModalButton = styled(MdClose)`
     }
     if ( debutLocalite == '' || finLocalite == '') {
       setError('Veuillez remplire tout les champs!')
+    } else {
+      const response = await CrudCanalService. AjoutCanalisation(data);
+      console.log(response);
+      if(response.status === 200) {
+       
+        setSucces("Projet ajouté avec succès");
+      }
+  
+      else{
+        throw new Error("Veuillez taper tous les champs");
+      }
+      navigate(`/admin/ajoutCanalisation3/${debutLatitude}/${debutLongitude}/${finLatitude}/${finLongitude}`);
+      // navigate(`/admin`);
     }
-    console.log("data",data);
-    const response = await CrudCanalService. AjoutCanalisation(data);
-    console.log(response);
-    if(response.status === 200) {
-      
-      setSucces("Projet ajouté avec succès");
-    }
-
-    else{
-      throw new Error("Veuillez taper tous les champs");
-    }
-    navigate('/admin/ajoutCanalisation3/${debutLatitude}/${debutLongitude}/${finLatitude}/${finLongitude}');
-    // navigate(`/admin`);
+   
   }
   return (
     <>
@@ -118,10 +119,62 @@ const CloseModalButton = styled(MdClose)`
             <ModalContent>
               <Row>
                 <Col xs={6} >
-                  <Card border="primary" style={{ width: '35rem' }}>
+                  <Card border="primary" style={{ width: '25rem' , height:'30rem'}}>
                     <Card.Header>Formulaire d'ajout de Canalisation</Card.Header>
                     <Card.Body>
                       <Card.Title></Card.Title>
+                      <Row>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Région</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6"  >
+                            <option>Choisissez</option>
+                              <option value="Analamanga">Analamanga</option>
+                              <option value="Bongolava">Bongolava</option>
+                              <option value="Itasy">Itasy</option>
+                              <option value="Vakinakaratra">Vakinakaratra</option>
+                              <option value="Diana">Diana</option>
+                              <option value="Sava">Sava</option>
+                              <option value="Amoron'i Mania">Amoron'i Mania</option>
+                              <option value="Atsimo Atsinanana">Atsimo Atsinanana</option>
+                              <option value="Haute Matsiatra">Haute Matsiatra</option>
+                              <option value="Ihorombe">Ihorombe</option>
+                              <option value="Vatovavy Fitovinany">Vatovavy Fitovinany</option>
+                              <option value="Betsiboka">Betsiboka</option>
+                              <option value="Boeny">Boeny</option>
+                              <option value="Melaky">Melaky</option>
+                              <option value="Sofia">Sofia</option>
+                              <option value="Alaotra Mangoro">Alaotra Mangoro</option>
+                              <option value="Analanjirofo">Analanjirofo</option>
+                              <option value="Atsinanana">Atsinanana</option>
+                              <option value="Androy">Androy</option>
+                              <option value="Anosy">Anosy</option>
+                              <option value="Atsimo Andrefana">Atsimo Andrefana</option>
+                              <option value="Menabe">Menabe</option>
+                              </Form.Select>
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>District</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6" >
+                            <option>Choisissez</option>
+                              <option value="Ambohidratrimo">Ambohidratrimo</option>
+                              <option value="Andramasina">Andramasina</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Commune</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6" >
+                            <option>Choisissez</option>
+                              <option value="Ambato">Ambato</option>
+                              <option value="Ambatolampy">Ambatolampy</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                      </Row>
                       <Row>
                         <Col>
                           <Form.Group>

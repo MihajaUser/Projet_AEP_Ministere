@@ -140,16 +140,17 @@ const CloseModalButton = styled(MdClose)`
                               <option>Choisissez</option>
                               <option value="Station">Station</option>
                               <option value="Pompe">Pompe</option>
+
                             </Form.Select>
                           </Form.Group>
                         </Col>
                         <Col>
-                          <Form.Group className="mb-3">
+                          <Form.Group className="mb-3"> 
                             <Form.Label>Infrastru d'eau</Form.Label>
                             <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setInfra (e.target.value) }}>
                               <option>Choisissez</option>
-                              <option value="aepg">AEPG</option>
-                              <option value="aepp">AEPP</option>
+                              <option value="aepg">AEPG</option> 
+                              <option value="aepp">AEPP</option> 
                               <option value="aeppp">AEPPp</option>
                               <option value="fpmh">FPMH</option>
                               <option value="ppmh">PPMH</option>
@@ -158,7 +159,7 @@ const CloseModalButton = styled(MdClose)`
                         </Col>
                         <Col>
                           <Form.Group className="mb-3">
-                            <Form.Label>Point d'eau</Form.Label>
+                            <Form.Label>Point d'eau</Form.Label> 
                             <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setPointEau (e.target.value) }}>
                               <option>Choisissez</option>
                               <option value="bf">BF</option>
