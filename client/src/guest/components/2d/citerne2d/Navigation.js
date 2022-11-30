@@ -13,7 +13,7 @@ const Navigation = ({ linkValue }) => {
           <Button className='MyButton2d ' ><MuiIcons.ViewInAr />  3D Vue</Button>
         </Link>
         <br></br>
-        <Link to="/admin/ajoutCanalisation3/">
+        <Link to="#">
         <Button className='MyButton2d '  ><MuiIcons.SelectAllTwoTone />   2D Vue</Button>
         </Link>
         <br></br>

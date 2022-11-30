@@ -78,7 +78,7 @@ const CloseModalButton = styled(MdClose)`
   const [fokontany,setFokontany] = useState('');
   const [localite,setLocalite] = useState('');
   const [nb_beneficiaire,setNombre] = useState('');
-  const[etat_ouvrage,setOuvrage] = useState('');
+  const[etat_ouvrage,setOuvrage] = useState('non focntionnel');
   const navigate = useNavigate();
   // const [id, setId] = useState();
   //maka anle donnee rehetra
@@ -261,10 +261,6 @@ const CloseModalButton = styled(MdClose)`
                       <Form.Group className="mb-3">
                         <Form.Label>Nombre bénéficiaire</Form.Label>
                         <Form.Control type="number" placeholder="Entrez le nombre" onChange ={(e)=>{setNombre (e.target.value) }}/>
-                      </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Etat d'ouvrage</Form.Label>
-                        <Form.Control type="text" placeholder="Entrez le nombre" onChange ={(e)=>{setOuvrage(e.target.value) }}/>
                       </Form.Group>
                       {/* <Form.Group className="mb-3">
                         <Form.Label>Utilisateur</Form.Label>
