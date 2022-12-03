@@ -103,8 +103,9 @@ function Citerne2d() {
       ctx.fillText(`latitude : ${longitude} °`, 100, 150);
       ctx.fillText(`Région : ${region}`, 100, 190);
       ctx.fillText(`Altitude : ${pied} m `, 100, 230);
-      ctx.fillText(`Point eau  : ${point_eau}`, 100, 270);
-      ctx.fillText(`Infrastructure : ${infra_eau}`, 100, 310);
+      ctx.fillText(`Infrastructure : ${infra_eau}`, 100, 270);
+      // ctx.fillText(`Point eau  : ${point_eau}`, 100, 310);
+
       //text dessin
       context.fillStyle = "rgb(232, 73, 73)";
       ctx.fillText(`${pied} m`, 410, 470);
