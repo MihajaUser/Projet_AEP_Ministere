@@ -96,10 +96,9 @@ function Citerne2d() {
   }
 
   function imageValue() {
-    if (infra_eau === "reservoir") { return { "type": "reservoir", "x": 600, "y": 300, "largeur": 60, "hauteur": 130 } }
-    if (infra_eau === "aepp") { return { "type": "station", "x": 500, "y": 190, "largeur": 250, "hauteur": 300 } }
+    if (infra_eau === "reservoir") { return { "type": "reservoir", "x": 190, "y": 300, "largeur": 60, "hauteur": 130 } }
+    if (infra_eau === "aepp") { return { "type": "station", "x": 500, "y": 80, "largeur": 250, "hauteur": 300 } }
   }
-
   function appearLoading() {
     if (show) {
       return <Loading />
