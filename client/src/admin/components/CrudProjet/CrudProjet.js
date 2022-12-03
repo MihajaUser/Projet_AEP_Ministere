@@ -1,4 +1,4 @@
-import {Row,Col,Table} from 'react-bootstrap';
+import {Row,Col,Table, Modal, Button} from 'react-bootstrap';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import styled from 'styled-components';
@@ -27,6 +27,11 @@ const ModalContent = styled.div`
 
 function CrudProjet() {
   const [listeProjet , setListeProjet] = useState([]);
+  const [show, setShow] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
+  const handleClose = () => {
+    setShow(false);
+  }
   const listeProjets = async () => {
     const response = await CrudService. getAllProjet();
     console.log(response);
@@ -39,28 +44,50 @@ function CrudProjet() {
   };
    useEffect(() => {listeProjets()},[]);
    
-  const onClikDelete = async (id) => {
-   const response = await CrudService.supprimer(id);
+  const onClikDelete = (id) => {
+    setDeleteId(id);
+    setShow(true);
+    console.log(deleteId);
+  }
+  const onClikDeleteId = async (id) => {
+      const response = await CrudService.supprimer(deleteId);
     if(response){
-      alert("Projet supprimer");
+      // alert("Projet supprimer");
+    
       listeProjets();
     }
+     setShow(false)
   }
   return (
 
     <ModalContent>  
     <Row>
-     <Col xs={3} > 
+     <Col xs={10} > 
      <h4>Liste des projets d'adduction</h4>
     <Table striped bordered hover size="sm">
+    <Modal show={show} onHide={handleClose}  size="sm-down">
+   
+        <Modal.Header closeButton>
+        </Modal.Header>
+        <Modal.Body>Voulez-vous vraiment supprimer?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={onClikDeleteId}>
+            Oui
+          </Button>
+          <Button variant="secondary" onClick={handleClose}>
+           Annuler
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <thead>
         <tr>
           {/* <th>Numéro</th> */}
-          <th>Numero  de projet</th>
-          <th>Nom  de projet</th>
+          <th>N°</th>
+          <th>Nom</th>
+          <th>Région</th>
+          <th>Point d'eau</th>
+          <th>Infrastructure de l'eau</th>
           <th>Localité</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
           <th>Nombre bénéficiaire</th>
           <th>Etat d'ouvrage</th>
           <th colSpan="2">Action</th>
@@ -74,9 +101,10 @@ function CrudProjet() {
                 <tr>
                 <td>{item.id}</td>
                 <td>{item.utilisation}</td>
+                <td>{item.region}</td>
+                <td>{item.point_eau}</td>
+                <td>{item.infra_eau}</td>
                 <td>{item.localite}</td>
-                <td>{item.latitude}</td>
-                <td>{item.longitude}</td>
                 <td>{item.nb_beneficiaire}</td>
                 <td>{item.etat_ouvrage}</td>
                 <td><Link to={"modifier/"+item.id +"/"+item.latitude+"/"+item.longitude+"/"+item.nb_beneficiaire+"/"+item.etat_ouvrage}><UpdateIcon /></ Link></td>

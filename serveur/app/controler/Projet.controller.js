@@ -113,7 +113,7 @@ exports.getById = (req,res) => {
     });
 }
 
-//
+//nombre projet par region
 exports.nbrProjet = (req,res) => {
   model.sequelize.query(
     'SELECT count(*) as y,region as name FROM public."Projets" group by region ',
@@ -127,6 +127,18 @@ exports.nbrProjet = (req,res) => {
     });
 };
 
-
+//nombre projet en cours
+exports.finitionProjet = (req,res) => {
+  model.sequelize.query(
+    `SELECT count(*) as encours, etat_ouvrage as nom FROM public."Projets"  group by etat_ouvrage`,
+    {
+      type: QueryTypes.SELECT
+    }).then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
 //nombre projet par region en fonction de l'utilisation
 //SELECT count(*) as nbrutilisation,utilisation,region FROM public."Projets" group by utilisation,region

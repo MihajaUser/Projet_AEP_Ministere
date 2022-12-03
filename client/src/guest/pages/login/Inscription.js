@@ -53,13 +53,13 @@ function Inscription() {
     <div className="Auth-form-container">
       <div className="Auth-form">
         <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Inscription</h3>
-          <div className="text-center">
+          <h3 className="Auth-form-title">Ajout membre</h3>
+          {/* <div className="text-center">
             Avez vous déjà un compte?{" "}
             <span className="link-primary"><Link to='/login'>
               Connexion
             </Link></span>
-          </div>
+          </div> */}
           <div className="form-group mt-3">
             <label>Nom</label>
             <input

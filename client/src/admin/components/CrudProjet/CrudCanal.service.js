@@ -15,7 +15,13 @@ export const CrudCanalService= {
         return axios.delete(backUrl + "/api/canalisation/supprimer/"+id);
     },
     nbrCanalisation: (data) => {
-        return axios.get(backUrl + "/api/projet/nbrCanalisation", data);
+        return axios.get(backUrl + "/api/canalisation/nbrCanalisation", data);
+    },
+    modifierCanalisation:(id) => {
+        return axios.put(backUrl + "/api/canalisation/modifier" +id)
+    },
+    finitionProjet:(data) => {
+        return axios.get(backUrl +"/api/canalisation/projetFini" ,data);
     }
 
 }
