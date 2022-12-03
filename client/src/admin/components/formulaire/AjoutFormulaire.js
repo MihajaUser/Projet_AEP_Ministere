@@ -78,7 +78,7 @@ const CloseModalButton = styled(MdClose)`
   const [fokontany,setFokontany] = useState('');
   const [localite,setLocalite] = useState('');
   const [nb_beneficiaire,setNombre] = useState('');
-  const[etat_ouvrage,setOuvrage] = useState('non focntionnel');
+  const[etat_ouvrage,setOuvrage] = useState('non fonctionnel');
   const navigate = useNavigate();
   // const [id, setId] = useState();
   //maka anle donnee rehetra

@@ -40,6 +40,7 @@ function CrudCanal() {
       throw new Error("Failed to fetch users");
     }
   };
+  console.log(listeProjet,"ato");
    useEffect(() => {listeProjets()},[]);
    
 
@@ -81,8 +82,12 @@ function CrudCanal() {
       <thead>
         <tr>
           <th>Numero  de projet</th>
+          <th>Région</th>
+          <th>District</th>
+          <th>Commune</th>
           <th>Début de localité</th>
           <th>Fin de localité</th>
+          <th>Etat d'ouvrage</th>
           <th colSpan="2">Action</th>
         </tr>
       </thead>
@@ -93,8 +98,12 @@ function CrudCanal() {
               return(
                 <tr>
                 <td>{item.id}</td>
+                <td>{item.region}</td>
+                <td>{item.district}</td>
+                <td>{item.commune}</td>
                 <td>{item.debutLocalite}</td>
                 <td>{item.finLocalite}</td>
+                <td>{item.etat_ouvrage}</td>
                 <td><UpdateIcon /></td>
                 <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                 </tr>

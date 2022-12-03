@@ -82,11 +82,12 @@ function CrudProjet() {
       <thead>
         <tr>
           {/* <th>Numéro</th> */}
-          <th>Numero  de projet</th>
-          <th>Nom  de projet</th>
+          <th>N°</th>
+          <th>Nom</th>
+          <th>Région</th>
+          <th>Point d'eau</th>
+          <th>Infrastructure de l'eau</th>
           <th>Localité</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
           <th>Nombre bénéficiaire</th>
           <th>Etat d'ouvrage</th>
           <th colSpan="2">Action</th>
@@ -100,9 +101,10 @@ function CrudProjet() {
                 <tr>
                 <td>{item.id}</td>
                 <td>{item.utilisation}</td>
+                <td>{item.region}</td>
+                <td>{item.point_eau}</td>
+                <td>{item.infra_eau}</td>
                 <td>{item.localite}</td>
-                <td>{item.latitude}</td>
-                <td>{item.longitude}</td>
                 <td>{item.nb_beneficiaire}</td>
                 <td>{item.etat_ouvrage}</td>
                 <td><Link to={"modifier/"+item.id +"/"+item.latitude+"/"+item.longitude+"/"+item.nb_beneficiaire+"/"+item.etat_ouvrage}><UpdateIcon /></ Link></td>

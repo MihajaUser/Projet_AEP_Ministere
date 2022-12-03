@@ -2,31 +2,18 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Row, Col } from 'react-bootstrap';
 import React, { useEffect , useState} from "react";
-import { CrudCanalService } from './../../../admin/components/CrudProjet/CrudCanal.service';
 import { CrudService } from './../../../service/Crud.service.js';
 import './tableauStat.css';
 import Aos from 'aos';
 import "aos/dist/aos.css";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 const TableauStat = (props) => {
-   // ty le donut anle canalisation
-   const [donutsData, setdonutsData] = useState([]);
-   useEffect(() => {
-   CrudCanalService. nbrCanalisation()
-       .then(rep => {
-           // setprobleme(rep.data);
-           let dataDonutsPb = [];
-           console.log('cana', rep);
-           for (let i = 0; i < rep.data.length; i++) dataDonutsPb.push([rep.data[i].finLocalite, parseInt(rep.data[i].nombre)])
-           setdonutsData(dataDonutsPb);
-       })
-       .catch(err => {
-           console.log(err);
-       })
-   }, []);
-   
-   // const region = ["Analamanga","Bongolava","Itasy","Vakinakaratra","Diana","Sava","Amoron'i Mania","Atsimo Atsinanana","Haute Matsiatra","Ihorombe","Vatovavy Fitovinany","Betsiboka","Boeny","Melaky","Sofia","Alaotra Mangoro","Analanjirofo","Atsinanana","Androy","Anosy","Atsimo Andrefana","Menabe"];
+
+    // anle cercle region
    const [cercleData, setCercleData]= useState([{}]);
-   // anle cercle region
+  
    useEffect(() => {
        CrudService. nbrProjet()
        .then(rep => {
@@ -76,53 +63,35 @@ const TableauStat = (props) => {
            showInLegend: true
        }]
    };
-   const donut ={
-       chart: {
-           plotBackgroundColor: null,
-           plotBorderWidth: 0,
-           plotShadow: false
-       },
-       title: {
-           text: 'Canalisation<br>des<br>Localités<br>',
-           align: 'center',
-           verticalAlign: 'middle',
-           y: 60
-       },
-       tooltip: {
-           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-       },
-       accessibility: {
-           point: {
-               valueSuffix: '%'
-           }
-       },
-       plotOptions: {
-           pie: {
-               dataLabels: {
-                   enabled: true,
-                   distance: -50,
-                   style: {
-                       fontWeight: 'bold',
-                       color: 'white'
-                   }
-               },
-               startAngle: -90,
-               endAngle: 90,
-               center: ['50%', '75%'],
-               size: '110%'
-           }
-       },
-       series: [{
-           type: 'pie',
-           name: 'Browser share',
-           innerSize: '50%',
-           data: donutsData,
-           showInLegend: true
-       }]
-   }
    useEffect(() => {
     Aos.init({duration: 2000 });
    },[])
+    const [projetFini, setProjetFini] = useState([]);
+
+    useEffect(() =>{
+        CrudService.finitionProjet()
+            .then(rep =>
+            {
+                setProjetFini(rep.data);
+                console.log(rep.data);
+            })
+            .catch(err =>
+            {
+                alert("Failed to fetch users");
+        })
+
+     }, []);
+
+   const titre ={
+       fontSize: 19,
+       color:"white",
+   }
+    const styleObj = {
+    
+    fontSize: 28,
+    color:"white",
+    }
+    //Raha to ka misy izy zay no dikanle ? ao @le vitanle tableau io
    return (
    <div id="map"/>,
    <Row>
@@ -130,21 +99,16 @@ const TableauStat = (props) => {
         <div className=''><HighchartsReact highcharts={Highcharts} options={cercle} /></div>
     </Col>
    
-    <div className='grids'>
-            <div  data-aos="fade-left" className='boxes' >Nombre de pompe</div>
-            <div data-aos="fade-up" className='boxes'>Nombre de réservoire d'eau</div>
-        </div>
-  
-        
-       <a href="#">Canalisation</a>
-  
-   {/* <Col sm={6}>
-       <div className="bas-sexe1">
-           <h5></h5>
-               <HighchartsReact highcharts={Highcharts} options={donut} />
-               <p>Total nombre de canalisation</p>
-       </div>
-   </Col> */}
+                <div className='grids '>
+                <div  data-aos="fade-left" className='boxes p-2  p-' ><p className="text-monospace text-center" style={titre}><CheckCircleOutlineIcon />Projets   {projetFini[0]?.nom} </p>   
+                <p className="text-center"  style={styleObj}>{projetFini[0]?.encours}</p>                        </div>
+                   <div data-aos="fade-up" className='boxes2 p-2  p-'><p className="text-monospace text-center" style={titre}><HighlightOffIcon />Projets   {projetFini[1]?.nom} </p>
+                   <p className="text-center"  style={styleObj}>{projetFini[1]?.encours}</p> 
+                   </div>
+                </div>
+
+   
+    <a href="tableauCanal">Canalisation</a>
    </Row>
    )
 }

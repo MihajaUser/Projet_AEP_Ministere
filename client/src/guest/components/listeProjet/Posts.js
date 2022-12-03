@@ -1,5 +1,6 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'; 
+import { Link } from 'react-router-dom';
  const Posts = ( { posts, loading}) => {
     if(loading) {
         return <h2>Loading....</h2>
@@ -13,10 +14,10 @@ import Table from 'react-bootstrap/Table';
           <th>Numéro de projet</th>
           <th>Nom de projet</th>
           <th>Region</th>
-          <th>District</th>
-          <th>Commune</th>
-          <th>Fokontany</th>
+          <th>Point d'eau</th>
+          <th>Infrastructure de l'eau</th>
           <th>Localité</th>
+          <th>Nombre de bénéficiaire</th>
           <th>Etat d'ouvrage</th>
         </tr>
       </thead>
@@ -28,17 +29,18 @@ import Table from 'react-bootstrap/Table';
                 <td>{item.id}</td>
                 <td>{item.utilisation}</td>
                 <td>{item.region}</td>
-                <td>{item.district}</td>
-                <td>{item.commune}</td>
-                <td>{item.fokontany}</td>
-                <td>{item.localite}</td> 
+                <td>{item.point_eau}</td>
+                <td>{item.infra_eau}</td>
+                <td>{item.localite}</td>
+                <td>{item.nb_beneficiaire}</td>
                 <td>{item.etat_ouvrage}</td>
                 </tr>
               )
             })
       }
       </tbody>
-    </Table>
+        </Table>
+        <Link to='listeCanalisation'>Canalisation</Link>
     </div> 
     </ul>
   )

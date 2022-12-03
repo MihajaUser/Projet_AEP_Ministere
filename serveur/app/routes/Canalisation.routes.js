@@ -15,6 +15,10 @@ module.exports = function (app) {
   app.post("/api/canalisation/AjoutCanalisation", controlerCanalisation.AjoutCanalisation);
 //supprimer une canalisation
   app.delete("/api/canalisation/supprimer/:id", controlerCanalisation.supprimer);
-  //maka nbr canaliation 
-  app.get("/api/projet/nbrCanalisation", controlerCanalisation.nbrCanalisation)
+  //maka nbr canalisation 
+  app.get("/api/canalisation/nbrCanalisation", controlerCanalisation.nbrCanalisation);
+  //modifier une canalisation
+  app.put("/api/canalisation/modifier/:id" , controlerCanalisation.modifierCanalisation)
+  //projet en cours sy efa vita
+app.get("/api/canalisation/projetFini", controlerCanalisation.finitionProjet);
 }

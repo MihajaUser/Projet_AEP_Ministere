@@ -70,12 +70,16 @@ const CloseModalButton = styled(MdClose)`
   const { urlDebutLat, urlDebutLng } = useParams();
   const { finLat, finLng } = useParams();
   const [id_utilisateur,setUtilisateur] = useState(0);
+  const [region,setRegion] = useState('');
+  const [district,setDistrict] = useState('');
+  const [commune,setCommune] = useState('');
   const [debutLocalite,setDebLocal] = useState('');
   const [finLocalite,setFinLocal] = useState('');
   const [debutLatitude,setDebLat] = useState(urlDebutLat);
   const [debutLongitude,setDebLng] = useState(urlDebutLng);
   const [finLatitude,setFinLat] = useState(finLat);
   const [finLongitude,setFinLng] = useState(finLng);
+  const[etat_ouvrage,setOuvrage] = useState('non fonctionnel');
   const navigate = useNavigate();
   // console.log("lat"+urlDebutLat,"long"+urlDebutLng,"finL"+finLat,"finLg"+finLng);
   
@@ -86,12 +90,16 @@ const CloseModalButton = styled(MdClose)`
     // //voalohany variable iantsona an'azy any @ back le hoe req.body
     let data = {
       id_utilisateur,
+      region,
+      district,
+      commune,
       debutLocalite, 
       finLocalite, 
       debutLatitude, 
       debutLongitude, 
       finLatitude, 
       finLongitude,
+      etat_ouvrage
     }
     if ( debutLocalite == '' || finLocalite == '') {
       setError('Veuillez remplire tout les champs!')
@@ -127,7 +135,7 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Région</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6"  >
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setRegion (e.target.value) }} >
                             <option>Choisissez</option>
                               <option value="Analamanga">Analamanga</option>
                               <option value="Bongolava">Bongolava</option>
@@ -157,7 +165,7 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>District</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" >
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setDistrict (e.target.value)}}>
                             <option>Choisissez</option>
                               <option value="Ambohidratrimo">Ambohidratrimo</option>
                               <option value="Andramasina">Andramasina</option>
@@ -167,7 +175,7 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Commune</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" >
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setCommune (e.target.value) }}>
                             <option>Choisissez</option>
                               <option value="Ambato">Ambato</option>
                               <option value="Ambatolampy">Ambatolampy</option>
