@@ -10,8 +10,8 @@ const Map = (props) => {
 
   function valeurIcon(s) {
     let myIcon; let myText
-    if (s.infra_eau === "aepg") { myIcon = iconMaison(); myText = " Station " }
-    if (s.infra_eau === "fpmh") { myIcon = iconRobinet(); myText = "  Citerne " }
+    if (s.infra_eau === "aepp") { myIcon = iconMaison(); myText = " Station " }
+    if (s.infra_eau === "reservoir") { myIcon = iconRobinet(); myText = "  Reservoir " }
     return (
       <Marker position={{ lat: s.latitude, lng: s.longitude }} icon={myIcon}>
         <Popup>
