@@ -1,7 +1,7 @@
 import React, { Suspense, Box } from "react";
 import { Canvas, group } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
-import Citerne from "./Station12";
+import Citerne from "./Station";
 import "../Page3d.css";
 import Navigation from "../../2d/citerne2d/Navigation";
 function StationPage() {
