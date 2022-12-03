@@ -52,8 +52,15 @@ function Citerne2d() {
     // greenwich
     const greenwich = { x: 1045, y: 50, w: 14, h: 624 };
     drawFillRect(greenwich, { backgroundColor: 'rgb(99, 128, 191)' });
-    //trifangle verticale
+    //triangle altitude
+    //triangle
     ctx.beginPath();
+    ctx.moveTo(485, 300);
+    ctx.lineTo(450, 350);
+    ctx.lineTo(520, 350);
+    ctx.fill();
+
+    //trifangle verticale
     ctx.moveTo(1052, 310);
     ctx.lineTo(1017, 360);
     ctx.lineTo(1087, 360);
