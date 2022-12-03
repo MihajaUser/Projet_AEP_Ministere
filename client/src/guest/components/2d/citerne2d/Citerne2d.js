@@ -73,6 +73,9 @@ function Citerne2d() {
     // the fill color
     context.fillStyle = "rgb(232, 73, 73)";
     context.fill();
+    ////altitude
+    const altitude = { x: 480, y: 310, w: 10, h: 300 };
+    drawFillRect(altitude, { backgroundColor: 'rgb(232, 73, 73)' });
     //bar verticale
     const barAltitude = { x: 1047, y: 360, w: 10, h: 300 };
     drawFillRect(barAltitude, { backgroundColor: 'rgb(232, 73, 73)' });
@@ -80,7 +83,7 @@ function Citerne2d() {
     const barHorizontal = { x: 680, y: 130, w: 370, h: 10 };
     drawFillRect(barHorizontal, { backgroundColor: 'rgb(232, 73, 73)' });
     //pointille horizontal
-    const pointille = { x: 637, y: 305, w: 410, h: 5 };
+    const pointille = { x: 437, y: 305, w: 410, h: 5 };
     drawFillRect(pointille, { backgroundColor: 'rgb(11, 238, 113)' });
     //pointille verticale
     const pointilleV = { x: 627, y: 135, w: 5, h: 120 };
