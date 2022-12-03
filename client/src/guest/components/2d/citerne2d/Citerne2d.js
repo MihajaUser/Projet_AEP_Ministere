@@ -55,11 +55,10 @@ function Citerne2d() {
     //triangle altitude
     //triangle
     ctx.beginPath();
-    ctx.moveTo(485, 300);
-    ctx.lineTo(450, 350);
-    ctx.lineTo(520, 350);
+    ctx.moveTo(485, 308);
+    ctx.lineTo(450, 358);
+    ctx.lineTo(520, 358);
     ctx.fill();
-
     //trifangle verticale
     ctx.moveTo(1052, 310);
     ctx.lineTo(1017, 360);
@@ -73,8 +72,8 @@ function Citerne2d() {
     // the fill color
     context.fillStyle = "rgb(232, 73, 73)";
     context.fill();
-    ////altitude
-    const altitude = { x: 480, y: 310, w: 10, h: 300 };
+    //bar altitude
+    const altitude = { x: 480, y: 318, w: 10, h: 300 };
     drawFillRect(altitude, { backgroundColor: 'rgb(232, 73, 73)' });
     //bar verticale
     const barAltitude = { x: 1047, y: 360, w: 10, h: 300 };
@@ -83,7 +82,7 @@ function Citerne2d() {
     const barHorizontal = { x: 680, y: 130, w: 370, h: 10 };
     drawFillRect(barHorizontal, { backgroundColor: 'rgb(232, 73, 73)' });
     //pointille horizontal
-    const pointille = { x: 437, y: 305, w: 410, h: 5 };
+    const pointille = { x: 485, y: 305, w: 570, h: 5 };
     drawFillRect(pointille, { backgroundColor: 'rgb(11, 238, 113)' });
     //pointille verticale
     const pointilleV = { x: 627, y: 135, w: 5, h: 120 };
@@ -100,16 +99,17 @@ function Citerne2d() {
       let pied = rep.data.results[0].elevation;
       ctx.font = '25px serif';
       context.fillStyle = "rgb(11, 15, 88)";
-      ctx.fillText(`latitude : ${longitude}`, 100, 110);
-      ctx.fillText(`longitude : ${latitude}`, 100, 150);
-      ctx.fillText(`Altitude : ${pied} m `, 100, 190);
-      ctx.fillText(`Région : ${region}`, 100, 230);
+      ctx.fillText(`longitude : ${latitude} °`, 100, 110);
+      ctx.fillText(`latitude : ${longitude} °`, 100, 150);
+      ctx.fillText(`Région : ${region}`, 100, 190);
+      ctx.fillText(`Altitude : ${pied} m `, 100, 230);
       ctx.fillText(`Point eau  : ${point_eau}`, 100, 270);
       ctx.fillText(`Infrastructure : ${infra_eau}`, 100, 310);
       //text dessin
       context.fillStyle = "rgb(232, 73, 73)";
-      ctx.fillText(`${latitude}`, 730, 120);
-      ctx.fillText(`${longitude}`, 1070, 530);
+      ctx.fillText(`${pied} m`, 410, 470);
+      ctx.fillText(`${latitude} °`, 730, 120);
+      ctx.fillText(`${longitude} °`, 1070, 530);
     }).catch((err) => {
       console.log("mon error " + err);
     });
