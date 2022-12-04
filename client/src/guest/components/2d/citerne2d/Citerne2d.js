@@ -29,14 +29,14 @@ function Citerne2d() {
     plateau.src =
       require("../../../assets/imagesClient/plateau.png");
     plateau.onload = () => {
-      context.drawImage(plateau, 500, 50, 500, 500);
+      context.drawImage(plateau, 500, 160, 500, 500);
     };
     //localisation
     const image2 = new Image();
     image2.src =
       require("../../../assets/imagesClient/localisation.png");
     image2.onload = () => {
-      context.drawImage(image2, 580, 100, 100, 100);
+      context.drawImage(image2, 580, 210, 100, 100);
     };
     //reservoir.png
     let monImage = imageValue();
@@ -46,38 +46,71 @@ function Citerne2d() {
     reservoir.onload = () => {
       context.drawImage(reservoir, monImage.x, monImage.y, monImage.largeur, monImage.hauteur);
     };
+    // equateur
+    const equateur = { x: 400, y: 660, w: 650, h: 14 };
+    drawFillRect(equateur, { backgroundColor: 'rgb(99, 128, 191)' });
+    // greenwich
+    const greenwich = { x: 1045, y: 50, w: 14, h: 624 };
+    drawFillRect(greenwich, { backgroundColor: 'rgb(99, 128, 191)' });
+    //triangle altitude
     //triangle
     ctx.beginPath();
-    ctx.moveTo(485, 300);
-    ctx.lineTo(450, 350);
-    ctx.lineTo(520, 350);
+    ctx.moveTo(485, 308);
+    ctx.lineTo(450, 358);
+    ctx.lineTo(520, 358);
+    ctx.fill();
+    //trifangle verticale
+    ctx.moveTo(1052, 310);
+    ctx.lineTo(1017, 360);
+    ctx.lineTo(1087, 360);
+    ctx.fill();
+    //triangle horizontal
+    ctx.moveTo(630, 135);
+    ctx.lineTo(680, 90);
+    ctx.lineTo(680, 180);
     ctx.fill();
     // the fill color
     context.fillStyle = "rgb(232, 73, 73)";
     context.fill();
-    //altitude
-    const r3Info = { x: 480, y: 310, w: 10, h: 200 };
-    drawFillRect(r3Info, { backgroundColor: 'rgb(232, 73, 73)' });
-    //pointille altitude
-    const pointille = { x: 487, y: 300, w: 135, h: 5 };
+    //bar altitude
+    const altitude = { x: 480, y: 318, w: 10, h: 300 };
+    drawFillRect(altitude, { backgroundColor: 'rgb(232, 73, 73)' });
+    //bar verticale
+    const barAltitude = { x: 1047, y: 360, w: 10, h: 300 };
+    drawFillRect(barAltitude, { backgroundColor: 'rgb(232, 73, 73)' });
+    //bar horizontal
+    const barHorizontal = { x: 680, y: 130, w: 370, h: 10 };
+    drawFillRect(barHorizontal, { backgroundColor: 'rgb(232, 73, 73)' });
+    //pointille horizontal
+    const pointille = { x: 485, y: 305, w: 570, h: 5 };
     drawFillRect(pointille, { backgroundColor: 'rgb(11, 238, 113)' });
+    //pointille verticale
+    const pointilleV = { x: 627, y: 135, w: 5, h: 120 };
+    drawFillRect(pointilleV, { backgroundColor: 'rgb(11, 238, 113)' });
     //mer
-    const lamer = { x: 450, y: 500, w: 600, h: 50 };
-    drawFillRect(lamer, { backgroundColor: 'rgb(99, 128, 191)' });
+    const lamer = { x: 450, y: 610, w: 595, h: 50 };
+    drawFillRect(lamer, { backgroundColor: 'rgb(88, 229, 241)' });
     getAltitude(latitude, longitude).then(rep => {
-      //text altitude
+      //text gauche
       setShow(false)
       console.log(rep.data.results[0].elevation);
       setAltitude(rep.data.results[0].elevation);
       const unite = 50
       let pied = rep.data.results[0].elevation;
-      ctx.font = '30px serif';
+      ctx.font = '25px serif';
       context.fillStyle = "rgb(11, 15, 88)";
-      ctx.fillText(`Région : ${region}`, 10, 50);
-      ctx.fillText(`Altitude : ${pied} m   `, 10, 90);
-      ctx.fillText(`Point eau  : ${point_eau}`, 10, 130);
-      ctx.fillText(`Infrastructure : ${infra_eau}`, 10, 170);
+      ctx.fillText(`longitude : ${latitude} °`, 100, 110);
+      ctx.fillText(`latitude : ${longitude} °`, 100, 150);
+      ctx.fillText(`Région : ${region}`, 100, 190);
+      ctx.fillText(`Altitude : ${pied} m `, 100, 230);
+      ctx.fillText(`Infrastructure : ${infra_eau}`, 100, 270);
+      // ctx.fillText(`Point eau  : ${point_eau}`, 100, 310);
 
+      //text dessin
+      context.fillStyle = "rgb(232, 73, 73)";
+      ctx.fillText(`${pied} m`, 410, 470);
+      ctx.fillText(`${latitude} °`, 730, 120);
+      ctx.fillText(`${longitude} °`, 1070, 530);
     }).catch((err) => {
       console.log("mon error " + err);
     });
@@ -96,9 +129,10 @@ function Citerne2d() {
   }
 
   function imageValue() {
-    if (infra_eau === "reservoir") { return { "type": "reservoir", "x": 190, "y": 300, "largeur": 60, "hauteur": 130 } }
-    if (infra_eau === "aepp") { return { "type": "station", "x": 500, "y": 80, "largeur": 250, "hauteur": 300 } }
+    if (infra_eau === "reservoir") { return { "type": "reservoir", "x": 600, "y": 300, "largeur": 60, "hauteur": 130 } }
+    if (infra_eau === "aepp") { return { "type": "station", "x": 500, "y": 190, "largeur": 250, "hauteur": 300 } }
   }
+
   function appearLoading() {
     if (show) {
       return <Loading />
