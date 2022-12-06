@@ -49,7 +49,7 @@ const App = () => {
             <Route path="canalisation" element={<MapCanal />} />
             <Route path="inscription" element={<Inscription />} />
             <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
-            <Route path="todoList" element={<TodList />} />
+            <Route path="todoList/:idProjet" element={<TodList />} />
             <Route path="tableauStat" element={<TableauStat />} />
             <Route path="tableauCanal" element={<TableauCanal />} />
           </Route>

@@ -95,7 +95,7 @@ function CrudProjet() {
                 listeProjet.map((item) => {
                   return (
                     <tr>
-                      <td>{item.id}</td>
+                      <td><a href={`/todoList/${item.id} `}> {item.id}</a></td>
                       <td>{item.utilisation}</td>
                       <td>{item.region}</td>
                       <td>{item.point_eau}</td>
