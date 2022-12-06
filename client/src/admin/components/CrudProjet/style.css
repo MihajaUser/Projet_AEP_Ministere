@@ -11,6 +11,10 @@
 	margin-top: 5px;
 	zoom: 1.55;
 }
-.MyHeader {
+th {
+	text-align: center;
+	min-width: 70px;
+}
+td {
 	text-align: center;
 }

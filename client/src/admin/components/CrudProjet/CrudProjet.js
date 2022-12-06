@@ -79,15 +79,15 @@ function CrudProjet() {
             <thead>
               <tr>
                 {/* <th>Numéro</th> */}
-                <th className='MyHeader'>N°</th>
-                <th className='MyHeader'>Nom</th>
-                <th className='MyHeader'>Région</th>
-                <th className='MyHeader'>Point d'eau</th>
-                <th className='MyHeader'>Infrastructure de l'eau</th>
-                <th className='MyHeader'>Localité</th>
-                <th className='MyHeader'>Nombre bénéficiaire</th>
-                <th className='MyHeader'>Etat d'ouvrage</th>
-                <th colSpan="6" className='MyHeader'>Action</th>
+                <th>N°</th>
+                <th>Nom</th>
+                <th>Région</th>
+                <th>Point d'eau</th>
+                <th>Infrastructure de l'eau</th>
+                <th>Localité</th>
+                <th>Nombre bénéficiaire</th>
+                <th>Etat d'ouvrage</th>
+                <th colSpan="6" >Action</th>
               </tr>
             </thead>
             <tbody>
