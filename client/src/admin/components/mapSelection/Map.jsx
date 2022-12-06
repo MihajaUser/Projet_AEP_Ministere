@@ -15,10 +15,7 @@ class Map extends Component {
     const { map } = this.state;
     if (prevState.map !== map && map) {
       map.on("click", function (e) {
-
-
         alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng + " ");
-
       });
     }
 

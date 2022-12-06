@@ -9,15 +9,15 @@ const TaskItem = (props) => {
       <label>
         <input
           type="checkbox"
+          className="MyCheckbox"
           checked={task.etat}
           onChange={() => dispatch(toggleTask(task.id))}
         />
         {task.nom}
-
         <span
           onClick={() => dispatch(deleteTask(task.id))}
           role="button"
-          style={{ padding: "5px", marginLeft: "20px" }}
+          className="MySpan"
         >
           X
         </span>
@@ -25,5 +25,4 @@ const TaskItem = (props) => {
     </div>
   );
 };
-
 export default TaskItem;

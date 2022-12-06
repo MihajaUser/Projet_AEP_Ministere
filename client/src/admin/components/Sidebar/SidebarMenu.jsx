@@ -72,8 +72,8 @@ const SidebarMenu = ({ route, showAnimation, isOpen, setIsOpen }) => {
             animate={
               isMenuOpen
                 ? {
-                    rotate: -90,
-                  }
+                  rotate: -90,
+                }
                 : { rotate: 0 }
             }
           >
