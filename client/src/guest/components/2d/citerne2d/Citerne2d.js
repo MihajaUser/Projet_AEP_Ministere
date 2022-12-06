@@ -98,12 +98,11 @@ function Citerne2d() {
       let pied = rep.data.results[0].elevation;
       ctx.font = '25px serif';
       context.fillStyle = "rgb(11, 15, 88)";
+      ctx.fillText(`Infrastructure : ${monImage.text}`, 100, 70);
       ctx.fillText(`longitude : ${latitude} °`, 100, 110);
       ctx.fillText(`latitude : ${longitude} °`, 100, 150);
       ctx.fillText(`Région : ${region}`, 100, 190);
       ctx.fillText(`Altitude : ${pied} m `, 100, 230);
-      ctx.fillText(`Infrastructure : ${infra_eau}`, 100, 270);
-      // ctx.fillText(`Point eau  : ${point_eau}`, 100, 310);
       //text dessin
       context.fillStyle = "rgb(232, 73, 73)";
       ctx.fillText(`${pied} m`, 410, 470);
@@ -117,8 +116,8 @@ function Citerne2d() {
       ctx.fill();
       //triangle grenwich
       ctx.moveTo(1052, 45);
-      ctx.lineTo(1002, 95);
-      ctx.lineTo(1102, 95);
+      ctx.lineTo(1002, 100);
+      ctx.lineTo(1102, 100);
       ctx.fill();
     }).catch((err) => {
       console.log("mon error " + err);
@@ -138,8 +137,8 @@ function Citerne2d() {
   }
 
   function imageValue() {
-    if (infra_eau === "reservoir") { return { "type": "reservoir", "x": 600, "y": 300, "largeur": 60, "hauteur": 130 } }
-    if (infra_eau === "aepp") { return { "type": "station", "x": 500, "y": 190, "largeur": 250, "hauteur": 300 } }
+    if (infra_eau === "reservoir") { return { "type": "reservoir", "text": "Reservoir", "x": 600, "y": 300, "largeur": 60, "hauteur": 130 } }
+    if (infra_eau === "aepp") { return { "type": "station", "text": "Adduction d’Eau Potable par Pompage(AEPP)", "x": 500, "y": 190, "largeur": 250, "hauteur": 300 } }
   }
 
   function appearLoading() {
