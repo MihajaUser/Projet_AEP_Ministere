@@ -138,7 +138,7 @@ function Citerne2d() {
 
   function imageValue() {
     if (infra_eau === "reservoir") { return { "type": "reservoir", "text": "Reservoir", "x": 600, "y": 300, "largeur": 60, "hauteur": 130 } }
-    if (infra_eau === "aepp") { return { "type": "station", "text": "Adduction d’Eau Potable par Pompage(AEPP)", "x": 500, "y": 190, "largeur": 250, "hauteur": 300 } }
+    if (infra_eau === "aepp") { return { "type": "station", "text": "Adduction d’Eau Potable par Pompage (AEPP)", "x": 500, "y": 190, "largeur": 250, "hauteur": 300 } }
   }
 
   function appearLoading() {
