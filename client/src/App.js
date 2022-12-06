@@ -27,7 +27,6 @@ import TableauCanal from './guest/components/tableauStat/TableauCanal';
 import CrudCanal from './admin/components/CrudProjet/CrudCanal';
 import ModifFormulaire from './admin/components/formulaire/ModifFormulaire';
 import AjoutCanal from './admin/components/formulaire/AjoutCanal';
-// import MapAdduction from './admin/components/mapAdduction/MapAdduction';
 
 const App = () => {
   return (
@@ -53,7 +52,6 @@ const App = () => {
             <Route path="todoList" element={<TodList />} />
             <Route path="tableauStat" element={<TableauStat />} />
             <Route path="tableauCanal" element={<TableauCanal />} />
-
           </Route>
           <Route path="/admin" element={<Admin />}>
             <Route path="" element={<  MapRouting />} />
