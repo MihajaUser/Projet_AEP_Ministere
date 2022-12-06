@@ -23,5 +23,8 @@ module.exports = function (app) {
   //detail d'un projet
   app.get("/api/projet/detail/:id" ,controlerProjet.getById);
   //nombre projet d'adduction
-  app.get("/api/projet/nbrProjet", controlerProjet.nbrProjet)
+  app.get("/api/projet/nbrProjet", controlerProjet.nbrProjet);
+  //mijery ny projet en cours sy ny mbola tsy vita
+  app.get("/api/projet/projetFini", controlerProjet.finitionProjet);
+  
 }

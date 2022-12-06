@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import AddLocationRoundedIcon from '@mui/icons-material/AddLocationRounded';
 import IconRoute from '@mui/icons-material/Route';
+import * as MuiIcons from '@mui/icons-material';
 import '../../App.css'
 import BloodtypeIcon from '@mui/icons-material/Bloodtype';
 
@@ -45,6 +46,23 @@ const routes = [
       },
       {
         path: "liste",
+        name: "Adduction",
+        icon: <BloodtypeIcon />,
+      },
+    ],
+  },
+  {
+    path: "",
+    name: "Tableau Statistique",
+    icon: <MuiIcons.Leaderboard />,
+    subRoutes: [
+      {
+        path: "tableauCanal",
+        name: "Canalisation",
+        icon: <IconRoute />,
+      },
+      {
+        path: "",
         name: "Adduction",
         icon: <BloodtypeIcon />,
       },

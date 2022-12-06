@@ -4,7 +4,7 @@ import './Login.css';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router';
 import { AuthService } from './Auth.service.js';
-import { Alert } from 'react-bootstrap';
+import { Alert , Form} from 'react-bootstrap';
 
 function Login(props) {
   ///formulaire  setusername manova ilay user ary ambany
@@ -57,7 +57,7 @@ function Login(props) {
             </span>
           </div>
           <div className="form-group mt-3">
-            <label>nom </label>
+            <label>Email </label>
             <input
               type="email"
               className="form-control mt-1"
@@ -72,6 +72,14 @@ function Login(props) {
               placeholder="Mot de passe" onChange={(value) => setpassword(value.target.value)}
             />
           </div>
+          <Form.Group>
+            <Form.Label>Utilisation</Form.Label>
+              <Form.Select aria-label="Default select example" size="md-6" >
+                <option>Choisissez</option>
+                <option value="1">Ingenieur</option>
+                <option value="2">Dirigeant</option>
+              </Form.Select>
+              </Form.Group>
           {error &&
             <Alert className='my-input' key='danger' variant='danger'>
               {error}

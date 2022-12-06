@@ -9,26 +9,17 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF('/tuyaux.glb')
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.Cap_1.geometry} material={materials.Cap_1} position={[-7.28, 0.79, -0.32]} scale={2.56} />
-      <mesh geometry={nodes.H_2.geometry} material={materials.H_2} position={[15.62, 0.64, 0.01]} scale={2.56} />
-      <mesh geometry={nodes.I__2.geometry} material={materials['I _2']} position={[-11.64, 0.68, -0.55]} scale={2.56} />
-      <mesh geometry={nodes.I__3.geometry} material={materials['I _3']} position={[4.12, 0.73, -0.06]} scale={2.56} />
-      <mesh geometry={nodes.Support_3.geometry} material={materials.Support_3} position={[-14.7, -0.58, 0.04]} scale={2.56} />
-      <mesh geometry={nodes.Wellhead_1.geometry} material={materials.Wellhead_1} position={[-5, 1.29, -0.17]} scale={2.56} />
-      <mesh geometry={nodes.Support_3001.geometry} material={materials['Support_3.001']} position={[-14.7, -0.58, 0.04]} scale={2.56} />
-      <mesh geometry={nodes.Cap_1001.geometry} material={materials['Cap_1.001']} position={[-2.63, 0.53, -0.15]} scale={2.56} />
-      <mesh geometry={nodes.Cap_1002.geometry} material={materials['Cap_1.002']} position={[11.52, 0.23, 0.34]} scale={2.56} />
-      <mesh geometry={nodes.Support_3003.geometry} material={materials.base} position={[-6.58, -0.48, 0.04]} scale={2.56} />
-      <mesh geometry={nodes.Support_3002.geometry} material={materials['Support_3.002']} position={[-6.58, -0.48, 0.04]} scale={2.56} />
-      <mesh geometry={nodes.Support_3005.geometry} material={materials['Support_3.005']} position={[5.33, -0.43, 0.04]} scale={2.56} />
-      <mesh geometry={nodes.Support_3004.geometry} material={materials['Support_3.004']} position={[5.33, -0.43, 0.04]} scale={2.56} />
-      <mesh geometry={nodes.Support_3007.geometry} material={materials['Support_3.007']} position={[16.91, -0.43, 0.04]} scale={2.56} />
-      <mesh geometry={nodes.Support_3006.geometry} material={materials['Support_3.006']} position={[16.91, -0.43, 0.04]} scale={2.56} />
-      <mesh geometry={nodes.I__3001.geometry} material={materials['I _3.001']} position={[24.44, 0.54, 0.16]} scale={2.56} />
-      <mesh geometry={nodes.I__3004.geometry} material={materials['I _3.004']} position={[4.63, 0.73, -0.06]} scale={2.56} />
-      <mesh geometry={nodes.I__3006.geometry} material={materials['I _3.006']} position={[4.12, 0.73, -0.06]} scale={2.56} />
-      <mesh geometry={nodes.I__3007.geometry} material={materials['I _3.007']} position={[4.12, 0.73, -0.06]} scale={2.56} />
-      <mesh geometry={nodes.Cap_1003.geometry} material={materials['Cap_1.003']} position={[29.94, 0.45, 0.04]} scale={2.56} />
+      <group position={[6.55, 0, -9.76]} rotation={[0, -1.56, 0]}>
+        <mesh geometry={nodes.Cylinder002.geometry} material={materials.mat_canal} position={[4.3, 0.24, -0.32]} rotation={[2.85, 0.08, 1.59]} scale={[0.44, 4.27, 0.44]} />
+      </group>
+      <group position={[-1.66, 0, -8.56]} rotation={[0, 1.57, 0]}>
+        <mesh geometry={nodes.Cylinder000.geometry} material={materials.mat_canal} position={[4.4, 0.21, 0]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.44, 4.27, 0.46]} />
+      </group>
+      <group position={[1.65, 0, 0]} rotation={[0, 1.57, 0]}>
+        <mesh geometry={nodes.Cylinder001.geometry} material={materials.mat_canal} position={[-10.89, 0.16, -3.25]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.48, 4.61, 0.48]} />
+      </group>
+      <mesh geometry={nodes.long_tuyau001.geometry} material={materials.mat_canal} position={[-1.7, 0.19, -1.62]} rotation={[Math.PI / 2, 0, 0]} scale={[0.44, 2.4, 0.53]} />
+      <mesh geometry={nodes.long_tuyau.geometry} material={materials.mat_canal} position={[7.12, 0.2, -18.36]} rotation={[Math.PI / 2, 0, 0]} scale={[0.44, 3.99, 0.44]} />
     </group>
   )
 }
