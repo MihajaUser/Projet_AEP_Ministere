@@ -103,15 +103,23 @@ export default function AjoutFormulaire() {
       id_utilisateur
     }
     if (nb_beneficiaire == '' || etat_ouvrage == '') {
-      setError('Veuillez remplire tout les champs!')
+      setError('remplire tout les champs!')
     } else {
       const response = await CrudService.AjoutProjet(data);
       if (response.status === 200) {
-        //  alert("Projet ajouté avec succès");
-        setSucces("Projet ajouté avec succès");
+        alert("Projet ajouté avec succès");
       }
-      else {
-        throw new Error("Veuillez taper tous les champs");
+      if (nb_beneficiaire == '' || etat_ouvrage == '') {
+        setError('Veuillez remplire tout les champs!')
+      } else {
+        const response = await CrudService.AjoutProjet(data);
+        if (response.status === 200) {
+          //  alert("Projet ajouté avec succès");
+          setSucces("Projet ajouté avec succès");
+        }
+        else {
+          throw new Error("Veuillez taper tous les champs");
+        }
       }
     }
     // console.log("cscsdc",data);
@@ -128,7 +136,7 @@ export default function AjoutFormulaire() {
             <ModalContent>
               <Row>
                 <Col xs={6} >
-                  <Card border="primary" style={{ width: '25rem' }}>
+                  <Card border="primary" style={{ width: '65rem' }}>
                     <Card.Header>Formulaire d'ajout d'adduction</Card.Header>
                     <Card.Body>
                       <Card.Title></Card.Title>
@@ -233,8 +241,6 @@ export default function AjoutFormulaire() {
                               <option value="Ambanimaso">Ambanimaso</option>
                               <option value="Ambato">Ambato</option>
                             </Form.Select>
-
-
                           </Form.Group>
                         </Col>
                         <Col>
@@ -266,6 +272,7 @@ export default function AjoutFormulaire() {
                         <Form.Label>Utilisateur</Form.Label>
                         <Form.Control type="nombre" placeholder="Administrateur" />
                       </Form.Group> */}
+
                       <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
                       {error &&
                         <Alert className='my-input' key='danger' variant='danger'>

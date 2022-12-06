@@ -1,29 +1,28 @@
-.img{
-  width: 100%;
-  height: 100px;
-  /* background-color: red; */
+.img {
+	width: 100%;
+	height: 100px;
+	/* background-color: red; */
 }
-.drapeau{
-  /* margin-left: 200px; */
-  /* margin-bottom: 50px ; */
-  width: 120px ;
-  height: 90px;
-  margin-bottom: -15px;
-/*  display:block;*/
-  /* background-color: red; */
+.drapeau {
+	/* margin-left: 200px; */
+	/* margin-bottom: 50px ; */
+	width: 120px;
+	height: 90px;
+	margin-bottom: -15px;
+	/*  display:block;*/
+	/* background-color: red; */
 }
-.logoMin{
-  margin-top: -70px;
-  display:block;
-  margin-right:auto;
-  margin-left: auto; 
-  width: 90px;
-  height: 70px;
-  
+.logoMin {
+	margin-top: -70px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	width: 90px;
+	height: 70px;
 }
-.header{
-  /* height: 220px;
+.header {
+	/* height: 220px;
   width: 220px;
   border-radius: 20px; */
-  background-color: aqua;
+	background-color: aqua;
 }
