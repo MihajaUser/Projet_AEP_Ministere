@@ -50,24 +50,23 @@ function Citerne2d() {
     const equateur = { x: 400, y: 660, w: 650, h: 14 };
     drawFillRect(equateur, { backgroundColor: 'rgb(99, 128, 191)' });
     // greenwich
-    const greenwich = { x: 1045, y: 50, w: 14, h: 624 };
+    const greenwich = { x: 1045, y: 55, w: 14, h: 619 };
     drawFillRect(greenwich, { backgroundColor: 'rgb(99, 128, 191)' });
-    //triangle altitude
-    //triangle
     ctx.beginPath();
+    //triangle altitude
     ctx.moveTo(485, 308);
-    ctx.lineTo(450, 358);
-    ctx.lineTo(520, 358);
+    ctx.lineTo(465, 358);
+    ctx.lineTo(505, 358);
     ctx.fill();
     //trifangle verticale
     ctx.moveTo(1052, 310);
-    ctx.lineTo(1017, 360);
-    ctx.lineTo(1087, 360);
+    ctx.lineTo(1030, 360);
+    ctx.lineTo(1075, 360);
     ctx.fill();
     //triangle horizontal
-    ctx.moveTo(630, 135);
-    ctx.lineTo(680, 90);
-    ctx.lineTo(680, 180);
+    ctx.moveTo(630, 145);
+    ctx.lineTo(680, 120);
+    ctx.lineTo(680, 170);
     ctx.fill();
     // the fill color
     context.fillStyle = "rgb(232, 73, 73)";
@@ -79,13 +78,13 @@ function Citerne2d() {
     const barAltitude = { x: 1047, y: 360, w: 10, h: 300 };
     drawFillRect(barAltitude, { backgroundColor: 'rgb(232, 73, 73)' });
     //bar horizontal
-    const barHorizontal = { x: 680, y: 130, w: 370, h: 10 };
+    const barHorizontal = { x: 680, y: 140, w: 370, h: 10 };
     drawFillRect(barHorizontal, { backgroundColor: 'rgb(232, 73, 73)' });
     //pointille horizontal
     const pointille = { x: 485, y: 305, w: 570, h: 5 };
     drawFillRect(pointille, { backgroundColor: 'rgb(11, 238, 113)' });
     //pointille verticale
-    const pointilleV = { x: 627, y: 135, w: 5, h: 120 };
+    const pointilleV = { x: 627, y: 145, w: 5, h: 110 };
     drawFillRect(pointilleV, { backgroundColor: 'rgb(11, 238, 113)' });
     //mer
     const lamer = { x: 450, y: 610, w: 595, h: 50 };
@@ -105,12 +104,22 @@ function Citerne2d() {
       ctx.fillText(`Altitude : ${pied} m `, 100, 230);
       ctx.fillText(`Infrastructure : ${infra_eau}`, 100, 270);
       // ctx.fillText(`Point eau  : ${point_eau}`, 100, 310);
-
       //text dessin
       context.fillStyle = "rgb(232, 73, 73)";
       ctx.fillText(`${pied} m`, 410, 470);
-      ctx.fillText(`${latitude} °`, 730, 120);
+      ctx.fillText(`${latitude} °`, 730, 130);
       ctx.fillText(`${longitude} °`, 1070, 530);
+      context.fillStyle = "rgb(99, 128, 191)";
+      //triangle equateur
+      ctx.moveTo(350, 665);
+      ctx.lineTo(400, 615);
+      ctx.lineTo(400, 715);
+      ctx.fill();
+      //triangle grenwich
+      ctx.moveTo(1052, 45);
+      ctx.lineTo(1002, 95);
+      ctx.lineTo(1102, 95);
+      ctx.fill();
     }).catch((err) => {
       console.log("mon error " + err);
     });
