@@ -240,7 +240,7 @@ export default function AjoutFormulaire() {
                               <Form.Label>Fokontany</Form.Label>
                               <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setFokontany(e.target.value) }}>
                                 <option>Choisissez</option>
-                                <option value="Ambanimaso">Ambanimaso</option>
+                                <option value="Belambanana">Belambanana</option>
                                 <option value="Ambato">Ambato</option>
                               </Form.Select>
                             </Form.Group>
