@@ -1,10 +1,10 @@
-import { Row, Col, Form, Button ,Alert} from 'react-bootstrap';
+import { Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import React, { useState } from 'react';
 import CrudService from '../CrudProjet/Crud.service.js';
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 // import '../styles/AjoutFormulaire.css'
 // import styled from 'styled-components';
@@ -64,61 +64,61 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
- export default function  AjoutFormulaire (){
+export default function AjoutFormulaire() {
   const [error, setError] = useState(null);
   const [succes, setSucces] = useState(null);
   const { urlDebutLat, urlDebutLng } = useParams();
-  const [id_utilisateur,setUtilisateur] = useState(0);
-  const [utilisation,setUtilisation] = useState('');
-  const [infra_eau,setInfra] = useState('');
-  const [point_eau,setPointEau] = useState('');
-  const [region,setRegion] = useState('');
-  const [district,setDistrict] = useState('');
-  const [commune,setCommune] = useState('');
-  const [fokontany,setFokontany] = useState('');
-  const [localite,setLocalite] = useState('');
-  const [nb_beneficiaire,setNombre] = useState('');
-  const[etat_ouvrage,setOuvrage] = useState('non fonctionnel');
+  const [id_utilisateur, setUtilisateur] = useState(0);
+  const [utilisation, setUtilisation] = useState('');
+  const [infra_eau, setInfra] = useState('');
+  const [point_eau, setPointEau] = useState('');
+  const [region, setRegion] = useState('');
+  const [district, setDistrict] = useState('');
+  const [commune, setCommune] = useState('');
+  const [fokontany, setFokontany] = useState('');
+  const [localite, setLocalite] = useState('');
+  const [nb_beneficiaire, setNombre] = useState('');
+  const [etat_ouvrage, setOuvrage] = useState('non fonctionnel');
   const navigate = useNavigate();
   // const [id, setId] = useState();
   //maka anle donnee rehetra
- 
-    const ajout = async () =>{
-      let user = JSON.parse(localStorage.getItem('users'));
-      //voalohany variable iantsona an'azy any @ back le hoe req.body
-      let data = {
-        utilisation,
-        infra_eau, 
-        point_eau, 
-        region, 
-        district, 
-        commune, 
-        fokontany, 
-        localite, 
-        latitude: parseFloat(urlDebutLat), 
-        longitude: parseFloat(urlDebutLng), 
-        nb_beneficiaire, 
-        etat_ouvrage, 
-        utilisation, 
-        id_utilisateur
-      }
-      if ( nb_beneficiaire == '' || etat_ouvrage == '') {
-        setError('Veuillez remplire tout les champs!')
-      } else {
-        const response = await CrudService. AjoutProjet(data);
-        if(response.status === 200) {
+
+  const ajout = async () => {
+    let user = JSON.parse(localStorage.getItem('users'));
+    //voalohany variable iantsona an'azy any @ back le hoe req.body
+    let data = {
+      utilisation,
+      infra_eau,
+      point_eau,
+      region,
+      district,
+      commune,
+      fokontany,
+      localite,
+      latitude: parseFloat(urlDebutLat),
+      longitude: parseFloat(urlDebutLng),
+      nb_beneficiaire,
+      etat_ouvrage,
+      utilisation,
+      id_utilisateur
+    }
+    if (nb_beneficiaire == '' || etat_ouvrage == '') {
+      setError('Veuillez remplire tout les champs!')
+    } else {
+      const response = await CrudService.AjoutProjet(data);
+      if (response.status === 200) {
         //  alert("Projet ajouté avec succès");
-         setSucces("Projet ajouté avec succès");
-        }
-        else{
-          throw new Error("Veuillez taper tous les champs");
-        }
+        setSucces("Projet ajouté avec succès");
       }
-      // console.log("cscsdc",data);
-     
-      // navigate(`/`);
+      else {
+        throw new Error("Veuillez taper tous les champs");
+      }
+    }
+    // console.log("cscsdc",data);
+
+    // navigate(`/`);
   }
-  
+
 
   return (
     <>
@@ -136,7 +136,7 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group>
                             <Form.Label>Utilisation</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setUtilisation(e.target.value) }}>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setUtilisation(e.target.value) }}>
                               <option>Choisissez</option>
                               <option value="Station">Station</option>
                               <option value="Pompe">Pompe</option>
@@ -145,12 +145,12 @@ const CloseModalButton = styled(MdClose)`
                           </Form.Group>
                         </Col>
                         <Col>
-                          <Form.Group className="mb-3"> 
+                          <Form.Group className="mb-3">
                             <Form.Label>Infrastru d'eau</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setInfra (e.target.value) }}>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setInfra(e.target.value) }}>
                               <option>Choisissez</option>
-                              <option value="aepg">AEPG</option> 
-                              <option value="aepp">AEPP</option> 
+                              <option value="aepg">AEPG</option>
+                              <option value="aepp">AEPP</option>
                               <option value="aeppp">AEPPp</option>
                               <option value="fpmh">FPMH</option>
                               <option value="ppmh">PPMH</option>
@@ -159,8 +159,8 @@ const CloseModalButton = styled(MdClose)`
                         </Col>
                         <Col>
                           <Form.Group className="mb-3">
-                            <Form.Label>Point d'eau</Form.Label> 
-                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setPointEau (e.target.value) }}>
+                            <Form.Label>Point d'eau</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setPointEau(e.target.value) }}>
                               <option>Choisissez</option>
                               <option value="bf">BF</option>
                               <option value="bf">BP</option>
@@ -176,8 +176,8 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Région</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setRegion (e.target.value) }}>
-                            <option>Choisissez</option>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setRegion(e.target.value) }}>
+                              <option>Choisissez</option>
                               <option value="Analamanga">Analamanga</option>
                               <option value="Bongolava">Bongolava</option>
                               <option value="Itasy">Itasy</option>
@@ -200,14 +200,14 @@ const CloseModalButton = styled(MdClose)`
                               <option value="Anosy">Anosy</option>
                               <option value="Atsimo Andrefana">Atsimo Andrefana</option>
                               <option value="Menabe">Menabe</option>
-                              </Form.Select>
-                            </Form.Group>
+                            </Form.Select>
+                          </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>District</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setDistrict (e.target.value)}}>
-                            <option>Choisissez</option>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setDistrict(e.target.value) }}>
+                              <option>Choisissez</option>
                               <option value="Ambohidratrimo">Ambohidratrimo</option>
                               <option value="Andramasina">Andramasina</option>
                             </Form.Select>
@@ -216,8 +216,8 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Commune</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setCommune (e.target.value) }}>
-                            <option>Choisissez</option>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setCommune(e.target.value) }}>
+                              <option>Choisissez</option>
                               <option value="Ambato">Ambato</option>
                               <option value="Ambatolampy">Ambatolampy</option>
                             </Form.Select>
@@ -228,39 +228,39 @@ const CloseModalButton = styled(MdClose)`
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Fokontany</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setFokontany (e.target.value) }}>
-                            <option>Choisissez</option>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setFokontany(e.target.value) }}>
+                              <option>Choisissez</option>
                               <option value="Ambanimaso">Ambanimaso</option>
                               <option value="Ambato">Ambato</option>
                             </Form.Select>
-                          
-                            
+
+
                           </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group className="mb-3">
                             <Form.Label>Localité</Form.Label>
-                            <Form.Control type="text" placeholder="ex : Ambandrika"  onChange ={(e)=>{setLocalite (e.target.value) }}/>
+                            <Form.Control type="text" placeholder="ex : Ambandrika" onChange={(e) => { setLocalite(e.target.value) }} />
                           </Form.Group>
                         </Col>
                       </Row>
                       <Row>
-                      <Col> 
-                      <Form.Group className="mb-3">
-                        <Form.Label>Latitude</Form.Label>
-                        <Form.Control type="number" placeholder="" value={urlDebutLat}  />
-                      </Form.Group>
-                      </Col>
-                      <Col>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Longitude</Form.Label>
-                        <Form.Control type="number" placeholder="" value={urlDebutLng} />
-                      </Form.Group>
-                      </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Latitude</Form.Label>
+                            <Form.Control type="number" placeholder="" value={urlDebutLat} />
+                          </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Longitude</Form.Label>
+                            <Form.Control type="number" placeholder="" value={urlDebutLng} />
+                          </Form.Group>
+                        </Col>
                       </Row>
                       <Form.Group className="mb-3">
                         <Form.Label>Nombre bénéficiaire</Form.Label>
-                        <Form.Control type="number" placeholder="Entrez le nombre" onChange ={(e)=>{setNombre (e.target.value) }}/>
+                        <Form.Control type="number" placeholder="Entrez le nombre" onChange={(e) => { setNombre(e.target.value) }} />
                       </Form.Group>
                       {/* <Form.Group className="mb-3">
                         <Form.Label>Utilisateur</Form.Label>
@@ -268,15 +268,15 @@ const CloseModalButton = styled(MdClose)`
                       </Form.Group> */}
                       <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
                       {error &&
-                            <Alert className='my-input' key='danger' variant='danger'>
-                             {error}
-                            </Alert>
-                    }
-                     {succes &&
-                            <Alert className='my-input' key='success' variant='success'>
-                                    {succes}
-                            </Alert>
-                    }
+                        <Alert className='my-input' key='danger' variant='danger'>
+                          {error}
+                        </Alert>
+                      }
+                      {succes &&
+                        <Alert className='my-input' key='success' variant='success'>
+                          {succes}
+                        </Alert>
+                      }
                     </Card.Body>
                   </Card>
                 </Col>
