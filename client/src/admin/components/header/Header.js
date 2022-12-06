@@ -40,7 +40,6 @@ function Header() {
             <AccountCircleRoundedIcon />
           </Navbar.Brand>
           <NavDropdown title={user.username} id="nav-dropdown" >
-          
             <NavDropdown.Item eventKey="4.1" onClick={logout}><AccountCircleRoundedIcon />Déconnexion</NavDropdown.Item>
           </NavDropdown>
         </Container>
