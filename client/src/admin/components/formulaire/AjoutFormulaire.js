@@ -66,18 +66,19 @@ const CloseModalButton = styled(MdClose)`
 
 export default function AjoutFormulaire() {
   const [error, setError] = useState(null);
+  const [succes, setSucces] = useState(null);
   const { urlDebutLat, urlDebutLng } = useParams();
-  const [id_utilisateur, setUtilisateur] = useState(0);
-  const [utilisation, setUtilisation] = useState('');
-  const [infra_eau, setInfra] = useState('');
-  const [point_eau, setPointEau] = useState('');
-  const [region, setRegion] = useState('');
-  const [district, setDistrict] = useState('');
-  const [commune, setCommune] = useState('');
-  const [fokontany, setFokontany] = useState('');
-  const [localite, setLocalite] = useState('');
-  const [nb_beneficiaire, setNombre] = useState('');
-  const [etat_ouvrage, setOuvrage] = useState('');
+  const [id_utilisateur,setUtilisateur] = useState(0);
+  const [utilisation,setUtilisation] = useState('');
+  const [infra_eau,setInfra] = useState('');
+  const [point_eau,setPointEau] = useState('');
+  const [region,setRegion] = useState('');
+  const [district,setDistrict] = useState('');
+  const [commune,setCommune] = useState('');
+  const [fokontany,setFokontany] = useState('');
+  const [localite,setLocalite] = useState('');
+  const [nb_beneficiaire,setNombre] = useState('');
+  const[etat_ouvrage,setOuvrage] = useState('non fonctionnel');
   const navigate = useNavigate();
   // const [id, setId] = useState();
   //maka anle donnee rehetra
@@ -108,8 +109,17 @@ export default function AjoutFormulaire() {
       if (response.status === 200) {
         alert("Projet ajouté avec succès");
       }
-      else {
-        throw new Error("Veuillez taper tous les champs");
+      if ( nb_beneficiaire == '' || etat_ouvrage == '') {
+        setError('Veuillez remplire tout les champs!')
+      } else {
+        const response = await CrudService. AjoutProjet(data);
+        if(response.status === 200) {
+        //  alert("Projet ajouté avec succès");
+         setSucces("Projet ajouté avec succès");
+        }
+        else{
+          throw new Error("Veuillez taper tous les champs");
+        }
       }
     }
     // console.log("cscsdc",data);
@@ -138,16 +148,17 @@ export default function AjoutFormulaire() {
                               <option>Choisissez</option>
                               <option value="Station">Station</option>
                               <option value="Pompe">Pompe</option>
+
                             </Form.Select>
                           </Form.Group>
                         </Col>
                         <Col>
-                          <Form.Group className="mb-3">
+                          <Form.Group className="mb-3"> 
                             <Form.Label>Infrastru d'eau</Form.Label>
                             <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setInfra(e.target.value) }}>
                               <option>Choisissez</option>
-                              <option value="aepg">AEPG</option>
-                              <option value="aepp">AEPP</option>
+                              <option value="aepg">AEPG</option> 
+                              <option value="aepp">AEPP</option> 
                               <option value="aeppp">AEPPp</option>
                               <option value="fpmh">FPMH</option>
                               <option value="ppmh">PPMH</option>
@@ -156,8 +167,9 @@ export default function AjoutFormulaire() {
                         </Col>
                         <Col>
                           <Form.Group className="mb-3">
-                            <Form.Label>Point d'eau</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setPointEau(e.target.value) }}>
+
+                            <Form.Label>Point d'eau</Form.Label> 
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setPointEau (e.target.value) }}>
                               <option>Choisissez</option>
                               <option value="bf">BF</option>
                               <option value="bf">BP</option>
@@ -257,16 +269,22 @@ export default function AjoutFormulaire() {
                         <Form.Label>Nombre bénéficiaire</Form.Label>
                         <Form.Control type="number" placeholder="Entrez le nombre" onChange={(e) => { setNombre(e.target.value) }} />
                       </Form.Group>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Etat d'ouvrage</Form.Label>
-                        <Form.Control type="text" placeholder="Entrez le nombre" onChange={(e) => { setOuvrage(e.target.value) }} />
-                      </Form.Group>
                       {/* <Form.Group className="mb-3">
                         <Form.Label>Utilisateur</Form.Label>
                         <Form.Control type="nombre" placeholder="Administrateur" />
                       </Form.Group> */}
-                      <Button type="submit" className="btn-lg" onClick={ajout}>    Ajoutez    </Button>
-                      {/* <Alert color="danger">Projet ajoutez avec succès</Alert> */}
+
+                      <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
+                      {error &&
+                            <Alert className='my-input' key='danger' variant='danger'>
+                             {error}
+                            </Alert>
+                    }
+                     {succes &&
+                            <Alert className='my-input' key='success' variant='success'>
+                                    {succes}
+                            </Alert>
+                    }
                     </Card.Body>
                   </Card>
                 </Col>

@@ -1,4 +1,4 @@
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form, Button ,Alert} from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
@@ -65,15 +65,21 @@ const CloseModalButton = styled(MdClose)`
 `;
 
  export default function  AjoutCanal (){
+  const [error, setError] = useState(null);
+  const [succes, setSucces] = useState(null);
   const { urlDebutLat, urlDebutLng } = useParams();
   const { finLat, finLng } = useParams();
   const [id_utilisateur,setUtilisateur] = useState(0);
+  const [region,setRegion] = useState('');
+  const [district,setDistrict] = useState('');
+  const [commune,setCommune] = useState('');
   const [debutLocalite,setDebLocal] = useState('');
   const [finLocalite,setFinLocal] = useState('');
   const [debutLatitude,setDebLat] = useState(urlDebutLat);
   const [debutLongitude,setDebLng] = useState(urlDebutLng);
   const [finLatitude,setFinLat] = useState(finLat);
   const [finLongitude,setFinLng] = useState(finLng);
+  const[etat_ouvrage,setOuvrage] = useState('non fonctionnel');
   const navigate = useNavigate();
   // console.log("lat"+urlDebutLat,"long"+urlDebutLng,"finL"+finLat,"finLg"+finLng);
   
@@ -84,26 +90,34 @@ const CloseModalButton = styled(MdClose)`
     // //voalohany variable iantsona an'azy any @ back le hoe req.body
     let data = {
       id_utilisateur,
+      region,
+      district,
+      commune,
       debutLocalite, 
       finLocalite, 
       debutLatitude, 
       debutLongitude, 
       finLatitude, 
       finLongitude,
+      etat_ouvrage
     }
-    console.log("data",data);
-    const response = await CrudCanalService. AjoutCanalisation(data);
-    console.log(response);
-    if(response.status === 200) {
-      
-     alert("Projet ajouté avec succès");
+    if ( debutLocalite == '' || finLocalite == '') {
+      setError('Veuillez remplire tout les champs!')
+    } else {
+      const response = await CrudCanalService. AjoutCanalisation(data);
+      console.log(response);
+      if(response.status === 200) {
+       
+        setSucces("Projet ajouté avec succès");
+      }
+  
+      else{
+        throw new Error("Veuillez taper tous les champs");
+      }
+      navigate(`/admin/ajoutCanalisation3/${debutLatitude}/${debutLongitude}/${finLatitude}/${finLongitude}`);
+      // navigate(`/admin`);
     }
-
-    else{
-      throw new Error("Veuillez taper tous les champs");
-    }
-    // navigate('/admin/ajoutCanalisation3/',{state : {debutLatitude,debutLongitude,finLatitude,finLongitude}});
-    navigate(`/admin`);
+   
   }
   return (
     <>
@@ -113,10 +127,62 @@ const CloseModalButton = styled(MdClose)`
             <ModalContent>
               <Row>
                 <Col xs={6} >
-                  <Card border="primary" style={{ width: '35rem' }}>
+                  <Card border="primary" style={{ width: '25rem' , height:'30rem'}}>
                     <Card.Header>Formulaire d'ajout de Canalisation</Card.Header>
                     <Card.Body>
                       <Card.Title></Card.Title>
+                      <Row>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Région</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setRegion (e.target.value) }} >
+                            <option>Choisissez</option>
+                              <option value="Analamanga">Analamanga</option>
+                              <option value="Bongolava">Bongolava</option>
+                              <option value="Itasy">Itasy</option>
+                              <option value="Vakinakaratra">Vakinakaratra</option>
+                              <option value="Diana">Diana</option>
+                              <option value="Sava">Sava</option>
+                              <option value="Amoron'i Mania">Amoron'i Mania</option>
+                              <option value="Atsimo Atsinanana">Atsimo Atsinanana</option>
+                              <option value="Haute Matsiatra">Haute Matsiatra</option>
+                              <option value="Ihorombe">Ihorombe</option>
+                              <option value="Vatovavy Fitovinany">Vatovavy Fitovinany</option>
+                              <option value="Betsiboka">Betsiboka</option>
+                              <option value="Boeny">Boeny</option>
+                              <option value="Melaky">Melaky</option>
+                              <option value="Sofia">Sofia</option>
+                              <option value="Alaotra Mangoro">Alaotra Mangoro</option>
+                              <option value="Analanjirofo">Analanjirofo</option>
+                              <option value="Atsinanana">Atsinanana</option>
+                              <option value="Androy">Androy</option>
+                              <option value="Anosy">Anosy</option>
+                              <option value="Atsimo Andrefana">Atsimo Andrefana</option>
+                              <option value="Menabe">Menabe</option>
+                              </Form.Select>
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>District</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setDistrict (e.target.value)}}>
+                            <option>Choisissez</option>
+                              <option value="Ambohidratrimo">Ambohidratrimo</option>
+                              <option value="Andramasina">Andramasina</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                        <Col>
+                          <Form.Group className="mb-3">
+                            <Form.Label>Commune</Form.Label>
+                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setCommune (e.target.value) }}>
+                            <option>Choisissez</option>
+                              <option value="Ambato">Ambato</option>
+                              <option value="Ambatolampy">Ambatolampy</option>
+                            </Form.Select>
+                          </Form.Group>
+                        </Col>
+                      </Row>
                       <Row>
                         <Col>
                           <Form.Group>
@@ -158,6 +224,16 @@ const CloseModalButton = styled(MdClose)`
                         </Col>
                       </Row>
                       <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
+                      {error &&
+                            <Alert className='my-input' key='danger' variant='danger'>
+                                    {error}
+                            </Alert>
+                    }
+                     {succes &&
+                            <Alert className='my-input' key='success' variant='success'>
+                                    {succes}
+                            </Alert>
+                    }
                     </Card.Body>
                   </Card>
                 </Col>

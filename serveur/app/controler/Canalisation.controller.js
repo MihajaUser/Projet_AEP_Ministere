@@ -29,12 +29,17 @@ exports.getAllCanalisation = (req, res) => {
 exports.AjoutCanalisation = (req, res) => {
   model.Canalisation.create({
     id_utilisateur: req.body.id_utilisateur,
+    region: req.body.region,
+    district: req.body.district,
+    commune: req.body.commune,
     debutLocalite: req.body.debutLocalite,
     finLocalite: req.body.finLocalite,
     debutLatitude: req.body.debutLatitude,
     debutLongitude: req.body.debutLongitude,
     finLatitude: req.body.finLatitude,
     finLongitude: req.body.finLongitude,
+    etat_ouvrage: req.body.etat_ouvrage
+   
   })
     .then(rep => {
       res.send('Canalisation was registered successfully!')
@@ -70,3 +75,44 @@ exports.nbrCanalisation = (req, res) => {
       console.log(err)
     });
 };
+//modification d'un projet
+exports.modifierCanalisation = (req,res) => {
+  model.Canalisation.update({
+    id_utilisateur: req.body.id_utilisateur,
+    region: req.body.region,
+    district: req.body.district,
+    commune: req.body.commune,
+    debutLocalite: req.body.debutLocalite,
+    finLocalite: req.body.finLocalite,
+    debutLatitude: req.body.debutLatitude,
+    debutLongitude: req.body.debutLongitude,
+    finLatitude: req.body.finLatitude,
+    finLongitude: req.body.finLongitude,
+    etat_ouvrage: req.body.etat_ouvrage
+  }, 
+ {
+   where:{id: req.params.id}
+ })
+ .then(rep => {
+   res.status(200).send(rep);
+ }
+ )
+   .catch(err => {
+     res.status(500).send({ message: err.message });
+   }) 
+  
+};
+
+//nombre projet en cours
+exports.finitionProjet = (req,res) => {
+  model.sequelize.query(
+    'SELECT count(*) as encours, etat_ouvrage as nom FROM public."Canalisations"  group by etat_ouvrage',
+    {
+      type: QueryTypes.SELECT
+    }).then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}

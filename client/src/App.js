@@ -7,6 +7,7 @@ import Home from './guest/pages/home/Home'
 import AjoutFormulaire from './admin/components/formulaire/AjoutFormulaire'
 import CrudProjet from './admin/components/CrudProjet/CrudProjet'
 import ListeProjet from './guest/components/listeProjet/ListeProjet'
+import ListeCanalisation from './guest/components/listeProjet/ListeCanalisation'
 import Login from './guest/pages/login/Login';
 import Inscription from './guest/pages/login/Inscription';
 import Admin from './admin/pages/Main.jsx';
@@ -22,6 +23,7 @@ import Pump3d from './guest/components/3d/pumb3d/PumpPage';
 import TodList from './guest/components/todoList/TodoList';
 import Adduction from './admin/components/formulaire/Adduction'
 import TableauStat from './guest/components/tableauStat/TableauStat';
+import TableauCanal from './guest/components/tableauStat/TableauCanal';
 import CrudCanal from './admin/components/CrudProjet/CrudCanal';
 import ModifFormulaire from './admin/components/formulaire/ModifFormulaire';
 import AjoutCanal from './admin/components/formulaire/AjoutCanal';
@@ -40,6 +42,7 @@ const App = () => {
             <Route path="station3d" element={<Station3d />} />
             <Route path="pump3d" element={<Pump3d />} />
             <Route path="listeProjet" element={<ListeProjet />} />
+            <Route path="listeCanalisation" element={<ListeCanalisation />} />
             <Route path="login" element={<Login />} />
             <Route path="ajoutCanalisation1" element={<MapEtape1 />} />
             <Route path="ajoutCanalisation2/:urlDebutLat/:urlDebutLng" element={<MapEtape2 />} />
@@ -49,6 +52,7 @@ const App = () => {
             <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
             <Route path="todoList" element={<TodList />} />
             <Route path="tableauStat" element={<TableauStat />} />
+            <Route path="tableauCanal" element={<TableauCanal />} />
 
           </Route>
           <Route path="/admin" element={<Admin />}>
@@ -62,7 +66,7 @@ const App = () => {
             <Route path="ajoutCanalisation1" element={<MapEtape1 />} />
             <Route path="ajoutCanalisation2/:urlDebutLat/:urlDebutLng" element={<MapEtape2 />} />
             <Route path="ajoutCanalisation3/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<MapEtape3 />} />
-            {/* <Route path="carteAdduction" element={<MapAdduction />} /> */}
+            <Route path="tableauCanal" element={<TableauCanal />} />
           </Route>
         </Routes>
       </Router>

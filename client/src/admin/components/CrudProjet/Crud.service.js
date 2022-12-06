@@ -23,6 +23,9 @@ export const CrudService = {
     },
     nbrProjet: (data) => {
         return axios.get(backUrl + "/api/projet/nbrProjet", data);
+    },
+    finitionProjet:(data) => {
+        return axios.get(backUrl +"/api/projet/projetFini" ,data);
     }
 
 }

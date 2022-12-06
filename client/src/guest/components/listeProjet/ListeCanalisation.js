@@ -6,7 +6,7 @@ import { useState, useEffect} from 'react';
 import Posts from './Posts';
 import Pagination from './Pagination';
 
-function ListeProjet(){
+function ListeCanalisation(){
   const [posts ,setPosts] = useState([]);
   const [loading,setLoading] = useState(false);
  
@@ -41,10 +41,12 @@ function ListeProjet(){
 
    return(
    <>
-   <h2 className='active-link'>Liste des adductions d'eau</h2><Posts posts={currentPosts} loading={loading} />
+   <h2 className='active-link'>Liste des Canalisations</h2><Posts posts={currentPosts} loading={loading} />
    <Pagination pages = {howManyPages} setCurrentPage={setCurrentPage}/>
+   <Link to='listeProjet'>Adduction</Link>
+
    </>
    );
 }
 
-export default ListeProjet;
+export default ListeCanalisation;

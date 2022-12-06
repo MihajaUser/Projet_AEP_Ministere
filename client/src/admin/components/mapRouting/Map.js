@@ -8,60 +8,13 @@ import { Row, Col } from 'react-bootstrap';
 import { CrudService } from './../CrudProjet/Crud.service.js';
 import React, { useEffect , useState } from "react";
 import { CrudCanalService } from './../CrudProjet/CrudCanal.service.js';
-// const style = {
-//   width: "100%",
-//   height: "800px",
-// };
-// L.Marker.prototype.options.icon = L.icon({
-//   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png"
-// });
+import Aos from 'aos';
+import "aos/dist/aos.css";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 const Map = (props) => {
-   
-//     useEffect(() => {
-//     const getDataProjet = async () => {
-//       const x = await CrudService. nbrProjet();
-//       setMyProjet(x.data);
-//     }
-//     getDataProjet();
-  
-//   }, []);
- 
-//     useEffect(() => {
-//         console.log(myProjet);
-//     }, [myProjet])  
-// ty le donut anle region
-// useEffect(() => {
-//     CrudService. nbrProjet()
-//         .then(rep => {
-//             // setprobleme(rep.data);
-//             let dataDonutsPb = [];
-//             console.log('cana', rep);
-//             for (let i = 0; i < rep.data.length; i++) dataDonutsPb.push([rep.data[i].name, parseInt(rep.data[i].y)])
-//             setdonutsData(dataDonutsPb);
-//         })
-//         .catch(err => {
-//             console.log(err);
-//         })
-//     }, []);
-// ty le donut anle canalisation
-    const [donutsData, setdonutsData] = useState([]);
-    useEffect(() => {
-    CrudCanalService. nbrCanalisation()
-        .then(rep => {
-            // setprobleme(rep.data);
-            let dataDonutsPb = [];
-            console.log('cana', rep);
-            for (let i = 0; i < rep.data.length; i++) dataDonutsPb.push([rep.data[i].finLocalite, parseInt(rep.data[i].nombre)])
-            setdonutsData(dataDonutsPb);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    }, []);
-    
-    // const region = ["Analamanga","Bongolava","Itasy","Vakinakaratra","Diana","Sava","Amoron'i Mania","Atsimo Atsinanana","Haute Matsiatra","Ihorombe","Vatovavy Fitovinany","Betsiboka","Boeny","Melaky","Sofia","Alaotra Mangoro","Analanjirofo","Atsinanana","Androy","Anosy","Atsimo Andrefana","Menabe"];
+      // anle cercle region adduction 
     const [cercleData, setCercleData]= useState([{}]);
-    // anle cercle region
     useEffect(() => {
         CrudService. nbrProjet()
         .then(rep => {
@@ -111,50 +64,32 @@ const Map = (props) => {
             showInLegend: true
         }]
     };
-    const donut ={
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: 0,
-            plotShadow: false
-        },
-        title: {
-            text: 'Canalisation<br>des<br>Localités<br>',
-            align: 'center',
-            verticalAlign: 'middle',
-            y: 60
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                dataLabels: {
-                    enabled: true,
-                    distance: -50,
-                    style: {
-                        fontWeight: 'bold',
-                        color: 'white'
-                    }
-                },
-                startAngle: -90,
-                endAngle: 90,
-                center: ['50%', '75%'],
-                size: '110%'
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Browser share',
-            innerSize: '50%',
-            data: donutsData,
-            showInLegend: true
-        }]
+    useEffect(() => {
+        Aos.init({duration: 2000 });
+       },[])
+       const [projetFini , setProjetFini] = useState([]);
+       const projetFinit = async () => {
+        const response = await CrudService.  finitionProjet();
+        console.log(response);
+        if(response.status === 200) {
+            setProjetFini(response.data);
+        }
+        else {
+          throw new Error("Failed to fetch users");
+        }
+       }
+    useEffect(() => { projetFinit() }, []);
+    
+    const titre ={
+        fontSize: 19,
+        color:"white",
     }
+     const styleObj = {
+     
+     fontSize: 28,
+     color:"white",
+    }
+    
     return (
     <div id="map"/>,
     <Row>
@@ -164,12 +99,13 @@ const Map = (props) => {
                 <HighchartsReact highcharts={Highcharts} options={cercle} />
         </div>
     </Col>
-    <Col sm={6}>
-        <div className="bas-sexe1">
-            <h5></h5>
-                <HighchartsReact highcharts={Highcharts} options={donut} />
-        </div>
-    </Col>
+    <div className='grids '>
+                <div  data-aos="fade-left" className='boxes p-2  p-' ><p className="text-monospace text-center" style={titre}><CheckCircleOutlineIcon />Projets   {projetFini[0]?.nom} </p>   
+                <p className="text-center"  style={styleObj}>{projetFini[0]?.encours}</p>                        </div>
+                   <div data-aos="fade-up" className='boxes2 p-2  p-'><p className="text-monospace text-center" style={titre}><HighlightOffIcon />Projets   {projetFini[1]?.nom} </p>
+                   <p className="text-center"  style={styleObj}>{projetFini[1]?.encours}</p> 
+                   </div>
+    </div>
     </Row>
     )
 }
