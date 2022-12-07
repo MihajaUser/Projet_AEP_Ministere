@@ -4,6 +4,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import styled from 'styled-components';
 import { CrudCanalService } from './../../../service/CrudCanal.service.js';
 import { useState, useEffect } from 'react';
+import './style.css'
 const ModalContent = styled.div`     
   display: flex;
   flex-direction: column;
@@ -88,7 +89,7 @@ function CrudCanal() {
                 <th>Début de localité</th>
                 <th>Fin de localité</th>
                 <th>Etat d'ouvrage</th>
-                <th colSpan="2">Action</th>
+                <th colSpan="6" >Action</th>
               </tr>
             </thead>
             <tbody>
@@ -104,6 +105,9 @@ function CrudCanal() {
                       <td>{item.debutLocalite}</td>
                       <td>{item.finLocalite}</td>
                       <td>{item.etat_ouvrage}</td>
+                      <td colSpan={2}>
+                        <input type="checkbox" className='MyCheckbox' />
+                      </td>
                       <td><UpdateIcon /></td>
                       <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                     </tr>
