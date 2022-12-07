@@ -26,6 +26,7 @@ import TableauStat from './guest/components/tableauStat/TableauStat';
 import TableauCanal from './guest/components/tableauStat/TableauCanal';
 import CrudCanal from './admin/components/CrudProjet/CrudCanal';
 import ModifFormulaire from './admin/components/formulaire/ModifFormulaire';
+import ModifCanalisation from './admin/components/formulaire/ModifCanalisation';
 import AjoutCanal from './admin/components/formulaire/AjoutCanal';
 // import MapAdduction from './admin/components/mapAdduction/MapAdduction';
 
@@ -42,7 +43,7 @@ const App = () => {
             <Route path="station3d" element={<Station3d />} />
             <Route path="pump3d" element={<Pump3d />} />
             <Route path="listeProjet" element={<ListeProjet />} />
-            <Route path="listeCanalisation" element={<ListeCanalisation />} />
+            <Route path="listeCanals" element={<ListeCanalisation />} />
             <Route path="login" element={<Login />} />
             <Route path="ajoutCanalisation1" element={<MapEtape1 />} />
             <Route path="ajoutCanalisation2/:urlDebutLat/:urlDebutLng" element={<MapEtape2 />} />
@@ -63,6 +64,7 @@ const App = () => {
             <Route path="listeCanalisation" element={<CrudCanal />} />
             <Route path="liste/modifier/:idProjet/:latitude/:longitude/:nb_beneficiaire/:etat_ouvrage" element={<ModifFormulaire />} />
             <Route path="canalisation/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<AjoutCanal />} />
+            <Route path="listeCanalisation/modifier/:idProjet" element={<ModifCanalisation />} />
             <Route path="ajoutCanalisation1" element={<MapEtape1 />} />
             <Route path="ajoutCanalisation2/:urlDebutLat/:urlDebutLng" element={<MapEtape2 />} />
             <Route path="ajoutCanalisation3/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<MapEtape3 />} />

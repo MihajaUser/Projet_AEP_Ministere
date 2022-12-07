@@ -2,7 +2,6 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useParams } from 'react-router-dom';
 import Routing from "./Routing";
-import Navigation from './../2d/citerne2d/Navigation'
 
 const MapEtape3 = (props) => {
   // function linkValue() {
@@ -28,7 +27,6 @@ const MapEtape3 = (props) => {
       
       {/* le ary @ admin  */}
       <Routing debutLat={finLat} debutLng={urlDebutLng} finLat={finLat} finLng={finLng} />
-      < Navigation linkValue={"url"} />
     </MapContainer>
   );
 }

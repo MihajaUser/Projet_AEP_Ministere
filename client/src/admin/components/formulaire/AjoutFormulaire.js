@@ -3,9 +3,8 @@ import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import React, { useState } from 'react';
-import CrudService from '../CrudProjet/Crud.service.js';
 import { useParams,useNavigate } from 'react-router-dom';
-
+import CrudService from './../../../service/Crud.service.js';
 // import '../styles/AjoutFormulaire.css'
 // import styled from 'styled-components';
 

@@ -29,6 +29,8 @@ exports.getAllCanalisation = (req, res) => {
 exports.AjoutCanalisation = (req, res) => {
   model.Canalisation.create({
     id_utilisateur: req.body.id_utilisateur,
+    nom: req.body.nom,
+    construction: req.body.construction,
     region: req.body.region,
     district: req.body.district,
     commune: req.body.commune,
@@ -65,7 +67,7 @@ exports.supprimer = (req, res) => {
 }
 exports.nbrCanalisation = (req, res) => {
   model.sequelize.query(
-    ' SELECT count(*) as nombre,  "finLocalite" FROM public."Canalisations" group by  "finLocalite"',
+    ' SELECT count(*) as nombre,  "region" FROM public."Canalisations" group by  "region"',
     {
       type: QueryTypes.SELECT
     }).then(data => {
@@ -79,6 +81,8 @@ exports.nbrCanalisation = (req, res) => {
 exports.modifierCanalisation = (req,res) => {
   model.Canalisation.update({
     id_utilisateur: req.body.id_utilisateur,
+    nom: req.body.nom,
+    construction: req.body.construction,
     region: req.body.region,
     district: req.body.district,
     commune: req.body.commune,

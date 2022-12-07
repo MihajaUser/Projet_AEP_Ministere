@@ -2,3 +2,8 @@
    height: 20px;
    width: 20px;
 }
+.legend {
+   text-align: left;
+   line-height: 18px;
+   color: rgb(159, 43, 43);
+ }

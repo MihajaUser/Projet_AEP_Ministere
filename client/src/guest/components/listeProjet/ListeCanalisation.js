@@ -1,13 +1,11 @@
-import Table from 'react-bootstrap/Table';
 import React from 'react';
-import {Link} from 'react-router-dom'
-import { CrudService } from './../../../admin/components/CrudProjet/Crud.service';
+import CrudCanalService from '../../../service/CrudCanal.service';
 import { useState, useEffect} from 'react';
-import Posts from './Posts';
+import PostsCanal from './PostsCanal';
 import Pagination from './Pagination';
 
 function ListeCanalisation(){
-  const [posts ,setPosts] = useState([]);
+  const [postsCanal ,setPosts] = useState([]);
   const [loading,setLoading] = useState(false);
  
 
@@ -16,7 +14,7 @@ function ListeCanalisation(){
 
   const listeProjets = async () => {
     setLoading(true);
-    const response = await CrudService. getAllProjet();
+    const response = await CrudCanalService. getAllCanalisation();
     if(response.status === 200) {
      setPosts(response.data);
       setLoading(false);   
@@ -25,25 +23,24 @@ function ListeCanalisation(){
       throw new Error("Failed to fetch users");
     }
   };
-  console.log(posts); 
+  console.log(postsCanal); 
    useEffect(() => {listeProjets()},[]);
 
-  if (loading && posts.length === 0) {
+  if (loading && postsCanal.length === 0) {
     return <h2>Loading...</h2>
   }
-  //Get current posts
+  //Get current postsCanal
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
-  const howManyPages = Math.ceil(posts.length/postsPerPage)
+  const currentPosts = postsCanal.slice(indexOfFirstPost, indexOfLastPost)
+  const howManyPages = Math.ceil(postsCanal.length/postsPerPage)
 
 
 
    return(
    <>
-   <h2 className='active-link'>Liste des Canalisations</h2><Posts posts={currentPosts} loading={loading} />
+   <h2 className='active-link'>Liste des Canalisations</h2><PostsCanal postsCanal={currentPosts} loading={loading} />
    <Pagination pages = {howManyPages} setCurrentPage={setCurrentPage}/>
-   <Link to='listeProjet'>Adduction</Link>
 
    </>
    );

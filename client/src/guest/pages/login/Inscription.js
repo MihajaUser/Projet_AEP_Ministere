@@ -1,9 +1,8 @@
 //update
 import React, { useState } from 'react'
 import './Login.css';
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router';
-import { AuthService } from './Auth.service.js';
+import AuthService from '../../../service/Auth.service';
 
 function Inscription() {
 

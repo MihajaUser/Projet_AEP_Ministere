@@ -9,6 +9,7 @@ import "aos/dist/aos.css";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 const TableauStat = (props) => {
 
     // anle cercle region

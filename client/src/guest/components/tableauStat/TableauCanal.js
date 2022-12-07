@@ -2,13 +2,13 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Row, Col } from 'react-bootstrap';
 import React, { useEffect , useState} from "react";
-import { CrudCanalService } from './../../../admin/components/CrudProjet/CrudCanal.service';
-import { CrudService } from './../../../service/Crud.service.js';
+import CrudCanalService from '../../../service/CrudCanal.service';
 import './tableauStat.css';
 import Aos from 'aos';
 import "aos/dist/aos.css";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 const TableauStat = (props) => {
    // ty le donut anle canalisation
    const [donutsData, setdonutsData] = useState([]);
@@ -18,7 +18,7 @@ const TableauStat = (props) => {
            // setprobleme(rep.data);
            let dataDonutsPb = [];
            console.log('cana', rep);
-           for (let i = 0; i < rep.data.length; i++) dataDonutsPb.push([rep.data[i].finLocalite, parseInt(rep.data[i].nombre)])
+           for (let i = 0; i < rep.data.length; i++) dataDonutsPb.push([rep.data[i].region, parseInt(rep.data[i].nombre)])
            setdonutsData(dataDonutsPb);
        })
        .catch(err => {
@@ -33,7 +33,7 @@ const TableauStat = (props) => {
            plotShadow: false
        },
        title: {
-           text: 'Canalisation<br>par<br>commune<br>',
+           text: 'Canalisation<br>par<br>Région<br>',
            align: 'center',
            verticalAlign: 'middle',
            y: 60
@@ -107,14 +107,18 @@ const TableauStat = (props) => {
                <HighchartsReact highcharts={Highcharts} options={donut} />
             </div>
         </Col>
-        <div className='grids '>
-                <div  data-aos="fade-left" className='boxes p-2  p-' ><p className="text-monospace text-center" style={titre}><CheckCircleOutlineIcon />Projets   {projetFini[0]?.nom} </p>   
-                <p className="text-center"  style={styleObj}>{projetFini[0]?.encours}</p>                        </div>
-                   <div data-aos="fade-up" className='boxes2 p-2  p-'><p className="text-monospace text-center" style={titre}><HighlightOffIcon />Projets   {projetFini[1]?.nom} </p>
-                   <p className="text-center"  style={styleObj}>{projetFini[1]?.encours}</p> 
-                   </div>
+               <div className='grids '>
+               <div data-aos="fade-up" className='boxes p-2  p-'><p className="text-monospace text-center" style={titre}><HighlightOffIcon />Projets   {projetFini[2]?.nom} </p>
+                   <p className="text-center"  style={styleObj}>{projetFini[2]?.encours}</p> 
                 </div>
-         <a href="tableauStat">Adduction</a>
+                <div data-aos="fade-up"  className='boxes3 p-2 -p '><p className="text-monospace text-center" style={titre}><HourglassTopIcon />Projets {projetFini[1]?.nom}  </p>
+                   <p className="text-center"  style={styleObj}>{projetFini[1]?.encours}</p> 
+                </div>
+                <div  data-aos="fade-left" className='boxes2 p-2  p-' ><p className="text-monospace text-center" style={titre}><CheckCircleOutlineIcon />Projets   {projetFini[0]?.nom} </p>   
+                       <p className="text-center" style={styleObj}>{projetFini[0]?.encours}</p>
+                </div>  
+                </div>
+         {/* <a href="tableauStat">Adduction</a> */}
    </Row>
    )
 }
