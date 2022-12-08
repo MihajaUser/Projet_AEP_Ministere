@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { iconRobinet, iconMaison } from "../icon/IconLeaflet";
+import { iconRobinet, iconMaison, iconReservoir } from "../icon/IconLeaflet";
 import { MapContainer, TileLayer, ScaleControl, FeatureGroup, Marker, Popup } from "react-leaflet";
 const Map = (props) => {
   const myStation = useSelector((state) => state.station)
@@ -11,7 +11,8 @@ const Map = (props) => {
   function valeurIcon(s) {
     let myIcon; let myText
     if (s.infra_eau === "aepp") { myIcon = iconMaison(); myText = " Station " }
-    if (s.infra_eau === "reservoir") { myIcon = iconRobinet(); myText = "  Reservoir " }
+    if (s.infra_eau === "reservoir") { myIcon = iconReservoir(); myText = " Reservoir " }
+    if (s.infra_eau === "bf") { myIcon = iconRobinet(); myText = " Borne fontaine " }
     return (
       <Marker position={{ lat: s.latitude, lng: s.longitude }} icon={myIcon}>
         <Popup>
