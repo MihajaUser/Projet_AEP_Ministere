@@ -3,8 +3,8 @@ import 'leaflet/dist/leaflet.css';
 export function iconReservoir() {
   return (
     new L.Icon({
-      iconUrl: require('../../assets/imagesClient/reservoir_noir.png'),
-      iconSize: [35, 40],
+      iconUrl: require('../../assets/imagesClient/reservoir_gris.png'),
+      iconSize: [33, 40],
       shadowSize: [50, 64]
     }))
 }
