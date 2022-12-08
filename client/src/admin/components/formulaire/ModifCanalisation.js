@@ -79,43 +79,28 @@ const CloseModalButton = styled(MdClose)`
   const [debutLongitude,setDebLng] = useState(urlDebutLng);
   const [finLatitude,setFinLat] = useState(finLat);
   const [finLongitude,setFinLng] = useState(finLng);
-  const[etat_ouvrage,setOuvrage] = useState('non fonctionnel');
+  const[etat_ouvrage,setOuvrage] = useState('');
   const navigate = useNavigate();
   // console.log("lat"+urlDebutLat,"long"+urlDebutLng,"finL"+finLat,"finLg"+finLng);
   
 
   //maka anle donnee rehetra
-  const ajout = async () =>{
+  const modifier = async () =>{
     // let user = JSON.parse(localStorage.getItem('users'));
     // //voalohany variable iantsona an'azy any @ back le hoe req.body
     let data = {
-      id_utilisateur,
-      region,
-      district,
-      commune,
-      debutLocalite, 
-      finLocalite, 
-      debutLatitude, 
-      debutLongitude, 
-      finLatitude, 
-      finLongitude,
       etat_ouvrage
     }
-    if ( debutLocalite == '' || finLocalite == '') {
-      setError('Veuillez remplire tout les champs!')
-    } else {
-      const response = await CrudCanalService. AjoutCanalisation(data);
-      console.log(response);
+    const mofidier = async () =>{
+      const response = await CrudCanalService. modifierCanalisation(data);
+      console.log("valiny",response);
       if(response.status === 200) {
-       
-        setSucces("Projet ajouté avec succès");
-      }
-  
-      else{
-        throw new Error("Veuillez taper tous les champs");
-      }
-      navigate(`/admin/ajoutCanalisation3/${debutLatitude}/${debutLongitude}/${finLatitude}/${finLongitude}`);
-      // navigate(`/admin`);
+        setSucces("Projet modifié avec succès");
+       }
+       else{
+         throw new Error("Veuillez taper tous les champs");
+       }
+     
     }
    
   }
@@ -125,129 +110,21 @@ const CloseModalButton = styled(MdClose)`
         <Background>
           <ModalWrapper >
             <ModalContent>
-              <Row>
-                <Col xs={6}>
-                  <Card border="primary" style={{ width: '50rem' , height:'30rem'}}>
-                    <Card.Header>Formulaire d'ajout de Canalisation</Card.Header>
-                    <Card.Body>
-                      <Card.Title></Card.Title>
-                      <Row>
-                        <Col xs={8}>
-                          <Form.Label>Nom de projet</Form.Label>
-                          <Form.Control type="text" placeholder=""/>
-                        </Col>
-                        <Col xs={4}>
-                          <Form.Label>Nombre de constructions</Form.Label>
-                          <Form.Control type="number" placeholder=""/>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col>
-                          <Form.Group className="mb-3">
-                            <Form.Label>Région</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setRegion (e.target.value) }} >
+            <Form.Group className="mb-3">
+                        <Form.Label>Etat d'ouvrage</Form.Label>
+                        <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setOuvrage (e.target.value) }}>
                             <option>Choisissez</option>
-                              <option value="Analamanga">Analamanga</option>
-                              <option value="Bongolava">Bongolava</option>
-                              <option value="Itasy">Itasy</option>
-                              <option value="Vakinakaratra">Vakinakaratra</option>
-                              <option value="Diana">Diana</option>
-                              <option value="Sava">Sava</option>
-                              <option value="Amoron'i Mania">Amoron'i Mania</option>
-                              <option value="Atsimo Atsinanana">Atsimo Atsinanana</option>
-                              <option value="Haute Matsiatra">Haute Matsiatra</option>
-                              <option value="Ihorombe">Ihorombe</option>
-                              <option value="Vatovavy Fitovinany">Vatovavy Fitovinany</option>
-                              <option value="Betsiboka">Betsiboka</option>
-                              <option value="Boeny">Boeny</option>
-                              <option value="Melaky">Melaky</option>
-                              <option value="Sofia">Sofia</option>
-                              <option value="Alaotra Mangoro">Alaotra Mangoro</option>
-                              <option value="Analanjirofo">Analanjirofo</option>
-                              <option value="Atsinanana">Atsinanana</option>
-                              <option value="Androy">Androy</option>
-                              <option value="Anosy">Anosy</option>
-                              <option value="Atsimo Andrefana">Atsimo Andrefana</option>
-                              <option value="Menabe">Menabe</option>
-                              </Form.Select>
-                            </Form.Group>
-                        </Col>
-                        <Col>
-                          <Form.Group className="mb-3">
-                            <Form.Label>District</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setDistrict (e.target.value)}}>
-                            <option>Choisissez</option>
-                              <option value="Ambohidratrimo">Ambohidratrimo</option>
-                              <option value="Andramasina">Andramasina</option>
+                              <option value="nouveau">Nouveau</option>
+                              <option value="en cours">En cours</option>
+                              <option value="fini">Fini</option>
                             </Form.Select>
-                          </Form.Group>
-                        </Col>
-                        <Col>
-                          <Form.Group className="mb-3">
-                            <Form.Label>Commune</Form.Label>
-                            <Form.Select aria-label="Default select example" size="md-6" onChange ={(e)=>{ setCommune (e.target.value) }}>
-                            <option>Choisissez</option>
-                              <option value="Ambato">Ambato</option>
-                              <option value="Ambatolampy">Ambatolampy</option>
-                            </Form.Select>
-                          </Form.Group>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col>
-                          <Form.Group>
-                            <Form.Label>Début de localité</Form.Label>
-                            <Form.Control type="text" placeholder="ex : Antanimena" onChange ={(e)=>{ setDebLocal(e.target.value) }} />
-                          </Form.Group>
-                        </Col>
-                        <Col>
-                          <Form.Group className="mb-3">
-                            <Form.Label>Début de latitude</Form.Label>
-                            <Form.Control type="text" value={debutLatitude}  />
-                          </Form.Group>
-                        </Col>
-                        <Col>
-                          <Form.Group className="mb-3">
-                            <Form.Label>Début de longitude</Form.Label>
-                            <Form.Control type="text" value={debutLongitude}  />
-                            </Form.Group>
-                        </Col>
-                      </Row>
-                      <Row>
-                      <Col>
-                          <Form.Group className="mb-3">
-                            <Form.Label>Fin de localité</Form.Label>
-                            <Form.Control type="text" placeholder="ex : Behoririka" onChange ={(e)=>{ setFinLocal(e.target.value) }} />
-                          </Form.Group>
-                        </Col>
-                        <Col>
-                          <Form.Group className="mb-3">
-                            <Form.Label>Fin de latitude</Form.Label>
-                            <Form.Control type="text" value={finLatitude} />
-                          </Form.Group>
-                        </Col>
-                        <Col>
-                          <Form.Group className="mb-3">
-                            <Form.Label>Fin de longitude</Form.Label>
-                            <Form.Control type="text" value={finLongitude} />
-                          </Form.Group>
-                        </Col>
-                      </Row>
-                      <Button type="submit" className="btn" onClick={ajout}>Modifier</Button>
-                      {error &&
-                            <Alert className='my-input' key='danger' variant='danger'>
-                                    {error}
-                            </Alert>
-                    }
-                     {succes &&
+                      </Form.Group>
+                      <Button type="submit" className="btn" onClick={modifier}>Modifier</Button>
+                      {succes &&
                             <Alert className='my-input' key='success' variant='success'>
                                     {succes}
                             </Alert>
-                    }
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
+                      }
             </ModalContent>
           </ModalWrapper>
         </Background>

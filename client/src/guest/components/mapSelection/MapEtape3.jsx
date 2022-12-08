@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useParams } from 'react-router-dom';
-import Routing from "./Routing";
+import Routing2D from "./Routing2D";
 
 const MapEtape3 = (props) => {
   // function linkValue() {
@@ -22,11 +22,9 @@ const MapEtape3 = (props) => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* le any @ client
-      <Routing debutLat={urlFinLat} debutLng={urlDebutLng} finLat={urlFinLat} finLng={urlFinLng} /> */}
       
       {/* le ary @ admin  */}
-      <Routing debutLat={finLat} debutLng={urlDebutLng} finLat={finLat} finLng={finLng} />
+      <Routing2D debutLat={finLat} debutLng={urlDebutLng} finLat={finLat} finLng={finLng} />
     </MapContainer>
   );
 }

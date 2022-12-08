@@ -118,7 +118,6 @@ const TableauStat = (props) => {
                        <p className="text-center" style={styleObj}>{projetFini[0]?.encours}</p>
                 </div>  
                 </div>
-         {/* <a href="tableauStat">Adduction</a> */}
    </Row>
    )
 }

@@ -54,6 +54,7 @@ const App = () => {
             <Route path="todoList" element={<TodList />} />
             <Route path="tableauStat" element={<TableauStat />} />
             <Route path="tableauCanal" element={<TableauCanal />} />
+            <Route path="ajoutCanalisation3/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<MapEtape3 />} />
 
           </Route>
           <Route path="/admin" element={<Admin />}>
