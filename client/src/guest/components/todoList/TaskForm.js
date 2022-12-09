@@ -13,6 +13,7 @@ const TaskForm = (props) => {
   return (
     <form onSubmit={handleSubmit} >
       <input
+        className="Ajout"
         type="text"
         placeholder="Ajouter une tâche"
         value={text}

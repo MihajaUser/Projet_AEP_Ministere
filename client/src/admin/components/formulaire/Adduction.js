@@ -36,6 +36,12 @@ const MapEtape1 = (props) => {
     });
     setMapInstance(mapRef.current);
   }, []);
+  useEffect(() => {
+    //changer  premiere localisation
+    if (debutLat != null && debutLng != null) {
+      handleClick();
+    }
+  }, [debutLat, debutLng])
 
   useEffect(() => {
     if (!mapInstance) return;
@@ -45,32 +51,33 @@ const MapEtape1 = (props) => {
       });
     }
   }, [mapInstance]);
-
   // Toggle marker on button click:
   const handleClick = () => {
-    console.log('manao handleClick')
+    // placer marker avec click
     if (marker) {
       marker.removeFrom(mapInstance);
       markerRef.current = null;
     } else {
-      markerRef.current = L.marker([-18.865447, 47.519533]).addTo(mapInstance);
+      markerRef.current = L.marker([debutLat, debutLng]).addTo(mapInstance);
     }
     setMarker(markerRef.current);
-
   };
-
+  function textEmplacement() {
+    if (debutLat == null && debutLng == null) {
+      return " Clique sur la carte ."
+    }
+    return " Votre choix est validé ."
+  }
   return (
     <>
-      <button onClick={handleClick}>
-        dsaadsad
-      </button>
       <div id="map" style={mapStyles} />
       <div className='CardContainer'>
         <Card className='MyCard'>
           ETAPE 1
           <br></br>
-          Emmplacement 1  : ville Antananrivo Commune Ambohijatovo
-          {` Latitude ${debutLat} longitude ${debutLng}`}
+          Emmplacement   :
+          {textEmplacement()}
+          {/* {` Latitude ${debutLat} longitude ${debutLng}`} */}
           <br></br>
           <br></br>
           <Link to={`/admin/formulaire/${debutLat}/${debutLng}`}>

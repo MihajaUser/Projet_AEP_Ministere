@@ -1,8 +1,10 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Row, Col } from 'react-bootstrap';
+
 import React, { useEffect , useState} from "react";
 import CrudCanalService from '../../../service/CrudCanal.service';
+
 import './tableauStat.css';
 import Aos from 'aos';
 import "aos/dist/aos.css";
@@ -10,6 +12,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 const TableauStat = (props) => {
+
    // ty le donut anle canalisation
    const [donutsData, setdonutsData] = useState([]);
    useEffect(() => {
@@ -71,24 +74,26 @@ const TableauStat = (props) => {
        }]
    }
 
-   //le animation scroll kely
-   useEffect(() => {
-    Aos.init({duration: 2000 });
-   },[])
 
-   //nombre de projet en cours et finis 
-   const [projetFini , setProjetFini] = useState([]);
-   const projetFinit = async () => {
-    const response = await CrudCanalService.  finitionProjet();
-    console.log(response);
-    if(response.status === 200) {
-        setProjetFini(response.data);
+    //le animation scroll kely
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    }, [])
+
+    //nombre de projet en cours et finis 
+    const [projetFini, setProjetFini] = useState([]);
+    const projetFinit = async () => {
+        const response = await CrudCanalService.finitionProjet();
+        console.log(response);
+        if (response.status === 200) {
+            setProjetFini(response.data);
+        }
+        else {
+            throw new Error("Failed to fetch users");
+        }
     }
-    else {
-      throw new Error("Failed to fetch users");
-    }
-   }
     useEffect(() => { projetFinit() }, []);
+
     
    const titre ={
     fontSize: 19,
@@ -120,5 +125,6 @@ const TableauStat = (props) => {
                 </div>
    </Row>
    )
+
 }
 export default TableauStat;
