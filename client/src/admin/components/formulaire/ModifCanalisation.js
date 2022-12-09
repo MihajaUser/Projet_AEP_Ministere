@@ -65,69 +65,64 @@ const CloseModalButton = styled(MdClose)`
 `;
 
  export default function  AjoutCanal (){
-  const [error, setError] = useState(null);
-  const [succes, setSucces] = useState(null);
-  const { urlDebutLat, urlDebutLng } = useParams();
-  const { finLat, finLng } = useParams();
-  const [id_utilisateur,setUtilisateur] = useState(0);
-  const [region,setRegion] = useState('');
-  const [district,setDistrict] = useState('');
-  const [commune,setCommune] = useState('');
-  const [debutLocalite,setDebLocal] = useState('');
-  const [finLocalite,setFinLocal] = useState('');
-  const [debutLatitude,setDebLat] = useState(urlDebutLat);
-  const [debutLongitude,setDebLng] = useState(urlDebutLng);
-  const [finLatitude,setFinLat] = useState(finLat);
-  const [finLongitude,setFinLng] = useState(finLng);
-  const[etat_ouvrage,setOuvrage] = useState('');
+  const { idProjet } = useParams();
+  const[etat,setOuvrage] = useState('');
   const navigate = useNavigate();
+  const [succes, setSucces] = useState(null);
   // console.log("lat"+urlDebutLat,"long"+urlDebutLng,"finL"+finLat,"finLg"+finLng);
   
 
   //maka anle donnee rehetra
-  const modifier = async () =>{
-    // let user = JSON.parse(localStorage.getItem('users'));
-    // //voalohany variable iantsona an'azy any @ back le hoe req.body
-    let data = {
-      etat_ouvrage
+  const modifier = async () =>
+  {
+   let data = {
+     etat_ouvrage: etat, id:idProjet
+   }
+   console.log(data);
+   const response = await CrudCanalService.modifierCanalisation(data);
+   console.log("valiny",response);
+   if(response.status === 200) {
+     setSucces("Projet modifié avec succès");
     }
-    const mofidier = async () =>{
-      const response = await CrudCanalService. modifierCanalisation(data);
-      console.log("valiny",response);
-      if(response.status === 200) {
-        setSucces("Projet modifié avec succès");
-       }
-       else{
-         throw new Error("Veuillez taper tous les champs");
-       }
-     
+    else{
+      throw new Error("Veuillez taper tous les champs");
     }
-   
-  }
+  
+ }
   return (
     <>
       {(
         <Background>
-          <ModalWrapper >
-            <ModalContent>
-            <Form.Group className="mb-3">
-                        <Form.Label>Etat d'ouvrage</Form.Label>
-                        <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setOuvrage (e.target.value) }}>
-                            <option>Choisissez</option>
-                              <option value="nouveau">Nouveau</option>
-                              <option value="en cours">En cours</option>
-                              <option value="fini">Fini</option>
-                            </Form.Select>
-                      </Form.Group>
-                      <Button type="submit" className="btn" onClick={modifier}>Modifier</Button>
-                      {succes &&
-                            <Alert className='my-input' key='success' variant='success'>
-                                    {succes}
-                            </Alert>
-                      }
-            </ModalContent>
-          </ModalWrapper>
-        </Background>
+        <ModalWrapper >
+          <ModalContent>
+            <Row>
+              <Col xs={6} >
+                <Card border="primary" style={{ width: '25rem' }}>
+                  <Card.Header>Modification de canalisation</Card.Header>
+                  <Card.Body>
+                    <Card.Title></Card.Title>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Etat d'ouvrage</Form.Label>
+                      <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setOuvrage (e.target.value) }}>
+                          <option>Choisissez</option>
+                            <option value="nouveau">Nouveau</option>
+                            <option value="en cours">En cours</option>
+                            <option value="fini">Fini</option>
+                          </Form.Select>
+                    </Form.Group>
+                    <Button type="submit" className="btn" onClick={modifier}>Modifier</Button>
+                    {succes &&
+                          <Alert className='my-input' key='success' variant='success'>
+                                  {succes}
+                          </Alert>
+                    }
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </ModalContent>
+        </ModalWrapper>
+      </Background>
       )}
     </>
   );
