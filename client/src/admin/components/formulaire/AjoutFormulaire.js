@@ -77,7 +77,7 @@ export default function AjoutFormulaire() {
   const [fokontany,setFokontany] = useState('');
   const [localite,setLocalite] = useState('');
   const [nb_beneficiaire,setNombre] = useState('');
-  cons [test];
+  const [etat_ouvrage,setOuvrage] = useState('nouveau');
 
   const navigate = useNavigate();
   // const [id, setId] = useState();
