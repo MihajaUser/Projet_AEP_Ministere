@@ -1,9 +1,8 @@
 //update
 import React, { useState } from 'react'
 import './Login.css';
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router';
-import { AuthService } from './Auth.service.js';
+import AuthService from '../../../service/Auth.service';
 
 function Inscription() {
 
@@ -54,12 +53,6 @@ function Inscription() {
       <div className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Ajout membre</h3>
-          {/* <div className="text-center">
-            Avez vous déjà un compte?{" "}
-            <span className="link-primary"><Link to='/login'>
-              Connexion
-            </Link></span>
-          </div> */}
           <div className="form-group mt-3">
             <label>Nom</label>
             <input
@@ -69,22 +62,6 @@ function Inscription() {
               onChange={(value) => setusername(value.target.value)}
             />
           </div>
-          {/* <div className="form-group mt-3">
-            <label>Prénom</label>
-            <input
-              type="email"
-              className="form-control mt-1"
-              placeholder="Entrez votre prénom"
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>Date de naissance</label>
-            <input
-              type="Date"
-              className="form-control mt-1"
-              placeholder="Date de naissance"
-            />
-          </div>*/}
           <div className="form-group mt-3">
             <label>Adresse email</label>
             <input

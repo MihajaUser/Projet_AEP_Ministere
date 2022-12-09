@@ -3,8 +3,8 @@ import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import React, { useState } from 'react';
-import CrudService from '../CrudProjet/Crud.service.js';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
+import CrudService from './../../../service/Crud.service.js';
 import './styles.css'
 // import '../styles/AjoutFormulaire.css'
 // import styled from 'styled-components';
@@ -68,17 +68,18 @@ export default function AjoutFormulaire() {
   const [error, setError] = useState(null);
   const [succes, setSucces] = useState(null);
   const { urlDebutLat, urlDebutLng } = useParams();
-  const [id_utilisateur, setUtilisateur] = useState(0);
-  const [utilisation, setUtilisation] = useState('');
-  const [infra_eau, setInfra] = useState('');
-  const [point_eau, setPointEau] = useState('');
-  const [region, setRegion] = useState('');
-  const [district, setDistrict] = useState('');
-  const [commune, setCommune] = useState('');
-  const [fokontany, setFokontany] = useState('');
-  const [localite, setLocalite] = useState('');
-  const [nb_beneficiaire, setNombre] = useState('');
-  const [etat_ouvrage, setOuvrage] = useState('non fonctionnel');
+  const [id_utilisateur,setUtilisateur] = useState(0);
+  const [utilisation,setUtilisation] = useState('');
+  const [infra_eau,setInfra] = useState('');
+  const [point_eau,setPointEau] = useState('');
+  const [region,setRegion] = useState('');
+  const [district,setDistrict] = useState('');
+  const [commune,setCommune] = useState('');
+  const [fokontany,setFokontany] = useState('');
+  const [localite,setLocalite] = useState('');
+  const [nb_beneficiaire,setNombre] = useState('');
+  const [etat_ouvrage,setOuvrage] = useState('nouveau');
+
   const navigate = useNavigate();
   // const [id, setId] = useState();
   //maka anle donnee rehetra
@@ -149,7 +150,6 @@ export default function AjoutFormulaire() {
                                 <option>Choisissez</option>
                                 <option value="Santé">Santé</option>
                                 <option value="Pompe">Pompe</option>
-
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -271,6 +271,7 @@ export default function AjoutFormulaire() {
                           <Form.Control type="number" placeholder="Entrez le nombre" onChange={(e) => { setNombre(e.target.value) }} />
                         </Form.Group>
                         {/* <Form.Group className="mb-3">
+
                         <Form.Label>Utilisateur</Form.Label>
                         <Form.Control type="nombre" placeholder="Administrateur" />
                       </Form.Group> */}

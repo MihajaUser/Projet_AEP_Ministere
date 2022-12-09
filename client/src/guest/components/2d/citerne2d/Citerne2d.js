@@ -16,7 +16,8 @@ function Citerne2d() {
     drawPicture();
     appearLoading();
   }, [show]);
-  const drawPicture = () => {  // initialize the canvas context
+  const drawPicture = () => {
+    // initialize the canvas context
     // dynamically assign the width and height to canvas
     const canvasEle = canvas.current;
     canvasEle.width = canvasEle.clientWidth;

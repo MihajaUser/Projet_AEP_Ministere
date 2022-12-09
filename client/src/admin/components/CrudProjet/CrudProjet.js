@@ -2,8 +2,8 @@ import { Row, Col, Table, Modal, Button } from 'react-bootstrap';
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import styled from 'styled-components';
-import { CrudService } from './Crud.service.js';
-import { useState, useEffect } from 'react';
+import { CrudService } from './../../../service/Crud.service.js';
+import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
 import './style.css'
 const ModalContent = styled.div`     

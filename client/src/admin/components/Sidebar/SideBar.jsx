@@ -18,6 +18,23 @@ const routes = [
     icon: <FaHome />,
   },
   {
+    path: "",
+    name: "Tableau Statistique",
+    icon: <MuiIcons.Leaderboard />,
+    subRoutes: [
+      {
+        path: "tableauCanal",
+        name: "Canalisation",
+        icon: <IconRoute />,
+      },
+      {
+        path: "",
+        name: "Adduction",
+        icon: <BloodtypeIcon />,
+      },
+    ],
+  },
+  {
     path: "formulaire",
     name: "Ajout de projet ",
     icon: < AddLocationRoundedIcon />,
@@ -51,23 +68,7 @@ const routes = [
       },
     ],
   },
-  {
-    path: "",
-    name: "Tableau Statistique",
-    icon: <MuiIcons.Leaderboard />,
-    subRoutes: [
-      {
-        path: "tableauCanal",
-        name: "Canalisation",
-        icon: <IconRoute />,
-      },
-      {
-        path: "",
-        name: "Adduction",
-        icon: <BloodtypeIcon />,
-      },
-    ],
-  },
+  
 ];
 
 const SideBar = ({ children }) => {

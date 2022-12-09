@@ -1,10 +1,10 @@
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form, Button,Alert } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
-import CrudService from '../CrudProjet/Crud.service';
+import CrudService from './../../../service/Crud.service.js';
 import { useParams } from 'react-router-dom';
 import './styles.css'
 
@@ -63,69 +63,44 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-export default function ModifFormulaire() {
-  const { latitude, longitude, idProjet, nb_beneficiaire, etat_ouvrage } = useParams();
-  const [actuel, setActuel] = useState('');
-  const params = useParams();
-  const [id_utilisateur, setUtilisateur] = useState(0);
-  const [utilisation, setUtilisation] = useState('');
-  const [infra_eau, setInfra] = useState('');
-  const [point_eau, setPointEau] = useState('');
-  const [region, setRegion] = useState('');
-  const [district, setDistrict] = useState('');
-  const [commune, setCommune] = useState('');
-  const [fokontany, setFokontany] = useState('');
-  const [localite, setLocalite] = useState('');
-  const [lat, setLat] = useState(latitude);
-  const [long, setLong] = useState(longitude);
-  const [nb, setNombre] = useState(nb_beneficiaire);
-  const [etat, setOuvrage] = useState(etat_ouvrage);
+
+ export default function ModifFormulaire (){
+  const { latitude, longitude,idProjet, nb_beneficiaire,etat_ouvrage } = useParams();
+   const [etat, setOuvrage] = useState('');
+   const [succes, setSucces] = useState(null);
   //maka anle donnee rehetra
-
-  const getDetailProjet = async () => {
-    // console.log("TEST");
-    const resultat = await CrudService.getById(idProjet);
-    setActuel(resultat.data);
-    //  console.log(actuel.data.rep.region);
-
-
-    // }
-
-  };
-  useEffect(() => {
-    getDetailProjet()
-  }, []);
-  console.log("testsefcszc", actuel);
-
-  let data = {
-    utilisation,
-    infra_eau,
-    point_eau,
-    region,
-    district,
-    commune,
-    fokontany,
-    localite,
-    lat,
-    long,
-    nb,
-    etat,
-    utilisation,
-    id_utilisateur
-  }
-  console.log("midira aloha ato ", data);
-
-
-  const mofidier = async () => {
-    const response = await CrudService.ModifierProjet(data);
-    console.log(response);
-    if (response.status === 200) {
-      alert("Modifiez avec succès");
-    }
-    else {
-      throw new Error("Veuillez taper tous les champs");
-    }
-
+  
+        //   const getDetailProjet = async () =>{
+        //     // console.log("TEST");
+        //   const resultat = await CrudService. getById(idProjet);
+        //   setActuel(resultat.data);
+        //     //  console.log(actuel.data.rep.region);
+             
+             
+        //   // }
+          
+        // } ;
+        // useEffect(() => {
+        //   getDetailProjet()
+        // },[]) ;
+        // console.log("testsefcszc",actuel);
+       
+        let data = {
+          etat
+        }
+        // console.log("midira aloha ato ",data);
+        
+       
+    const mofidier = async () =>{
+    const response = await CrudService. ModifierProjet(data);
+    console.log("valiny",response);
+    if(response.status === 200) {
+      setSucces("Projet modifié avec succès");
+     }
+     else{
+       throw new Error("Veuillez taper tous les champs");
+     }
+   
   }
   return (
     <>

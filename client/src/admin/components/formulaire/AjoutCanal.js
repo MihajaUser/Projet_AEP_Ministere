@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md';
 import React, { useState } from 'react';
 import CrudCanalService from './../../../service/CrudCanal.service.js';
 import { useNavigate, useParams} from 'react-router-dom';
-
+import { Link } from 'react-router-dom'
 // import '../styles/AjoutFormulaire.css'
 // import styled from 'styled-components';
 
@@ -69,7 +69,9 @@ const CloseModalButton = styled(MdClose)`
   const [succes, setSucces] = useState(null);
   const { urlDebutLat, urlDebutLng } = useParams();
   const { finLat, finLng } = useParams();
-  const [id_utilisateur,setUtilisateur] = useState(0);
+  const [id_utilisateur, setUtilisateur] = useState(0);
+  const [nom, setNom] = useState('');
+  const [construction, setConstruction] = useState('');
   const [region,setRegion] = useState('');
   const [district,setDistrict] = useState('');
   const [commune,setCommune] = useState('');
@@ -90,6 +92,8 @@ const CloseModalButton = styled(MdClose)`
     // //voalohany variable iantsona an'azy any @ back le hoe req.body
     let data = {
       id_utilisateur,
+      nom,
+      construction,
       region,
       district,
       commune,
@@ -101,7 +105,7 @@ const CloseModalButton = styled(MdClose)`
       finLongitude,
       etat_ouvrage
     }
-    if ( debutLocalite == '' || finLocalite == '') {
+    if ( nom == '' || construction == '') {
       setError('Veuillez remplire tout les champs!')
     } else {
       const response = await CrudCanalService. AjoutCanalisation(data);
@@ -126,11 +130,21 @@ const CloseModalButton = styled(MdClose)`
           <ModalWrapper >
             <ModalContent>
               <Row>
-                <Col xs={6} >
-                  <Card border="primary" style={{ width: '25rem' , height:'30rem'}}>
+                <Col xs={6}>
+                  <Card border="primary" style={{ width: '50rem' , height:'35rem'}}>
                     <Card.Header>Formulaire d'ajout de Canalisation</Card.Header>
                     <Card.Body>
                       <Card.Title></Card.Title>
+                      <Row>
+                        <Col xs={8}>
+                          <Form.Label>Nom de projet</Form.Label>
+                          <Form.Control type="text" placeholder="" onChange ={(e)=>{ setNom (e.target.value) }}/>
+                        </Col>
+                        <Col xs={4}>
+                          <Form.Label>Nombre de constructions</Form.Label>
+                          <Form.Control type="number" placeholder="" onChange ={(e)=>{ setConstruction(e.target.value) }}/>
+                        </Col>
+                      </Row>
                       <Row>
                         <Col>
                           <Form.Group className="mb-3">
@@ -224,16 +238,24 @@ const CloseModalButton = styled(MdClose)`
                         </Col>
                       </Row>
                       <Button type="submit" className="btn" onClick={ajout}>Ajoutez</Button>
-                      {error &&
-                            <Alert className='my-input' key='danger' variant='danger'>
+                      <Row>
+                        <Col>
+                          {error &&
+                            <Alert className='my-input' key='danger' variant='danger' >
                                     {error}
                             </Alert>
-                    }
-                     {succes &&
+                          }
+                        </Col>
+                        <Col>
+                        {succes &&
                             <Alert className='my-input' key='success' variant='success'>
                                     {succes}
                             </Alert>
-                    }
+                        }
+                        </Col>
+                    
+                      </Row>
+                     
                     </Card.Body>
                   </Card>
                 </Col>

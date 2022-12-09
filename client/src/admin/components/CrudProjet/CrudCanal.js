@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { CrudCanalService } from './../../../service/CrudCanal.service.js';
 import { useState, useEffect } from 'react';
 import './style.css'
+import { Link } from 'react-router-dom'
+
 const ModalContent = styled.div`     
   display: flex;
   flex-direction: column;
@@ -60,7 +62,6 @@ function CrudCanal() {
     setShow(false)
   }
   return (
-
     <ModalContent>
       <Row>
         <Col xs={25} >

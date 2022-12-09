@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
   Canalisation.init({
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     id_utilisateur: DataTypes.INTEGER,
+    nom: DataTypes.STRING,
+    construction: DataTypes.DOUBLE,
     region: DataTypes.STRING,
     district: DataTypes.STRING,
     commune: DataTypes.STRING,
