@@ -25,7 +25,9 @@ const ModalContent = styled.div`
   }
 `;
 
-function CrudCanal() {
+function CrudCanal()
+{
+  
   const [listeProjet , setListeProjet] = useState([]);
   const [show, setShow] = useState(false);
   const [deleteId, setDeleteId] = useState("");

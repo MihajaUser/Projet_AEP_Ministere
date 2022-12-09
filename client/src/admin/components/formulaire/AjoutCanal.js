@@ -81,7 +81,7 @@ const CloseModalButton = styled(MdClose)`
   const [debutLongitude,setDebLng] = useState(urlDebutLng);
   const [finLatitude,setFinLat] = useState(finLat);
   const [finLongitude,setFinLng] = useState(finLng);
-  const[etat_ouvrage,setOuvrage] = useState('non fonctionnel');
+  const[etat_ouvrage,setOuvrage] = useState('nouveau');
   const navigate = useNavigate();
   // console.log("lat"+urlDebutLat,"long"+urlDebutLng,"finL"+finLat,"finLg"+finLng);
   

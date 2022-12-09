@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import './Login.css';
 import { useNavigate } from 'react-router';
-import AuthService from '../../../service/Auth.service';
+import AuthService from './../../../service/Auth.service';
 
 function Inscription() {
 

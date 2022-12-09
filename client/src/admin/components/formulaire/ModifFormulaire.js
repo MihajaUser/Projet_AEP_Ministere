@@ -63,7 +63,7 @@ const CloseModalButton = styled(MdClose)`
 `;
 
  export default function ModifFormulaire (){
-  const { latitude, longitude,idProjet, nb_beneficiaire,etat_ouvrage } = useParams();
+  const { idProjet } = useParams();
    const [etat, setOuvrage] = useState('');
    const [succes, setSucces] = useState(null);
   //maka anle donnee rehetra
@@ -83,14 +83,16 @@ const CloseModalButton = styled(MdClose)`
         // },[]) ;
         // console.log("testsefcszc",actuel);
        
-        let data = {
-          etat
-        }
+        
         // console.log("midira aloha ato ",data);
         
        
-    const mofidier = async () =>{
-    const response = await CrudService. ModifierProjet(data);
+   const modifier = async () =>
+   {
+    let data = {
+      etat_ouvrage: etat, id:idProjet
+    }
+    const response = await CrudService.ModifierProjet(data);
     console.log("valiny",response);
     if(response.status === 200) {
       setSucces("Projet modifié avec succès");
@@ -122,7 +124,7 @@ const CloseModalButton = styled(MdClose)`
                               <option value="fini">Fini</option>
                             </Form.Select>
                       </Form.Group>
-                      <Button type="submit" className="btn" onClick={mofidier}>Modifier</Button>
+                      <Button type="submit" className="btn" onClick={modifier}>Modifier</Button>
                       {succes &&
                             <Alert className='my-input' key='success' variant='success'>
                                     {succes}

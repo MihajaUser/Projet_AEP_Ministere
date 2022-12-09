@@ -107,7 +107,7 @@ function CrudProjet() {
                 <td>{item.localite}</td>
                 <td>{item.nb_beneficiaire}</td>
                 <td>{item.etat_ouvrage}</td>
-                <td><Link to={"modifier/"+item.id +"/"+item.latitude+"/"+item.longitude+"/"+item.nb_beneficiaire+"/"+item.etat_ouvrage}><UpdateIcon /></ Link></td>
+                <td><Link to={"modifier/"+item.id}><UpdateIcon /></ Link></td>
                 <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                 </tr>
               )

@@ -4,7 +4,7 @@ import './Login.css';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router';
 import { Alert , Form} from 'react-bootstrap';
-import AuthService from '../../../service/Auth.service';
+import AuthService from './../../../service/Auth.service';
 function Login(props) {
   ///formulaire  setusername manova ilay user ary ambany
   const [username, setusername] = useState('');

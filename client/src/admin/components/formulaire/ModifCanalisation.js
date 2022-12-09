@@ -5,7 +5,8 @@ import { MdClose } from 'react-icons/md';
 import React, { useState } from 'react';
 import CrudCanalService from './../../../service/CrudCanal.service.js';
 import { useNavigate, useParams} from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { FormControlUnstyledContext } from '@mui/base';
 // import '../styles/AjoutFormulaire.css'
 // import styled from 'styled-components';
 
@@ -64,44 +65,30 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
- export default function  AjoutCanal (){
-  const [error, setError] = useState(null);
-  const [succes, setSucces] = useState(null);
-  const { urlDebutLat, urlDebutLng } = useParams();
-  const { finLat, finLng } = useParams();
-  const [id_utilisateur,setUtilisateur] = useState(0);
-  const [region,setRegion] = useState('');
-  const [district,setDistrict] = useState('');
-  const [commune,setCommune] = useState('');
-  const [debutLocalite,setDebLocal] = useState('');
-  const [finLocalite,setFinLocal] = useState('');
-  const [debutLatitude,setDebLat] = useState(urlDebutLat);
-  const [debutLongitude,setDebLng] = useState(urlDebutLng);
-  const [finLatitude,setFinLat] = useState(finLat);
-  const [finLongitude,setFinLng] = useState(finLng);
-  const[etat_ouvrage,setOuvrage] = useState('');
+export default function ModifCanalisation()
+{
+  const { idProjet } = useParams();
+  const[etat,setOuvrage] = useState('');
   const navigate = useNavigate();
+  const [succes, setSucces] = useState(null);
   // console.log("lat"+urlDebutLat,"long"+urlDebutLng,"finL"+finLat,"finLg"+finLng);
   
 
   //maka anle donnee rehetra
-  const modifier = async () =>{
-    // let user = JSON.parse(localStorage.getItem('users'));
-    // //voalohany variable iantsona an'azy any @ back le hoe req.body
+  const modifier = async () =>
+   {
     let data = {
-      etat_ouvrage
+      etat_ouvrage: etat, id:idProjet
     }
-    const mofidier = async () =>{
-      const response = await CrudCanalService. modifierCanalisation(data);
-      console.log("valiny",response);
-      if(response.status === 200) {
-        setSucces("Projet modifié avec succès");
-       }
-       else{
-         throw new Error("Veuillez taper tous les champs");
-       }
-     
-    }
+    console.log(data);
+    const response = await CrudCanalService.modifierCanalisation(data);
+    console.log("valiny",response);
+    if(response.status === 200) {
+      setSucces("Projet modifié avec succès");
+     }
+     else{
+       throw new Error("Veuillez taper tous les champs");
+     }
    
   }
   return (
@@ -110,7 +97,13 @@ const CloseModalButton = styled(MdClose)`
         <Background>
           <ModalWrapper >
             <ModalContent>
-            <Form.Group className="mb-3">
+              <Row>
+                <Col xs={6} >
+                  <Card border="primary" style={{ width: '20rem' }}>
+                    <Card.Header>Modification Canalisation</Card.Header>
+                    <Card.Body>
+                      <Card.Title></Card.Title>
+                      <Form.Group className="mb-3">
                         <Form.Label>Etat d'ouvrage</Form.Label>
                         <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setOuvrage (e.target.value) }}>
                             <option>Choisissez</option>
@@ -125,6 +118,10 @@ const CloseModalButton = styled(MdClose)`
                                     {succes}
                             </Alert>
                       }
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
             </ModalContent>
           </ModalWrapper>
         </Background>

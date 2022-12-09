@@ -63,7 +63,7 @@ const App = () => {
             <Route path="liste" element={<CrudProjet />} />
             <Route path="adduction" element={<Adduction />} />
             <Route path="listeCanalisation" element={<CrudCanal />} />
-            <Route path="liste/modifier/:idProjet/:latitude/:longitude/:nb_beneficiaire/:etat_ouvrage" element={<ModifFormulaire />} />
+            <Route path="liste/modifier/:idProjet" element={<ModifFormulaire />} />
             <Route path="canalisation/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<AjoutCanal />} />
             <Route path="listeCanalisation/modifier/:idProjet" element={<ModifCanalisation />} />
             <Route path="ajoutCanalisation1" element={<MapEtape1 />} />

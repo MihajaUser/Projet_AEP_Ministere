@@ -71,21 +71,15 @@ exports.supprimer = (req, res) => {
 }
 
 //modifier un projet
-exports.ModifierProjet = (req,res) => {
+exports.ModifierProjet = (req, res) =>
+{
+  console.log("---------------------------------")
+  console.log(req.params.id)
+  console.log(req.body.etat_ouvrage)
   model.Projets.update({
-   id_utilisateur: req.body.id_utilisateur,
-   region: req.body.region,
-   district: req.body.district,
-   commune: req.body.commune,
-   fokontany: req.body.fokontany,
-   localite: req.body.localite,
-   latitude: req.body.latitude,
-   longitude: req.body.longitude,
-   nb_beneficiaire: req.body.nb_beneficiaire,
-   point_eau: req.body.point_eau,
-   infra_eau: req.body.infra_eau,
-   etat_ouvrage: req.body.etat_ouvrage,
-   utilisation: req.body.utilisation
+  
+   etat_ouvrage: req.body.etat_ouvrage
+   
   }, 
  {
    where:{id: req.params.id}
