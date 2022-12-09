@@ -28,7 +28,6 @@ import CrudCanal from './admin/components/CrudProjet/CrudCanal';
 import ModifFormulaire from './admin/components/formulaire/ModifFormulaire';
 import ModifCanalisation from './admin/components/formulaire/ModifCanalisation';
 import AjoutCanal from './admin/components/formulaire/AjoutCanal';
-// import MapAdduction from './admin/components/mapAdduction/MapAdduction';
 
 const App = () => {
   return (
@@ -51,11 +50,9 @@ const App = () => {
             <Route path="canalisation" element={<MapCanal />} />
             <Route path="inscription" element={<Inscription />} />
             <Route path="citerne2d/:latitude/:longitude/:region/:point_eau/:infra_eau" element={<Citerne2d />} />
-            <Route path="todoList" element={<TodList />} />
+            <Route path="todoList/:idProjet" element={<TodList />} />
             <Route path="tableauStat" element={<TableauStat />} />
             <Route path="tableauCanal" element={<TableauCanal />} />
-            <Route path="ajoutCanalisation3/:urlDebutLat/:urlDebutLng/:finLat/:finLng" element={<MapEtape3 />} />
-
           </Route>
           <Route path="/admin" element={<Admin />}>
             <Route path="" element={<  MapRouting />} />

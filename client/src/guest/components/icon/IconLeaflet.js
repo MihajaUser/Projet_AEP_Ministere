@@ -1,5 +1,13 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+export function iconReservoir() {
+  return (
+    new L.Icon({
+      iconUrl: require('../../assets/imagesClient/reservoir_gris.png'),
+      iconSize: [33, 40],
+      shadowSize: [50, 64]
+    }))
+}
 export function iconRobinet() {
   return (
     new L.Icon({

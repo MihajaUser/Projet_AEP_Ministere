@@ -2,10 +2,11 @@ import { Row, Col, Form, Button,Alert } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
-import React, {  useEffect,  useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import CrudService from './../../../service/Crud.service.js';
 import { useParams } from 'react-router-dom';
+import './styles.css'
 
 const Background = styled.div`
   // width: 100%;
@@ -62,6 +63,7 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
+
  export default function ModifFormulaire (){
   const { latitude, longitude,idProjet, nb_beneficiaire,etat_ouvrage } = useParams();
    const [etat, setOuvrage] = useState('');
@@ -102,39 +104,160 @@ const CloseModalButton = styled(MdClose)`
   }
   return (
     <>
-      
+
       {(
-        <Background>
-          <ModalWrapper >
-            <ModalContent>
-              <Row>
-                <Col xs={6} >
-                  <Card border="primary" style={{ width: '25rem' }}>
-                    <Card.Header>Modification d'adduction</Card.Header>
-                    <Card.Body>
-                      <Card.Title></Card.Title>
-                      <Form.Group className="mb-3">
-                        <Form.Label>Etat d'ouvrage</Form.Label>
-                        <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setOuvrage (e.target.value) }}>
-                            <option>Choisissez</option>
-                              <option value="nouveau">Nouveau</option>
-                              <option value="en cours">En cours</option>
-                              <option value="fini">Fini</option>
-                            </Form.Select>
-                      </Form.Group>
-                      <Button type="submit" className="btn" onClick={mofidier}>Modifier</Button>
-                      {succes &&
-                            <Alert className='my-input' key='success' variant='success'>
-                                    {succes}
-                            </Alert>
-                      }
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            </ModalContent>
-          </ModalWrapper>
-        </Background>
+        <div className='MyFormulaire'>
+          <Background>
+            <ModalWrapper >
+              <ModalContent>
+                <Row>
+                  <Col xs={6} >
+                    <Card border="primary" style={{ width: '65rem' }}>
+                      <Card.Header>Modification d'adduction</Card.Header>
+                      <Card.Body>
+                        <Card.Title></Card.Title>
+                        <Row>
+                          <Col>
+                            <Form.Group>
+                              <Form.Label>Utilisation</Form.Label>
+                              <Form.Select aria-label="Default select example" size="md-6" value={actuel.utilisation} onChangeText={(e) => { setUtilisation(e.target.value) }}>
+                                <option>Veuillez choisir</option>
+                                <option value="1">Réservoir d'eau</option>
+                                <option value="2">Pompe</option>
+                              </Form.Select>
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group className="mb-3">
+                              <Form.Label>Infrastru d'eau</Form.Label>
+                              <Form.Select aria-label="Default select example" size="md-6" value={actuel.infra_eau} onChangeText={(e) => { setInfra(e.target.value) }}>
+                                <option value="1">AEPG</option>
+                                <option value="2">AEPP</option>
+                                <option value="3">AEPPp</option>
+                                <option value="2">FPMH</option>
+                                <option value="2">PPMH</option>
+                              </Form.Select>
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group className="mb-3">
+                              <Form.Label>Point d'eau</Form.Label>
+                              <Form.Select aria-label="Default select example" size="md-6" value={actuel.point_eau} onChangeText={(e) => { setPointEau(e.target.value) }}>
+                                <option value="1">BF</option>
+                                <option value="2">BP</option>
+                                <option value="3">BS</option>
+                                <option value="2">FPMH</option>
+                                <option value="2">MONO</option>
+                                <option value="2">PPMH</option>
+                              </Form.Select>
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Form.Group className="mb-3">
+                              <Form.Label>Région</Form.Label>
+                              <Form.Select aria-label="Default select example" size="md-6" value={actuel.region} onChange={(e) => { setRegion(e.target.value) }}>
+                                <option>Choisissez</option>
+                                <option value="Analamanga">Analamanga</option>
+                                <option value="Bongolava">Bongolava</option>
+                                <option value="Itasy">Itasy</option>
+                                <option value="Vakinakaratra">Vakinakaratra</option>
+                                <option value="Diana">Diana</option>
+                                <option value="Sava">Sava</option>
+                                <option value="Amoron'i Mania">Amoron'i Mania</option>
+                                <option value="Atsimo Atsinanana">Atsimo Atsinanana</option>
+                                <option value="Haute Matsiatra">Haute Matsiatra</option>
+                                <option value="Ihorombe">Ihorombe</option>
+                                <option value="Vatovavy Fitovinany">Vatovavy Fitovinany</option>
+                                <option value="Betsiboka">Betsiboka</option>
+                                <option value="Boeny">Boeny</option>
+                                <option value="Melaky">Melaky</option>
+                                <option value="Sofia">Sofia</option>
+                                <option value="Alaotra Mangoro">Alaotra Mangoro</option>
+                                <option value="Analanjirofo">Analanjirofo</option>
+                                <option value="Atsinanana">Atsinanana</option>
+                                <option value="Androy">Androy</option>
+                                <option value="Anosy">Anosy</option>
+                                <option value="Atsimo Andrefana">Atsimo Andrefana</option>
+                                <option value="Menabe">Menabe</option>
+                              </Form.Select>
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group className="mb-3">
+                              <Form.Label>District</Form.Label>
+                              <Form.Select aria-label="Default select example" size="md-6" value={actuel.district} onChange={(e) => { setDistrict(e.target.value) }}>
+                                <option>Choisissez</option>
+                                <option value="Ambohidratrimo">Ambohidratrimo</option>
+                                <option value="Andramasina">Andramasina</option>
+                              </Form.Select>
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group className="mb-3">
+                              <Form.Label>Commune</Form.Label>
+                              <Form.Select aria-label="Default select example" size="md-6" value={actuel.commune} onChange={(e) => { setCommune(e.target.value) }}>
+                                <option>Choisissez</option>
+                                <option value="Ambato">Ambato</option>
+                                <option value="Ambatolampy">Ambatolampy</option>
+                              </Form.Select>
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Form.Group className="mb-3">
+                              <Form.Label>Fokontany</Form.Label>
+                              <Form.Select aria-label="Default select example" size="md-6" value={actuel.fokontany} onChange={(e) => { setFokontany(e.target.value) }}>
+                                <option>Choisissez</option>
+                                <option value="Ambanimaso">Ambanimaso</option>
+                                <option value="Ambato">Ambato</option>
+                              </Form.Select>
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group className="mb-3">
+                              <Form.Label>Localité</Form.Label>
+                              <Form.Control type="text" placeholder="ex : Ambandrika" value={actuel.localite} onChangeText={(e) => { setLocalite(e.target.value) }} />
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Form.Group className="mb-3">
+                              <Form.Label>Latitude</Form.Label>
+                              <Form.Control type="number" placeholder="" value={lat} onChange={(e) => { setLat(e.target.value) }} />
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group className="mb-3">
+                              <Form.Label>Longitude</Form.Label>
+                              <Form.Control type="number" placeholder="" value={longitude} />
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Nombre bénéficiaire</Form.Label>
+                          <Form.Control type="number" placeholder="Entrez le nombre" value={nb} onChange={(e) => { setNombre(e.target.value) }} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Etat d'ouvrage</Form.Label>
+                          <Form.Control type="text" placeholder="Entrez le nombre" value={etat} onChange={(e) => { setOuvrage(e.target.value) }} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Utilisateur</Form.Label>
+                          <Form.Control type="nombre" placeholder="Administrateur" value={actuel.id_utilisateur} />
+                        </Form.Group>
+                        <Button type="submit" className="btn" onClick={mofidier}>Modifier</Button>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Row>
+              </ModalContent>
+            </ModalWrapper>
+          </Background>
+        </div>
       )}
     </>
   );

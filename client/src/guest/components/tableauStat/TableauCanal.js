@@ -1,10 +1,8 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Row, Col } from 'react-bootstrap';
-
 import React, { useEffect , useState} from "react";
 import CrudCanalService from '../../../service/CrudCanal.service';
-
 import './tableauStat.css';
 import Aos from 'aos';
 import "aos/dist/aos.css";
@@ -12,6 +10,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 const TableauStat = (props) => {
+
 
    // ty le donut anle canalisation
    const [donutsData, setdonutsData] = useState([]);
@@ -125,6 +124,5 @@ const TableauStat = (props) => {
                 </div>
    </Row>
    )
-
 }
 export default TableauStat;

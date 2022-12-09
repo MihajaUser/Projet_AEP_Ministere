@@ -1,0 +1,20 @@
+.Mytitle {
+	text-align: center;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+.MyTable {
+	margin-left: 10%;
+}
+.MyCheckbox {
+	margin-left: 10px;
+	margin-top: 5px;
+	zoom: 1.55;
+}
+th {
+	text-align: center;
+	min-width: 70px;
+}
+td {
+	text-align: center;
+}
