@@ -109,7 +109,7 @@ function CrudCanal() {
                       <td colSpan={2}>
                         <input type="checkbox" className='MyCheckbox' />
                       </td>
-                      <td><UpdateIcon /></td>
+                      <td><Link to={"modifier/"+item.id}><UpdateIcon /></ Link></td>
                       <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                     </tr>
                   )

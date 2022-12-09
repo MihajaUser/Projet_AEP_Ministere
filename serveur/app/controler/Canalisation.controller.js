@@ -79,20 +79,13 @@ exports.nbrCanalisation = (req, res) => {
 };
 //modification d'un projet
 exports.modifierCanalisation = (req,res) => {
+  console.log("---------------------------------")
+  console.log(req.params.id)
+  console.log(req.body.etat_ouvrage)
   model.Canalisation.update({
-    id_utilisateur: req.body.id_utilisateur,
-    nom: req.body.nom,
-    construction: req.body.construction,
-    region: req.body.region,
-    district: req.body.district,
-    commune: req.body.commune,
-    debutLocalite: req.body.debutLocalite,
-    finLocalite: req.body.finLocalite,
-    debutLatitude: req.body.debutLatitude,
-    debutLongitude: req.body.debutLongitude,
-    finLatitude: req.body.finLatitude,
-    finLongitude: req.body.finLongitude,
-    etat_ouvrage: req.body.etat_ouvrage
+  
+   etat_ouvrage: req.body.etat_ouvrage
+   
   }, 
  {
    where:{id: req.params.id}
