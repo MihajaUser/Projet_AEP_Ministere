@@ -9,12 +9,7 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF('/pump.glb')
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.Cube.geometry} material={materials.Material} position={[0, 0, -32.54]} />
-      <group rotation={[Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.pump_water_1.geometry} material={materials.___default___} />
-        <mesh geometry={nodes.pump_water_2.geometry} material={materials.material02} />
-        <mesh geometry={nodes.pump_water_3.geometry} material={materials.material03} />
-      </group>
+      <mesh geometry={nodes.pumpizy.geometry} material={materials.___default___} rotation={[Math.PI / 2, 0, 0]} />
     </group>
   )
 }

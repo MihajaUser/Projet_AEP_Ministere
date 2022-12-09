@@ -1,11 +1,13 @@
-import { Row, Col, Form, Button,Alert } from 'react-bootstrap';
+import { Row, Col, Form, Button ,Alert} from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
-import React, {  useEffect,  useState } from 'react';
-import { useSpring, animated } from 'react-spring';
-import CrudService from './../../../service/Crud.service.js';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import CrudCanalService from './../../../service/CrudCanal.service.js';
+import { useNavigate, useParams} from 'react-router-dom';
+import { Link } from 'react-router-dom'
+// import '../styles/AjoutFormulaire.css'
+// import styled from 'styled-components';
 
 const Background = styled.div`
   // width: 100%;
@@ -62,58 +64,53 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
- export default function ModifFormulaire (){
-  const { latitude, longitude,idProjet, nb_beneficiaire,etat_ouvrage } = useParams();
-   const [etat, setOuvrage] = useState('');
-   const [succes, setSucces] = useState(null);
-  //maka anle donnee rehetra
+ export default function  AjoutCanal (){
+  const [error, setError] = useState(null);
+  const [succes, setSucces] = useState(null);
+  const { urlDebutLat, urlDebutLng } = useParams();
+  const { finLat, finLng } = useParams();
+  const [id_utilisateur,setUtilisateur] = useState(0);
+  const [region,setRegion] = useState('');
+  const [district,setDistrict] = useState('');
+  const [commune,setCommune] = useState('');
+  const [debutLocalite,setDebLocal] = useState('');
+  const [finLocalite,setFinLocal] = useState('');
+  const [debutLatitude,setDebLat] = useState(urlDebutLat);
+  const [debutLongitude,setDebLng] = useState(urlDebutLng);
+  const [finLatitude,setFinLat] = useState(finLat);
+  const [finLongitude,setFinLng] = useState(finLng);
+  const[etat_ouvrage,setOuvrage] = useState('');
+  const navigate = useNavigate();
+  // console.log("lat"+urlDebutLat,"long"+urlDebutLng,"finL"+finLat,"finLg"+finLng);
   
-        //   const getDetailProjet = async () =>{
-        //     // console.log("TEST");
-        //   const resultat = await CrudService. getById(idProjet);
-        //   setActuel(resultat.data);
-        //     //  console.log(actuel.data.rep.region);
-             
-             
-        //   // }
-          
-        // } ;
-        // useEffect(() => {
-        //   getDetailProjet()
-        // },[]) ;
-        // console.log("testsefcszc",actuel);
-       
-        let data = {
-          etat
-        }
-        // console.log("midira aloha ato ",data);
-        
-       
+
+  //maka anle donnee rehetra
+  const modifier = async () =>{
+    // let user = JSON.parse(localStorage.getItem('users'));
+    // //voalohany variable iantsona an'azy any @ back le hoe req.body
+    let data = {
+      etat_ouvrage
+    }
     const mofidier = async () =>{
-    const response = await CrudService. ModifierProjet(data);
-    console.log("valiny",response);
-    if(response.status === 200) {
-      setSucces("Projet modifié avec succès");
-     }
-     else{
-       throw new Error("Veuillez taper tous les champs");
-     }
+      const response = await CrudCanalService. modifierCanalisation(data);
+      console.log("valiny",response);
+      if(response.status === 200) {
+        setSucces("Projet modifié avec succès");
+       }
+       else{
+         throw new Error("Veuillez taper tous les champs");
+       }
+     
+    }
    
   }
   return (
     <>
-      
       {(
         <Background>
           <ModalWrapper >
             <ModalContent>
-              <Row>
-                <Col xs={6} >
-                  <Card border="primary" style={{ width: '25rem' }}>
-                    <Card.Header>Modification d'adduction</Card.Header>
-                    <Card.Body>
-                      <Card.Title></Card.Title>
-                      <Form.Group className="mb-3">
+            <Form.Group className="mb-3">
                         <Form.Label>Etat d'ouvrage</Form.Label>
                         <Form.Select aria-label="Default select example" size="md-6"  onChange ={(e)=>{ setOuvrage (e.target.value) }}>
                             <option>Choisissez</option>
@@ -122,16 +119,12 @@ const CloseModalButton = styled(MdClose)`
                               <option value="fini">Fini</option>
                             </Form.Select>
                       </Form.Group>
-                      <Button type="submit" className="btn" onClick={mofidier}>Modifier</Button>
+                      <Button type="submit" className="btn" onClick={modifier}>Modifier</Button>
                       {succes &&
                             <Alert className='my-input' key='success' variant='success'>
                                     {succes}
                             </Alert>
                       }
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
             </ModalContent>
           </ModalWrapper>
         </Background>
@@ -139,3 +132,5 @@ const CloseModalButton = styled(MdClose)`
     </>
   );
 };
+
+

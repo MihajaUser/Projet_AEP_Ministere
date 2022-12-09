@@ -1,7 +1,5 @@
-import Table from 'react-bootstrap/Table';
 import React from 'react';
-import {Link} from 'react-router-dom'
-import { CrudService } from './../../../admin/components/CrudProjet/Crud.service';
+import CrudService from '../../../service/Crud.service';
 import { useState, useEffect} from 'react';
 import Posts from './Posts';
 import Pagination from './Pagination';

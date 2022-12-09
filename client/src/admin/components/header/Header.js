@@ -18,11 +18,6 @@ function go() {
 function Header() {
   let user = JSON.parse(localStorage.getItem('users'));
   console.warn(user)
-  // const history = useHistory();
-  // function logout(){
-  //   localStorage.clear();
-  //   history.push('admin/') 
-  // }
   const navigate = useNavigate();
   function logout() {
     localStorage.clear();

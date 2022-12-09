@@ -3,7 +3,8 @@ import UpdateIcon from '@mui/icons-material/Update';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import styled from 'styled-components';
 import { CrudCanalService } from './../../../service/CrudCanal.service.js';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 const ModalContent = styled.div`     
   display: flex;
   flex-direction: column;
@@ -82,9 +83,9 @@ function CrudCanal() {
       <thead>
         <tr>
           <th>Numero  de projet</th>
+          <th>Nom du projet</th>
+          <th>Constructions</th>
           <th>Région</th>
-          <th>District</th>
-          <th>Commune</th>
           <th>Début de localité</th>
           <th>Fin de localité</th>
           <th>Etat d'ouvrage</th>
@@ -98,13 +99,13 @@ function CrudCanal() {
               return(
                 <tr>
                 <td>{item.id}</td>
+                <td>{item.nom} </td>
+                <td>{item.construction}</td>
                 <td>{item.region}</td>
-                <td>{item.district}</td>
-                <td>{item.commune}</td>
                 <td>{item.debutLocalite}</td>
                 <td>{item.finLocalite}</td>
                 <td>{item.etat_ouvrage}</td>
-                <td><UpdateIcon /></td>
+                <td><Link to={"modifier/"+item.id}><UpdateIcon /></ Link></td>
                 <td onClick={() => onClikDelete(item.id)}><DeleteOutlineIcon /></td>
                 </tr>
               )

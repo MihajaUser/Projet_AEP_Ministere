@@ -73,8 +73,8 @@ function Header() {
             {" "}
             <ListAltRoundedIcon />
             <NavDropdown title="" id="nav-dropdown">
-            <NavDropdown.Item eventKey="4.1"><BloodtypeIcon />Adduction</NavDropdown.Item>
-            <NavDropdown.Item eventKey="4.1"><IconRoute />canalisation</NavDropdown.Item>
+            <NavDropdown.Item eventKey="4.1" href="/listeProjet" ><BloodtypeIcon />Adduction</NavDropdown.Item>
+            <NavDropdown.Item eventKey="4.1" href="/listeCanals"><IconRoute />canalisation</NavDropdown.Item>
             </NavDropdown>
           </Navbar.Brand>
           <Navbar.Brand href="/login">

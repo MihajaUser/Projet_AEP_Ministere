@@ -1,7 +1,7 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'; 
 import { Link } from 'react-router-dom';
- const Posts = ( { posts, loading}) => {
+ const PostsCanal = ( { postsCanal, loading}) => {
     if(loading) {
         return <h2>Loading....</h2>
     }
@@ -13,26 +13,26 @@ import { Link } from 'react-router-dom';
         <tr>
           <th>Numéro de projet</th>
           <th>Nom de projet</th>
-          <th>Region</th>
-          <th>Point d'eau</th>
-          <th>Infrastructure de l'eau</th>
-          <th>Localité</th>
-          <th>Nombre de bénéficiaire</th>
+          <th>Constructions</th>
+          <th>Région</th>
+          <th>District</th>
+          <th>Début de Localité</th>
+          <th>Fin de Localité</th>
           <th>Etat d'ouvrage</th>
         </tr>
       </thead>
       <tbody>
       {
-            posts.map((item) =>{
+            postsCanal.map((item) =>{
               return(
                 <tr>
                 <td>{item.id}</td>
-                <td>{item.utilisation}</td>
+                <td>{item.nom}</td>
+                <td>{item.construction}</td>
                 <td>{item.region}</td>
-                <td>{item.point_eau}</td>
-                <td>{item.infra_eau}</td>
-                <td>{item.localite}</td>
-                <td>{item.nb_beneficiaire}</td>
+                <td>{item.district}</td>
+                <td>{item.debutLocalite}</td>
+                <td>{item.finLocalite}</td>
                 <td>{item.etat_ouvrage}</td>
                 </tr>
               )
@@ -44,4 +44,4 @@ import { Link } from 'react-router-dom';
     </ul>
   )
 }
-export default Posts;
+export default PostsCanal;

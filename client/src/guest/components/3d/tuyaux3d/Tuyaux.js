@@ -9,17 +9,7 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF('/tuyaux.glb')
   return (
     <group {...props} dispose={null}>
-      <group position={[6.55, 0, -9.76]} rotation={[0, -1.56, 0]}>
-        <mesh geometry={nodes.Cylinder002.geometry} material={materials.mat_canal} position={[4.3, 0.24, -0.32]} rotation={[2.85, 0.08, 1.59]} scale={[0.44, 4.27, 0.44]} />
-      </group>
-      <group position={[-1.66, 0, -8.56]} rotation={[0, 1.57, 0]}>
-        <mesh geometry={nodes.Cylinder000.geometry} material={materials.mat_canal} position={[4.4, 0.21, 0]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.44, 4.27, 0.46]} />
-      </group>
-      <group position={[1.65, 0, 0]} rotation={[0, 1.57, 0]}>
-        <mesh geometry={nodes.Cylinder001.geometry} material={materials.mat_canal} position={[-10.89, 0.16, -3.25]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.48, 4.61, 0.48]} />
-      </group>
-      <mesh geometry={nodes.long_tuyau001.geometry} material={materials.mat_canal} position={[-1.7, 0.19, -1.62]} rotation={[Math.PI / 2, 0, 0]} scale={[0.44, 2.4, 0.53]} />
-      <mesh geometry={nodes.long_tuyau.geometry} material={materials.mat_canal} position={[7.12, 0.2, -18.36]} rotation={[Math.PI / 2, 0, 0]} scale={[0.44, 3.99, 0.44]} />
+      <mesh geometry={nodes.tuyau.geometry} material={materials.___default___} rotation={[Math.PI / 2, 0, 0]} />
     </group>
   )
 }
