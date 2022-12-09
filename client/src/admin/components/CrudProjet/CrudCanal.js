@@ -99,7 +99,7 @@ function CrudCanal() {
                 listeProjet.map((item) => {
                   return (
                     <tr>
-                      <td>{item.id}</td>
+                      <td><a href={`/todoList/${item.id} `}> {item.id}</a></td>
                       <td>{item.region}</td>
                       <td>{item.district}</td>
                       <td>{item.commune}</td>
