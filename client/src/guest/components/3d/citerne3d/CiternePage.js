@@ -14,7 +14,7 @@ function CiternePage() {
           <ambientLight intensity={0.6} />
           <pointLight position={[10, 10, 10]} />
           <Suspense fallback={null}>
-            <mesh position={[2.75, 8, 0]}>
+            <mesh position={[2.75, 7.75, -3.75]}>
               <Citerne />
             </mesh>
           </Suspense>
