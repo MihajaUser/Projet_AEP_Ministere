@@ -271,10 +271,6 @@ export default function ModifFormulaire() {
                           <Form.Label>Etat d'ouvrage</Form.Label>
                           <Form.Control type="text" placeholder="Entrez le nombre" value={etat} onChange={(e) => { setOuvrage(e.target.value) }} />
                         </Form.Group>
-                        <Form.Group className="mb-3">
-                          <Form.Label>Utilisateur</Form.Label>
-                          <Form.Control type="nombre" placeholder="Administrateur" value={actuel.id_utilisateur} />
-                        </Form.Group>
                         <Button type="submit" className="btn" onClick={mofidier}>Modifier</Button>
                       </Card.Body>
                     </Card>
