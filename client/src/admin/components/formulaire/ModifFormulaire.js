@@ -147,7 +147,7 @@ export default function ModifFormulaire() {
                             <Form.Group>
                               <Form.Label>Utilisation</Form.Label>
                               <Form.Select aria-label="Default select example" size="md-6" value={actuel.utilisation} onChangeText={(e) => { setUtilisation(e.target.value) }}>
-                                <option>Veuillez choisir</option>
+                                <option>Alimentaire</option>
                                 <option value="1">Réservoir d'eau</option>
                                 <option value="2">Pompe</option>
                               </Form.Select>
@@ -157,9 +157,9 @@ export default function ModifFormulaire() {
                             <Form.Group className="mb-3">
                               <Form.Label>Infrastru d'eau</Form.Label>
                               <Form.Select aria-label="Default select example" size="md-6" value={actuel.infra_eau} onChangeText={(e) => { setInfra(e.target.value) }}>
-                                <option value="1">AEPG</option>
-                                <option value="2">AEPP</option>
-                                <option value="3">AEPPp</option>
+                                <option value="1">reservoir</option>
+                                <option value="2">AEPG</option>
+                                <option value="3">AEPP</option>
                                 <option value="2">FPMH</option>
                                 <option value="2">PPMH</option>
                               </Form.Select>
@@ -214,9 +214,10 @@ export default function ModifFormulaire() {
                             <Form.Group className="mb-3">
                               <Form.Label>District</Form.Label>
                               <Form.Select aria-label="Default select example" size="md-6" value={actuel.district} onChange={(e) => { setDistrict(e.target.value) }}>
-                                <option>Choisissez</option>
+                                <option>Antananarivo-Antsimondrano</option>
                                 <option value="Ambohidratrimo">Ambohidratrimo</option>
                                 <option value="Andramasina">Andramasina</option>
+
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -224,9 +225,10 @@ export default function ModifFormulaire() {
                             <Form.Group className="mb-3">
                               <Form.Label>Commune</Form.Label>
                               <Form.Select aria-label="Default select example" size="md-6" value={actuel.commune} onChange={(e) => { setCommune(e.target.value) }}>
-                                <option>Choisissez</option>
+                                <option>Ankaraobato</option>
                                 <option value="Ambato">Ambato</option>
                                 <option value="Ambatolampy">Ambatolampy</option>
+
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -236,15 +238,16 @@ export default function ModifFormulaire() {
                             <Form.Group className="mb-3">
                               <Form.Label>Fokontany</Form.Label>
                               <Form.Select aria-label="Default select example" size="md-6" value={actuel.fokontany} onChange={(e) => { setFokontany(e.target.value) }}>
-                                <option>Choisissez</option>
+                                <option>Ankadilalapotsy</option>
                                 <option value="Ambanimaso">Ambanimaso</option>
                                 <option value="Ambato">Ambato</option>
+
                               </Form.Select>
                             </Form.Group>
                           </Col>
                           <Col>
                             <Form.Group className="mb-3">
-                              <Form.Label>Localité</Form.Label>
+                              <Form.Label>Malaza</Form.Label>
                               <Form.Control type="text" placeholder="ex : Ambandrika" value={actuel.localite} onChangeText={(e) => { setLocalite(e.target.value) }} />
                             </Form.Group>
                           </Col>
