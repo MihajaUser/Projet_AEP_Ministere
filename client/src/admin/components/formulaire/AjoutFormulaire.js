@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import React, { useState } from 'react';
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import CrudService from './../../../service/Crud.service.js';
 import './styles.css'
 // import '../styles/AjoutFormulaire.css'
@@ -68,17 +68,17 @@ export default function AjoutFormulaire() {
   const [error, setError] = useState(null);
   const [succes, setSucces] = useState(null);
   const { urlDebutLat, urlDebutLng } = useParams();
-  const [id_utilisateur,setUtilisateur] = useState(0);
-  const [utilisation,setUtilisation] = useState('');
-  const [infra_eau,setInfra] = useState('');
-  const [point_eau,setPointEau] = useState('');
-  const [region,setRegion] = useState('');
-  const [district,setDistrict] = useState('');
-  const [commune,setCommune] = useState('');
-  const [fokontany,setFokontany] = useState('');
-  const [localite,setLocalite] = useState('');
-  const [nb_beneficiaire,setNombre] = useState('');
-  const [etat_ouvrage,setOuvrage] = useState('nouveau');
+  const [id_utilisateur, setUtilisateur] = useState(0);
+  const [utilisation, setUtilisation] = useState('');
+  const [infra_eau, setInfra] = useState('');
+  const [point_eau, setPointEau] = useState('');
+  const [region, setRegion] = useState('');
+  const [district, setDistrict] = useState('');
+  const [commune, setCommune] = useState('');
+  const [fokontany, setFokontany] = useState('');
+  const [localite, setLocalite] = useState('');
+  const [nb_beneficiaire, setNombre] = useState('');
+  const [etat_ouvrage, setOuvrage] = useState('nouveau');
 
   const navigate = useNavigate();
   // const [id, setId] = useState();
@@ -148,8 +148,9 @@ export default function AjoutFormulaire() {
                               <Form.Label>Utilisation</Form.Label>
                               <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setUtilisation(e.target.value) }}>
                                 <option>Choisissez</option>
+                                <option value="Alimentaire">Alimentaire</option>
+                                <option value="militaire">Militaire</option>
                                 <option value="Santé">Santé</option>
-                                <option value="Pompe">Pompe</option>
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -163,6 +164,8 @@ export default function AjoutFormulaire() {
                                 <option value="aeppp">AEPPp</option>
                                 <option value="fpmh">FPMH</option>
                                 <option value="ppmh">PPMH</option>
+                                <option value="reservoir">reservoir</option>
+
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -200,16 +203,6 @@ export default function AjoutFormulaire() {
                                 <option value="Ihorombe">Ihorombe</option>
                                 <option value="Vatovavy Fitovinany">Vatovavy Fitovinany</option>
                                 <option value="Betsiboka">Betsiboka</option>
-                                <option value="Boeny">Boeny</option>
-                                <option value="Melaky">Melaky</option>
-                                <option value="Sofia">Sofia</option>
-                                <option value="Alaotra Mangoro">Alaotra Mangoro</option>
-                                <option value="Analanjirofo">Analanjirofo</option>
-                                <option value="Atsinanana">Atsinanana</option>
-                                <option value="Androy">Androy</option>
-                                <option value="Anosy">Anosy</option>
-                                <option value="Atsimo Andrefana">Atsimo Andrefana</option>
-                                <option value="Menabe">Menabe</option>
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -220,6 +213,13 @@ export default function AjoutFormulaire() {
                                 <option>Choisissez</option>
                                 <option value="Antanarivo-Atsimondrano">Antanarivo-Atsimondrano</option>
                                 <option value="Andramasina">Andramasina</option>
+                                <option value="Ambohidratrimo" >Ambohidratrimo</option>
+                                <option value="Andramasina" >Andramasina</option>
+                                <option value="Anjozorobe" >Anjozorobe</option>
+                                <option value="Anjozorobe" >Anjozorobe</option>
+                                <option value="Ankazobe" >Ankazobe</option>
+                                <option value="Antananarivo-Avaradrano" > Antananarivo-Avaradrano</option>
+                                <option value="Antananarivo-Renivohitra" >Manjakandriana</option>
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -229,7 +229,16 @@ export default function AjoutFormulaire() {
                               <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setCommune(e.target.value) }}>
                                 <option>Choisissez</option>
                                 <option value="Andoharanofotsy">Andoharanofotsy</option>
-                                <option value="Ambatolampy">Ambatolampy</option>
+                                <option value="Ambalavao">Ambalavao</option>
+                                <option value="Ambatofahavalo">Ambatofahavalo</option>
+                                <option value="Ambohidrapeto">Ambohidrapeto</option>
+                                <option value="Ambohijanaka"> Ambohijanaka</option>
+                                <option value="Ampitatafika">Ampitatafika</option>
+                                <option value="Andranonahoatra">Andranonahoatra</option>
+                                <option value="Androhibe">Androhibe</option>
+                                <option value="Ankaraobato">Ankaraobato</option>
+                                <option value="Bemasoandro">Bemasoandro</option>
+                                <option value="Ambatolampy">Tanjombato</option>
                               </Form.Select>
                             </Form.Group>
                           </Col>
@@ -240,15 +249,23 @@ export default function AjoutFormulaire() {
                               <Form.Label>Fokontany</Form.Label>
                               <Form.Select aria-label="Default select example" size="md-6" onChange={(e) => { setFokontany(e.target.value) }}>
                                 <option>Choisissez</option>
+                                <option value="Ambavahaditokana">   Ambavahaditokana</option>
+                                <option value="Alakamisy Fenoarivo">  Alakamisy Fenoarivo</option>
+                                <option value="Ankadilalapotsy">Ankadilalapotsy</option>
+                                <option value="Alatsinainy Ambazaha">  Alatsinainy Ambazaha</option>
+                                <option value="Ambalavao">Ambalavao</option>
+                                <option value="Ambatofahavalo">Ambatofahavalo</option>
+                                <option value="Ambavahaditokana">Ambavahaditokana</option>
+                                <option value="Ambohidrapeto">Ambohidrapeto</option>
                                 <option value="Belambanana">Belambanana</option>
-                                <option value="Ambato">Ambato</option>
+                                <option value="Tanjombato Iraitsimivaky">Tanjombato Iraitsimivaky</option>
                               </Form.Select>
                             </Form.Group>
                           </Col>
                           <Col>
                             <Form.Group className="mb-3">
                               <Form.Label>Localité</Form.Label>
-                              <Form.Control type="text" placeholder="ex : Ambandrika" onChange={(e) => { setLocalite(e.target.value) }} />
+                              <Form.Control type="text" placeholder="" onChange={(e) => { setLocalite(e.target.value) }} />
                             </Form.Group>
                           </Col>
                         </Row>
