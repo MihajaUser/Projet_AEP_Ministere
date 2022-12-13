@@ -241,7 +241,6 @@ export default function ModifFormulaire() {
                                 <option>Ankadilalapotsy</option>
                                 <option value="Ambanimaso">Ambanimaso</option>
                                 <option value="Ambato">Ambato</option>
-
                               </Form.Select>
                             </Form.Group>
                           </Col>
