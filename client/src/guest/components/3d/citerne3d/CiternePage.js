@@ -18,6 +18,7 @@ function CiternePage() {
               <Citerne />
             </mesh>
           </Suspense>
+          1
         </Canvas>
       </div>
       < Navigation linkValue={"url"} />
