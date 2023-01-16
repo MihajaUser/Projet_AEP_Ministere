@@ -21,7 +21,7 @@ function Login(props) {
     let data = { username, password ,email};
     if (email == '' || password == '') {
       setError('remplire tout les champs!');
-    }
+    } 
     else {
       AuthService.signin(data)
         .then(rep => {
@@ -30,7 +30,6 @@ function Login(props) {
             id: rep.data.id,
             username: rep.data.username,
             email: rep.data.email,
-            roles: rep.data.roles,
             accessToken: rep.data.accessToken,
           }
           localStorage.setItem('users', JSON.stringify(storage));
@@ -71,14 +70,14 @@ function Login(props) {
               placeholder="Mot de passe" onChange={(value) => setpassword(value.target.value)}
             />
           </div>
-          <Form.Group>
+          {/* <Form.Group>
             <Form.Label>Utilisation</Form.Label>
               <Form.Select aria-label="Default select example" size="md-6" >
                 <option>Choisissez</option>
                 <option value="1">Ingenieur</option>
                 <option value="2">Dirigeant</option>
               </Form.Select>
-              </Form.Group>
+          </Form.Group> */}
           {error &&
             <Alert className='my-input' key='danger' variant='danger'>
               {error}
