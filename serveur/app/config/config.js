@@ -5,21 +5,21 @@ module.exports = {
     "development": { //test
         "username": "postgres",
         "password": "root",
-        "database": "projetMinistere",
+        "database": "projetMinistereAvecCsv",
         "host": "localhost",
         "dialect": "postgres"
     },
     "test": {
         "username": "postgres",
         "password": "root",
-        "database": "projetMinistere",
+        "database": "projetMinistereAvecCsv",
         "host": "127.0.0.1",
         "dialect": "postgres"
     },
     "production": {
         "username": "postgres",
         "password": "root",
-        "database": "projetMinistere",
+        "database": "projetMinistereAvecCsv",
         "host": "127.0.0.1",
         "dialect": "postgres"
     }

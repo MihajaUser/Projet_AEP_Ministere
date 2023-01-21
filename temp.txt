@@ -1,0 +1,95 @@
+package importationbase;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+/**
+ *
+ * @author mihaja
+ */
+public class ImportationBase {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        String csvFile = "D:/stage/Projet_AEP_Ministere/importationBase/src/importationbase/pointmadagacar.csv";
+        String line = "";
+        String cvsSplitBy = ";";
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try {
+            // Connect to the database
+            conn
+                    = DriverManager.getConnection(
+                            "jdbc:postgresql://localhost:5432/projetMinistereAvecCsv",
+                            "postgres",
+                            "root"
+                    );
+//            System.out.print("connection Mihaja");
+
+            // Prepare the SQL statement
+            String sql
+                    = "INSERT INTO public.\"Projets\"(\n"
+                    + "	id_utilisateur, region, district, commune, fokontany, localite, latitude, longitude, nb_beneficiaire, point_eau, infra_eau, etat_ouvrage, utilisation)\n"
+                    + "	VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+            stmt = conn.prepareStatement(sql);
+
+            // Open the CSV file
+            BufferedReader br = new BufferedReader(new FileReader(csvFile));
+
+            // Read each line of the CSV file
+            int i = 0;
+            while ((line = br.readLine()) != null && i < 2) {
+                // Use semicolon as separator
+                String[] elements = line.split(cvsSplitBy);
+                if (i == 142) {
+                    System.out.println(elements[0] + " " + elements[9]);
+                }
+                // Set the values for each column
+                stmt.setString(1, "1");
+                stmt.setString(2, elements[2]);
+                stmt.setString(3, elements[3]);
+                stmt.setString(4, elements[4]);
+                stmt.setString(5, elements[5]);
+                stmt.setString(6, elements[6]);
+                stmt.setString(7, elements[7]);
+                stmt.setString(8, elements[8]);
+                stmt.setString(9, elements[9]);
+                stmt.setString(10, elements[10]);
+                stmt.setString(11, elements[11]);
+                stmt.setString(12, elements[12]);
+                stmt.setString(13, "");
+
+                // Insert the data into the database
+                stmt.executeUpdate();
+                i++;
+            }
+            System.out.println("success mihaja");
+            // Close the CSV file
+            br.close();
+
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the connection and statement
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
